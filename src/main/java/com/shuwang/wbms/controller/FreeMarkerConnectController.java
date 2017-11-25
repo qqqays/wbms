@@ -1,7 +1,9 @@
 package com.shuwang.wbms.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.shuwang.wbms.entity.MenuEntity;
 import com.shuwang.wbms.entity.SimpleUser;
+import com.shuwang.wbms.service.IMenuService;
 import com.shuwang.wbms.service.ISimpleUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,12 +25,24 @@ public class FreeMarkerConnectController {
     @Autowired
     private ISimpleUserService simpleUserService;
 
+    @Autowired
+    private IMenuService menuService;
+
     @GetMapping("/connect")
     public String connect(Model model){
+
+        List<MenuEntity> topMenus = menuService.selectList(new EntityWrapper<MenuEntity>().eq("deep",0));
+        List<MenuEntity> subMenus1 = menuService.selectList(new EntityWrapper<MenuEntity>().eq("deep", 1));
+
         List<SimpleUser> users = simpleUserService.selectList(new EntityWrapper<SimpleUser>());
+
+        model.addAttribute("topMenus", topMenus);
+        model.addAttribute("subMenus1", subMenus1);
+
         model.addAttribute("data1", "hello, freemarker");
         model.addAttribute("users", users);
         model.addAttribute("systemName", "new energy");
         return "/test/connect";
     }
+
 }
