@@ -22,7 +22,7 @@
 
     <!-- freemarker的配置 -->
     <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
-        <property name="templateLoaderPath" value="/" />
+        <property name="templateLoaderPath" value="/WEB-INF/views/" />
         <property name="defaultEncoding" value="UTF-8" />
         <property name="freemarkerSettings">
             <props>
@@ -39,8 +39,7 @@
     <!--视图解析器 -->
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
-        <property name="viewClass"
-                  value="org.springframework.web.servlet.view.freemarker.FreeMarkerView"></property>
+        <property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView"></property>
         <property name="suffix" value=".html" />
         <property name="contentType" value="text/html;charset=utf-8" />
         <property name="exposeRequestAttributes" value="true" />
@@ -50,9 +49,11 @@
     </bean>
 
     <!-- 资源映射 -->
-    <!--<mvc:resources location="/WEB-INF/static/app/" mapping="/app/**" />-->
-    <!--<mvc:resources location="/WEB-INF/static/images/" mapping="/images/**" />-->
-    <!--<mvc:resources location="/WEB-INF/static/plugins/" mapping="/plugins/**" />-->
+    <mvc:resources location="/WEB-INF/static/app/" mapping="/app/**" />
+    <mvc:resources location="/WEB-INF/static/images/" mapping="/images/**" />
+    <mvc:resources location="/WEB-INF/static/plugins/" mapping="/plugins/**" />
+    <mvc:resources location="/WEB-INF/json" mapping="/json"/>
+    <!--<mvc:resources location="/files/" mapping="/files/**"/>-->
     <!--<mvc:resources location="/upload/" mapping="/upload/**" />-->
 
     <!-- 定义文件上传解析器 -->
@@ -78,7 +79,9 @@
             </bean>
         </mvc:message-converters>
     </mvc:annotation-driven>
+
     <!--<mvc:resources location="/" mapping="/**.html"/>-->
+
     <!-- 拦截器 -->
     <!--<mvc:interceptors>-->
         <!--<mvc:interceptor>-->

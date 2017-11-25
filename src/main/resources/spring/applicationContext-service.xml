@@ -10,8 +10,8 @@
 	
 	<!-- 扫描包加载Service实现类 -->
 	<context:component-scan base-package="com.shuwang.wbms.service"></context:component-scan>
-	<import resource="classpath:mybatis/applicationContext-dao.xml"/>
-	
+	<!--<import resource="classpath:mybatis/applicationContext-dao.xml"/>-->
+
 	<!-- 事务管理器 -->
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

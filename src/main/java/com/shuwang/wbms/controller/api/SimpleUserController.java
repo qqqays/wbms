@@ -6,6 +6,7 @@ import com.shuwang.wbms.entity.SimpleUser;
 import com.shuwang.wbms.service.ISimpleUserService;
 import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +22,12 @@ public class SimpleUserController {
 
     @Autowired
     private ISimpleUserService simpleUserService;
+
+    @Cacheable("testCache")
+    @GetMapping("/cache")
+    public String cache(){
+        return System.currentTimeMillis() + "ms";
+    }
 
 
     @GetMapping
@@ -58,4 +65,5 @@ public class SimpleUserController {
         SimpleUser user = simpleUserService.selectById(id);
         return user.deleteById() + " delete";
     }
+
 }
