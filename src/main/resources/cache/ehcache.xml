@@ -25,9 +25,9 @@
 	</defaultCache>
 
 	<!-- 测试缓存 -->
-	<cache name="mytest" maxElementsInMemory="100000" eternal="true"
-		overflowToDisk="false" memoryStoreEvictionPolicy="LRU">
-	</cache>
+	<!--<cache name="mytest" maxElementsInMemory="100000" eternal="true"-->
+		<!--overflowToDisk="false" memoryStoreEvictionPolicy="LRU">-->
+	<!--</cache>-->
 
 	<cache name="testCache" maxElementsInMemory="20" timeToIdleSeconds="5" timeToLiveSeconds="10">
 	</cache>

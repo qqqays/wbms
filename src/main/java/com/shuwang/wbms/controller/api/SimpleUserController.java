@@ -23,15 +23,21 @@ public class SimpleUserController {
     @Autowired
     private ISimpleUserService simpleUserService;
 
-    @Cacheable("testCache")
+//    @Cacheable(value = "testCache", key = "#param")
     @GetMapping("/cache")
     public String cache(){
-        return System.currentTimeMillis() + "ms";
+        return simpleUserService.cacheTest();
+    }
+
+    @GetMapping("/clear")
+    public String clearCache(){
+        return simpleUserService.clearCache();
     }
 
 
+
     @GetMapping
-    public String getUsers(){
+    public String getUsers() {
         return new JSONArray(simpleUserService.selectList(new EntityWrapper<SimpleUser>())).toString();
     }
 
