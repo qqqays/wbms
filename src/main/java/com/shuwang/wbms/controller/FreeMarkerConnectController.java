@@ -31,8 +31,8 @@ public class FreeMarkerConnectController {
     @GetMapping("/connect")
     public String connect(Model model){
 
-        List<MenuEntity> topMenus = menuService.selectList(new EntityWrapper<MenuEntity>().eq("deep",0));
-        List<MenuEntity> subMenus1 = menuService.selectList(new EntityWrapper<MenuEntity>().eq("deep", 1));
+        List<MenuEntity> topMenus = menuService.selectList(new EntityWrapper<MenuEntity>().eq("deep",0).orderBy("sort"));
+        List<MenuEntity> subMenus1 = menuService.selectList(new EntityWrapper<MenuEntity>().eq("deep", 1).orderBy("sort"));
 
         List<SimpleUser> users = simpleUserService.selectList(new EntityWrapper<SimpleUser>());
 

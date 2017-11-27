@@ -37,6 +37,8 @@ public class MenuEntity extends Model<MenuEntity> {
 
     private String resource;
 
+    private boolean hasSub;
+
     @Override
     protected Serializable pkVal(){
         return this.id;
@@ -120,5 +122,13 @@ public class MenuEntity extends Model<MenuEntity> {
 
     public void setResource(String resource) {
         this.resource = resource;
+    }
+
+    public boolean isHasSub() {
+        return hasSub;
+    }
+
+    public void setHasSub(boolean hasSub) {
+        this.hasSub = hasSub;
     }
 }

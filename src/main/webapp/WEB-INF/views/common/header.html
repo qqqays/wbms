@@ -1,7 +1,7 @@
 <header class="main-header">
     <nav class="navbar navbar-static-top">
         <div class="container">
-            <div class="navbar-header">
+            <div class="navbar-header animated flip">
                 <a href="/index" class="navbar-brand" style="font-variant: small-caps">S<b>hu</b>W<b>ang</b></a>
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
                     <i class="fa fa-bars"></i>
@@ -25,24 +25,26 @@
                             <!--<li><a href="#">One more separated link</a></li>-->
                         <!--</ul>-->
                     <!--</li>-->
-                    <#list topMenus as topMenu>
-                        <li><a href="#">${topMenu.menuName}</a></li>
-                    </#list>
+                    <!--<#list topMenus as topMenu>-->
+                        <!--<li><a href="#">${topMenu.menuName}</a></li>-->
+                    <!--</#list>-->
 
                     <#list topMenus as topMenu>
-                        <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">${topMenu.menuName}<span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <#list subMenus1 as subMenu1>
-                                    <#if subMenu1.pid == topMenu.id>
-                                        <li><a href="#">${subMenu1.menuName}</a></li>
-                                    </#if>
-                                </#list>
-                            </ul>
+                        <li class="dropdown animated rollIn"><a href="#" class="dropdown-toggle" data-toggle="dropdown">${topMenu.menuName}<#if topMenu.hasSub><span class="caret"></span></#if></a>
+                            <#if topMenu.hasSub>
+                                <ul class="dropdown-menu" role="menu">
+                                    <#list subMenus1 as subMenu1>
+                                        <#if subMenu1.pid == topMenu.id>
+                                            <li><a href="#">${subMenu1.menuName}</a></li>
+                                        </#if>
+                                    </#list>
+                                </ul>
+                            </#if>
                         </li>
                     </#list>
 
                 </ul>
-                <form class="navbar-form navbar-left" role="search">
+                <form class="navbar-form navbar-left animated rotateIn" role="search">
                     <div class="form-group">
                         <input type="text" class="form-control" id="navbar-search-input" placeholder="Search">
                     </div>
@@ -55,7 +57,7 @@
                     <!-- Messages: style can be found in dropdown.less-->
                     <li class="dropdown messages-menu">
                         <!-- Menu toggle button -->
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <a href="#" class="dropdown-toggle animated swing" data-toggle="dropdown">
                             <i class="fa fa-envelope-o"></i>
                             <span class="label label-success">4</span>
                         </a>
@@ -91,12 +93,12 @@
                     <!-- Notifications Menu -->
                     <li class="dropdown notifications-menu">
                         <!-- Menu toggle button -->
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <a href="#" class="dropdown-toggle animated tada" data-toggle="dropdown">
                             <i class="fa fa-bell-o"></i>
                             <span class="label label-warning">10</span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="header">You have 10 notifications</li>
+                            <li class="header animated">You have 10 notifications</li>
                             <li>
                                 <!-- Inner Menu: contains the notifications -->
                                 <ul class="menu">
@@ -112,7 +114,7 @@
                         </ul>
                     </li>
                     <!-- Tasks Menu -->
-                    <li class="dropdown tasks-menu">
+                    <li class="dropdown tasks-menu animated flash">
                         <!-- Menu Toggle Button -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-flag-o"></i>
