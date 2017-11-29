@@ -1,5 +1,6 @@
 package com.shuwang.wbms.controller.api;
 
+import com.shuwang.wbms.common.controller.MyController;
 import com.shuwang.wbms.common.util.UrlMappingUtil;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -14,11 +15,11 @@ import javax.servlet.http.HttpServletRequest;
  * 11-29-2017 10:21
  */
 @RestController("/api/siteMap")
-public class SiteMapController {
+public class SiteMapController extends MyController{
 
     @GetMapping()
     public String siteMap(HttpServletRequest request){
-        return new JSONArray(UrlMappingUtil.getAllUrlAndMethod(request)).toString();
+        return list2JsonStr(UrlMappingUtil.getAllUrlAndMethod(request));
     }
 
 }

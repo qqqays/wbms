@@ -58,4 +58,13 @@ public class SimpleUser extends Model<SimpleUser> {
     protected Serializable pkVal(){
         return this.id;
     }
+
+    @Override
+    public String toString() {
+        return "SimpleUser{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }

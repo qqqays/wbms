@@ -3,6 +3,8 @@ package com.shuwang.wbms.controller.api;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.shuwang.wbms.common.aspect.ApiAspect;
+import com.shuwang.wbms.common.controller.MyController;
+import com.shuwang.wbms.common.enums.ReturnCode;
 import com.shuwang.wbms.entity.SimpleUser;
 import com.shuwang.wbms.service.ISimpleUserService;
 import org.json.JSONArray;
@@ -22,7 +24,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/users")
-public class SimpleUserController {
+public class SimpleUserController extends MyController{
 
     private static final Logger logger = LoggerFactory.getLogger(SimpleUserController.class);
 
@@ -44,23 +46,18 @@ public class SimpleUserController {
 
     @GetMapping
     public String getUsers() {
-        return new JSONArray(simpleUserService.selectList(new EntityWrapper<SimpleUser>())).toString();
+        return list2JsonStr(simpleUserService.selectList(new EntityWrapper<SimpleUser>()));
     }
 
     @PostMapping
-    public String createUser(@RequestParam String name, @RequestParam int age){
-        SimpleUser user = new SimpleUser(name, age);
-//        user.setName("luguo");
-//        user.setAge(18);
-
-//        System.out.println(name);
-//        System.out.println(age);
+    public String createUser(SimpleUser user){
         return simpleUserService.insert(user) + " insert";
     }
 
     @GetMapping("/{name}")
     public String getUser(@PathVariable String name){
-        return new JSONArray(simpleUserService.selectList(new EntityWrapper<SimpleUser>().eq("name",name))).toString();
+//        return list2JsonStr(simpleUserService.selectList(new EntityWrapper<SimpleUser>().eq("name",name)));
+        return dataAndCode(ReturnCode.SUCCESS, simpleUserService.selectList(new EntityWrapper<SimpleUser>().eq("name",name)));
     }
 
     @PutMapping("/{id}")
@@ -68,13 +65,22 @@ public class SimpleUserController {
         SimpleUser user = simpleUserService.selectById(id);
         user.setAge(age);
         user.setName(name);
-//        simpleUserService.updateById(user);
+        return user.updateById() + " update";
+    }
+
+    @PutMapping()
+    public String updateUserEntity(SimpleUser user){
         return user.updateById() + " update";
     }
 
     @DeleteMapping("/{id}")
     public String deleteUser(@PathVariable String id){
         SimpleUser user = simpleUserService.selectById(id);
+        return user.deleteById() + " delete";
+    }
+
+    @DeleteMapping()
+    public String deleteUserEntity(SimpleUser user) {
         return user.deleteById() + " delete";
     }
 
