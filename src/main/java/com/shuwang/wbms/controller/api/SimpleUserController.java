@@ -2,13 +2,17 @@ package com.shuwang.wbms.controller.api;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
+import com.shuwang.wbms.common.aspect.ApiAspect;
 import com.shuwang.wbms.entity.SimpleUser;
 import com.shuwang.wbms.service.ISimpleUserService;
 import org.json.JSONArray;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 import java.util.List;
 
@@ -19,6 +23,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/users")
 public class SimpleUserController {
+
+    private static final Logger logger = LoggerFactory.getLogger(SimpleUserController.class);
 
     @Autowired
     private ISimpleUserService simpleUserService;
@@ -47,8 +53,8 @@ public class SimpleUserController {
 //        user.setName("luguo");
 //        user.setAge(18);
 
-        System.out.println(name);
-        System.out.println(age);
+//        System.out.println(name);
+//        System.out.println(age);
         return simpleUserService.insert(user) + " insert";
     }
 
