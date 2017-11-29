@@ -17,9 +17,9 @@ import javax.servlet.http.HttpServletRequest;
 @RestController("/api/siteMap")
 public class SiteMapController extends MyController{
 
-    @GetMapping()
-    public String siteMap(HttpServletRequest request){
-        return list2JsonStr(UrlMappingUtil.getAllUrlAndMethod(request));
-    }
+//    @GetMapping()
+//    public String siteMap(HttpServletRequest request){
+//        return list2JsonStr(UrlMappingUtil.getAllUrlAndMethod(request));
+//    }
 
 }
