@@ -1,23 +1,14 @@
 package com.shuwang.wbms.controller.api;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.baomidou.mybatisplus.mapper.Wrapper;
-import com.shuwang.wbms.common.aspect.ApiAspect;
 import com.shuwang.wbms.common.controller.MyController;
-import com.shuwang.wbms.common.enums.ReturnCode;
+import com.shuwang.wbms.common.enums.ReturnCodeEnum;
 import com.shuwang.wbms.entity.SimpleUser;
 import com.shuwang.wbms.service.ISimpleUserService;
-import org.json.JSONArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
 /**
  * @author Qays
@@ -32,18 +23,6 @@ public class SimpleUserController extends MyController {
     @Autowired
     private ISimpleUserService simpleUserService;
 
-    //    @Cacheable(value = "testCache", key = "#param")
-    @GetMapping("/cache")
-    public String cache() {
-        return simpleUserService.cacheTest();
-    }
-
-    @GetMapping("/clear")
-    public String clearCache() {
-        return simpleUserService.clearCache();
-    }
-
-
     @GetMapping
     public String getUsers() {
         return list2JsonStr(simpleUserService.selectList(new EntityWrapper<SimpleUser>()));
@@ -57,7 +36,7 @@ public class SimpleUserController extends MyController {
     @GetMapping("/{name}")
     public String getUser(@PathVariable String name) {
 //        return list2JsonStr(simpleUserService.selectList(new EntityWrapper<SimpleUser>().eq("name",name)));
-        return dataAndCode(ReturnCode.SUCCESS, simpleUserService.selectList(new EntityWrapper<SimpleUser>().eq("name", name)));
+        return dataAndCode(ReturnCodeEnum.SUCCESS, simpleUserService.selectList(new EntityWrapper<SimpleUser>().eq("name", name)));
     }
 
     @PutMapping("/{id}")
@@ -83,5 +62,18 @@ public class SimpleUserController extends MyController {
     public String deleteUserEntity(SimpleUser user) {
         return user.deleteById() + " delete";
     }
+
+//    ====================================cache======================================
+    //    @Cacheable(value = "testCache", key = "#param")
+    @GetMapping("/cache")
+    public String cache() {
+        return simpleUserService.cacheTest();
+    }
+
+    @GetMapping("/clear")
+    public String clearCache() {
+        return simpleUserService.clearCache();
+    }
+
 
 }

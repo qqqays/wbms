@@ -16,6 +16,7 @@
 
     <context:component-scan base-package="com.shuwang.wbms.controller" />
     <context:component-scan base-package="com.shuwang.wbms.common.aspect" />
+    <context:component-scan base-package="com.shuwang.wbms.common.handle" />
 
     <!-- 开启aop，对类代理 -->
     <aop:config proxy-target-class="true" />

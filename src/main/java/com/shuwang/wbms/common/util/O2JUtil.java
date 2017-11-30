@@ -1,0 +1,36 @@
+package com.shuwang.wbms.common.util;
+
+import com.shuwang.wbms.common.enums.ReturnCodeEnum;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.Collection;
+import java.util.Map;
+
+/**
+ * Created by Q-ays.
+ * 11-30-2017 10:40
+ */
+public class O2JUtil {
+    public static String list2JsonStr(Collection list){
+        return new JSONArray(list).toString();
+    }
+
+    public static String set2JsonStr(Collection set){
+        return list2JsonStr(set);
+    }
+
+    public static String map2JsonStr(Map map) {
+        return new JSONObject(map).toString();
+    }
+
+    public static String dataAndCode(ReturnCodeEnum code, Object data){
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("status-code: ", code.getCode());
+        jsonObject.put("message: ", code.getMsg());
+        jsonObject.put("data", data);
+
+        return jsonObject.toString();
+    }
+
+}

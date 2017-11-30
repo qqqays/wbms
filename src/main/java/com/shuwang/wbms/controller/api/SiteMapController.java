@@ -1,6 +1,8 @@
 package com.shuwang.wbms.controller.api;
 
 import com.shuwang.wbms.common.controller.MyController;
+import com.shuwang.wbms.common.enums.ReturnCodeEnum;
+import com.shuwang.wbms.common.exception.CustomException;
 import com.shuwang.wbms.common.util.UrlMappingUtil;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -21,6 +23,11 @@ public class SiteMapController extends MyController{
     @GetMapping()
     public String siteMap(HttpServletRequest request){
         return list2JsonStr(UrlMappingUtil.getAllUrlAndMethod(request));
+    }
+
+    @GetMapping("/exception")
+    public void exception() throws Exception{
+        throw new CustomException(ReturnCodeEnum.SUCCESS);
     }
 
 }

@@ -1,6 +1,7 @@
 package com.shuwang.wbms.common.controller;
 
-import com.shuwang.wbms.common.enums.ReturnCode;
+import com.shuwang.wbms.common.enums.ReturnCodeEnum;
+import com.shuwang.wbms.common.util.O2JUtil;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -14,7 +15,7 @@ import java.util.Map;
 public class MyController {
 
     public String list2JsonStr(Collection list){
-        return new JSONArray(list).toString();
+        return O2JUtil.list2JsonStr(list);
     }
 
     public String set2JsonStr(Collection set){
@@ -22,15 +23,10 @@ public class MyController {
     }
 
     public String map2JsonStr(Map map) {
-        return new JSONObject(map).toString();
+        return O2JUtil.map2JsonStr(map);
     }
 
-    public String dataAndCode(ReturnCode code, Object data){
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("status-code: ", code.getCode());
-        jsonObject.put("message: ", code.getMsg());
-        jsonObject.put("data", data);
-
-        return jsonObject.toString();
+    public String dataAndCode(ReturnCodeEnum code, Object data){
+        return O2JUtil.dataAndCode(code, data);
     }
 }
