@@ -24,10 +24,14 @@ public class O2JUtil {
         return new JSONObject(map).toString();
     }
 
-    public static String dataAndCode(ReturnCodeEnum code, Object data){
+    public static String dataAndCode(ReturnCodeEnum rc, Object data){
+       return dataAndCode(rc.getCode(), rc.getMsg(), data);
+    }
+
+    public static String dataAndCode(Integer code, String msg, Object data){
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("status-code: ", code.getCode());
-        jsonObject.put("message: ", code.getMsg());
+        jsonObject.put("status-code: ", code);
+        jsonObject.put("message: ", msg);
         jsonObject.put("data", data);
 
         return jsonObject.toString();

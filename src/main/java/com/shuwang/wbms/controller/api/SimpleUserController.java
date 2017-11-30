@@ -8,7 +8,10 @@ import com.shuwang.wbms.service.ISimpleUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 /**
  * @author Qays
@@ -29,7 +32,10 @@ public class SimpleUserController extends MyController {
     }
 
     @PostMapping
-    public String createUser(SimpleUser user) {
+    public String createUser(@Valid SimpleUser user, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+           return dataAndCode(ReturnCodeEnum.VALID_ERROR, bindingResult.getFieldError().getDefaultMessage());
+        }
         return simpleUserService.insert(user) + " insert";
     }
 

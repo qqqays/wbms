@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
 
+import javax.validation.constraints.Min;
 import java.io.Serializable;
 
 /**
@@ -20,6 +21,7 @@ public class SimpleUser extends Model<SimpleUser> {
 
     private String name;
 
+    @Min(value = 18, message = "The age not enoughed")
     private int age;
 
     public SimpleUser() {

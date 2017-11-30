@@ -7,7 +7,8 @@ public enum ReturnCodeEnum {
     SUCCESS(1, "success"),
     UNKNOWN_ERROR(-1, "unknown error"),
     PARAM_ERROR(-2, "param error"),
-    UNMATCHED_METHOD(-3, "unmatched method error");
+    UNMATCHED_METHOD(-3, "unmatched method error"),
+    VALID_ERROR(-4, "valid not pass");
 
     private Integer code;
 
