@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -24,24 +25,23 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/users")
-public class SimpleUserController extends MyController{
+public class SimpleUserController extends MyController {
 
     private static final Logger logger = LoggerFactory.getLogger(SimpleUserController.class);
 
     @Autowired
     private ISimpleUserService simpleUserService;
 
-//    @Cacheable(value = "testCache", key = "#param")
+    //    @Cacheable(value = "testCache", key = "#param")
     @GetMapping("/cache")
-    public String cache(){
+    public String cache() {
         return simpleUserService.cacheTest();
     }
 
     @GetMapping("/clear")
-    public String clearCache(){
+    public String clearCache() {
         return simpleUserService.clearCache();
     }
-
 
 
     @GetMapping
@@ -50,18 +50,18 @@ public class SimpleUserController extends MyController{
     }
 
     @PostMapping
-    public String createUser(SimpleUser user){
+    public String createUser(SimpleUser user) {
         return simpleUserService.insert(user) + " insert";
     }
 
     @GetMapping("/{name}")
-    public String getUser(@PathVariable String name){
+    public String getUser(@PathVariable String name) {
 //        return list2JsonStr(simpleUserService.selectList(new EntityWrapper<SimpleUser>().eq("name",name)));
-        return dataAndCode(ReturnCode.SUCCESS, simpleUserService.selectList(new EntityWrapper<SimpleUser>().eq("name",name)));
+        return dataAndCode(ReturnCode.SUCCESS, simpleUserService.selectList(new EntityWrapper<SimpleUser>().eq("name", name)));
     }
 
     @PutMapping("/{id}")
-    public String updateUser(@PathVariable String id, @RequestParam String name, @RequestParam int age){
+    public String updateUser(@PathVariable String id, @RequestParam String name, @RequestParam int age) {
         SimpleUser user = simpleUserService.selectById(id);
         user.setAge(age);
         user.setName(name);
@@ -69,12 +69,12 @@ public class SimpleUserController extends MyController{
     }
 
     @PutMapping()
-    public String updateUserEntity(SimpleUser user){
+    public String updateUserEntity(SimpleUser user) {
         return user.updateById() + " update";
     }
 
     @DeleteMapping("/{id}")
-    public String deleteUser(@PathVariable String id){
+    public String deleteUser(@PathVariable String id) {
         SimpleUser user = simpleUserService.selectById(id);
         return user.deleteById() + " delete";
     }

@@ -14,12 +14,13 @@ import javax.servlet.http.HttpServletRequest;
  * Created by Q-ays.
  * 11-29-2017 10:21
  */
-@RestController("/api/siteMap")
+@RestController
+@RequestMapping("/api/siteMap")
 public class SiteMapController extends MyController{
 
-//    @GetMapping()
-//    public String siteMap(HttpServletRequest request){
-//        return list2JsonStr(UrlMappingUtil.getAllUrlAndMethod(request));
-//    }
+    @GetMapping()
+    public String siteMap(HttpServletRequest request){
+        return list2JsonStr(UrlMappingUtil.getAllUrlAndMethod(request));
+    }
 
 }
