@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * Catches exception of controller
+ * Catches exceptions of controller
  *
  * Created by Q-ays.
  * 11-30-2017 10:12

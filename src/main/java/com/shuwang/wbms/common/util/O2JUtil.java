@@ -33,7 +33,7 @@ public class O2JUtil {
     }
 
     /**
-     * Transforms data to json string and attached code and message
+     * Transforms data to json string after attaching the code and message
      *
      * @param rc
      * @param data
