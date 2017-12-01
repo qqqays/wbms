@@ -21,7 +21,7 @@ public class SimpleUser extends Model<SimpleUser> {
 
     private String name;
 
-    @Min(value = 18, message = "The age not enoughed")
+    @Min(value = 18, message = "Not enough age")
     private int age;
 
     public SimpleUser() {

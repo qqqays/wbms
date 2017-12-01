@@ -8,6 +8,8 @@ import java.util.Collection;
 import java.util.Map;
 
 /**
+ * Transforms object to json string
+ *
  * Created by Q-ays.
  * 11-30-2017 10:40
  */
@@ -30,6 +32,13 @@ public class O2JUtil {
         return new JSONObject(map).toString();
     }
 
+    /**
+     * Transforms data to json string and attached code and message
+     *
+     * @param rc
+     * @param data
+     * @return
+     */
     public static String dataAndCode(ReturnCodeEnum rc, Object data) {
         return dataAndCode(rc.getCode(), rc.getMsg(), data);
     }
