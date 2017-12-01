@@ -5,7 +5,6 @@ import com.shuwang.wbms.common.exception.CustomException;
 import com.shuwang.wbms.common.util.O2JUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,16 +24,11 @@ public class CustomExceptionHandle {
     public String handle(Exception e) {
         if (e instanceof CustomException) {
             CustomException customException = (CustomException) e;
-            return O2JUtil.dataAndCode(customException.getRc(), e);
+            return O2JUtil.dataAndCode(customException.getRc(), e.getMessage());
         } else {
             logger.error("【系统异常】{}", e);
-            return O2JUtil.dataAndCode(ReturnCodeEnum.UNKNOWN_ERROR, e);
+            return O2JUtil.dataAndCode(ReturnCodeEnum.UNKNOWN_ERROR, e.getMessage());
         }
     }
 
-    @GetMapping("dd")
-    @ResponseBody
-    public String ddfas(){
-        return "fuck";
-    }
 }

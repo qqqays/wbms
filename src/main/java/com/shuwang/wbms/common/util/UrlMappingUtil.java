@@ -5,9 +5,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.DispatcherServlet;
-import org.springframework.web.servlet.mvc.condition.ParamsRequestCondition;
-import org.springframework.web.servlet.mvc.condition.PatternsRequestCondition;
-import org.springframework.web.servlet.mvc.condition.RequestMethodsRequestCondition;
+import org.springframework.web.servlet.HandlerMapping;
+import org.springframework.web.servlet.mvc.condition.*;
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
@@ -20,6 +19,29 @@ import java.util.concurrent.ConcurrentHashMap;
  * 11-29-2017 10:19
  */
 public class UrlMappingUtil {
+
+
+    /**
+     *  enum set transform string set
+     * @return
+     */
+    public static Set<String> eSet2strSet(Set eSet){
+
+        Set<String> sSet = new HashSet<>();
+
+        if (eSet.size() == 0) {
+            return sSet.add("Accept all methods") ? sSet : null;
+        }
+
+        Iterator it = eSet.iterator();
+
+        if (it.hasNext()){
+            sSet.add(it.next().toString());
+        }
+
+        return sSet;
+    }
+
     public static Set<String> getAllUrl(HttpServletRequest request) {
         Set<String> result = new HashSet<>();
         WebApplicationContext wc = (WebApplicationContext) request.getAttribute(DispatcherServlet.WEB_APPLICATION_CONTEXT_ATTRIBUTE);
@@ -45,24 +67,18 @@ public class UrlMappingUtil {
         for (RequestMappingInfo rmi : handlerMethods.keySet()) {
             PatternsRequestCondition pc = rmi.getPatternsCondition();
             RequestMethodsRequestCondition rm = rmi.getMethodsCondition();
+            HandlerMethod hm = handlerMethods.get(rmi);
 
-            Iterator it = rm.getMethods().iterator();
+            Map<String, Map> map = new ConcurrentHashMap<>();
 
-            Set<String> rmSet = new HashSet<>();
+            Map<String, Object>  subMap = new ConcurrentHashMap<>();
 
-            Map<String, List> map = new ConcurrentHashMap<>();
+            subMap.put("api", pc.getPatterns());
+            subMap.put("request_methods", eSet2strSet(rm.getMethods()));
+            subMap.put("backend_methods", hm.toString());
+//            subMap.put("declare_annotations", hm.getMethod().getDeclaredAnnotations());
 
-            List<Set> setList = new ArrayList<>();
-
-            while (it.hasNext()) {
-                rmSet.add(it.next().toString());
-//                map.put(UUID.randomUUID().toString(), rmSet);
-            }
-
-            setList.add(rmSet);
-            setList.add(pc.getPatterns());
-
-            map.put(UUID.randomUUID().toString(), setList);
+            map.put(hm.getMethod().getName(), subMap);
 
             list.add(map);
         }

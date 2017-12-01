@@ -81,5 +81,4 @@ public class SimpleUserController extends MyController {
         return simpleUserService.clearCache();
     }
 
-
 }
