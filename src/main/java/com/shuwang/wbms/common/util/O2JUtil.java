@@ -16,7 +16,7 @@ import java.util.Map;
 public class O2JUtil {
 
     public static Object isNullData(Object data) {
-        if (data == null) return new String("null of data");
+        if (data == null) return "null of data";
         return data;
     }
 
@@ -35,9 +35,9 @@ public class O2JUtil {
     /**
      * Transforms data to json string after attaching the code and message
      *
-     * @param rc
-     * @param data
-     * @return
+     * @param rc return code
+     * @param data object
+     * @return json string
      */
     public static String dataAndCode(ReturnCodeEnum rc, Object data) {
         return dataAndCode(rc.getCode(), rc.getMsg(), data);

@@ -18,24 +18,29 @@
 <@body>
 <!--<form action = "/freemarker/connect" method="get">-->
 <div class="content-wrapper">
-    <table cellpadding="0" cellspacing="0">
-        <tr>
-            <th>id</th>
-            <th>name</th>
-            <th>age</th>
-        </tr>
+    <div class="container">
+    <section class="content">
+        <h1>${data1}</h1>
 
-        <#list users as user>
+        <table cellpadding="0" cellspacing="0">
             <tr>
-            <td>${user.id}</td>
-            <td>${user.name}</td>
-            <td>${user.age}</td>
+                <th>id</th>
+                <th>name</th>
+                <th>age</th>
             </tr>
-        </#list>
-    </table>
-    <h3>${data1}</h3>
+
+            <#list users as user>
+                <tr>
+                    <td>${user.id}</td>
+                    <td>${user.name}</td>
+                    <td>${user.age}</td>
+                </tr>
+            </#list>
+        </table>
+    </section>
+    </div>
 </div>
 <!--</form>-->
 </@body>
 
-<@footer></@footer>
+<@javascript></@javascript>
