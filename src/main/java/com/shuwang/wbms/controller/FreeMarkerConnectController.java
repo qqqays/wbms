@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -29,15 +30,15 @@ public class FreeMarkerConnectController {
     private IMenuService menuService;
 
     @GetMapping("/connect")
-    public String connect(Model model){
+    public String connect(Model model, HttpServletRequest request){
 
-        List<MenuEntity> topMenus = menuService.selectList(new EntityWrapper<MenuEntity>().eq("deep",0).orderBy("sort"));
-        List<MenuEntity> subMenus1 = menuService.selectList(new EntityWrapper<MenuEntity>().eq("deep", 1).orderBy("sort"));
+//        List<MenuEntity> topMenus = menuService.selectList(new EntityWrapper<MenuEntity>().eq("deep",0).orderBy("sort"));
+//        List<MenuEntity> subMenus1 = menuService.selectList(new EntityWrapper<MenuEntity>().eq("deep", 1).orderBy("sort"));
 
         List<SimpleUser> users = simpleUserService.selectList(new EntityWrapper<SimpleUser>());
 
-        model.addAttribute("topMenus", topMenus);
-        model.addAttribute("subMenus1", subMenus1);
+//        model.addAttribute("topMenus", topMenus);
+//        model.addAttribute("subMenus1", subMenus1);
 
         model.addAttribute("data1", "hello, freemarker");
         model.addAttribute("users", users);
