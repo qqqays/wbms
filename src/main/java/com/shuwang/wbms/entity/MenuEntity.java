@@ -41,6 +41,8 @@ public class MenuEntity extends Model<MenuEntity> {
 
     private String bannerImg;
 
+    private boolean active;
+
     @Override
     protected Serializable pkVal(){
         return this.id;
@@ -140,5 +142,13 @@ public class MenuEntity extends Model<MenuEntity> {
 
     public void setBannerImg(String bannerImg) {
         this.bannerImg = bannerImg;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }

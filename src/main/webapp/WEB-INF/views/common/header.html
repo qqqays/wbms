@@ -4,6 +4,9 @@
             <div class="navbar-header">
                 <!--<a href="/index" class="navbar-brand" style="font-variant: small-caps">S<b>hu</b>W<b>ang</b></a>-->
                 <a href="/index" class="navbar-brand"><img class="c-logo" src="/images/logo.png"></a>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
                 <div class="shares-code">
                     <p>股票简称：蜀旺能源</p>
                     <p>股票代码：838456</p>
@@ -12,11 +15,11 @@
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-right" id="navbar-collapse">
+            <div class="collapse navbar-collapse navbar-right" id="navbar-collapse" aria-expanded="true">
 
                 <ul class="nav navbar-nav">
                     <#list topMenus as topMenu>
-                        <li class=""><a href="#">${topMenu.menuName}</a>
+                        <li class="<#if topMenu.active> active </#if>"><a href="${topMenu.url}">${topMenu.menuName}</a>
                         </li>
                     </#list>
                 </ul>

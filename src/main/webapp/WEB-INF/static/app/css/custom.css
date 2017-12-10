@@ -17,6 +17,27 @@
     padding: 0;
 }
 
+/*======================footer===================*/
+#footer a {
+    color: #fff;
+}
+
+#footer a:hover {
+    color: #c52d2f;
+}
+
+#footer{
+    background-color: #2e2e2e;
+}
+
+#footer p {
+    margin: 0 0 10px;
+    font-size: 14px;
+    line-height: 22px;
+    text-align: center;
+    color: white;
+}
+
 /*=====================modify system css=========================*/
 
 .skin-blank{

@@ -26,8 +26,8 @@ public class FreeMarkerConnectController {
     @Autowired
     private ISimpleUserService simpleUserService;
 
-    @Autowired
-    private IMenuService menuService;
+//    @Autowired
+//    private IMenuService menuService;
 
     @GetMapping("/connect")
     public String connect(Model model, HttpServletRequest request){
