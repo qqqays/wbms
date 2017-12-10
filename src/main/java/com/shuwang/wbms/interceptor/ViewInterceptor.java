@@ -33,7 +33,11 @@ public class ViewInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
         String requestUri = request.getRequestURI();
-        String[] aRequest = requestUri.split("/");
+        String[] aRequest = new String[]{"","",""};
+        String[] aRequests = requestUri.split("/");
+        for (int i = 0; i < aRequests.length; i++){
+            aRequest[i] = aRequests[i];
+        }
         System.out.println("\nrequestUrl: " + requestUri);
         if(requestUri.startsWith(request.getContextPath())){
             requestUri = requestUri.substring(request.getContextPath().length(), requestUri.length());
