@@ -39,6 +39,8 @@ public class MenuEntity extends Model<MenuEntity> {
 
     private boolean hasSub;
 
+    private String bannerImg;
+
     @Override
     protected Serializable pkVal(){
         return this.id;
@@ -130,5 +132,13 @@ public class MenuEntity extends Model<MenuEntity> {
 
     public void setHasSub(boolean hasSub) {
         this.hasSub = hasSub;
+    }
+
+    public String getBannerImg() {
+        return bannerImg;
+    }
+
+    public void setBannerImg(String bannerImg) {
+        this.bannerImg = bannerImg;
     }
 }

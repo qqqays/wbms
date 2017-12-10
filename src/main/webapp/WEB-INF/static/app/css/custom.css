@@ -1,0 +1,83 @@
+/*=====================header css========================*/
+.c-logo{
+    width: 130px;
+    height: 60px;
+}
+
+.navbar-header .shares-code{
+    display: block;
+    float:left;
+    padding: 19px 0 0 5px;
+}
+
+.navbar-header .shares-code > p{
+    margin: 0;
+    font-size:12px;
+    line-height: 22px;
+    padding: 0;
+}
+
+/*=====================modify system css=========================*/
+
+.skin-blank{
+    background-color: #f1f1f1;
+}
+
+.navbar-brand{
+    height: auto;
+    padding: 0 0;
+}
+
+.navbar-nav{
+    margin-top: 12px;
+}
+
+.navbar-nav>li {
+    margin-left: 10px;
+    padding-bottom: 28px;
+}
+
+
+.navbar {
+    border-radius: 0;
+    margin-bottom: 0;
+    /* background: #151515; */
+    /*background: #f1f1f1;*/
+    padding: 15px 0;
+    padding-bottom: 0;
+}
+
+.navbar-collapse{
+    border-top: 0;
+    padding-bottom: 0;
+}
+
+.navbar-nav > li > a {
+    padding: 5px 12px;
+    margin: 0;
+    border-radius: 3px;
+    /* color: #fff; */
+    color: #333333;
+    line-height: 24px;
+    display: inline-block;
+}
+
+.navbar-nav > li > a:hover {
+    background-color: #c52d2f;
+    color: #fff;
+}
+
+.navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus, .navbar-nav > .open > a, .navbar-nav > .open > a:hover, .navbar-nav > .open > a:focus {
+    background-color: #c52d2f;
+    color: #fff;
+}
+
+.navbar-nav > li > a {
+    padding: 5px 12px;
+    margin: 0;
+    border-radius: 3px;
+    /* color: #fff; */
+    color: #333333;
+    line-height: 24px;
+    display: inline-block;
+}
