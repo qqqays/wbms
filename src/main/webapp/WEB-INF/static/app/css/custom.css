@@ -162,7 +162,8 @@
     padding-left: 220px;
 }
 #nav-wrapper.toggled #sidebar-wrapper {
-    width: 220px;
+    /*width: 220px;*/
+    width: 150px;
 }
 #nav-wrapper.toggled #page-content-wrapper {
     margin-right: -220px;

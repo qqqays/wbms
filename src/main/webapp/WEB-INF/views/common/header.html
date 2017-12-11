@@ -31,7 +31,7 @@
                 <div class="overlay"></div>
 
                 <!-- Sidebar -->
-                <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+                <nav class="navbar navbar-inverse navbar-fixed-top" style="opacity: .8;text-align: left" id="sidebar-wrapper" role="navigation">
                     <ul class="nav sidebar-nav">
                         <li class="sidebar-brand">
                             <a href="/index">
@@ -42,7 +42,7 @@
                         <#list topMenus as topMenu>
                             <#if topMenu.hasSub>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="${topMenu.icon}"></i> ${topMenu.menuName} <span class="caret"></span></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa ${topMenu.icon}"></i> ${topMenu.menuName} <span class="caret"></span></a>
                                     <ul class="dropdown-menu" role="menu">
                                         <li class="dropdown-header">子菜单</li>
                                         <#list navSliderMenus as slider>
@@ -53,7 +53,7 @@
                                     </ul>
                                 </li>
                                 <#else>
-                                    <li><a href="${topMenu.url}"><i class="${topMenu.icon}"></i> ${topMenu.menuName}</a></li>
+                                    <li><a href="${topMenu.url}"><i class="fa ${topMenu.icon}"></i> ${topMenu.menuName}</a></li>
                             </#if>
                         </#list>
 
