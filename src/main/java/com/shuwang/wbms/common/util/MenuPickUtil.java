@@ -25,6 +25,8 @@ public class MenuPickUtil {
             MenuEntity me = it.next();
             if ((me.getDisplay() & dpl.getDpl()) == dpl.getDpl()) {
 
+//                me.setActive(false);
+
                 if (act.equals("") && canSetActive) {
                     me.setActive(true);
                     canSetActive = false;

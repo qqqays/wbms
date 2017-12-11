@@ -55,6 +55,7 @@
     <mvc:resources location="/WEB-INF/static/app/" mapping="/app/**" />
     <mvc:resources location="/WEB-INF/static/images/" mapping="/images/**" />
     <mvc:resources location="/WEB-INF/static/plugins/" mapping="/plugins/**" />
+    <mvc:resources location="/WEB-INF/static/iframe/" mapping="/iframe/**"/>
     <!--<mvc:resources location="/WEB-INF/json" mapping="/json/**"/>-->
     <!--<mvc:resources location="/files/" mapping="/files/**"/>-->
     <!--<mvc:resources location="/upload/" mapping="/upload/**" />-->

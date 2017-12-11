@@ -48,7 +48,18 @@ function qr_code() {
     });
 }
 
+// ===============iframe===============
+function setIframeHeight(iframe) {
+    if (iframe) {
+        var iframeWin = iframe.contentWindow /*|| iframe.contentDocument.parentWindow*/;
+        if (iframeWin.document.body) {
+            iframe.height = iframeWin.document.body.scrollHeight;/*iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;*/
+        }
+    }
+};
+
 $('document').ready(function () {
+    // ================qr code=================
     qr_code();
     $('#qr-code').addClass('animated');
     $(window).scroll(function () {
@@ -61,5 +72,20 @@ $('document').ready(function () {
         if($('#qr-code').position().top - window.scrollY > 1200)
             fa = true;
     });
+
+    // ================shares code ===================
+    if(window.innerWidth < 350) {
+        $('.shares-code').hide();
+    }
+
+    // ==================nav-bar========================
+    $('.navbar-toggle').click(function () {
+        $('#nav-wrapper').toggleClass('toggled');
+    });
+
+    // ===============iframe===============
+
+    window.setInterval("setIframeHeight(document.getElementById('phone-i'));", 1000);
+
 
 });

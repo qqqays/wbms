@@ -30,6 +30,7 @@ public class ViewInterceptor extends HandlerInterceptorAdapter {
     List<MenuEntity> topMenus;
     List<MenuEntity> subMenus1;
     List<MenuEntity> footMenus;
+    List<MenuEntity> navSliderMenus;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -37,7 +38,7 @@ public class ViewInterceptor extends HandlerInterceptorAdapter {
         String requestUri = request.getRequestURI();
         String[] aRequest = new String[]{"","",""};
         String[] aRequests = requestUri.split("/");
-        for (int i = 0; i < aRequests.length; i++){
+        for (int i = 0; i < aRequests.length && i < 3; i++){
             aRequest[i] = aRequests[i];
         }
         System.out.println("\nrequestUrl: " + requestUri);
@@ -50,11 +51,13 @@ public class ViewInterceptor extends HandlerInterceptorAdapter {
 
         topMenus = MenuPickUtil.topMenus(allTopMenus, aRequest[1]);
         subMenus1 = MenuPickUtil.topSubMenus(allSubMenus1, aRequest[2], aRequest[1]);
-        footMenus = MenuPickUtil.pickMenu(allTopMenus, DisplayEnum.FOOT, "");
+        footMenus = MenuPickUtil.pickMenu(allTopMenus, DisplayEnum.FOOT, "deactivate");
+        navSliderMenus = MenuPickUtil.pickMenu(allSubMenus1, DisplayEnum.TOP, "deactivate");
 
         request.setAttribute("topMenus", topMenus);
         request.setAttribute("subMenus1", subMenus1);
         request.setAttribute("footMenus", footMenus);
+        request.setAttribute("navSliderMenus", navSliderMenus);
 
         System.out.println("interceptor");
         return true;
