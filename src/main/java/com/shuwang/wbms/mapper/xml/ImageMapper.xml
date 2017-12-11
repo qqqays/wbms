@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shuwang.wbms.mapper.ImageMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.shuwang.wbms.entity.ImageEntity">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="originName" property="originName" />
+        <result column="alt" property="alt" />
+        <result column="title" property="title" />
+        <result column="url" property="url" />
+        <result column="type" property="type" />
+        <result column="relativePath" property="relativePath" />
+        <result column="absolutePath" property="absolutePath" />
+
+    </resultMap>
+
+</mapper>

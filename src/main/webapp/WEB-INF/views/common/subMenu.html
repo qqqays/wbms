@@ -1,5 +1,7 @@
-<div>
-    <#list subMenus1 as subMenu>
-        <a href="#">${subMenu.menuName}</a>
-    </#list>
-</div>
+<section class="content-header">
+        <ul class="custom-submenu">
+            <#list subMenus1 as subMenu>
+                <li class="<#if subMenu.active> active </#if>"><a href="${subMenu.url}"><b>${subMenu.menuName}</b></a>
+            </#list>
+        </ul>
+</section>

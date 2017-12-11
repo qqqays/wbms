@@ -1,6 +1,8 @@
 package com.shuwang.wbms.interceptor;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.shuwang.wbms.common.enums.DisplayEnum;
+import com.shuwang.wbms.common.util.MenuPickUtil;
 import com.shuwang.wbms.entity.MenuEntity;
 import com.shuwang.wbms.service.IMenuService;
 import org.json.JSONArray;
@@ -27,7 +29,7 @@ public class ViewInterceptor extends HandlerInterceptorAdapter {
     List<MenuEntity> allSubMenus1;
     List<MenuEntity> topMenus;
     List<MenuEntity> subMenus1;
-
+    List<MenuEntity> footMenus;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -45,46 +47,14 @@ public class ViewInterceptor extends HandlerInterceptorAdapter {
 
         allTopMenus = menuService.selectList(new EntityWrapper<MenuEntity>().eq("deep",0).orderBy("sort"));
         allSubMenus1 = menuService.selectList(new EntityWrapper<MenuEntity>().eq("deep", 1).orderBy("sort"));
-        topMenus = new ArrayList<MenuEntity>();
-        subMenus1 = new ArrayList<MenuEntity>();
 
-        Iterator<MenuEntity> allTopIt = allTopMenus.iterator();
-        Iterator<MenuEntity> allSubIt1 = allSubMenus1.iterator();
-
-        while (allTopIt.hasNext()){
-
-            MenuEntity topMenu = allTopIt.next();
-
-            if((topMenu.getDisplay() & 1) == 1){ //判断是否显示
-
-                String topId = topMenu.getId(); //取当前顶部菜单id
-
-                if(topId.equals(aRequest[1])){ //当前顶部菜单id等于url，设置为true
-
-                    topMenu.setActive(true);
-
-                    while (allSubIt1.hasNext()) { //根据活动的顶部菜单取子菜单
-                        MenuEntity subMenu1 = allSubIt1.next();
-                        if(topId.equals(subMenu1.getPid())){
-                            try {
-                                if (subMenu1.getId().equals(aRequest[2])) {
-                                    subMenu1.setActive(true);
-                                }
-                            } catch (ArrayIndexOutOfBoundsException e) {
-                                System.out.println("not find");
-                            }
-
-                            subMenus1.add(subMenu1);
-                        }
-                    }
-
-                }
-                topMenus.add(topMenu);
-            }
-        }
+        topMenus = MenuPickUtil.topMenus(allTopMenus, aRequest[1]);
+        subMenus1 = MenuPickUtil.topSubMenus(allSubMenus1, aRequest[2], aRequest[1]);
+        footMenus = MenuPickUtil.pickMenu(allTopMenus, DisplayEnum.FOOT, "");
 
         request.setAttribute("topMenus", topMenus);
         request.setAttribute("subMenus1", subMenus1);
+        request.setAttribute("footMenus", footMenus);
 
         System.out.println("interceptor");
         return true;

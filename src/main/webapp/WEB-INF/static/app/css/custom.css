@@ -17,6 +17,41 @@
     padding: 0;
 }
 
+/*=======================submenu css=======================*/
+.custom-submenu > li {
+    margin: 5px;
+    padding: 10px;
+    float: left;
+    list-style: none;
+    display: inline-block;
+}
+
+.custom-submenu > li > a{
+    color: #888888;
+    padding: 14px;
+}
+
+.custom-submenu > .active > a, .custom-submenu > .active > a:hover, .custom-submenu > .active > a:focus{
+    color: #c52d2f;
+    border-bottom: solid 3px #c52d2f;
+}
+
+.custom-submenu > li > a:hover {
+    color: #c52d2f;
+    border-bottom: solid 3px #c52d2f;
+}
+
+.custom-submenu > li:hover, .custom-submenu > li:focus{
+    /*border-bottom: solid 3px #c52d2f;*/
+}
+
+.custom-submenu{
+    /*float: left;*/
+    overflow: hidden;
+}
+.custom-submenu:after{
+    clear: both;
+}
 /*======================footer===================*/
 #footer a {
     color: #fff;

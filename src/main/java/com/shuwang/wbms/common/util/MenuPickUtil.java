@@ -13,21 +13,27 @@ import java.util.List;
  */
 public class MenuPickUtil {
 
-    public static List<MenuEntity> pickMenu(List<MenuEntity> list, DisplayEnum dpl, String act){
+    public static List<MenuEntity> pickMenu(List<MenuEntity> list, DisplayEnum dpl, String act) {
 
         List<MenuEntity> rList = new ArrayList<>();
 
         Iterator<MenuEntity> it = list.iterator();
 
+        boolean canSetActive = true;
+
         while (it.hasNext()) {
             MenuEntity me = it.next();
             if ((me.getDisplay() & dpl.getDpl()) == dpl.getDpl()) {
-                if (me.getId().equals(act)) {
+
+                if (act.equals("") && canSetActive) {
+                    me.setActive(true);
+                    canSetActive = false;
+                } else if (me.getId().equals(act)) {
                     me.setActive(true);
                 }
+
                 rList.add(me);
             }
-
         }
 
         return rList;
@@ -38,10 +44,9 @@ public class MenuPickUtil {
     }
 
     public static List<MenuEntity> topSubMenus(List<MenuEntity> list, String act, String pId) {
-        List<MenuEntity> oList = pickMenu(list, DisplayEnum.TOP, act);
         List<MenuEntity> rList = new ArrayList<>();
 
-        Iterator<MenuEntity> it = oList.iterator();
+        Iterator<MenuEntity> it = list.iterator();
 
         while (it.hasNext()) {
             MenuEntity me = it.next();
@@ -50,6 +55,6 @@ public class MenuPickUtil {
                 rList.add(me);
             }
         }
-        return rList;
+        return pickMenu(rList, DisplayEnum.TOP, act);
     }
 }
