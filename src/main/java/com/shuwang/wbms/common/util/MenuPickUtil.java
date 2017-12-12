@@ -25,10 +25,8 @@ public class MenuPickUtil {
             MenuEntity me = it.next();
             if ((me.getDisplay() & dpl.getDpl()) == dpl.getDpl()) {
 
-//                me.setActive(false);
-
                 if (act.equals("") && canSetActive) {
-                    me.setActive(true);
+//                    me.setActive(true); //如果未选择子菜单则不设置标记活动菜单
                     canSetActive = false;
                 } else if (me.getId().equals(act)) {
                     me.setActive(true);

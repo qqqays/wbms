@@ -6,6 +6,7 @@
     <resultMap id="BaseResultMap" type="com.shuwang.wbms.entity.DetailEntity">
         <id column="id" property="id" />
         <result column="title" property="title" />
+        <result column="description" property="description" />
         <result column="content" property="content" />
         <result column="clicks" property="clicks" />
         <result column="publisher" property="publisher" />

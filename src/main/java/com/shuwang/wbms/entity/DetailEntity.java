@@ -20,6 +20,8 @@ public class DetailEntity extends Model<DetailEntity>{
 
     private String title;
 
+    private String description;
+
     private String content;
 
     private int clicks;
@@ -61,6 +63,14 @@ public class DetailEntity extends Model<DetailEntity>{
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getContent() {
