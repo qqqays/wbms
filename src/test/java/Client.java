@@ -11,6 +11,10 @@ public class Client {
     public static void main(String[] args) throws IOException{
         Socket socket = new Socket("127.0.0.1", 18888);
 
+        ClientThread clientThread = new ClientThread(socket);
+
+        clientThread.start();
+
         OutputStream os = socket.getOutputStream();
 
         PrintWriter pw = new PrintWriter(os);
@@ -27,25 +31,10 @@ public class Client {
 
         socket.shutdownOutput();
 
-        InputStream is = socket.getInputStream();
-
-        InputStreamReader ir = new InputStreamReader(is);
-
-        BufferedReader br = new BufferedReader(ir);
-
-        String info = null;
-
-        while ((info = br.readLine()) != null) {
-            System.out.println(info);
-        }
-        socket.shutdownInput();
-
-        br.close();
-        ir.close();
-        is.close();
         pw.close();
         os.close();
         socket.close();
+        System.out.println("socket closed");
 
     }
 }

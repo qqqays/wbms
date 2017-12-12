@@ -12,15 +12,17 @@ import java.sql.Timestamp;
  * Created by Q-ays.
  * 12-11-2017 11:04
  */
-@TableName("iframe")
-public class IframeEntity extends Model<IframeEntity> {
+@TableName("spl_content")
+public class SplContentEntity extends Model<SplContentEntity> {
 
     @TableId(type = IdType.UUID)
     private String id;
 
     private String pid;
 
-    private String url;
+    private String content;
+
+    private String iframeUrl;
 
     private String bannerImg;
 
@@ -53,12 +55,20 @@ public class IframeEntity extends Model<IframeEntity> {
         this.pid = pid;
     }
 
-    public String getUrl() {
-        return url;
+    public String getContent() {
+        return content;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getIframeUrl() {
+        return iframeUrl;
+    }
+
+    public void setIframeUrl(String iframeUrl) {
+        this.iframeUrl = iframeUrl;
     }
 
     public String getBannerImg() {

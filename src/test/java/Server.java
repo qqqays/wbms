@@ -1,6 +1,9 @@
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created by Q-ays.
@@ -10,6 +13,8 @@ public class Server {
 
     public static void main(String[] args) {
 
+        Map<String, Socket> map = new ConcurrentHashMap<>();
+
         try {
             ServerSocket serverSocket = new ServerSocket(18888);
 
@@ -18,7 +23,9 @@ public class Server {
             int count = 0 ;
             while (true) {
                 Socket socket = serverSocket.accept();
-                ServerThread st = new ServerThread(socket);
+                String uuid = UUID.randomUUID().toString();
+                map.put(uuid, socket);
+                ServerThread st = new ServerThread(socket, map, uuid);
 
                 st.start();
                 System.out.println(count++);
