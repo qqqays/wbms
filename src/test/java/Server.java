@@ -13,7 +13,7 @@ public class Server {
 
     public static void main(String[] args) {
 
-        Map<String, Socket> map = new ConcurrentHashMap<>();
+        Map<Socket, PrintWriter> map = new ConcurrentHashMap<>();
 
         try {
             ServerSocket serverSocket = new ServerSocket(18888);
@@ -23,9 +23,8 @@ public class Server {
             int count = 0 ;
             while (true) {
                 Socket socket = serverSocket.accept();
-                String uuid = UUID.randomUUID().toString();
-                map.put(uuid, socket);
-                ServerThread st = new ServerThread(socket, map, uuid);
+                map.put(socket, new PrintWriter(socket.getOutputStream()));
+                ServerThread st = new ServerThread(socket, map);
 
                 st.start();
                 System.out.println(count++);

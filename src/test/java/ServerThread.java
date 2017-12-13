@@ -1,9 +1,6 @@
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
-
 import java.io.*;
 import java.net.Socket;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -14,14 +11,11 @@ import java.util.Set;
 public class ServerThread extends Thread {
     Socket socket = null;
 
-    Map<String, Socket> map = null;
+    Map<Socket,PrintWriter> map = null;
 
-    String uuid = null;
-
-    public ServerThread(Socket socket, Map<String, Socket> map, String uuid) {
+    public ServerThread(Socket socket, Map<Socket, PrintWriter> map) {
         this.socket = socket;
         this.map = map;
-        this.uuid = uuid;
     }
 
     @Override
@@ -29,8 +23,6 @@ public class ServerThread extends Thread {
         InputStream is = null;
         InputStreamReader ir = null;
         BufferedReader br = null;
-        OutputStream os  = null;
-//        PrintWriter pw  = null;
         try {
             is = socket.getInputStream();
 
@@ -38,24 +30,15 @@ public class ServerThread extends Thread {
 
             br = new BufferedReader(ir);
 
-//            os = socket.getOutputStream();
-//
-//            pw = new PrintWriter(os);
-
-            Set<PrintWriter> set = new HashSet<>();
-            for (Map.Entry<String, Socket> entry : map.entrySet()) {
-                os = entry.getValue().getOutputStream();
-                set.add(new PrintWriter(os));
-            }
-
             String info = null;
 
             while ((info = br.readLine()) != null) {
                 System.out.println(socket.getInetAddress().toString() + ":" + socket.getPort() + "-+--=>" + info);
 
-                for (PrintWriter pw : set) {
+                for (Map.Entry<Socket, PrintWriter> entry : map.entrySet()) {
+                    PrintWriter pw = entry.getValue();
 
-                    pw.write(uuid +" : " + info + "\n");
+                    pw.write(socket.getPort() + ": " + info + "\n");
 
                     pw.flush();
                 }
@@ -69,13 +52,12 @@ public class ServerThread extends Thread {
             e.printStackTrace();
         } finally {
             try {
-//                pw.close();
-                os.close();
                 br.close();
                 ir.close();
                 is.close();
+                map.get(socket).close();
                 socket.close();
-                map.remove(uuid);
+                map.remove(socket);
                 System.out.println("socket closed");
             } catch (Exception e) {
                 e.printStackTrace();

@@ -1,6 +1,7 @@
 package com.shuwang.wbms.interceptor;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.shuwang.wbms.common.enums.DisplayEnum;
 import com.shuwang.wbms.common.util.MenuPickUtil;
 import com.shuwang.wbms.entity.MenuEntity;
@@ -49,6 +50,11 @@ public class ViewInterceptor extends HandlerInterceptorAdapter {
     List<MenuEntity> footMenus; //current foot menus
     List<MenuEntity> navSliderMenus; //side menus
 
+    //entity wrapper
+    Wrapper<SysConfigEntity> configEntityEntityWrapper = new EntityWrapper<SysConfigEntity>();
+    Wrapper<MenuEntity> topMenuEntityWrapper = new EntityWrapper<MenuEntity>().eq("deep",0).orderBy("sort");
+    Wrapper<MenuEntity> subMenuEntityWrapper = new EntityWrapper<MenuEntity>().eq("deep", 1).orderBy("sort");
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
@@ -63,12 +69,12 @@ public class ViewInterceptor extends HandlerInterceptorAdapter {
             requestUri = requestUri.substring(request.getContextPath().length(), requestUri.length());
         }
 
-        sysConfigEntity = sysConfigService.selectOne(new EntityWrapper<SysConfigEntity>());
+        sysConfigEntity = sysConfigService.selectOne(configEntityEntityWrapper);
 
         seoEntity = seoService.selectById("system");
 
-        allTopMenus = menuService.selectList(new EntityWrapper<MenuEntity>().eq("deep",0).orderBy("sort"));
-        allSubMenus1 = menuService.selectList(new EntityWrapper<MenuEntity>().eq("deep", 1).orderBy("sort"));
+        allTopMenus = menuService.selectList(topMenuEntityWrapper);
+        allSubMenus1 = menuService.selectList(subMenuEntityWrapper);
 
         topMenus = MenuPickUtil.topMenus(allTopMenus, aRequest[1]);
         subMenus1 = MenuPickUtil.topSubMenus(allSubMenus1, aRequest[2], aRequest[1]);
