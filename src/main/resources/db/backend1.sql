@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2017-12-11 13:39:48
+Date: 2017-12-13 16:48:21
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -22,6 +22,7 @@ DROP TABLE IF EXISTS `detail`;
 CREATE TABLE `detail` (
   `id` varchar(64) NOT NULL,
   `title` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
   `content` longtext,
   `clicks` int(11) DEFAULT '0',
   `publisher` varchar(255) DEFAULT NULL,
@@ -39,26 +40,10 @@ CREATE TABLE `detail` (
 -- ----------------------------
 -- Records of detail
 -- ----------------------------
-
--- ----------------------------
--- Table structure for iframe
--- ----------------------------
-DROP TABLE IF EXISTS `iframe`;
-CREATE TABLE `iframe` (
-  `id` varchar(64) NOT NULL,
-  `pid` varchar(64) DEFAULT NULL,
-  `url` varchar(255) DEFAULT NULL,
-  `bannerImg` varchar(255) DEFAULT NULL,
-  `publisher` varchar(255) DEFAULT NULL,
-  `state` tinyint(1) DEFAULT '0',
-  `updateTime` datetime DEFAULT NULL,
-  `createTime` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of iframe
--- ----------------------------
+INSERT INTO `detail` VALUES ('eadf', 'easdfea', 'feasfeasdfas', 'dsfefasfas', '0', null, '0', '2017-12-12 14:21:22', null, null, null, 'news', 'industry', null);
+INSERT INTO `detail` VALUES ('fedad', '新闻标题1', 'fefasdf', '<h3>新闻内容</h3>', '0', null, '0', '2017-12-21 14:21:11', null, null, null, 'news', 'company', null);
+INSERT INTO `detail` VALUES ('qwer', 'others', 'dfjeijdoijfo', 'djfoiejkdsfjoi', '0', null, '0', '2017-12-12 16:18:50', null, null, null, 'contact', 'unknow', null);
+INSERT INTO `detail` VALUES ('zas', '新闻23', 'fesafeasfddafeasdfsa', '<h3>dfjidaoa</h3>', '9', null, '0', '2017-11-28 14:21:16', null, null, null, 'news', 'company', null);
 
 -- ----------------------------
 -- Table structure for images
@@ -105,16 +90,16 @@ CREATE TABLE `menu` (
 -- ----------------------------
 -- Records of menu
 -- ----------------------------
-INSERT INTO `menu` VALUES ('about', '关于我们', 'null', '/about', null, '1', '0', null, '3', null, '1', null, '0');
-INSERT INTO `menu` VALUES ('case', '成功案例', 'null', '/case', null, '4', '0', null, '3', null, '0', null, '0');
+INSERT INTO `menu` VALUES ('about', '关于我们', 'null', '/about', 'fa-fw fa-sun-o', '1', '0', null, '3', null, '1', null, '0');
+INSERT INTO `menu` VALUES ('case', '成功案例', 'null', '/case', 'fa-fw fa-sun-o', '4', '0', null, '3', null, '0', null, '0');
 INSERT INTO `menu` VALUES ('company', '公司新闻', 'news', '/news/company', null, '0', '1', null, '1', null, '0', null, '0');
-INSERT INTO `menu` VALUES ('contact', '联系我们', 'null', '/contact', null, '5', '0', null, '3', null, '0', null, '0');
-INSERT INTO `menu` VALUES ('foot', '底部菜单', 'null', '/foot', null, '0', '0', null, '2', null, '0', null, '0');
-INSERT INTO `menu` VALUES ('index', '首页', 'null', '/index', null, '0', '0', null, '3', null, '0', null, '0');
+INSERT INTO `menu` VALUES ('contact', '联系我们', 'null', '/contact', 'fa-fw fa-sun-o', '5', '0', null, '3', null, '0', null, '0');
+INSERT INTO `menu` VALUES ('index', '首  页', 'null', '/index', 'fa-fw fa-sun-o', '0', '0', null, '3', null, '0', null, '0');
 INSERT INTO `menu` VALUES ('industry', '行业动态', 'news', '/news/industry', null, '0', '1', null, '1', null, '0', null, '0');
-INSERT INTO `menu` VALUES ('news', '新闻资讯', 'null', '/news', null, '2', '0', null, '3', null, '1', null, '0');
-INSERT INTO `menu` VALUES ('product', '产品中心', 'null', '/product', null, '3', '0', null, '3', null, '0', null, '0');
+INSERT INTO `menu` VALUES ('news', '新闻资讯', 'null', '/news', 'fa-fw fa-sun-o', '2', '0', null, '3', null, '1', null, '0');
+INSERT INTO `menu` VALUES ('product', '产品中心', 'null', '/product', 'fa-fw fa-sun-o', '3', '0', null, '3', null, '0', null, '0');
 INSERT INTO `menu` VALUES ('subAbout', '关于子菜单', 'about', '/about/subAbout', null, '0', '1', null, '1', null, '0', null, '0');
+INSERT INTO `menu` VALUES ('subAbout2', '子菜单2', 'about', '/about/subAbout2', null, '1', '1', null, '1', null, '0', null, '0');
 
 -- ----------------------------
 -- Table structure for seo
@@ -133,6 +118,7 @@ CREATE TABLE `seo` (
 -- ----------------------------
 -- Records of seo
 -- ----------------------------
+INSERT INTO `seo` VALUES ('system', null, '蜀旺新能源', '蜀旺,太阳能电池板,太阳能发电,太阳能路灯,太阳能热水器,838456', '四川蜀旺新能源股份有限公司 股票代码：838456 创建于2006年，地址位于享誉中外的“西部硅谷”、“中国科技城”──四川绵阳国家级经济技术开发区，是一家专业从事光伏、光热研发及产业化的高新技术企业.的高新技术企业', '蜀旺新能源');
 
 -- ----------------------------
 -- Table structure for simple_user
@@ -162,3 +148,48 @@ INSERT INTO `simple_user` VALUES ('a3b529369a0a4ad38dbcf4fe0f23ef92', 'lul', '18
 INSERT INTO `simple_user` VALUES ('c2e7ebdd45c34f67a1b4d3832b8282f4', 'lul', '18');
 INSERT INTO `simple_user` VALUES ('c8a9344d7ad245eca1aa9f1f0f112fad', 'lul', '18');
 INSERT INTO `simple_user` VALUES ('eb7e3d294e7047a489cc314242abe98d', 'fa', '15');
+
+-- ----------------------------
+-- Table structure for spl_content
+-- ----------------------------
+DROP TABLE IF EXISTS `spl_content`;
+CREATE TABLE `spl_content` (
+  `id` varchar(64) NOT NULL,
+  `pid` varchar(64) DEFAULT NULL,
+  `content` longtext,
+  `iframeUrl` varchar(255) DEFAULT NULL,
+  `bannerImg` varchar(255) DEFAULT NULL,
+  `publisher` varchar(255) DEFAULT NULL,
+  `state` tinyint(1) DEFAULT '0',
+  `updateTime` datetime DEFAULT NULL,
+  `createTime` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of spl_content
+-- ----------------------------
+INSERT INTO `spl_content` VALUES ('fdsafesdafe', 'subAbout2', '<h1>w the ??<h1>', null, null, null, '1', null, null);
+INSERT INTO `spl_content` VALUES ('fdsafiedskl', 'subAbout', null, '/iframe/aboutus-phone/jsmo.html', null, null, '1', null, null);
+
+-- ----------------------------
+-- Table structure for sys_config
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_config`;
+CREATE TABLE `sys_config` (
+  `id` varchar(64) NOT NULL,
+  `webName` varchar(255) DEFAULT NULL,
+  `icon` varchar(255) DEFAULT NULL,
+  `logo` varchar(255) DEFAULT NULL,
+  `sharesName` varchar(255) DEFAULT NULL,
+  `sharesCode` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `phone` varchar(11) DEFAULT NULL,
+  `licensing` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of sys_config
+-- ----------------------------
+INSERT INTO `sys_config` VALUES ('sdfsdafesdfa', '蜀旺新能源', '/images/favicon.ico', '/images/logo.png', '蜀旺能源', '838456', 'sales@swpv.net', '0816-230237', '蜀ICP备17040681');

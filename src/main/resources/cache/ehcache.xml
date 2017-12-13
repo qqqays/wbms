@@ -37,12 +37,19 @@
 		timeToIdleSeconds="60" timeToLiveSeconds="60" overflowToDisk="false"
 		statistics="true">
 	</cache>
+
 	<!-- 菜单缓存 1分钟 -->
 	<cache name="menuCache" maxEntriesLocalHeap="2000" eternal="false"
 		timeToIdleSeconds="60" timeToLiveSeconds="60" overflowToDisk="false"
 		statistics="true">
 	</cache>
-	
+
+	<!--seo缓存-->
+	<cache name="seoCache" maxEntriesLocalHeap="2000" eternal="false"
+		   timeToIdleSeconds="60" timeToLiveSeconds="60" overflowToDisk="false"
+		   statistics="true">
+	</cache>
+
 	<!-- 全局常量缓存 -->
 	<cache name="settingCache" maxEntriesLocalHeap="2000" eternal="false"
 		timeToIdleSeconds="60" timeToLiveSeconds="60" overflowToDisk="false"
