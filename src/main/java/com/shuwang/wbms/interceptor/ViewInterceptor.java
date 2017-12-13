@@ -4,7 +4,11 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.shuwang.wbms.common.enums.DisplayEnum;
 import com.shuwang.wbms.common.util.MenuPickUtil;
 import com.shuwang.wbms.entity.MenuEntity;
+import com.shuwang.wbms.entity.SeoEntity;
+import com.shuwang.wbms.entity.SysConfigEntity;
 import com.shuwang.wbms.service.IMenuService;
+import com.shuwang.wbms.service.ISeoService;
+import com.shuwang.wbms.service.ISysConfigService;
 import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -23,14 +27,27 @@ import java.util.List;
 public class ViewInterceptor extends HandlerInterceptorAdapter {
 
     @Autowired
+    private ISysConfigService sysConfigService;
+
+    @Autowired
+    private ISeoService seoService;
+
+    @Autowired
     private IMenuService menuService;
 
+//    web site system configure
+    SysConfigEntity sysConfigEntity;
+
+//    seo config
+    SeoEntity seoEntity;
+
+//    menus list
     List<MenuEntity> allTopMenus;
     List<MenuEntity> allSubMenus1;
-    List<MenuEntity> topMenus;
-    List<MenuEntity> subMenus1;
-    List<MenuEntity> footMenus;
-    List<MenuEntity> navSliderMenus;
+    List<MenuEntity> topMenus; //current top menus
+    List<MenuEntity> subMenus1; //current submenus
+    List<MenuEntity> footMenus; //current foot menus
+    List<MenuEntity> navSliderMenus; //side menus
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -46,6 +63,10 @@ public class ViewInterceptor extends HandlerInterceptorAdapter {
             requestUri = requestUri.substring(request.getContextPath().length(), requestUri.length());
         }
 
+        sysConfigEntity = sysConfigService.selectOne(new EntityWrapper<SysConfigEntity>());
+
+        seoEntity = seoService.selectById("system");
+
         allTopMenus = menuService.selectList(new EntityWrapper<MenuEntity>().eq("deep",0).orderBy("sort"));
         allSubMenus1 = menuService.selectList(new EntityWrapper<MenuEntity>().eq("deep", 1).orderBy("sort"));
 
@@ -53,6 +74,9 @@ public class ViewInterceptor extends HandlerInterceptorAdapter {
         subMenus1 = MenuPickUtil.topSubMenus(allSubMenus1, aRequest[2], aRequest[1]);
         footMenus = MenuPickUtil.pickMenu(allTopMenus, DisplayEnum.FOOT, "deactivate");
         navSliderMenus = MenuPickUtil.pickMenu(allSubMenus1, DisplayEnum.TOP, "deactivate");
+
+        request.setAttribute("config", sysConfigEntity);
+        request.setAttribute("seo", seoEntity);
 
         request.setAttribute("topMenus", topMenus);
         request.setAttribute("subMenus1", subMenus1);

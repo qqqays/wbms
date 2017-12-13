@@ -3,13 +3,20 @@
         <div class="container">
             <div class="navbar-header">
                 <!--<a href="/index" class="navbar-brand" style="font-variant: small-caps">S<b>hu</b>W<b>ang</b></a>-->
-                <a href="/index" class="navbar-brand"><img class="c-logo" src="/images/logo.png"></a>
+                <a href="/index" class="navbar-brand"><img class="c-logo" src="${config.logo}"></a>
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
                     <i class="fa fa-bars"></i>
                 </button>
                 <div class="shares-code">
-                    <p>股票简称：蜀旺能源</p>
-                    <p>股票代码：838456</p>
+
+                    <#if config.sharesName != "">
+                    <p>股票简称：${config.sharesName}</p>
+                    </#if>
+
+                    <#if config.sharesCode != "">
+                    <p>股票代码：${config.sharesCode}</p>
+                    </#if>
+
                 </div>
 
             </div>
@@ -35,7 +42,7 @@
                     <ul class="nav sidebar-nav">
                         <li class="sidebar-brand">
                             <a href="/index">
-                                蜀旺新能源
+                                ${(config.webName)!'蜀旺新能源'}
                             </a>
                         </li>
 

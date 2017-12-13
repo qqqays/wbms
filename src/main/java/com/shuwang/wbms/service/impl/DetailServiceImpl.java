@@ -11,5 +11,5 @@ import org.springframework.stereotype.Service;
  * 12-11-2017 13:11
  */
 @Service
-public class IDetailServiceImpl extends ServiceImpl<DetailMapper, DetailEntity> implements IDetailService {
+public class DetailServiceImpl extends ServiceImpl<DetailMapper, DetailEntity> implements IDetailService {
 }

@@ -17,6 +17,10 @@
     padding: 0;
 }
 
+.shares-code p{
+    text-align: left;
+}
+
 /*=======================submenu css=======================*/
 .custom-submenu > li {
     margin: 5px;
