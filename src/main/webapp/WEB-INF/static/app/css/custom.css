@@ -52,6 +52,13 @@
 .custom-submenu:after{
     clear: both;
 }
+
+/*========================detail=====================*/
+.detail {
+    text-align: left;
+    padding-left: 30px;
+}
+
 /*======================footer===================*/
 #footer a {
     color: #fff;
@@ -74,9 +81,26 @@
 }
 
 /*=====================modify system css=========================*/
+.skin-black-light .main-header .navbar .nav>li>a {
+     /*color: #dddddd;*/
+}
 
-.skin-blank{
+.skin-black-light{
     background-color: #f1f1f1;
+}
+
+.skin-black-light .main-header .navbar .nav>li>a:hover, .skin-black-light .main-header .navbar .nav>li>a:active, .skin-black-light .main-header .navbar .nav>li>a:focus, .skin-black-light .main-header .navbar .nav .open>a, .skin-black-light .main-header .navbar .nav .open>a:hover, .skin-black-light .main-header .navbar .nav .open>a:focus, .skin-black-light .main-header .navbar .nav>.active>a {
+    background-color: #c52d2f;
+    color: #fff;
+}
+
+.skin-black-light .main-header .navbar .navbar-nav>li>a {
+    border: none;
+}
+
+.skin-black-light .main-header .navbar-brand {
+    color: #f1f1f1;
+    border-right: none;
 }
 
 .navbar-brand{
@@ -119,8 +143,8 @@
 }
 
 .navbar-nav > li > a:hover {
-    background-color: #c52d2f;
-    color: #fff;
+    /*background-color: #c52d2f;*/
+    /*color: #fff;*/
 }
 
 .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus, .navbar-nav > .open > a, .navbar-nav > .open > a:hover, .navbar-nav > .open > a:focus {
@@ -139,6 +163,13 @@
 }
 
 /*============================nav slider css============================*/
+ .sidebar-nav .dropdown-menu>li>a {
+    color: #ffffaa;
+}
+
+.skin-black-light .main-header .navbar .sidebar-nav>li>a {
+    color: #dddddd;
+}
 .nav .open > a {
     background-color: transparent;
 }
@@ -175,8 +206,8 @@
     -webkit-transition: all 0.5s ease;
     background: #1a1a1a;
     height: 100%;
-    left: 220px;
-    margin-left: -220px;
+    left: 150px;
+    margin-left: -150px;
     overflow-x: hidden;
     overflow-y: auto;
     transition: all 0.5s ease;
@@ -199,7 +230,8 @@
     padding: 0;
     position: absolute;
     top: 0;
-    width: 220px;
+    /*width: 220px;*/
+    width: 150px;
 }
 .sidebar-nav li {
     display: inline-block;
@@ -252,7 +284,7 @@
     transition: width 0.2s ease-in;
     width: 100%;
 }
-.sidebar-nav li a {
+.sidebar-nav > li > a {
     color: #dddddd;
     display: block;
     padding: 10px 15px 10px 30px;

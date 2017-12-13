@@ -7,6 +7,7 @@ import com.shuwang.wbms.entity.DetailEntity;
 import com.shuwang.wbms.service.IDetailService;
 import freemarker.template.utility.StringUtil;
 import org.apache.commons.lang3.StringUtils;
+import org.omg.PortableInterceptor.INACTIVE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,34 +30,23 @@ public class NewsController extends PageController{
     private IDetailService detailService;
 
     @GetMapping
-    public String news(Model model, @RequestParam(defaultValue = "") String s, @RequestParam(defaultValue = "0") Integer pg, @RequestParam(defaultValue = "15") Integer sz) {
-
-//        Page<DetailEntity> page = new Page<>(pg, sz);
-//        page.setOrderByField("updateTime");
-//        page.setAsc(false);
-//
-//        EntityWrapper<DetailEntity> ew = new EntityWrapper<>();
-//        ew.eq("class1", "news");
-//        if (StringUtils.isNotBlank(s)) {
-//            ew.andNew().like("description", s).or().like("title", s);
-//        }
-//        ew.orderBy("updateTime", false);
-
-//        Page<DetailEntity> detailDatagram = detailService.selectPage(page, ew);
+    public String news(Model model, @RequestParam(defaultValue = "") String s, @RequestParam(defaultValue = "0") Integer pg, @RequestParam(defaultValue = "1") Integer sz) {
 
         Page<DetailEntity> detailDatagram = datagram(detailService, pg, sz, s, "news");
 
-        model.addAttribute("detailDatagram", detailDatagram);
+        attrOfModel(model, detailDatagram, "/news", s, sz);
 
         return "/display/news";
     }
 
     @GetMapping("/{content}")
-    public String content(Model model, @PathVariable String content) {
+    public String content(Model model,@RequestParam(defaultValue = "") String s, @RequestParam(defaultValue = "0") Integer pg, @RequestParam(defaultValue = "1") Integer sz, @PathVariable String content) {
 
-        List<DetailEntity> detailEntities = detailService.selectList(new EntityWrapper<DetailEntity>().eq("class1", "news").eq("class2", content).orderBy("updateTime", false));
+//        List<DetailEntity> detailEntities = detailService.selectList(new EntityWrapper<DetailEntity>().eq("class1", "news").eq("class2", content).orderBy("updateTime", false));
 
-        model.addAttribute("detailList", detailEntities);
+        Page<DetailEntity> detailDatagram = datagram(detailService, pg, sz, s, "news", content);
+
+        attrOfModel(model, detailDatagram, "/news/" + content, s, sz);
 
         return "/display/news";
     }

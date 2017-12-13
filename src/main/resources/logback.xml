@@ -38,9 +38,9 @@
     </appender>
 	
 	 <!-- logback为java中的包 -->   
-  	<logger name="com.shuwang.wbms.mapper" level="debug">
-  		<appender-ref ref="SQL" />
-  	</logger>
+  	<!--<logger name="com.shuwang.wbms.mapper" level="debug">-->
+  		<!--<appender-ref ref="SQL" />-->
+  	<!--</logger>-->
 	
 	<root level="INFO">
 		<appender-ref ref="STDOUT" />
