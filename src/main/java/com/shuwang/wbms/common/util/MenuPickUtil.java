@@ -30,6 +30,8 @@ public class MenuPickUtil {
                     canSetActive = false;
                 } else if (me.getId().equals(act)) {
                     me.setActive(true);
+                }else {
+                    me.setActive(false);
                 }
 
                 rList.add(me);

@@ -1,4 +1,5 @@
 import java.io.*;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.Scanner;
 
@@ -9,7 +10,12 @@ import java.util.Scanner;
 public class Client {
 
     public static void main(String[] args) throws IOException{
-        Socket socket = new Socket("127.0.0.1", 18888);
+        Socket socket = new Socket();
+
+//        socket.connect(new InetSocketAddress("127.0.0.1", 18888), 5000);
+        socket.connect(new InetSocketAddress("localhost", 18888), 5000);
+
+//        socket.setSoTimeout(60000); //读操作超时,抛出异常后连接未断开。
 
         ClientThread clientThread = new ClientThread(socket);
 
@@ -25,6 +31,7 @@ public class Client {
 
         while (!(data = scanner.nextLine()).equals("exit")) {
             pw.write(data + "\n");
+
             pw.flush();
         }
 

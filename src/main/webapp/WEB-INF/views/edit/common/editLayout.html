@@ -1,0 +1,25 @@
+<#macro head>
+    <!DOCTYPE html>
+    <html style="height: auto; min-height: 100%;">
+    <head>
+        <#include "/edit/common/head.html">
+        <#nested>
+    </head>
+</#macro>
+<!-- /header -->
+<#macro body>
+    <body class="skin-red sidebar-mini" style="height: auto; min-height: 100%;">
+    <div class="wrapper" style="height: auto; min-height: 100%;">
+        <#include "/edit/common/header.html">
+        <#nested>
+        <#include "/edit/common/footer.html">
+    </div>
+</#macro>
+
+<!-- /body -->
+<#macro javascript>
+    <#include "/edit/common/js.html">
+        <#nested>
+    </body>
+    </html>
+</#macro>

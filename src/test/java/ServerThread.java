@@ -8,7 +8,7 @@ import java.util.Set;
  * Created by Q-ays.
  * 12-11-2017 23:38
  */
-public class ServerThread extends Thread {
+public class ServerThread implements Runnable {
     Socket socket = null;
 
     Map<Socket,PrintWriter> map = null;
@@ -20,6 +20,9 @@ public class ServerThread extends Thread {
 
     @Override
     public void run() {
+
+        System.out.println(Thread.currentThread().getName() + " connected!");
+
         InputStream is = null;
         InputStreamReader ir = null;
         BufferedReader br = null;
