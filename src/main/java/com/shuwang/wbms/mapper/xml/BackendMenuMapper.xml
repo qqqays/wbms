@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shuwang.wbms.mapper.BackendMenuMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.shuwang.wbms.entity.BackendMenuEntity">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="pid" property="pid" />
+        <result column="url" property="url" />
+        <result column="icon" property="icon" />
+        <result column="sort" property="sort" />
+        <result column="deep" property="deep" />
+        <result column="hasSub" property="hasSub" />
+    </resultMap>
+
+</mapper>

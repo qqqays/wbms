@@ -1,0 +1,46 @@
+<#include "/edit/common/editLayout.html">
+    <@head>
+</@head>
+
+<@body>
+
+<div class="content-wrapper" style="min-height: 1036px;">
+    <!-- Content Header (Page header) -->
+    <#include "/edit/common/content-header-module.html">
+
+    <section class="content">
+        <div class="row">
+            <!-- right column -->
+            <div class="col-md-12">
+                <#include "/edit/common/sysConfig-module.html">
+
+                <#include "/edit/common/seo-module.html">
+            </div>
+            <!--/.col (right) -->
+        </div>
+        <!-- /.row -->
+    </section>
+</div>
+<!--</form>-->
+</@body>
+
+<@javascript>
+
+<script>
+    $('document').ready(function() {
+
+        $('#seo-update').click(function(){
+            var id = $('#seo-id').val();
+            var title = $('#seo-page-title').val();
+            var keywords = $('#seo-keywords').val();
+            var desc = $('#seo-description').val();
+            var author = $('#seo-author').val();
+
+            var sure = confirm("确定修改？");
+
+            if(sure)
+                modify_system_seo(id, title, keywords, desc, author);
+        });
+    });
+</script>
+</@javascript>

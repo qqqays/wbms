@@ -1,12 +1,15 @@
 package com.shuwang.wbms.controller;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.mapper.Wrapper;
+import com.shuwang.wbms.entity.SeoEntity;
+import com.shuwang.wbms.entity.SysConfigEntity;
+import com.shuwang.wbms.service.ISeoService;
 import com.shuwang.wbms.service.ISysConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by Q-ays.
@@ -21,11 +24,37 @@ public class BackendController {
     @Autowired
     private ISysConfigService sysConfigService;
 
-    @GetMapping("/{content}")
-    public String content(Model model, @PathVariable String content) {
+    @Autowired
+    private ISeoService seoService;
+
+    Wrapper<SysConfigEntity> sysConfigEntityWrapper = new EntityWrapper<SysConfigEntity>();
+
+    @GetMapping
+    public String backend(Model model) {
 
 
-
-        return "/edit/" + content;
+        return "/edit/backend";
     }
+
+    @GetMapping("/sysConfig")
+    public String content(Model model) {
+
+        SysConfigEntity sysConfigEntity = sysConfigService.selectOne(sysConfigEntityWrapper);
+
+        SeoEntity seoEntity = seoService.selectById("system");
+
+        model.addAttribute("sysConfig", sysConfigEntity);
+        model.addAttribute("seoConfig", seoEntity);
+
+        return "/edit/sysConfig";
+    }
+
+    @PutMapping("/seo")
+    @ResponseBody
+    public String updateSeo(SeoEntity seoEntity) {
+
+        return seoEntity.updateById() + " update";
+    }
+
+
 }

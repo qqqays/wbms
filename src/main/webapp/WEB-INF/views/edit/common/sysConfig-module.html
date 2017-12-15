@@ -1,0 +1,80 @@
+<div class="box box-warning">
+    <div class="box-header with-border">
+        <h3 class="box-title">系统配置</h3>
+        <div class="pull-right box-tools">
+            <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse">
+                <i class="fa fa-minus"></i></button>
+            <!--<button type="button" class="btn btn-default btn-sm" data-widget="remove" data-toggle="tooltip" title="" data-original-title="Remove">-->
+            <!--<i class="fa fa-times"></i></button>-->
+        </div>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <form role="form">
+                <!--id-->
+            <div class="form-group">
+                <input type="text" value="${sysConfig.id!}" class="form-control" placeholder="This input text do something automatics" disabled>
+            </div>
+
+            <!-- web name input -->
+            <div class="form-group">
+                <label>网站名称</label>
+                <input type="text" value="${sysConfig.webName!}" class="form-control" placeholder="网站名称 ...">
+            </div>
+
+            <!--icon-->
+            <div class="form-group">
+                <label for="icon-upload">图标</label>
+                <input type="file" id="icon-upload">
+
+                <p class="help-block">点击上传图标文件</p>
+                <#if sysConfig.icon>
+                    <img src="${sysConfig.icon}">
+                </#if>
+            </div>
+
+            <!--logo-->
+            <div class="form-group">
+                <label for="logo-upload">logo</label>
+                <input type="file" id="logo-upload">
+
+                <p class="help-block">上传logo图片 160 x 60 px</p>
+                <#if sysConfig.logo>
+                    <img src="${sysConfig.logo}"/>
+                </#if>
+            </div>
+
+            <!--sharesName-->
+            <div class="form-group">
+                <label>股票名称</label>
+                <input type="text" value="${sysConfig.sharesName!}" class="form-control" placeholder="股票名称 ...">
+            </div>
+
+            <!--shares code-->
+            <div class="form-group">
+                <label>股票代码</label>
+                <input type="text" value="${sysConfig.sharesCode!}" class="form-control" placeholder="股票代码 ...">
+            </div>
+
+            <!--email-->
+            <div class="form-group">
+                <label for="exampleInputEmail1">邮箱地址</label>
+                <input type="email" value="${sysConfig.email!}" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+            </div>
+
+            <!--phone-->
+            <div class="form-group">
+                <label>电话号码</label>
+                <input type="tel" value="${sysConfig.phone!}" class="form-control" placeholder="电话号码 ...">
+            </div>
+
+            <!--license-->
+            <div class="form-group">
+                <label>备案号</label>
+                <input type="text" value="${sysConfig.licensing!}" class="form-control" placeholder="备案号 ...">
+            </div>
+
+        </form>
+    </div>
+    <!-- /.box-body -->
+</div>
