@@ -12,7 +12,7 @@ public class Client {
     public static void main(String[] args) throws IOException{
         Socket socket = new Socket();
 
-//        socket.connect(new InetSocketAddress("127.0.0.1", 18888), 5000);
+//        socket.connect(new InetSocketAddress("121.42.24.8", 18888), 5000);
         socket.connect(new InetSocketAddress("localhost", 18888), 5000);
 
 //        socket.setSoTimeout(60000); //读操作超时,抛出异常后连接未断开。
