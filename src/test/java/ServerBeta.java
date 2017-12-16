@@ -7,11 +7,14 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
+ * BIO
+ *
  * Created by Q-ays.
  * 12-16-2017 21:39
  */
 public class ServerBeta {
 
+    //Stores socket and print writer of socket
     static volatile  Map<Socket, PrintWriter> map = new ConcurrentHashMap<>();
 
     static class ThreadPool implements Runnable{
@@ -32,7 +35,7 @@ public class ServerBeta {
                  PrintWriter pw = new PrintWriter(os)) {
 
                 map.put(socket, pw);
-                System.out.println("current active: " + map.size());
+                System.out.println("current active thread: " + map.size());
 
                 String info;
                 while ((info = br.readLine()) != null) {
@@ -51,20 +54,20 @@ public class ServerBeta {
             } finally {
                 try {
                     socket.close(); //closes socket;
-                    System.out.println("socket closed");
+                    System.out.println("Socket closed");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
 
                 map.remove(socket); //removes socket from map
-                System.out.println("map remove socket");
+                System.out.println("Remove this socket from map");
             }
         }
     }
 
     public static void main(String[] args) {
 
-        int max = 5;
+        int max = 5; //The max number of thread pool
 
         try {
             ServerSocket serverSocket = new ServerSocket(18888, 1);
@@ -79,7 +82,6 @@ public class ServerBeta {
                     fixedThreadPool.execute(new ServerBeta.ThreadPool(socket));
                 }
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
