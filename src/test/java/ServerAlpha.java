@@ -10,15 +10,16 @@ import java.util.concurrent.Executors;
  * 12-17-2017 17:01
  */
 public class ServerAlpha {
-    //Stores socket and print writer of socket
+    //Stores sockets
     static volatile List<SocketWrap> list = new ArrayList<>();
 
     //Stores socket ip address
     static volatile Map<String, Long> limitMap = new HashMap<>();
 
-    //password
+    //connect password
     static volatile String password = "";
 
+    //socket wrapper
     static class SocketWrap {
         String identity;
         PrintWriter printWriter;
@@ -59,7 +60,7 @@ public class ServerAlpha {
     }
 
 
-    //    thread pool
+    // this thread accept and send message
     static class ThreadPool implements Runnable {
         SocketWrap socketWrap = null;
 
@@ -131,7 +132,7 @@ public class ServerAlpha {
 
                     Iterator<SocketWrap> it = list.iterator();
 
-                    if (info.startsWith("#to")) {
+                    if (info.startsWith("#to")) { //send message to a socket
                         int end = info.indexOf(")");
                         String to = info.substring(4, end);
                         System.out.println(to);
@@ -145,7 +146,7 @@ public class ServerAlpha {
                                 pw.flush();
                             }
                         }
-                    } else if(info.startsWith("#users")) {
+                    } else if(info.startsWith("#users")) { //current socket acquires all users on line
                         StringBuffer sb = new StringBuffer("--Here some users: ");
                         while (it.hasNext()) {
                             SocketWrap sw = it.next();
@@ -154,7 +155,7 @@ public class ServerAlpha {
                         pw.write(sb.toString() + "\r\n");
                         pw.flush();
                     }else{
-                        while (it.hasNext()) {
+                        while (it.hasNext()) { //send message to all sockets
                             SocketWrap sw = it.next();
                             PrintWriter pw1 = sw.getPrintWriter();
                             pw1.write(identity + "@" + socketWrap.getSocket().getInetAddress().toString() + ":" + socketWrap.getSocket().getPort() + ">>" + info + "\n");
