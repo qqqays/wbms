@@ -56,9 +56,6 @@ public class ServerAlpha {
             return socket;
         }
 
-        void setSocket(Socket socket) {
-            this.socket = socket;
-        }
     }
 
 
@@ -66,16 +63,13 @@ public class ServerAlpha {
     static class ThreadPool implements Runnable {
         SocketWrap socketWrap = null;
 
-        public ThreadPool(SocketWrap socketWrap) {
+         ThreadPool(SocketWrap socketWrap) {
             this.socketWrap = socketWrap;
         }
 
         boolean verification(String pw) {
-            if (pw.equals(password)) {
-                return true;
-            } else {
-                return false;
-            }
+            return pw.equals(password);
+
         }
 
         @Override
@@ -152,7 +146,7 @@ public class ServerAlpha {
                             }
                         }
                     } else if(info.startsWith("#users")) {
-                        StringBuffer sb = new StringBuffer().append("--Here some users: ");
+                        StringBuffer sb = new StringBuffer("--Here some users: ");
                         while (it.hasNext()) {
                             SocketWrap sw = it.next();
                             sb.append(sw.getIdentity() + ", ");
