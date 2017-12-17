@@ -92,6 +92,7 @@ public class ServerAlpha {
                 String identity;
 
                 //verification
+                socketWrap.getSocket().setSoTimeout(30000);
                 for (int i = 0; ; i++) {
 
                     pw.write("Enter password: \n");
@@ -100,6 +101,7 @@ public class ServerAlpha {
                     if ((info = br.readLine()) != null)
                         if (verification(info)) {
 
+                        socketWrap.getSocket().setSoTimeout(300000);
                             socketWrap.setPrintWriter(pw);
 
                             pw.write("Connect success\r\n");
@@ -135,7 +137,7 @@ public class ServerAlpha {
 
                     Iterator<SocketWrap> it = list.iterator();
 
-                    if (info.startsWith("#To")) {
+                    if (info.startsWith("#to")) {
                         int end = info.indexOf(")");
                         String to = info.substring(4, end);
                         System.out.println(to);
