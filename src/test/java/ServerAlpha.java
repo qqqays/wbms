@@ -67,6 +67,23 @@ public class ServerAlpha {
         }
     }
 
+
+    //    mass
+    static void mass(String identity, String msg) {
+        mass(identity + ">> " + msg);
+    }
+
+    static void mass(String msg) {
+        Iterator<SocketWrap> it = list.iterator();
+
+        while (it.hasNext()) { //send message to all sockets
+            SocketWrap sw = it.next();
+            PrintWriter pw = sw.getPrintWriter();
+            pw.write(msg +"\n");
+            pw.flush();
+        }
+    }
+
     //    distribute messages
     static void distMsg(String msg, SocketWrap socketWrap, List<SocketWrap> list) {
 
@@ -156,12 +173,7 @@ public class ServerAlpha {
             pw.flush();
 
         } else {
-            while (it.hasNext()) { //send message to all sockets
-                SocketWrap sw = it.next();
-                PrintWriter pw = sw.getPrintWriter();
-                pw.write(socketWrap.getIdentity() + ">> " + msg + "\n");
-                pw.flush();
-            }
+            mass(socketWrap.getIdentity(), msg);
         }
     }
 
@@ -229,6 +241,7 @@ public class ServerAlpha {
                         }
                 }
 
+                mass(identity + " on line!");
                 list.add(socketWrap);
                 System.out.println("current active thread: " + list.size());
 
@@ -249,6 +262,7 @@ public class ServerAlpha {
                 }
 
                 list.remove(socketWrap); //removes socket from map
+                mass(socketWrap.getIdentity() + " out line!");
                 System.out.println("Remove this socket from list, sizes : " + list.size());
             }
         }
