@@ -33,6 +33,16 @@ public class ImageEntity extends Model<ImageEntity> {
 
     private String absolutePath;
 
+    private int height;
+
+    private int width;
+
+    private String class1;
+
+    private String class2;
+
+    private String class3;
+
     @Override
     protected Serializable pkVal(){
         return this.id;
@@ -108,5 +118,45 @@ public class ImageEntity extends Model<ImageEntity> {
 
     public void setAbsolutePath(String absolutePath) {
         this.absolutePath = absolutePath;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public String getClass1() {
+        return class1;
+    }
+
+    public void setClass1(String class1) {
+        this.class1 = class1;
+    }
+
+    public String getClass2() {
+        return class2;
+    }
+
+    public void setClass2(String class2) {
+        this.class2 = class2;
+    }
+
+    public String getClass3() {
+        return class3;
+    }
+
+    public void setClass3(String class3) {
+        this.class3 = class3;
     }
 }

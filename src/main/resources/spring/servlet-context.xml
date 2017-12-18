@@ -68,6 +68,8 @@
         <property name="defaultEncoding" value="UTF-8"></property>
         <!-- 设定文件上传的最大值5MB，5*1024*1024 -->
         <property name="maxUploadSize" value="5242880"></property>
+        <!--临时 文件夹-->
+        <!--<property name="uploadTempDir" value="/temp"/>-->
     </bean>
 
     <mvc:annotation-driven>

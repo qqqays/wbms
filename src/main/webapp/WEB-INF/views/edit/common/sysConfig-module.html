@@ -13,68 +13,76 @@
         <form role="form">
                 <!--id-->
             <div class="form-group">
-                <input type="text" value="${sysConfig.id!}" class="form-control" placeholder="This input text do something automatics" disabled>
+                <input id="sys-id" type="text" value="${sysConfig.id!}" class="form-control" placeholder="This input text do something automatics" disabled>
             </div>
 
             <!-- web name input -->
             <div class="form-group">
                 <label>网站名称</label>
-                <input type="text" value="${sysConfig.webName!}" class="form-control" placeholder="网站名称 ...">
+                <input id="sys-name" type="text" value="${sysConfig.webName!}" class="form-control" placeholder="网站名称 ...">
             </div>
 
             <!--icon-->
             <div class="form-group">
                 <label for="icon-upload">图标</label>
-                <input type="file" id="icon-upload">
+                <input type="file" required="required" id="icon-upload">
 
                 <p class="help-block">点击上传图标文件</p>
                 <#if sysConfig.icon>
-                    <img src="${sysConfig.icon}">
+                    <img id="icon" src="${sysConfig.icon}">
                 </#if>
             </div>
 
             <!--logo-->
             <div class="form-group">
                 <label for="logo-upload">logo</label>
-                <input type="file" id="logo-upload">
+                <input type="file" required="required" id="logo-upload">
 
                 <p class="help-block">上传logo图片 160 x 60 px</p>
                 <#if sysConfig.logo>
-                    <img src="${sysConfig.logo}"/>
+                    <img id="logo" src="${sysConfig.logo}"/>
                 </#if>
             </div>
 
             <!--sharesName-->
             <div class="form-group">
                 <label>股票名称</label>
-                <input type="text" value="${sysConfig.sharesName!}" class="form-control" placeholder="股票名称 ...">
+                <input id="sys-shares-name" type="text" value="${sysConfig.sharesName!}" class="form-control" placeholder="股票名称 ...">
             </div>
 
             <!--shares code-->
             <div class="form-group">
                 <label>股票代码</label>
-                <input type="text" value="${sysConfig.sharesCode!}" class="form-control" placeholder="股票代码 ...">
+                <input id="sys-shares-code" type="text" value="${sysConfig.sharesCode!}" class="form-control" placeholder="股票代码 ...">
             </div>
 
             <!--email-->
             <div class="form-group">
                 <label for="exampleInputEmail1">邮箱地址</label>
-                <input type="email" value="${sysConfig.email!}" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                <input id="sys-email" type="email" value="${sysConfig.email!}" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
             </div>
 
             <!--phone-->
             <div class="form-group">
                 <label>电话号码</label>
-                <input type="tel" value="${sysConfig.phone!}" class="form-control" placeholder="电话号码 ...">
+                <input id="sys-tel" type="tel" value="${sysConfig.phone!}" class="form-control" placeholder="电话号码 ...">
             </div>
 
             <!--license-->
             <div class="form-group">
                 <label>备案号</label>
-                <input type="text" value="${sysConfig.licensing!}" class="form-control" placeholder="备案号 ...">
+                <input id="sys-license" type="text" value="${sysConfig.licensing!}" class="form-control" placeholder="备案号 ...">
             </div>
 
         </form>
     </div>
     <!-- /.box-body -->
+
+    <div class="box-footer">
+        <#if sysConfig??>
+            <#else>
+                <button id="sysConfig-add" type="button" class="btn btn-warning">新增</button>
+        </#if>
+        <button id="sysConfig-update" type="button" class="btn btn-primary">修改</button>
+    </div>
 </div>

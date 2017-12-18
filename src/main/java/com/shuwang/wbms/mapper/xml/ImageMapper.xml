@@ -13,7 +13,11 @@
         <result column="type" property="type" />
         <result column="relativePath" property="relativePath" />
         <result column="absolutePath" property="absolutePath" />
-
+        <result column="height" property="height" />
+        <result column="width" property="width" />
+        <result column="class1" property="class1" />
+        <result column="class2" property="class2" />
+        <result column="class3" property="class3" />
     </resultMap>
 
 </mapper>
