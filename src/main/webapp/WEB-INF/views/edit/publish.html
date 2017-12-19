@@ -1,5 +1,7 @@
 <#include "/edit/common/editLayout.html">
-    <@head>
+<@head>
+    <link rel="stylesheet" type="text/css" href="/plugins/selectImg/css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="/plugins/selectImg/css/selectImg.css"/>
 </@head>
 
 <@body>
@@ -8,6 +10,8 @@
     <div class="container">
         <section class="content">
             <h1>publish</h1>
+            <#include "/edit/common/img-select-module.html">
+            <#include "/edit/common/publish-module.html">
 
         </section>
     </div>
@@ -15,4 +19,42 @@
 <!--</form>-->
 </@body>
 
-<@javascript></@javascript>
+<@javascript>
+<script type="text/javascript" src="/plugins/selectImg/js/selectImg.js"></script>
+<script src="/plugins/selectImg/js/iconfont.js"> </script>
+
+<script type="text/javascript">
+
+    $('document').ready(function () {
+
+        $.ajax({
+            url:'/api/images',
+            type:'get',
+            data:{class1:"system"},
+            success:function (d, s) {
+                var json = JSON.parse(d);
+
+                $.each(json['records'], function (index, info) {
+                    $('#selectItemDiv').append('            <div id="'+ info['id'] +'" class="item">\n' +
+                        '                   <div class="img_show">\n' +
+                        '                    <img src="' + info['url'] + '"/>\n' +
+                        '                   </div>\n' +
+                        '                   <div class="img_title">\n' +
+                        '                    ' + info['originName'] +
+                        '                   </div>\n' +
+                        '                   <div class="img_isCheck">\n' +
+                        '                    <i class="iconfont icon-xuanzhong"></i>\n' +
+                        '                   </div>\n' +
+                        '                   </div>' +
+                        '');
+                });
+
+                selectImgTake.init("selectItemDiv",1);
+            },
+            error:function (d, s) {
+                console.log(d + s);
+            }
+        });
+    });
+</script>
+</@javascript>

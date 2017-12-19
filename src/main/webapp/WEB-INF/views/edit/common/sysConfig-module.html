@@ -26,6 +26,7 @@
             <div class="form-group">
                 <label for="icon-upload">图标</label>
                 <input type="file" required="required" id="icon-upload">
+                <button id="submit-icon" type="button" class="btn btn-warning">确认上传</button>
 
                 <p class="help-block">点击上传图标文件</p>
                 <#if sysConfig.icon>
@@ -35,8 +36,9 @@
 
             <!--logo-->
             <div class="form-group">
-                <label for="logo-upload">logo</label>
+                <label for="logo-upload">网站logo</label>
                 <input type="file" required="required" id="logo-upload">
+                <button id="submit-logo" type="button" class="btn btn-warning">确认上传</button>
 
                 <p class="help-block">上传logo图片 160 x 60 px</p>
                 <#if sysConfig.logo>

@@ -26,3 +26,42 @@ function modify_system_config(id, webName, icon, logo, sharesName, sharesCode, e
         }
     });
 }
+
+function pushImg(id, alt, title, class1, showId) {
+
+    var formData = new FormData();
+
+    var $x = $('#' + id);
+
+
+    for(var i = 0; i < $x[0].files.length; i++) {
+        formData.append('files', $x[0].files[i]);
+    }
+
+    formData.append('alt', alt);
+    formData.append('title', title);
+    formData.append('class1', class1);
+
+    $.ajax({
+        url:'/api/images',
+        type:'POST',
+        contentType: false,
+        processData:false,
+        data:formData,
+        success:function (d, s) {
+            console.log(d);
+            if(showId != '') {
+            var json = JSON.parse(d);
+
+                var $show = $('#' + showId);
+
+                $.each(json, function (index, info) {
+                    $show.attr('src',info);
+                });
+            }
+        },
+        error:function (d, s) {
+            console.log(d + s);
+        }
+    });
+}

@@ -1,3 +1,7 @@
 .sidebar-menu li>a>.pull-right-container{
     margin-top: -8px;
 }
+
+#cke_editor{
+    width: 100%;
+}

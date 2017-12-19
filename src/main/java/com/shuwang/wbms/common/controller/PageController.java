@@ -25,8 +25,13 @@ public class PageController {
      * @return
      */
     public <T> Page<T> datagram(IService<T> iService, Integer pageNumber, Integer pageSize, String search, String... type) {
+        String[] searchColumn = {"description", "title"};
+        return datagram(iService, pageNumber, pageSize, search, "updateTime", searchColumn, type);
+    }
+
+    public <T> Page<T> datagram(IService<T> iService, Integer pageNumber, Integer pageSize, String search, String order, String[] searchColumn, String... type) {
         Page<T> page = new Page<>(pageNumber, pageSize);
-        page.setOrderByField("updateTime");
+        page.setOrderByField(order);
         page.setAsc(false);
 
         EntityWrapper<T> ew = new EntityWrapper<>();
@@ -36,10 +41,17 @@ public class PageController {
         }
 
         if (StringUtils.isNotBlank(search)) {
-            ew.andNew().like("description", search).or().like("title", search);
+            if (searchColumn.length > 0) {
+                ew.andNew();
+                int i = 0;
+                for(; i < searchColumn.length - 1; i++) {
+                    ew.like(searchColumn[i], search).or();
+                }
+                ew.like(searchColumn[i], search);
+            }
         }
 
-        ew.orderBy("updateTime", false);
+        ew.orderBy(order , false);
 
         return iService.selectPage(page, ew);
     }

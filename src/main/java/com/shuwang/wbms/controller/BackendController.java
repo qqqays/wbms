@@ -55,6 +55,11 @@ public class BackendController {
         return "/edit/sysConfig";
     }
 
+    @GetMapping("/publish")
+    public String publish() {
+        return "/edit/publish";
+    }
+
     @PutMapping("/seo")
     @ResponseBody
     public String updateSeo(SeoEntity seoEntity) {
