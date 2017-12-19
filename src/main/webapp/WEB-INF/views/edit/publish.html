@@ -28,9 +28,9 @@
     $('document').ready(function () {
 
         $.ajax({
-            url:'/api/images',
+            url:'/api/images/system',
             type:'get',
-            data:{class1:"system"},
+            data:{},
             success:function (d, s) {
                 var json = JSON.parse(d);
 

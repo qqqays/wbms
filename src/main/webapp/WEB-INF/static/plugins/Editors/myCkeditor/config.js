@@ -11,4 +11,6 @@ CKEDITOR.editorConfig = function( config ) {
     // config.filebrowser = "api/upload2directory";
     // config.removeDialogTabs = 'image:advanced;link:advanced';
     // config.callFunction()
+    // filebrowserImageBrowseUrl
+    // config.filebrowserImage2BrowseUrl = "/api/images";
 };
