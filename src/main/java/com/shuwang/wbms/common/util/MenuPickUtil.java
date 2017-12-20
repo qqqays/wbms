@@ -3,6 +3,7 @@ package com.shuwang.wbms.common.util;
 import com.shuwang.wbms.common.enums.DisplayEnum;
 import com.shuwang.wbms.entity.MenuEntity;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public class MenuPickUtil {
 
-    public static List<MenuEntity> pickMenu(List<MenuEntity> list, DisplayEnum dpl, String act) {
+    public static List<MenuEntity> pickMenu(List<MenuEntity> list, DisplayEnum dpl, String act, HttpServletRequest request) {
 
         List<MenuEntity> rList = new ArrayList<>();
 
@@ -30,6 +31,7 @@ public class MenuPickUtil {
                     canSetActive = false;
                 } else if (me.getId().equals(act)) {
                     me.setActive(true);
+                    request.setAttribute("bannerImg", me.getBannerImg());
                 }else {
                     me.setActive(false);
                 }
@@ -41,11 +43,11 @@ public class MenuPickUtil {
         return rList;
     }
 
-    public static List<MenuEntity> topMenus(List<MenuEntity> list, String act) {
-        return pickMenu(list, DisplayEnum.TOP, act);
+    public static List<MenuEntity> topMenus(List<MenuEntity> list, String act, HttpServletRequest request) {
+        return pickMenu(list, DisplayEnum.TOP, act, request);
     }
 
-    public static List<MenuEntity> topSubMenus(List<MenuEntity> list, String act, String pId) {
+    public static List<MenuEntity> topSubMenus(List<MenuEntity> list, String act, String pId, HttpServletRequest request) {
         List<MenuEntity> rList = new ArrayList<>();
 
         Iterator<MenuEntity> it = list.iterator();
@@ -57,6 +59,6 @@ public class MenuPickUtil {
                 rList.add(me);
             }
         }
-        return pickMenu(rList, DisplayEnum.TOP, act);
+        return pickMenu(rList, DisplayEnum.TOP, act, request);
     }
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -44,6 +45,16 @@ public class AboutController {
     public String content(Model model, @PathVariable String content) {
 
         List<SplContentEntity> splContentEntities = splContentService.selectList(new EntityWrapper<SplContentEntity>().eq("pid", content).eq("state", 1));
+
+        Iterator<SplContentEntity> it = splContentEntities.iterator();
+
+        while (it.hasNext()) {
+            SplContentEntity sce = it.next();
+
+            if (sce.getBannerImg() != null) {
+                model.addAttribute("bannerImg", sce.getBannerImg());
+            }
+        }
 
         model.addAttribute("contents", splContentEntities);
 

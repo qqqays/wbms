@@ -2,20 +2,12 @@ package com.shuwang.wbms.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
-import com.shuwang.wbms.entity.SeoEntity;
-import com.shuwang.wbms.entity.SysConfigEntity;
-import com.shuwang.wbms.service.ISeoService;
-import com.shuwang.wbms.service.ISysConfigService;
+import com.shuwang.wbms.entity.*;
+import com.shuwang.wbms.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.HttpRequestHandler;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.io.IOException;
 
 /**
  * Created by Q-ays.
@@ -32,6 +24,18 @@ public class BackendController {
 
     @Autowired
     private ISeoService seoService;
+
+    @Autowired
+    private IMenuService menuService;
+
+    @Autowired
+    private ISplContentService splContentService;
+
+    @Autowired
+    private ImageService imageService;
+
+    @Autowired
+    private IDetailService detailService;
 
     Wrapper<SysConfigEntity> sysConfigEntityWrapper = new EntityWrapper<SysConfigEntity>();
 
@@ -55,23 +59,34 @@ public class BackendController {
         return "/edit/sysConfig";
     }
 
-    @GetMapping("/publish")
-    public String publish() {
-        return "/edit/publish";
+    @GetMapping("/{content}")
+    public String common(@PathVariable String content) {
+        return "/edit/" + content;
     }
 
-    @PutMapping("/seo")
-    @ResponseBody
-    public String updateSeo(SeoEntity seoEntity) {
+    @GetMapping("/{content}/{id}")
+    public String menu(Model model, @PathVariable String content, @PathVariable String id) {
 
-        return seoEntity.updateById() + " update";
-    }
+        switch (content) {
+            case "e-menu":
+                MenuEntity me = menuService.selectById(id);
+                model.addAttribute("menu", me);
+                break;
+            case "e-images":
+                ImageEntity ie = imageService.selectById(id);
+                model.addAttribute("image", ie);
+                break;
+            case "p-display":
+                SplContentEntity sce = splContentService.selectById(id);
+                model.addAttribute("display", sce);
+                break;
+            case "p-information":
+                DetailEntity de = detailService.selectById(id);
+                model.addAttribute("info", de);
+            default:
+                break;
+        }
 
-    @PutMapping("/sysConfig")
-    @ResponseBody
-    public String updateSysConfig(SysConfigEntity sysConfigEntity) {
-
-        return sysConfigEntity.updateById() + " update";
-
+        return "/edit/" + content;
     }
 }

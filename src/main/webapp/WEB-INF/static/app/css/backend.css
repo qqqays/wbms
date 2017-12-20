@@ -5,3 +5,7 @@
 #cke_editor{
     width: 100%;
 }
+
+img{
+    max-width: 99%;
+}

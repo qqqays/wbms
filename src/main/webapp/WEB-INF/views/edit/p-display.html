@@ -1,0 +1,37 @@
+<#include "/edit/common/editLayout.html">
+<@head>
+</@head>
+
+<@body>
+
+<div class="content-wrapper" style="min-height: 1036px;">
+    <!-- Content Header (Page header) -->
+    <#include "/edit/common/content-header-module.html">
+
+        <section class="content">
+            <div class="row">
+                <!-- right column -->
+                <div class="col-md-12">
+                        <#include "/edit/common/display-module.html">
+                </div>
+                <!--/.col (right) -->
+            </div>
+            <!-- /.row -->
+        </section>
+</div>
+<!--</form>-->
+</@body>
+
+<@javascript>
+<script>
+
+
+    $('document').ready(function () {
+        CKEDITOR.instances.editor.setData('${(display.content)!"<p>start</p>"}');
+        $('#submit-banner').click(function () {
+            pushImg('banner-upload', '', '', 'system', 'banner');
+        });
+
+    });
+</script>
+</@javascript>

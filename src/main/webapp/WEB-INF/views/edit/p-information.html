@@ -1,0 +1,42 @@
+<#include "/edit/common/editLayout.html">
+<@head>
+    <!--date picker-->
+    <link rel="stylesheet" href="/plugins/Forms/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+</@head>
+
+<@body>
+
+<div class="content-wrapper" style="min-height: 1036px;">
+    <!-- Content Header (Page header) -->
+    <#include "/edit/common/content-header-module.html">
+
+        <section class="content">
+            <div class="row">
+                <!-- right column -->
+                <div class="col-md-12">
+                    <#include "/edit/common/information-module.html">
+                </div>
+                <!--/.col (right) -->
+            </div>
+            <!-- /.row -->
+        </section>
+</div>
+<!--</form>-->
+</@body>
+
+<@javascript>
+<!--date picker-->
+<script src="/plugins/Forms/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script>
+    //Date picker
+    $('#datepicker').datepicker({
+        autoclose: true
+    });
+
+    $('document').ready(function () {
+        $('#submit-banner').click(function () {
+            pushImg('banner-upload', '', '', 'system', 'banner');
+        });
+    });
+</script>
+</@javascript>

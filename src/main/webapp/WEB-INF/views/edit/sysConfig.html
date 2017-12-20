@@ -43,28 +43,10 @@
         });
         
         $('#sysConfig-update').click(function () {
-//            var formData = new FormData();
-//
-//            for(var i = 0; i < $('#icon-upload')[0].files.length;i++) {
-//                formData.append('files', $('#icon-upload')[0].files[i]);
-//            }
-//
-//            for(var i = 0; i < $('#logo-upload')[0].files.length;i++) {
-//                formData.append('files', $('#logo-upload')[0].files[i]);
-//            }
-//
-//            formData.append("id", $('#sys-id').val());
-//            formData.append("webName", $('#sys-name').val());
-//            formData.append("sharesName", $('#sys-shares-name').val());
-//            formData.append("sharesCode", $('#sys-shares-code').val());
-//            formData.append("email", $('#sys-email').val());
-//            formData.append("phone", $('#sys-tel').val());
-//            formData.append("licensing", $('#sys-license').val());
+
 
             var id = $('#sys-id').val();
             var webName = $('#sys-name').val();
-//            var icon = $('#icon')[0].src;
-//            var logo = $('#logo')[0].src;
             var icon = $('#icon')[0].attributes['src'].value;
             var logo = $('#logo')[0].attributes['src'].value;
             var sharesName = $('#sys-shares-name').val();

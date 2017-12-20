@@ -43,6 +43,8 @@ public class MenuEntity extends Model<MenuEntity> {
 
     private boolean active;
 
+    private String contentType;
+
     @Override
     protected Serializable pkVal(){
         return this.id;
@@ -150,5 +152,13 @@ public class MenuEntity extends Model<MenuEntity> {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public String getContentType() {
+        return contentType;
+    }
+
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
     }
 }

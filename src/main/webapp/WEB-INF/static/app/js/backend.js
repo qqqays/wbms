@@ -27,6 +27,21 @@ function modify_system_config(id, webName, icon, logo, sharesName, sharesCode, e
     });
 }
 
+function push_display(pid, content, iframeUrl, bannerImg, publisher, state) {
+
+    $.ajax({
+        url:'/api/upload/display',
+        type:'post',
+        data:{pid:pid, content: content, iframeUrl: iframeUrl, bannerImg: bannerImg, publisher:publisher, state:state},
+        success:function (d, s) {
+            alert(d);
+        },
+        error:function (d, s) {
+            console.log(d + s);
+        }
+    });
+}
+
 function pushImg(id, alt, title, class1, showId) {
 
     var formData = new FormData();
@@ -40,10 +55,9 @@ function pushImg(id, alt, title, class1, showId) {
 
     formData.append('alt', alt);
     formData.append('title', title);
-    formData.append('class1', class1);
 
     $.ajax({
-        url:'/api/images',
+        url:'/api/images/' + class1,
         type:'POST',
         contentType: false,
         processData:false,

@@ -76,10 +76,10 @@ public class ViewInterceptor extends HandlerInterceptorAdapter {
         allTopMenus = menuService.selectList(topMenuEntityWrapper);
         allSubMenus1 = menuService.selectList(subMenuEntityWrapper);
 
-        footMenus = MenuPickUtil.pickMenu(allTopMenus, DisplayEnum.FOOT, "deactivate");
-        navSliderMenus = MenuPickUtil.pickMenu(allSubMenus1, DisplayEnum.TOP, "deactivate");
-        topMenus = MenuPickUtil.topMenus(allTopMenus, aRequest[1]);
-        subMenus1 = MenuPickUtil.topSubMenus(allSubMenus1, aRequest[2], aRequest[1]);
+        footMenus = MenuPickUtil.pickMenu(allTopMenus, DisplayEnum.FOOT, "deactivate", request);
+        navSliderMenus = MenuPickUtil.pickMenu(allSubMenus1, DisplayEnum.TOP, "deactivate", request);
+        topMenus = MenuPickUtil.topMenus(allTopMenus, aRequest[1], request);
+        subMenus1 = MenuPickUtil.topSubMenus(allSubMenus1, aRequest[2], aRequest[1], request);
 
 
         request.setAttribute("config", sysConfigEntity);

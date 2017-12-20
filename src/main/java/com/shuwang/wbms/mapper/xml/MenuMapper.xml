@@ -17,6 +17,7 @@
         <result column="hasSub" property="hasSub"/>
         <result column="bannerImg" property="bannerImg"/>
         <result column="active" property="active"/>
+        <result column="contentType" property="contentType"/>
     </resultMap>
 
 </mapper>
