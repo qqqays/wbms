@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2017-12-21 08:28:38
+Date: 2017-12-21 17:51:37
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -34,7 +34,9 @@ CREATE TABLE `backend_menu` (
 -- ----------------------------
 -- Records of backend_menu
 -- ----------------------------
+INSERT INTO `backend_menu` VALUES ('e-display', '展示页面修改', 'management', '/backend/e-display', 'fa fa-circle-o text-orange', '3', '1', '0');
 INSERT INTO `backend_menu` VALUES ('e-images', '图片管理', 'management', '/backend/e-images', 'fa fa-circle-o text-gray', '2', '1', '0');
+INSERT INTO `backend_menu` VALUES ('e-info', '信息条目修改', 'management', '/backend/e-info', 'fa fa-circle-o text-green', '4', '1', '0');
 INSERT INTO `backend_menu` VALUES ('e-menu', '菜单管理', 'management', '/backend/e-menu', 'fa fa-circle-o text-yellow', '1', '1', '0');
 INSERT INTO `backend_menu` VALUES ('management', '管理', 'null', '/backend/management', 'fa fa-laptop', '3', '0', '1');
 INSERT INTO `backend_menu` VALUES ('p-display', '展示页面制作', 'publish', '/backend/p-display', 'fa fa-circle-o text-blue', '2', '1', '0');
@@ -55,8 +57,8 @@ CREATE TABLE `detail` (
   `clicks` int(11) DEFAULT '0',
   `publisher` varchar(255) DEFAULT NULL,
   `state` tinyint(1) DEFAULT '0',
-  `updateTime` datetime DEFAULT NULL,
-  `createTime` datetime DEFAULT NULL,
+  `updateDate` date DEFAULT NULL,
+  `createDate` date DEFAULT NULL,
   `bannerImg` varchar(255) DEFAULT NULL,
   `coverImg` varchar(255) DEFAULT NULL,
   `class1` varchar(255) DEFAULT NULL,
@@ -68,10 +70,12 @@ CREATE TABLE `detail` (
 -- ----------------------------
 -- Records of detail
 -- ----------------------------
-INSERT INTO `detail` VALUES ('eadf', 'easdfea', 'feasfeasdfas', 'dsfefasfas', '0', null, '0', '2017-12-12 14:21:22', null, null, null, 'news', 'industry', null);
-INSERT INTO `detail` VALUES ('fedad', '新闻标题1', 'fefasdf', '<h3>新闻内容</h3>', '0', null, '0', '2017-12-21 14:21:11', null, null, null, 'news', 'company', null);
-INSERT INTO `detail` VALUES ('qwer', 'others', 'dfjeijdoijfo', 'djfoiejkdsfjoi', '0', null, '0', '2017-12-12 16:18:50', null, null, null, 'contact', 'unknow', null);
-INSERT INTO `detail` VALUES ('zas', '新闻23', 'fesafeasfddafeasdfsa', '<h3>dfjidaoa</h3>', '9', null, '0', '2017-11-28 14:21:16', null, null, null, 'news', 'company', null);
+INSERT INTO `detail` VALUES ('659f5138389d4d6298d10b0e19da1423', 'fdsa', 'fea', '<p>fdsfae</p>\n', '23', 'fesa', '0', '2017-12-30', '2017-12-28', '', '', 'news', 'company', null);
+INSERT INTO `detail` VALUES ('c9ddfe61fd6b4a57b79ad62f163b713b', 'feafdsafsefsaf', 'fesadfase', '<p>sdfeadfsafesadfsafdsad</p>\n', '43', 'feafsafe', '1', '2017-12-31', '2017-12-21', '', '', 'news', 'industry', null);
+INSERT INTO `detail` VALUES ('eadf', 'easdfea', 'feasfeasdfas', 'dsfefasfas', '10', 'luguo', '0', '2017-12-12', '2017-12-21', '', null, 'news', 'industry', null);
+INSERT INTO `detail` VALUES ('fedad', '新闻标题1', 'fefasdf', '<h3>新闻内容</h3>', '0', null, '0', '2017-12-21', null, null, null, 'news', 'company', null);
+INSERT INTO `detail` VALUES ('qwer', 'others', 'dfjeijdoijfo', 'djfoiejkdsfjoi', '0', null, '0', '2017-12-12', null, null, null, 'contact', 'unknow', null);
+INSERT INTO `detail` VALUES ('zas', '新闻23', 'fesafeasfddafeasdfsa', '<h3>dfjidaoa</h3>', '9', null, '0', '2017-11-28', null, null, null, 'news', 'company', null);
 
 -- ----------------------------
 -- Table structure for images
@@ -98,17 +102,19 @@ CREATE TABLE `images` (
 -- ----------------------------
 -- Records of images
 -- ----------------------------
+INSERT INTO `images` VALUES ('0b225c0753b04f27994287683648af75', null, 'android-chat.png', '', '', '/upload-files//images/info/android-chat.png', null, '/upload-files//images/info/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/info/', '0', '0', 'info', null, null);
 INSERT INTO `images` VALUES ('0f2a1426f2ca4f0488d64340b3759182', null, 'logo.png', 'good', 'morning', '/upload-files//images/system/logo.png', null, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', '0', '0', 'system', null, null);
 INSERT INTO `images` VALUES ('11088058f0a347ac8091cea5c976f3ae', null, 'QQ图片20170919163710.jpg', 'what', 'the', '/upload-files//images/system/QQ图片20170919163710.jpg', null, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', '0', '0', 'system', null, null);
 INSERT INTO `images` VALUES ('46e98410248e430d9559243012010ca8', null, 'alert.png', '', '', '/upload-files//images/ckEditor/alert.png', null, '/upload-files//images/ckEditor/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/ckEditor/', '0', '0', 'ckEditor', null, null);
 INSERT INTO `images` VALUES ('5d4fa0e897aa4696b56c6ef8ce81b9df', null, 'android-add-contact.png', '', '', '/upload-files//images/system/android-add-contact.png', null, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', '0', '0', 'system', null, null);
+INSERT INTO `images` VALUES ('620d295ad45f485c8923505ccb7337ba', null, 'alert-circled.png', '', '', '/upload-files//images/info/alert-circled.png', null, '/upload-files//images/info/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/info/', '0', '0', 'info', null, null);
 INSERT INTO `images` VALUES ('63dd9ec756fa4d998e00e2aa7186674e', null, '00368.jpg', 'good', 'morning', '/upload-files//images/system/00368.jpg', null, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', '0', '0', 'system', null, null);
-INSERT INTO `images` VALUES ('941c8efc9cb04398a9c70a6a7e129d3f', null, 'QQ图片20170919163710.jpg', 'good', 'morning', '/upload-files//images/system/QQ图片20170919163710.jpg', null, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', '0', '0', 'system', null, null);
 INSERT INTO `images` VALUES ('9836ff5b9ae244ae894e3d27f63156fc', null, 'icon-social-google-plus.png', 'what', 'the', '/upload-files//images/system/icon-social-google-plus.png', null, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', '0', '0', 'system', null, null);
 INSERT INTO `images` VALUES ('b37286494d3d4761b669295dd2ddb8e1', null, 'android-checkmark.png', '', '', '/upload-files//images/ckEditor/android-checkmark.png', null, '/upload-files//images/ckEditor/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/ckEditor/', '0', '0', 'ckEditor', null, null);
-INSERT INTO `images` VALUES ('d053c849b90648119ce6e5ce41292d00', null, 'logo.png', 'good', 'morning', '/upload-files//images/system/logo.png', null, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', '0', '0', 'system', null, null);
+INSERT INTO `images` VALUES ('dbb34f28428b439eb426119a3a6f840c', null, 'android-checkmark.png', '', '', '/upload-files//images/info/android-checkmark.png', null, '/upload-files//images/info/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/info/', '0', '0', 'info', null, null);
 INSERT INTO `images` VALUES ('e16aa2531cd4429fa6231d8c70c6e6f5', null, 'android-book.png', '', '', '/upload-files//images/system/android-book.png', null, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', '0', '0', 'system', null, null);
 INSERT INTO `images` VALUES ('f28ed6581025418793fa11baf5b22ffe', null, 'android-share.png', '', '', '/upload-files//images/system/android-share.png', null, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', '0', '0', 'system', null, null);
+INSERT INTO `images` VALUES ('f517734fd0524e2988dc5f5201781f6f', null, 'android-arrow-up-left.png', '', '', '/upload-files//images/info/android-arrow-up-left.png', null, '/upload-files//images/info/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/info/', '0', '0', 'info', null, null);
 
 -- ----------------------------
 -- Table structure for menu
@@ -207,20 +213,21 @@ CREATE TABLE `spl_content` (
   `bannerImg` varchar(255) DEFAULT NULL,
   `publisher` varchar(255) DEFAULT NULL,
   `state` tinyint(1) DEFAULT '0',
-  `updateTime` datetime DEFAULT NULL,
-  `createTime` datetime DEFAULT NULL,
+  `updateDate` date DEFAULT NULL,
+  `createDate` date DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of spl_content
 -- ----------------------------
-INSERT INTO `spl_content` VALUES ('0a94bb6e6fb347a9b4f8c39dc7e6bb39', 'subAbout', '<p>start</p>\n\n<p>&nbsp;</p>\n\n<p>&nbsp;</p>\n\n<p>dfasfkdsjfkds&nbsp; asfdsfeiosdjafklsadf;</p>\n', '', '/upload-files//images/system/android-share.png', 'qays', '1', null, null);
-INSERT INTO `spl_content` VALUES ('5ec0ca20fbdf41099d9224caab550cfc', 'subAbout2', '<p>start</p>\n\n<p>&nbsp;</p>\n\n<p>what fu d&nbsp; &nbsp; asfsdf</p>\n', '', '/upload-files//images/system/android-add-contact.png', 'luguo ', '1', null, null);
-INSERT INTO `spl_content` VALUES ('832dbccab2f5455f9dd1087b1c5a44b7', 'subAbout', '<p>start</p>\n\n<p>&nbsp;</p>\n\n<p>what fu d&nbsp; &nbsp; asfsdf</p>\n', '', '/upload-files//images/system/android-add-contact.png', 'luguo ', '0', null, null);
-INSERT INTO `spl_content` VALUES ('aaee6d78e78944308c1455ea68e31335', 'subAbout', '<p>start</p>\n\n<p>&nbsp;</p>\n\n<p>what fu d&nbsp; &nbsp; asfsdf</p>\n', '', '/upload-files//images/system/android-add-contact.png', 'luguo ', '0', null, null);
-INSERT INTO `spl_content` VALUES ('fdsafesdafe', 'subAbout2', '<h1>w the ??<h1>', null, null, 'shuwang', '1', null, null);
-INSERT INTO `spl_content` VALUES ('fdsafiedskl', 'subAbout', null, '/iframe/aboutus-phone/jsmo.html', null, 'shuwa nbg', '1', null, null);
+INSERT INTO `spl_content` VALUES ('0a94bb6e6fb347a9b4f8c39dc7e6bb39', 'subAbout', '<p>start</p>\n\n<p>&nbsp;</p>\n\n<p>&nbsp;</p>\n\n<p>dfasfkdsjfkds&nbsp; asfdsfeiosdjafklsadf;</p>\n', '', '/upload-files//images/system/android-share.png', 'qays', '1', null, '2017-12-21');
+INSERT INTO `spl_content` VALUES ('5ec0ca20fbdf41099d9224caab550cfc', 'subAbout2', '<p>start</p>\n\n<p>&nbsp;</p>\n\n<p>what fu d&nbsp; &nbsp; asfsdf</p>\n', '', '/upload-files//images/system/android-add-contact.png', 'luguo ', '1', null, '2017-12-21');
+INSERT INTO `spl_content` VALUES ('832dbccab2f5455f9dd1087b1c5a44b7', 'subAbout', '<p>start</p>\n\n<p>&nbsp;</p>\n\n<p>what fu d&nbsp; &nbsp; asfsdf</p>\n', '', '/upload-files//images/system/android-add-contact.png', 'luguo ', '0', null, '2017-12-21');
+INSERT INTO `spl_content` VALUES ('aaee6d78e78944308c1455ea68e31335', 'subAbout', '<p>start</p>\n\n<p>&nbsp;</p>\n\n<p>what fu d&nbsp; &nbsp; asfsdf</p>\n', '', '/upload-files//images/system/android-add-contact.png', 'luguo ', '0', null, '2017-12-21');
+INSERT INTO `spl_content` VALUES ('b09f03b63cd64117b34504debf81699a', 'subAbout2', '<h2 style=\"font-style:italic\"><strong>hello world</strong></h2>\n\n<p>&nbsp;</p>\n\n<p><strong><span style=\"font-family:Comic Sans MS,cursive\">fasdfe aaaaaaafdeafd</span></strong></p>\n', '', '', 'qays', '1', null, '2017-12-21');
+INSERT INTO `spl_content` VALUES ('fdsafesdafe', 'subAbout2', '<h1>w the ??<h1>', '', '', 'shuwang', '1', null, '2017-12-21');
+INSERT INTO `spl_content` VALUES ('fdsafiedskl', 'subAbout', '', '/iframe/aboutus-phone/jsmo.html', '', 'shuwa nbg', '1', null, '2017-12-21');
 
 -- ----------------------------
 -- Table structure for sys_config
