@@ -24,7 +24,7 @@ public class DetailController extends ProController{
 
     @GetMapping
     public String details(@RequestParam(defaultValue = "0") Integer pageNumber) {
-            Page<DetailEntity> infoGram = datagram(detailService, pageNumber);
+        Page<DetailEntity> infoGram = datagram(detailService, pageNumber);
         return page2JsonStr(infoGram);
     }
 }

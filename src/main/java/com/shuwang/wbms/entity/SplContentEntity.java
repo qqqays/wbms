@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
@@ -30,9 +31,9 @@ public class SplContentEntity extends Model<SplContentEntity> {
 
     private boolean state;
 
-    private Timestamp updateTime;
+    private Date updateDate;
 
-    private Timestamp createTime;
+    private Date createDate;
 
     @Override
     protected Serializable pkVal(){
@@ -95,19 +96,19 @@ public class SplContentEntity extends Model<SplContentEntity> {
         this.state = state;
     }
 
-    public Timestamp getUpdateTime() {
-        return updateTime;
+    public Date getUpdateDate() {
+        return updateDate;
     }
 
-    public void setUpdateTime(Timestamp updateTime) {
-        this.updateTime = updateTime;
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
     }
 
-    public Timestamp getCreateTime() {
-        return createTime;
+    public Date getCreateDate() {
+        return createDate;
     }
 
-    public void setCreateTime(Timestamp createTime) {
-        this.createTime = createTime;
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 }

@@ -1,5 +1,6 @@
 package com.shuwang.wbms.controller.api;
 
+import com.shuwang.wbms.entity.DetailEntity;
 import com.shuwang.wbms.entity.SeoEntity;
 import com.shuwang.wbms.entity.SplContentEntity;
 import com.shuwang.wbms.entity.SysConfigEntity;
@@ -32,14 +33,13 @@ public class GeneralUpdateController {
     private ISeoService seoService;
 
     @PostMapping("/info")
-    public String postInfo() {
+    public String postInfo(DetailEntity detailEntity) {
 
-        return "";
+        return detailEntity.insert() + " insert";
     }
 
     @PostMapping("/display")
     public String postDisplay(SplContentEntity splContentEntity) {
-
 
         return splContentEntity.insert() + " insert";
     }

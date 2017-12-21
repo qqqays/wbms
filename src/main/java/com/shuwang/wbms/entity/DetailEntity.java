@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 /**
@@ -24,15 +25,15 @@ public class DetailEntity extends Model<DetailEntity>{
 
     private String content;
 
-    private int clicks;
+    private Integer clicks;
 
     private String publisher;
 
     private boolean state;
 
-    private Timestamp updateTime;
+    private Date updateDate;
 
-    private Timestamp createTime;
+    private Date createDate;
 
     private String bannerImg;
 
@@ -81,11 +82,11 @@ public class DetailEntity extends Model<DetailEntity>{
         this.content = content;
     }
 
-    public int getClicks() {
+    public Integer getClicks() {
         return clicks;
     }
 
-    public void setClicks(int clicks) {
+    public void setClicks(Integer clicks) {
         this.clicks = clicks;
     }
 
@@ -105,20 +106,20 @@ public class DetailEntity extends Model<DetailEntity>{
         this.state = state;
     }
 
-    public Timestamp getUpdateTime() {
-        return updateTime;
+    public Date getUpdateDate() {
+        return updateDate;
     }
 
-    public void setUpdateTime(Timestamp updateTime) {
-        this.updateTime = updateTime;
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
     }
 
-    public Timestamp getCreateTime() {
-        return createTime;
+    public Date getCreateDate() {
+        return createDate;
     }
 
-    public void setCreateTime(Timestamp createTime) {
-        this.createTime = createTime;
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 
     public String getBannerImg() {

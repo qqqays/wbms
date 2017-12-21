@@ -13,56 +13,116 @@
         <form role="form">
             <!--id-->
             <div class="form-group">
-                <input id="seo-id" type="text" value="${seoConfig.id!}" class="form-control" placeholder="This input text do something automatics" disabled>
-            </div>
-            <!-- page Title -->
-            <div class="form-group">
-                <label>页面title</label>
-                <input id="seo-page-title" type="text" value="${seoConfig.pageTitle!}" class="form-control" placeholder="网页title ...">
+                <input id="info-id" type="text" value="${info.id!}" class="form-control" placeholder="This input text do something automatics" disabled>
             </div>
 
-            <!--key words-->
+            <!--select-->
             <div class="form-group">
-                <label>关键字</label>
-                <textarea id="seo-keywords" class="form-control" rows="3" placeholder="关键字 ...">${seoConfig.keywords}</textarea>
+                <label>选择栏目</label>
+                <select id="info-menu" class="form-control">
+                    <#list allMenus as menu>
+                        <#if !menu.hasSub && menu.contentType == "info">
+                            <option value="${menu.pid!},${menu.id!}">${menu.menuName}</option>
+                        </#if>
+                    </#list>
+                </select>
+            </div>
+
+            <!-- page Title -->
+            <div class="form-group">
+                <label>内容title</label>
+                <input id="info-title" type="text" value="${info.title!}" class="form-control" placeholder="内容title ...">
             </div>
 
             <!--description-->
             <div class="form-group">
                 <label>描述</label>
-                <textarea id="seo-description" class="form-control" rows="3" placeholder="描述 ...">${seoConfig.description}</textarea>
+                <textarea id="info-description" class="form-control" rows="3" placeholder="描述 ...">${info.description}</textarea>
             </div>
 
-            <!--author-->
+            <!--clicks-->
+            <div class="form-group">
+                <label>点击数</label>
+                <input id="info-clicks" type="number" value="${info.clicks!}" class="form-control" placeholder="点击数 ...">
+            </div>
+
+            <!--publisher-->
             <div class="form-group">
                 <label>作者</label>
-                <input id="seo-author" type="text" value="${seoConfig.author}" class="form-control" placeholder="作者 ...">
+                <input id="info-publisher" type="text" value="${info.publisher}" class="form-control" placeholder="作者 ...">
+            </div>
+
+            <!--select-->
+            <div class="form-group">
+                <label>状态</label>
+                <select id="info-state" class="form-control">
+                    <#if info.state>
+                        <option value="1"  selected="selected">打开的 </option>
+                        <option value="0">关闭的 </option>
+                        <#else>
+                            <option value="1">打开的 </option>
+                            <option value="0" selected="selected">关闭的 </option>
+                    </#if>
+                </select>
             </div>
 
             <!--date-->
-            <div class="form-group">
+            <div class="form-group col-sm-6">
                 <label>发布日期:</label>
 
                 <div class="input-group date">
                     <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                     </div>
-                    <input type="text" placeholder="如果不填写，默认使用今天的日期，如果填写日期大于今天，相当于定时发布。" class="form-control pull-right" id="datepicker">
+                    <input value="${info.createDate!}" type="text" placeholder="如果不填写，默认使用今天的日期，如果填写日期大于今天，相当于定时发布。" class="form-control pull-right" id="info-createDate">
                 </div>
                 <!-- /.input group -->
             </div>
 
-            <#include "/edit/common/ckeditor.html">
+            <!--date-->
+            <div class="form-group col-sm-6">
+                <label>修改日期:</label>
 
+                <div class="input-group date">
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                    <input value="${info.updateDate!}" type="text" placeholder="如果不填写，默认使用今天的日期。" class="form-control pull-right" id="info-updateDate">
+                </div>
+                <!-- /.input group -->
+            </div>
+
+            <!--banner-->
+            <div class="form-group">
+                <label for="info-banner-upload">banner图</label>
+                <input type="file" required="required" id="info-banner-upload">
+                <button id="submit-info-banner" type="button" class="btn btn-warning">确认上传</button>
+
+                <p class="help-block">点击上传banner图</p>
+                <img title="没有图片" id="info-banner" src="${(display.bannerImg)!''}">
+            </div>
+
+            <!--cover images-->
+            <div class="form-group">
+                <label for="info-cover-upload">封面图</label>
+                <input type="file" required="required" id="info-cover-upload">
+                <button id="submit-info-cover" type="button" class="btn btn-warning">确认上传</button>
+
+                <p class="help-block">点击上传封面图</p>
+                <img title="没有图片" id="info-cover" src="${(display.bannerImg)!''}">
+            </div>
+
+            <#include "/edit/common/ckeditor.html">
         </form>
     </div>
     <!-- /.box-body -->
 
     <div class="box-footer">
-        <button id="seo-add" type="button" class="btn btn-warning">新增</button>
+        <button id="info-add" type="button" class="btn btn-warning">新增</button>
 
-        <#if seoConfig??>
-            <button id="seo-update" type="button" class="btn btn-primary">修改</button>
+        <#if info??>
+            <button id="info-update" type="button" class="btn btn-primary">修改</button>
+            <button id="info-delete" type="button" class="btn btn-default">删除</button>
             <#else>
         </#if>
     </div>

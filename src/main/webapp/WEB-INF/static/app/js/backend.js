@@ -42,6 +42,21 @@ function push_display(pid, content, iframeUrl, bannerImg, publisher, state) {
     });
 }
 
+function push_info(title, description, content, clicks, publisher, state, updateDate, createDate, bannerImg, coverImg, class1, class2) {
+
+    $.ajax({
+        url:'/api/upload/info',
+        type:'post',
+        data:{title:title, description: description, content: content, clicks: parseInt(clicks), publisher: publisher, state: state, updateDate: updateDate, createDate: createDate, bannerImg: bannerImg, coverImg: coverImg, class1: class1, class2:class2},
+        success:function (d, s) {
+            alert(d);
+        },
+        error:function (d, s) {
+            console.log(d + s);
+        }
+    });
+}
+
 function pushImg(id, alt, title, class1, showId) {
 
     var formData = new FormData();

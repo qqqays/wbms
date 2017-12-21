@@ -1,7 +1,6 @@
 package com.shuwang.wbms.controller.api;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.shuwang.wbms.common.controller.MyController;
 import com.shuwang.wbms.common.controller.ProController;
 import com.shuwang.wbms.common.enums.ReturnCodeEnum;
 import com.shuwang.wbms.entity.SimpleUser;

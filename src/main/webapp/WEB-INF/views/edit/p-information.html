@@ -29,14 +29,47 @@
 <script src="/plugins/Forms/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <script>
     //Date picker
-    $('#datepicker').datepicker({
+    $('#info-createDate').datepicker({
+        todayHighlight:true,
+        format: 'yyyy-mm-dd',
         autoclose: true
     });
 
+    $('#info-updateDate').datepicker({
+        format: 'yyyy-mm-dd',
+        autoclose:true
+    });
+
     $('document').ready(function () {
-        $('#submit-banner').click(function () {
-            pushImg('banner-upload', '', '', 'system', 'banner');
+        $('#submit-info-banner').click(function () {
+            pushImg('info-banner-upload', '', '', 'info', 'info-banner');
         });
+        $('#submit-info-cover').click(function () {
+            pushImg('info-cover-upload', '', '', 'info', 'info-cover');
+        });
+
+
+
+        $('#info-add').click(function () {
+
+            var paramArray = $('#info-menu').val().split(",");
+
+            var title = $('#info-title').val();
+            var description = $('#info-description').val();
+            var content = CKEDITOR.instances.editor.getData();
+            var clicks = $('#info-clicks').val();
+            var publisher = $('#info-publisher').val();
+            var state = $('#info-state')[0].value == 1 ? true : false;
+            var updateDate = $('#info-updateDate').val();
+            var createDate = $('#info-createDate').val();
+            var bannerImg = $('#info-banner')[0].attributes['src'].value;
+            var coverImg = $('#info-cover')[0].attributes['src'].value;
+            var class1 = paramArray[0];
+            var class2 = paramArray[1];
+
+            push_info(title, description, content, clicks, publisher, state, updateDate, createDate, bannerImg, coverImg, class1, class2);
+        });
+
     });
 </script>
 </@javascript>

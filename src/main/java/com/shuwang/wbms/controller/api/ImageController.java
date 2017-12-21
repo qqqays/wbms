@@ -118,7 +118,6 @@ public class ImageController extends PageController{
                     }
                 }
 
-
             } catch (Exception e) {
                 e.printStackTrace();
                 return "upload error";
