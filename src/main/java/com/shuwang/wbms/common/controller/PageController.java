@@ -29,6 +29,19 @@ public class PageController {
         return datagram(iService, pageNumber, pageSize, search, "updateTime", searchColumn, type);
     }
 
+    /**
+     * Base function for list of entity
+     *
+     * @param iService
+     * @param pageNumber
+     * @param pageSize
+     * @param search
+     * @param order
+     * @param searchColumn
+     * @param type
+     * @param <T>
+     * @return
+     */
     public <T> Page<T> datagram(IService<T> iService, Integer pageNumber, Integer pageSize, String search, String order, String[] searchColumn, String... type) {
         Page<T> page = new Page<>(pageNumber, pageSize);
         page.setOrderByField(order);
@@ -57,7 +70,20 @@ public class PageController {
     }
 
     /**
-     * Add attribute to model
+     * Simple struct for gaining entity of list.
+     * Orders by id, page size equ 15, null of search, null of type.
+     * @param iService
+     * @param pageNumber
+     * @param <T>
+     * @return
+     */
+    public <T> Page<T> datagram(IService<T> iService, Integer pageNumber) {
+        String[] fuck = {};
+        return datagram(iService, pageNumber, 15, "", "id", fuck);
+    }
+
+    /**
+     * Adds list of detail attribute to model
      *
      * @param model
      * @param detailDatagram

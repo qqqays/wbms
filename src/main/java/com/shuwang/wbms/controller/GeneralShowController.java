@@ -42,10 +42,14 @@ public class GeneralShowController extends ProController{
     @Autowired
     private ISeoService seoService;
 
-    @GetMapping("/{topMenu}")
+    @GetMapping("/{topMenu:^(?!.*?\\.).*$}")
     public String top(Model model, @PathVariable String topMenu, @RequestParam(defaultValue = "") String s, @RequestParam(defaultValue = "0") Integer pg, @RequestParam(defaultValue = "1") Integer sz) {
 
         MenuEntity me = menuService.selectById(topMenu);
+
+        if (me == null) {
+            return "";
+        }
 
         if (me.getContentType().equals("info")) {
 

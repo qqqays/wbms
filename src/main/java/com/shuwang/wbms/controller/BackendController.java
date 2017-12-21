@@ -2,12 +2,16 @@ package com.shuwang.wbms.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
+import com.baomidou.mybatisplus.plugins.Page;
+import com.shuwang.wbms.common.controller.ProController;
 import com.shuwang.wbms.entity.*;
 import com.shuwang.wbms.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * Created by Q-ays.
@@ -17,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/backend")
-public class BackendController {
+public class BackendController extends ProController {
 
     @Autowired
     private ISysConfigService sysConfigService;
@@ -59,13 +63,20 @@ public class BackendController {
         return "/edit/sysConfig";
     }
 
+
+
     @GetMapping("/{content}")
-    public String common(@PathVariable String content) {
+    public String common(Model model, @PathVariable String content) {
+
+        List<MenuEntity> menuEntities = menuService.selectList(new EntityWrapper<MenuEntity>().orderBy("sort"));
+        model.addAttribute("allMenus", menuEntities);
         return "/edit/" + content;
     }
 
     @GetMapping("/{content}/{id}")
     public String menu(Model model, @PathVariable String content, @PathVariable String id) {
+
+        List<MenuEntity> menuEntities = menuService.selectList(new EntityWrapper<MenuEntity>().orderBy("sort"));
 
         switch (content) {
             case "e-menu":
@@ -87,6 +98,7 @@ public class BackendController {
                 break;
         }
 
+        model.addAttribute("allMenus", menuEntities);
         return "/edit/" + content;
     }
 }

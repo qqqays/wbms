@@ -19,6 +19,10 @@
             <!-- /.row -->
         </section>
 </div>
+
+<div class="hidden" id="fuck">
+    ${(display.content)!"<p>start</p>"}
+</div>
 <!--</form>-->
 </@body>
 
@@ -27,14 +31,14 @@
 
 
     $('document').ready(function () {
-        CKEDITOR.instances.editor.setData('${(display.content)!"<p>start</p>"}');
+        CKEDITOR.instances.editor.setData($('#fuck').html());
         $('#submit-dpl-banner').click(function () {
             console.log("push images");
             pushImg('dpl-banner-upload', '', '', 'system', 'dpl-banner');
         });
 
         $('#dpl-add').click(function () {
-            var pid = 'subAbout';
+            var pid = $('#dpl-menu')[0].value;
             var content = CKEDITOR.instances.editor.getData();
             var iframeUrl = $('#dpl-iFrame').val();
             var bannerImg = $('#dpl-banner')[0].attributes['src'].value;

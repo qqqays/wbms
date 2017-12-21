@@ -15,21 +15,7 @@
             <div class="form-group">
                 <input id="dpl-id" type="text" value="${display.id!}" class="form-control" placeholder="This input text do something automatics" disabled>
             </div>
-
-            <!--select menu-->
-            <!--select-->
-            <div class="form-group">
-                <label>选择栏目</label>
-                <select id="dpl-menu" class="form-control">
-                    <#list allMenus as menu>
-                        <#if !menu.hasSub && menu.contentType == "display">
-                                <option value="${menu.id}">${menu.menuName}</option>
-                        </#if>
-                    </#list>
-                </select>
-            </div>
-
-            <!--  iFrame url -->
+            <!-- page Title -->
             <div class="form-group">
                 <label>iFrameUrl</label>
                 <input id="dpl-iFrame" type="text" value="${display.iframeUrl!}" class="form-control" placeholder="引用做好的页面才填写, 如果填写此项则不需要编辑添加内容">
@@ -49,8 +35,8 @@
                         <option value="1"  selected="selected">打开的 </option>
                         <option value="0">关闭的 </option>
                         <#else>
-                        <option value="1">打开的 </option>
-                        <option value="0" selected="selected">关闭的 </option>
+                            <option value="1">打开的 </option>
+                            <option value="0" selected="selected">关闭的 </option>
                     </#if>
                 </select>
             </div>

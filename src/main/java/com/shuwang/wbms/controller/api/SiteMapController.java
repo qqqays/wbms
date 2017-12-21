@@ -1,6 +1,6 @@
 package com.shuwang.wbms.controller.api;
 
-import com.shuwang.wbms.common.controller.MyController;
+import com.shuwang.wbms.common.controller.ProController;
 import com.shuwang.wbms.common.enums.ReturnCodeEnum;
 import com.shuwang.wbms.common.exception.CustomException;
 import com.shuwang.wbms.common.util.UrlMappingUtil;
@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @RestController
 @RequestMapping("/api/siteMap")
-public class SiteMapController extends MyController{
+public class SiteMapController extends ProController{
 
     @GetMapping()
     public String siteMap(HttpServletRequest request){

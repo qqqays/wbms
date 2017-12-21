@@ -5,6 +5,7 @@ import com.shuwang.wbms.entity.SplContentEntity;
 import com.shuwang.wbms.entity.MenuEntity;
 import com.shuwang.wbms.service.ISplContentService;
 import com.shuwang.wbms.service.IMenuService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -51,7 +52,7 @@ public class AboutController {
         while (it.hasNext()) {
             SplContentEntity sce = it.next();
 
-            if (sce.getBannerImg() != null) {
+            if (StringUtils.isNotBlank(sce.getBannerImg())) {
                 model.addAttribute("bannerImg", sce.getBannerImg());
             }
         }

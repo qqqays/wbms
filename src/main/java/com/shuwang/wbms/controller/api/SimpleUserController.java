@@ -2,6 +2,7 @@ package com.shuwang.wbms.controller.api;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.shuwang.wbms.common.controller.MyController;
+import com.shuwang.wbms.common.controller.ProController;
 import com.shuwang.wbms.common.enums.ReturnCodeEnum;
 import com.shuwang.wbms.entity.SimpleUser;
 import com.shuwang.wbms.service.ISimpleUserService;
@@ -19,7 +20,7 @@ import javax.validation.Valid;
  */
 @RestController
 @RequestMapping("/api/users")
-public class SimpleUserController extends MyController {
+public class SimpleUserController extends ProController {
 
     private static final Logger logger = LoggerFactory.getLogger(SimpleUserController.class);
 
