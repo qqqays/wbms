@@ -34,7 +34,10 @@
 
     $('document').ready(function () {
 //        display list
-        getDisplayList();
+        getDisplayList(1);
+
+//        $('.custom-box').addClass('collapsed-box');
+        $('.custom-collapse').click();
 
         CKEDITOR.instances.editor.setData($('#fuck').html());
 

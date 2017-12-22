@@ -50,7 +50,10 @@
     $('document').ready(function () {
 
 //        选择编辑列表
-        getINfoList();
+        getInfoList(1);
+
+//        $('.custom-box').addClass('collapsed-box');
+        $('.custom-collapse').click();
 
         CKEDITOR.instances.editor.setData($('#hidden-content').html());
 
