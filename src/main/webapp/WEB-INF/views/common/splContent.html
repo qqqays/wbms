@@ -1,7 +1,7 @@
 <#if contents??>
     <#list contents as content>
         <#if content.iframeUrl != "">
-            <iframe id="phone-i" class="" src="${content.iframeUrl}" frameborder="0" width="100%" scrolling="no"></iframe>
+            <iframe id="myFrame" class="" src="${content.iframeUrl}" frameborder="0" width="100%" scrolling="no"></iframe>
             <#else>
                 <div>${content.content}</div>
         </#if>

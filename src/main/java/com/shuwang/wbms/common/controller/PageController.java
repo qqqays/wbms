@@ -26,7 +26,7 @@ public class PageController {
      */
     public <T> Page<T> datagram(IService<T> iService, Integer pageNumber, Integer pageSize, String search, String... type) {
         String[] searchColumn = {"description", "title"};
-        return datagram(iService, pageNumber, pageSize, search, "updateTime", searchColumn, type);
+        return datagram(iService, pageNumber, pageSize, search, "updateDate", searchColumn, type);
     }
 
     /**
@@ -100,7 +100,7 @@ public class PageController {
         }
 
         if (pageSize > 0) {
-            model.addAttribute("sz", "&sz" + pageSize);
+            model.addAttribute("sz", "&sz=" + pageSize);
         }
     }
 }

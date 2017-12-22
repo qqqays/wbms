@@ -1,6 +1,6 @@
 package com.shuwang.wbms.controller.api;
 
-import com.shuwang.wbms.common.controller.PageController;
+import com.shuwang.wbms.common.controller.ProController;
 import com.shuwang.wbms.common.enums.WinFilePathEnum;
 import com.shuwang.wbms.entity.ImageEntity;
 import com.shuwang.wbms.service.ImageService;
@@ -26,7 +26,7 @@ import java.util.Iterator;
  */
 @RestController
 @RequestMapping("/api/images")
-public class ImageController extends PageController{
+public class ImageController extends ProController{
 
     @Autowired
     private ImageService imageService;

@@ -25,49 +25,6 @@
 <@javascript>
 <script type="text/javascript">
 
-    function assembleTable(json) {
-        var str = '            <tr>\n' +
-            '                <th>id</th>\n' +
-            '                <th>pid</th>\n' +
-            '                <th>iFrameUrl</th>\n' +
-            '                <th>bannerImg</th>\n' +
-            '                <th>publisher</th>\n' +
-            '                <th>state</th>\n' +
-            '                <th>createTime</th>\n' +
-            '                <th>edit</th>\n' +
-            '            </tr>'
-
-        $.each(json, function (index, info) {
-            str += '<tr>' +
-                '<td>'+ info["id"] +'</td>' +
-                '<td>'+ info["pid"] +'</td>' +
-                '<td>'+ info["iframeUrl"] +'</td>' +
-                '<td>'+ info["bannerImg"] +'</td>' +
-                '<td>'+ info["publisher"] +'</td>' +
-                '<td>'+ info["state"] +'</td>' +
-                '<td>'+ info["createTime"] +'</td>' +
-                '<td><a href="/backend/p-display/'+ info["id"] +'">编辑</a></td>' +
-                '</tr>';
-        });
-
-        $('#dplList').html(str);
-
-    }
-
-    function getDisplayList() {
-        $.ajax({
-            url:'/api/splContents',
-            type:'get',
-            data:{},
-            success:function (d, s) {
-                var json = JSON.parse(d);
-                assembleTable(json['records']);
-            },
-            error:function (d, s) {
-                console.log(d+s);
-            }
-        });
-    }
 
     $(function () {
         getDisplayList();

@@ -12,7 +12,9 @@
             <div class="row">
                 <!-- right column -->
                 <div class="col-md-12">
-                        <#include "/edit/common/display-module.html">
+                    <#include "/edit/common/e-display-module.html">
+
+                    <#include "/edit/common/display-module.html">
                 </div>
                 <!--/.col (right) -->
             </div>
@@ -31,7 +33,11 @@
 
 
     $('document').ready(function () {
+//        display list
+        getDisplayList();
+
         CKEDITOR.instances.editor.setData($('#fuck').html());
+
         $('#submit-dpl-banner').click(function () {
             console.log("push images");
             pushImg('dpl-banner-upload', '', '', 'system', 'dpl-banner');
@@ -45,6 +51,22 @@
             var publisher = $('#dpl-publisher').val();
             var state = $('#dpl-state')[0].value == 1 ? true : false;
             push_display(pid, content, iframeUrl, bannerImg, publisher, state);
+        });
+
+        $('#dpl-update').click(function () {
+            var id = $('#dpl-id').val();
+            var pid = $('#dpl-menu')[0].value;
+            var content = CKEDITOR.instances.editor.getData();
+            var iframeUrl = $('#dpl-iFrame').val();
+            var bannerImg = $('#dpl-banner')[0].attributes['src'].value;
+            var publisher = $('#dpl-publisher').val();
+            var state = $('#dpl-state')[0].value == 1 ? true : false;
+            update_display(id, pid, content, iframeUrl, bannerImg, publisher, state);
+        });
+
+        $('#dpl-delete').click(function () {
+            var id = $('#dpl-id').val();
+            delete_display(id);
         });
 
     });

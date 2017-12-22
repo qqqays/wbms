@@ -1,5 +1,5 @@
 <div class="box box-success">
-    <div class="box-header with-border">
+    <div class="box-header with-border bg-green">
         <h3 class="box-title">信息 发布</h3>
         <div class="pull-right box-tools">
             <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse">
@@ -99,7 +99,7 @@
                 <button id="submit-info-banner" type="button" class="btn btn-warning">确认上传</button>
 
                 <p class="help-block">点击上传banner图</p>
-                <img title="没有图片" id="info-banner" src="${(display.bannerImg)!''}">
+                <img title="没有图片" id="info-banner" src="${(info.bannerImg)!''}">
             </div>
 
             <!--cover images-->
@@ -109,7 +109,7 @@
                 <button id="submit-info-cover" type="button" class="btn btn-warning">确认上传</button>
 
                 <p class="help-block">点击上传封面图</p>
-                <img title="没有图片" id="info-cover" src="${(display.bannerImg)!''}">
+                <img title="没有图片" id="info-cover" src="${(info.bannerImg)!''}">
             </div>
 
             <#include "/edit/common/ckeditor.html">

@@ -1,10 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<#include "/edit/common/editLayout.html">
+    <@head>
+</@head>
 
-</body>
-</html>
+<@body>
+
+<div class="content-wrapper" style="min-height: 1036px;">
+    <!-- Content Header (Page header) -->
+    <#include "/edit/common/content-header-module.html">
+
+        <section class="content">
+            <div class="row">
+                <!-- right column -->
+                <div class="col-xs-12">
+                    <#include "/edit/common/e-info-module.html">
+                </div>
+                <!--/.col (right) -->
+            </div>
+            <!-- /.row -->
+        </section>
+</div>
+<!--</form>-->
+</@body>
+
+<@javascript>
+<script type="text/javascript">
+
+    $(function () {
+        getINfoList();
+    });
+</script>
+</@javascript>

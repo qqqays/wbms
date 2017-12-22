@@ -85,7 +85,7 @@ $('document').ready(function () {
 
     // ===============iframe===============
 
-    window.setInterval("setIframeHeight(document.getElementById('phone-i'));", 1000);
+    window.setInterval("setIframeHeight(document.getElementById('myFrame'));", 1000);
 
 
 });

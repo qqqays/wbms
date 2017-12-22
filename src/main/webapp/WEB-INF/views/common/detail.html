@@ -36,7 +36,7 @@
                 </div>
                 <div class="col-md-6 pull-left">
                     <#include "/common/paginate.html" />
-                    <@paginate currentPage=detailDatagram.getCurrent() totalPage=detailDatagram.getPages() actionUrl="${actionUrl}" urlParas="${s!}"  />
+                    <@paginate currentPage=detailDatagram.getCurrent() totalPage=detailDatagram.getPages() actionUrl="${actionUrl}" urlParas="${sz!}${s!}"  />
                 </div>
                 </#if>
             </div>

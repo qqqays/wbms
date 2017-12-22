@@ -2,7 +2,6 @@ package com.shuwang.wbms.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
-import com.shuwang.wbms.common.controller.PageController;
 import com.shuwang.wbms.common.controller.ProController;
 import com.shuwang.wbms.entity.DetailEntity;
 import com.shuwang.wbms.entity.MenuEntity;
@@ -61,13 +60,16 @@ public class GeneralShowController extends ProController{
 
         } else if (me.getContentType().equals("display")) {
 
-            MenuEntity menuEntity = menuService.selectOne(new EntityWrapper<MenuEntity>().eq("pid", "about").eq("deep",1).orderBy("sort"));
+            if (me.isHasSub()) {
+                me = menuService.selectOne(new EntityWrapper<MenuEntity>().eq("pid", topMenu).eq("deep", 1).orderBy("sort"));
+            }
 
-            List<SplContentEntity> splContentEntities = splContentService.selectList(new EntityWrapper<SplContentEntity>().eq("pid", menuEntity.getId()).eq("state", 1));
+            List<SplContentEntity> splContentEntities = splContentService.selectList(new EntityWrapper<SplContentEntity>().eq("pid", me.getId()).eq("state", 1));
 
             model.addAttribute("contents", splContentEntities);
 
-            return "/display/" + topMenu;
+//            return "/display/" + topMenu;
+            return "/display/generalSplPage";
 
         }else {
             return "";

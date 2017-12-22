@@ -32,6 +32,19 @@ public class GeneralUpdateController {
     @Autowired
     private ISeoService seoService;
 
+    @PutMapping("/seo")
+    public String updateSeo(SeoEntity seoEntity) {
+
+        return seoEntity.updateById() + " update";
+    }
+
+    @PutMapping("/sysConfig")
+    public String updateSysConfig(SysConfigEntity sysConfigEntity) {
+
+        return sysConfigEntity.updateById() + " update";
+
+    }
+
     @PostMapping("/info")
     public String postInfo(DetailEntity detailEntity) {
 
@@ -44,17 +57,25 @@ public class GeneralUpdateController {
         return splContentEntity.insert() + " insert";
     }
 
-    @PutMapping("/seo")
-    public String updateSeo(SeoEntity seoEntity) {
+    @PutMapping("/info")
+    public String updateDetail(DetailEntity detailEntity) {
 
-        return seoEntity.updateById() + " update";
+        return detailEntity.updateById() + " update";
     }
 
-    @PutMapping("/sysConfig")
-    public String updateSysConfig(SysConfigEntity sysConfigEntity) {
+    @PutMapping("/display")
+    public String updateSplContent(SplContentEntity splContentEntity) {
+        return splContentEntity.updateById() + " update";
+    }
 
-        return sysConfigEntity.updateById() + " update";
+    @DeleteMapping("/info/{id}")
+    public String deleteDetail(@PathVariable String id) {
+        return detailService.deleteById(id) + " delete";
+    }
 
+    @DeleteMapping("/display/{id}")
+    public String deleteSplContent(@PathVariable String id) {
+        return splContentService.deleteById(id) + " delete";
     }
 
 }

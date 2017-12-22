@@ -1,5 +1,5 @@
 <div class="box box-success">
-    <div class="box-header with-border">
+    <div class="box-header with-border bg-green">
         <h3 class="box-title">静态展示页面发布</h3>
         <div class="pull-right box-tools">
             <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse">
@@ -72,11 +72,11 @@
     <!-- /.box-body -->
 
     <div class="box-footer">
-        <button id="dpl-add" type="button" class="btn btn-warning">新增</button>
+        <button id="dpl-add" type="button" class="btn btn-warning btn-flat">新增</button>
 
-        <#if seoConfig??>
-            <button id="dpl-update" type="button" class="btn btn-primary">修改</button>
-            <button id="dpl-delete" type="button" class="btn btn-default">删除</button>
+        <#if display??>
+            <button id="dpl-update" type="button" class="btn btn-primary btn-flat">修改</button>
+            <button id="dpl-delete" type="button" class="btn btn-default btn-flat">删除</button>
             <#else>
         </#if>
     </div>

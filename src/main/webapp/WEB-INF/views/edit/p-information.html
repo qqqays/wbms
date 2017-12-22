@@ -14,12 +14,18 @@
             <div class="row">
                 <!-- right column -->
                 <div class="col-md-12">
+                    <#include "/edit/common/e-info-module.html">
+
                     <#include "/edit/common/information-module.html">
                 </div>
                 <!--/.col (right) -->
             </div>
             <!-- /.row -->
         </section>
+</div>
+
+<div class="hidden" id = "hidden-content">
+    ${info.content!}
 </div>
 <!--</form>-->
 </@body>
@@ -36,11 +42,19 @@
     });
 
     $('#info-updateDate').datepicker({
+        todayHighlight:true,
         format: 'yyyy-mm-dd',
         autoclose:true
     });
 
     $('document').ready(function () {
+
+//        选择编辑列表
+        getINfoList();
+
+        CKEDITOR.instances.editor.setData($('#hidden-content').html());
+
+
         $('#submit-info-banner').click(function () {
             pushImg('info-banner-upload', '', '', 'info', 'info-banner');
         });
@@ -52,6 +66,8 @@
 
         $('#info-add').click(function () {
 
+            var today = new Date().toLocaleDateString().replace(/\//g, '-');
+
             var paramArray = $('#info-menu').val().split(",");
 
             var title = $('#info-title').val();
@@ -60,14 +76,44 @@
             var clicks = $('#info-clicks').val();
             var publisher = $('#info-publisher').val();
             var state = $('#info-state')[0].value == 1 ? true : false;
-            var updateDate = $('#info-updateDate').val();
-            var createDate = $('#info-createDate').val();
+            var updateDate = $('#info-updateDate').val() == '' ? today : $('#info-updateDate').val();
+            var createDate = $('#info-createDate').val() == '' ? today : $('#info-createDate').val();
             var bannerImg = $('#info-banner')[0].attributes['src'].value;
             var coverImg = $('#info-cover')[0].attributes['src'].value;
             var class1 = paramArray[0];
             var class2 = paramArray[1];
 
             push_info(title, description, content, clicks, publisher, state, updateDate, createDate, bannerImg, coverImg, class1, class2);
+        });
+
+        $('#info-update').click(function () {
+
+
+            var today = new Date().toLocaleDateString().replace(/\//g, '-');
+
+            var paramArray = $('#info-menu').val().split(",");
+
+            var id = $('#info-id').val();
+            var title = $('#info-title').val();
+            var description = $('#info-description').val();
+            var content = CKEDITOR.instances.editor.getData();
+            var clicks = $('#info-clicks').val();
+            var publisher = $('#info-publisher').val();
+            var state = $('#info-state')[0].value == 1 ? true : false;
+            var updateDate = $('#info-updateDate').val() == '' ? today : $('#info-updateDate').val();
+            var createDate = $('#info-createDate').val() == '' ? today : $('#info-createDate').val();
+            var bannerImg = $('#info-banner')[0].attributes['src'].value;
+            var coverImg = $('#info-cover')[0].attributes['src'].value;
+            var class1 = paramArray[0];
+            var class2 = paramArray[1];
+
+            update_info(id, title, description, content, clicks, publisher, state, updateDate, createDate, bannerImg, coverImg, class1, class2);
+        });
+
+        $('#info-delete').click(function () {
+            var id = $('#info-id').val();
+
+            delete_info(id);
         });
 
     });

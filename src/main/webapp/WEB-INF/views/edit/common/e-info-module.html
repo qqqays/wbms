@@ -1,6 +1,6 @@
 <div class="box box-warning">
-    <div class="box-header with-border bg-gray">
-        <h3 class="box-title">基本展示页面 编辑列表</h3>
+    <div class="box-header with-border bg-gray-light">
+        <h3 class="box-title">信息 消息 列表</h3>
         <!--<div class="box-tools">-->
             <!--<div class="input-group input-group-sm" style="width: 150px;">-->
                 <!--<input type="text" name="table_search" class="form-control pull-right" placeholder="Search">-->
@@ -15,13 +15,13 @@
                 <i class="fa fa-minus"></i></button>
 
             <button type="button" class="btn btn-default btn-sm" data-widget="remove" data-toggle="tooltip" title="" data-original-title="Remove">
-                <i class="fa fa-times"></i></button>
+            <i class="fa fa-times"></i></button>
         </div>
     </div>
     <!-- /.box-header -->
-    <div class="box-body bg-red">
+    <div class="box-body">
         <table class="table table-bordered table-hover">
-            <tbody id = 'dplList' class="bg-gray">
+            <tbody id = 'infoList' class="bg-gray">
 
             </tbody>
         </table>
@@ -29,11 +29,17 @@
     <!-- /.box-body -->
     <div class="box-footer clearfix">
         <ul class="pagination pagination-sm no-margin pull-right">
-            <li><a href="#">«</a></li>
-            <li><a href="#">1</a></li>
+            <li><a class="bg-blue" href="#">«</a></li>
+            <li><a class="bg-maroon" href="#">1</a></li>
             <li><a href="#">2</a></li>
             <li><a href="#">3</a></li>
-            <li><a href="#">»</a></li>
+            <li><a class="bg-blue" href="#">»</a></li>
         </ul>
     </div>
 </div>
+
+<script>
+    function pageing() {
+        
+    }
+</script>
