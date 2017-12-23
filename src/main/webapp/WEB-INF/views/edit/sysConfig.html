@@ -6,15 +6,15 @@
 
 <div class="content-wrapper" style="min-height: 1036px;">
     <!-- Content Header (Page header) -->
-    <#include "/edit/common/content-header-module.html">
+    <#include "/edit/common/content-header.html">
 
     <section class="content">
         <div class="row">
             <!-- right column -->
             <div class="col-md-12">
-                <#include "/edit/common/sysConfig-module.html">
+                <#include "/edit/module/sysConfig-module.html">
 
-                <#include "/edit/common/seo-module.html">
+                <#include "/edit/module/seo-module.html">
             </div>
             <!--/.col (right) -->
         </div>
@@ -36,10 +36,7 @@
             var desc = $('#seo-description').val();
             var author = $('#seo-author').val();
 
-            var sure = confirm("确定修改？");
-
-            if(sure)
-                modify_system_seo(id, title, keywords, desc, author);
+            modify_system_seo(id, title, keywords, desc, author);
         });
         
         $('#sysConfig-update').click(function () {

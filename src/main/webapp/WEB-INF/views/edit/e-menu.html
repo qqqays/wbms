@@ -4,15 +4,69 @@
 
 <@body>
 
-<div class="content-wrapper">
-    <div class="container">
-        <section class="content">
-            <h1>menu edit</h1>
+<div class="content-wrapper" style="min-height: 1036px;">
+    <!-- Content Header (Page header) -->
+    <#include "/edit/common/content-header.html">
 
+        <section class="content">
+            <div class="row">
+                <!-- right column -->
+                <div class="col-md-12 connectedSortable">
+                <#include "/edit/module/menu-list.html">
+
+                <#include "/edit/module/menu-edit.html">
+                </div>
+                <!--/.col (right) -->
+            </div>
+            <!-- /.row -->
         </section>
-    </div>
 </div>
 <!--</form>-->
 </@body>
 
-<@javascript></@javascript>
+<@javascript>
+<script>
+
+
+    $('document').ready(function () {
+//        menu list
+//        getDisplayList(1);
+
+//        $('.custom-box').addClass('collapsed-box');
+        $('.custom-collapse').click();
+
+
+        $('#submit-menu-banner').click(function () {
+            console.log("push images");
+            pushImg('menu-banner-upload', '', '', 'system', 'menu-banner');
+        });
+
+        $('#menu-add').click(function () {
+            var pid = $('#dpl-menu')[0].value;
+            var content = CKEDITOR.instances.editor.getData();
+            var iframeUrl = $('#dpl-iFrame').val();
+            var bannerImg = $('#dpl-banner')[0].attributes['src'].value;
+            var publisher = $('#dpl-publisher').val();
+            var state = $('#dpl-state')[0].value == 1 ? true : false;
+            push_display(pid, content, iframeUrl, bannerImg, publisher, state);
+        });
+
+        $('#menu-update').click(function () {
+            var id = $('#dpl-id').val();
+            var pid = $('#dpl-menu')[0].value;
+            var content = CKEDITOR.instances.editor.getData();
+            var iframeUrl = $('#dpl-iFrame').val();
+            var bannerImg = $('#dpl-banner')[0].attributes['src'].value;
+            var publisher = $('#dpl-publisher').val();
+            var state = $('#dpl-state')[0].value == 1 ? true : false;
+            update_display(id, pid, content, iframeUrl, bannerImg, publisher, state);
+        });
+
+        $('#menu-delete').click(function () {
+            var id = $('#dpl-id').val();
+            delete_display(id);
+        });
+
+    });
+</script>
+</@javascript>

@@ -1,0 +1,106 @@
+<div class="box box-success">
+    <div class="box-header with-border bg-green">
+        <h3 class="box-title">菜单编辑 模块</h3>
+        <div class="pull-right box-tools">
+            <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse">
+                <i class="fa fa-minus"></i></button>
+            <!--<button type="button" class="btn btn-default btn-sm" data-widget="remove" data-toggle="tooltip" title="" data-original-title="Remove">-->
+            <!--<i class="fa fa-times"></i></button>-->
+        </div>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <form role="form">
+            <!--id-->
+            <div class="form-group">
+                <input id="menu-id" type="text" value="${menu.id!}" class="form-control" placeholder="This input text will be your url, carefully">
+            </div>
+
+            <!-- menu name -->
+            <div class="form-group">
+                <label>menu</label>
+                <input id="menu-iFrame" type="text" value="${menu.menuName!}" class="form-control" placeholder="菜单名称...">
+            </div>
+
+            <!--menu deep-->
+            <div class="form-group">
+                <label>deep</label>
+                <select id="menu-state" class="form-control">
+                    <option value="0" ${(menu.deep ==0)?string('selected="selected"','')}>top</option>
+                    <option value="1" ${(menu.deep ==1)?string('selected="selected"','')}>sub</option>
+                </select>
+            </div>
+
+            <!--parent menu-->
+            <div class="form-group">
+                <label>pid</label>
+                <select id="menu-pid" class="form-control">
+                    <option value="">null</option>
+                    <#list allMenus as topMenu>
+                        <#if topMenu.deep == 0>
+                            <option value="${topMenu.id}" ${(menu.pid == topMenu.id)?string('selected="selected"','')}>${topMenu.menuName}</option>
+                        </#if>
+                    </#list>
+                </select>
+            </div>
+
+            <!--sort-->
+            <div class="form-group">
+                <label>sort</label>
+                <input id="menu-sort" type="number" value="${menu.sort!}" class="form-control" placeholder="sort...">
+            </div>
+
+            <!-- icon -->
+            <div class="form-group">
+                <label>icon</label>
+                <input id="menu-icon" type="text" value="${menu.icon!}" class="form-control" placeholder="icon...">
+            </div>
+
+            <!--display-->
+            <div class="form-group">
+                <label>display</label>
+                <input id="menu-display" type="number" value="${menu.display!}" class="form-control" placeholder="display...">
+            </div>
+
+            <!--hasSub-->
+            <div class="form-group">
+                <label>hasSub</label>
+                <select id="menu-hasSub" class="form-control">
+                    <option value="0" ${(menu.hasSub ==0)?string('selected="selected"','')}>no</option>
+                    <option value="1" ${(menu.hasSub ==1)?string('selected="selected"','')}>yes</option>
+                </select>
+            </div>
+
+            <!--banner-->
+            <div class="form-group">
+                <label for="menu-banner-upload">banner图</label>
+                <input type="file" required="required" id="menu-banner-upload">
+                <button id="submit-menu-banner" type="button" class="btn btn-warning">确认上传</button>
+
+                <p class="help-block">点击上传banner图</p>
+                <img title="没有图片" id="menu-banner" src="${(menu.bannerImg)!''}">
+            </div>
+
+            <!--content type-->
+            <div class="form-group">
+                <label>content type</label>
+                <select id="menu-contentType" class="form-control">
+                    <option value="info" ${(menu.contentType == 'info')?string('selected="selected"','')}>info</option>
+                    <option value="display" ${(menu.cotnentType == 'display')?string('selected="selected"','')}>display</option>
+                </select>
+            </div>
+
+        </form>
+    </div>
+    <!-- /.box-body -->
+
+    <div class="box-footer">
+        <button id="menu-add" type="button" class="btn btn-warning">新增</button>
+
+        <#if menu??>
+            <button id="menu-update" type="button" class="btn btn-primary">修改</button>
+            <button id="menu-delete" type="button" class="btn btn-default">删除</button>
+            <#else>
+        </#if>
+    </div>
+</div>

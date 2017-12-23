@@ -6,15 +6,15 @@
 
 <div class="content-wrapper" style="min-height: 1036px;">
     <!-- Content Header (Page header) -->
-    <#include "/edit/common/content-header-module.html">
+    <#include "/edit/common/content-header.html">
 
         <section class="content">
             <div class="row">
                 <!-- right column -->
-                <div class="col-md-12">
-                    <#include "/edit/common/e-display-module.html">
+                <div class="col-md-12 connectedSortable">
+                    <#include "/edit/module/display-list.html">
 
-                    <#include "/edit/common/display-module.html">
+                    <#include "/edit/module/display-edit.html">
                 </div>
                 <!--/.col (right) -->
             </div>
@@ -30,7 +30,6 @@
 
 <@javascript>
 <script>
-
 
     $('document').ready(function () {
 //        display list

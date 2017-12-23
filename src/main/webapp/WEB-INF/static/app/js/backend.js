@@ -1,43 +1,11 @@
-// 修改 系统 seo
-function modify_system_seo(id, title, keywords, description, author) {
-
-    var sure = confirm("确定修改？");
-
-    if (sure)
+// 公共 ajax
+function generalAjax(url, type, data, tip) {
+    var sure = confirm("确认" + tip + "?");
+    if(sure)
         $.ajax({
-            url: '/backend/seo',
-            type: 'PUT',
-            data: {id: id, pid: '', pageTitle: title, keywords: keywords, description: description, author: author},
-            success: function (d, s) {
-                alert(d);
-                // console.log(d);
-            },
-            error: function (d, s) {
-                console.log(d + s);
-            }
-        });
-}
-
-// 修改 系统配置
-function modify_system_config(id, webName, icon, logo, sharesName, sharesCode, email, phone, licensing) {
-
-    var sure = confirm("确定修改？");
-
-    if (sure)
-        $.ajax({
-            url: '/backend/sysConfig',
-            type: 'PUT',
-            data: {
-                id: id,
-                webName: webName,
-                icon: icon,
-                logo: logo,
-                sharesName: sharesName,
-                sharesCode: sharesCode,
-                email: email,
-                phone: phone,
-                licensing: licensing
-            },
+            url: url,
+            type: type,
+            data: data,
             success: function (d, s) {
                 alert(d);
             },
@@ -47,64 +15,12 @@ function modify_system_config(id, webName, icon, logo, sharesName, sharesCode, e
         });
 }
 
-// 新增 展示页面
-function push_display(pid, content, iframeUrl, bannerImg, publisher, state) {
-
-    $.ajax({
-        url: '/api/upload/display',
-        type: 'post',
-        data: {
-            pid: pid,
-            content: content,
-            iframeUrl: iframeUrl,
-            bannerImg: bannerImg,
-            publisher: publisher,
-            state: state
-        },
-        success: function (d, s) {
-            alert(d);
-        },
-        error: function (d, s) {
-            console.log(d + s);
-        }
-    });
-}
-
-// 修改 展示页面
-function update_display(id, pid, content, iframeUrl, bannerImg, publisher, state) {
-
-    var sure = confirm("确定修改？");
-    if (sure)
+function generalAjaxSimple(url, type, tip) {
+    var sure = confirm("确认" + tip + "?");
+    if(sure)
         $.ajax({
-            url: '/api/upload/display',
-            type: 'put',
-            data: {
-                id: id,
-                pid: pid,
-                content: content,
-                iframeUrl: iframeUrl,
-                bannerImg: bannerImg,
-                publisher: publisher,
-                state: state
-            },
-            success: function (d, s) {
-                alert(d);
-            },
-            error: function (d, s) {
-                console.log(d + s);
-            }
-        });
-}
-
-// 删除 展示页面
-function delete_display(id) {
-
-    var sure = confirm("确定删除？");
-
-    if (sure)
-        $.ajax({
-            url: '/api/upload/display/' + id,
-            type: 'delete',
+            url: url,
+            type: type,
             data: {},
             success: function (d, s) {
                 alert(d);
@@ -115,84 +31,152 @@ function delete_display(id) {
         });
 }
 
+function general_post(url, data) {
+    generalAjax(url, 'POST', data, '新增');
+}
+
+function general_put(url, data) {
+    generalAjax(url, 'PUT', data, '修改');
+}
+
+function general_delete(url) {
+    generalAjaxSimple(url, 'DELETE','删除');
+    window.location.reload();
+}
+
+// =======================================================================common ajax above
+
+// 修改 系统 seo
+function modify_system_seo(id, title, keywords, description, author) {
+
+    var url = '/api/upload/seo';
+
+    var data = {
+        id:id,
+        pid:'',
+        pageTitle:title,
+        keywords:keywords,
+        description: description,
+        author: author
+    };
+
+    general_put(url, data);
+}
+
+// 修改 系统配置
+function modify_system_config(id, webName, icon, logo, sharesName, sharesCode, email, phone, licensing) {
+
+    var url = '/api/upload/sysConfig';
+
+    var data = {
+        id: id,
+        webName: webName,
+        icon: icon,
+        logo: logo,
+        sharesName: sharesName,
+        sharesCode: sharesCode,
+        email: email,
+        phone: phone,
+        licensing: licensing
+    };
+
+    general_put(url, data);
+}
+
+// 新增 展示页面
+function push_display(pid, content, iframeUrl, bannerImg, publisher, state) {
+
+    var url = '/api/upload/display';
+
+    var data =  {
+        pid: pid,
+        content: content,
+        iframeUrl: iframeUrl,
+        bannerImg: bannerImg,
+        publisher: publisher,
+        state: state
+    };
+
+    general_post(url, data);
+}
+
+// 修改 展示页面
+function update_display(id, pid, content, iframeUrl, bannerImg, publisher, state) {
+
+    var url = '/api/upload/display';
+
+    var data = {
+        id: id,
+        pid: pid,
+        content: content,
+        iframeUrl: iframeUrl,
+        bannerImg: bannerImg,
+        publisher: publisher,
+        state: state
+    };
+
+    general_put(url, data);
+}
+
+// 删除 展示页面
+function delete_display(id) {
+    var url = '/api/upload/display/' + id;
+    general_delete(url);
+}
+
 // 新增 文章
 function push_info(title, description, content, clicks, publisher, state, updateDate, createDate, bannerImg, coverImg, class1, class2) {
 
-    $.ajax({
-        url: '/api/upload/info',
-        type: 'post',
-        data: {
-            title: title,
-            description: description,
-            content: content,
-            clicks: parseInt(clicks),
-            publisher: publisher,
-            state: state,
-            updateDate: updateDate,
-            createDate: createDate,
-            bannerImg: bannerImg,
-            coverImg: coverImg,
-            class1: class1,
-            class2: class2
-        },
-        success: function (d, s) {
-            alert(d);
-        },
-        error: function (d, s) {
-            console.log(d + s);
-        }
-    });
+    var url = '/api/upload/info';
+
+    var data = {
+        title: title,
+        description: description,
+        content: content,
+        clicks: parseInt(clicks),
+        publisher: publisher,
+        state: state,
+        updateDate: updateDate,
+        createDate: createDate,
+        bannerImg: bannerImg,
+        coverImg: coverImg,
+        class1: class1,
+        class2: class2
+    };
+
+    general_post(url, data);
 }
 
 // 修改 文章
 function update_info(id, title, description, content, clicks, publisher, state, updateDate, createDate, bannerImg, coverImg, class1, class2) {
 
-    var sure = confirm("确定修改？");
+    var url = '/api/upload/info';
 
-    if (sure)
-        $.ajax({
-            url: '/api/upload/info',
-            type: 'put',
-            data: {
-                id: id,
-                title: title,
-                description: description,
-                content: content,
-                clicks: parseInt(clicks),
-                publisher: publisher,
-                state: state,
-                updateDate: updateDate,
-                createDate: createDate,
-                bannerImg: bannerImg,
-                coverImg: coverImg,
-                class1: class1,
-                class2: class2
-            },
-            success: function (d, s) {
-                alert(d);
-            },
-            error: function (d, s) {
-                console.log(d + s);
-            }
-        });
+    var data = {
+        id: id,
+        title: title,
+        description: description,
+        content: content,
+        clicks: parseInt(clicks),
+        publisher: publisher,
+        state: state,
+        updateDate: updateDate,
+        createDate: createDate,
+        bannerImg: bannerImg,
+        coverImg: coverImg,
+        class1: class1,
+        class2: class2
+    };
+
+    general_put(url, data);
 }
 
 // 删除 文章
 function delete_info(id) {
-    var sure = confirm("确定删除？");
 
-    if (sure)
-    $.ajax({
-        url: '/api/upload/info/' + id,
-        type: 'delete',
-        data: {},
-        success: function (d, s) {
-            alert(d);
-        },
-        error: function (d, s) {
-            console.log(d + s);
-        }
-    });
+    var url = '/api/upload/info/' + id;
+
+    general_delete(url);
 }
 
 // 上传图片
@@ -358,3 +342,13 @@ function getDisplayList(page) {
         }
     });
 }
+
+$('.connectedSortable').sortable({
+    placeholder         : 'sort-highlight',
+    connectWith         : '.connectedSortable',
+    handle              : '.box-header, .nav-tabs',
+    forcePlaceholderSize: true,
+    zIndex              : 999999
+});
+
+$('.connectedSortable .box-header, .connectedSortable .nav-tabs-custom').css('cursor', 'move');
