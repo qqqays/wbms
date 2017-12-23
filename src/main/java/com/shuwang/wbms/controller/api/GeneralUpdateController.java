@@ -1,9 +1,6 @@
 package com.shuwang.wbms.controller.api;
 
-import com.shuwang.wbms.entity.DetailEntity;
-import com.shuwang.wbms.entity.SeoEntity;
-import com.shuwang.wbms.entity.SplContentEntity;
-import com.shuwang.wbms.entity.SysConfigEntity;
+import com.shuwang.wbms.entity.*;
 import com.shuwang.wbms.service.IDetailService;
 import com.shuwang.wbms.service.IMenuService;
 import com.shuwang.wbms.service.ISeoService;
@@ -57,6 +54,11 @@ public class GeneralUpdateController {
         return splContentEntity.insert() + " insert";
     }
 
+    @PostMapping("/menu")
+    public String postMenu(MenuEntity menuEntity){
+        return menuEntity.insert() + " insert";
+    }
+
     @PutMapping("/info")
     public String updateDetail(DetailEntity detailEntity) {
 
@@ -68,6 +70,11 @@ public class GeneralUpdateController {
         return splContentEntity.updateById() + " update";
     }
 
+    @PutMapping("/menu")
+    public String updateMenu(MenuEntity menuEntity){
+        return menuEntity.updateById() + " update";
+    }
+
     @DeleteMapping("/info/{id}")
     public String deleteDetail(@PathVariable String id) {
         return detailService.deleteById(id) + " delete";
@@ -76,6 +83,11 @@ public class GeneralUpdateController {
     @DeleteMapping("/display/{id}")
     public String deleteSplContent(@PathVariable String id) {
         return splContentService.deleteById(id) + " delete";
+    }
+
+    @DeleteMapping("/menu/{id}")
+    public String deleteMenu(@PathVariable String id) {
+        return menuService.deleteById(id) + " delete";
     }
 
 }

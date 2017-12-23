@@ -27,7 +27,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping
-public class GeneralShowController extends ProController{
+public class GeneralShowController extends ProController {
 
     @Autowired
     private ISplContentService splContentService;
@@ -64,14 +64,16 @@ public class GeneralShowController extends ProController{
                 me = menuService.selectOne(new EntityWrapper<MenuEntity>().eq("pid", topMenu).eq("deep", 1).orderBy("sort"));
             }
 
-            List<SplContentEntity> splContentEntities = splContentService.selectList(new EntityWrapper<SplContentEntity>().eq("pid", me.getId()).eq("state", 1));
+            List<SplContentEntity> splContentEntities = null;
+            if (me != null)
+              splContentEntities = splContentService.selectList(new EntityWrapper<SplContentEntity>().eq("pid", me.getId()).eq("state", 1));
 
             model.addAttribute("contents", splContentEntities);
 
 //            return "/display/" + topMenu;
             return "/display/generalSplPage";
 
-        }else {
+        } else {
             return "";
 
         }

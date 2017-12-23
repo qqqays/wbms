@@ -19,16 +19,7 @@
             <!-- menu name -->
             <div class="form-group">
                 <label>menu</label>
-                <input id="menu-iFrame" type="text" value="${menu.menuName!}" class="form-control" placeholder="菜单名称...">
-            </div>
-
-            <!--menu deep-->
-            <div class="form-group">
-                <label>deep</label>
-                <select id="menu-state" class="form-control">
-                    <option value="0" ${(menu.deep ==0)?string('selected="selected"','')}>top</option>
-                    <option value="1" ${(menu.deep ==1)?string('selected="selected"','')}>sub</option>
-                </select>
+                <input id="menu-name" type="text" value="${menu.menuName!}" class="form-control" placeholder="菜单名称...">
             </div>
 
             <!--parent menu-->
@@ -41,6 +32,15 @@
                             <option value="${topMenu.id}" ${(menu.pid == topMenu.id)?string('selected="selected"','')}>${topMenu.menuName}</option>
                         </#if>
                     </#list>
+                </select>
+            </div>
+
+            <!--menu deep-->
+            <div class="form-group">
+                <label>deep</label>
+                <select id="menu-deep" class="form-control">
+                    <option value="0" ${(menu.deep ==0)?string('selected="selected"','')}>top</option>
+                    <option value="1" ${(menu.deep ==1)?string('selected="selected"','')}>sub</option>
                 </select>
             </div>
 

@@ -1,7 +1,12 @@
 // 公共 ajax
 function generalAjax(url, type, data, tip) {
-    var sure = confirm("确认" + tip + "?");
-    if(sure)
+
+    var sure = true;
+
+    if (tip != '')
+        sure = confirm("确认" + tip + "?");
+
+    if (sure)
         $.ajax({
             url: url,
             type: type,
@@ -15,9 +20,23 @@ function generalAjax(url, type, data, tip) {
         });
 }
 
+function generalAjaxPro(url, type, data) {
+
+    var tip = '操作';
+    if (type.toUpperCase() == 'PUT')
+        tip = '修改';
+    if (type.toUpperCase() == 'POST')
+        tip = '增加';
+    if (type.toUpperCase() == 'DELETE')
+        tip = '删除';
+
+    generalAjax(url, type, data, tip);
+
+}
+
 function generalAjaxSimple(url, type, tip) {
     var sure = confirm("确认" + tip + "?");
-    if(sure)
+    if (sure)
         $.ajax({
             url: url,
             type: type,
@@ -40,7 +59,7 @@ function general_put(url, data) {
 }
 
 function general_delete(url) {
-    generalAjaxSimple(url, 'DELETE','删除');
+    generalAjaxSimple(url, 'DELETE', '删除');
     window.location.reload();
 }
 
@@ -52,10 +71,10 @@ function modify_system_seo(id, title, keywords, description, author) {
     var url = '/api/upload/seo';
 
     var data = {
-        id:id,
-        pid:'',
-        pageTitle:title,
-        keywords:keywords,
+        id: id,
+        pid: '',
+        pageTitle: title,
+        keywords: keywords,
         description: description,
         author: author
     };
@@ -83,12 +102,40 @@ function modify_system_config(id, webName, icon, logo, sharesName, sharesCode, e
     general_put(url, data);
 }
 
+//put 修改菜单， post 新增菜单
+function operate_menu(id, menuName, pid, url, icon, sort, deep, display, hasSub, bannerImg, contentType, type) {
+    var up_url = "/api/upload/menu";
+
+    var data = {
+        id: id,
+        menuName: menuName,
+        pid: pid,
+        url: url,
+        icon: icon,
+        sort: sort,
+        deep: deep,
+        display: display,
+        hasSub: hasSub,
+        bannerImg: bannerImg,
+        contentType: contentType
+    };
+
+    generalAjaxPro(up_url, type, data);
+}
+
+
+// 删除 菜单
+function delete_menu(id) {
+    var url = '/api/upload/menu/' + id;
+    general_delete(url)
+}
+
 // 新增 展示页面
 function push_display(pid, content, iframeUrl, bannerImg, publisher, state) {
 
     var url = '/api/upload/display';
 
-    var data =  {
+    var data = {
         pid: pid,
         content: content,
         iframeUrl: iframeUrl,
@@ -344,11 +391,11 @@ function getDisplayList(page) {
 }
 
 $('.connectedSortable').sortable({
-    placeholder         : 'sort-highlight',
-    connectWith         : '.connectedSortable',
-    handle              : '.box-header, .nav-tabs',
+    placeholder: 'sort-highlight',
+    connectWith: '.connectedSortable',
+    handle: '.box-header, .nav-tabs',
     forcePlaceholderSize: true,
-    zIndex              : 999999
+    zIndex: 999999
 });
 
 $('.connectedSortable .box-header, .connectedSortable .nav-tabs-custom').css('cursor', 'move');

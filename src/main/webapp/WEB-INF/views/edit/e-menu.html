@@ -27,6 +27,22 @@
 <@javascript>
 <script>
 
+    function push_data(type) {
+        var id = $('#menu-id').val();
+        var menuName = $('#menu-name').val();
+        var pid = $('#menu-pid').val();
+        var url = $('#menu-pid').val() + "/" + $('#menu-id').val();
+        var icon = $('#menu-icon').val();
+        var sort = $('#menu-sort').val();
+        var deep = $('#menu-deep').val();
+        var display = $('#menu-display').val();
+        var hasSub = $('#menu-hasSub').val() == 0 ? false : true;
+        var bannerImg = $('#menu-banner')[0].attributes['src'].value;
+        var contentType = $('#menu-contentType').val();
+
+        operate_menu(id, menuName, pid, url, icon, sort, deep, display, hasSub, bannerImg,contentType, type);
+    }
+
 
     $('document').ready(function () {
 //        menu list
@@ -42,29 +58,16 @@
         });
 
         $('#menu-add').click(function () {
-            var pid = $('#dpl-menu')[0].value;
-            var content = CKEDITOR.instances.editor.getData();
-            var iframeUrl = $('#dpl-iFrame').val();
-            var bannerImg = $('#dpl-banner')[0].attributes['src'].value;
-            var publisher = $('#dpl-publisher').val();
-            var state = $('#dpl-state')[0].value == 1 ? true : false;
-            push_display(pid, content, iframeUrl, bannerImg, publisher, state);
+            push_data('POST');
         });
 
         $('#menu-update').click(function () {
-            var id = $('#dpl-id').val();
-            var pid = $('#dpl-menu')[0].value;
-            var content = CKEDITOR.instances.editor.getData();
-            var iframeUrl = $('#dpl-iFrame').val();
-            var bannerImg = $('#dpl-banner')[0].attributes['src'].value;
-            var publisher = $('#dpl-publisher').val();
-            var state = $('#dpl-state')[0].value == 1 ? true : false;
-            update_display(id, pid, content, iframeUrl, bannerImg, publisher, state);
+            push_data('PUT');
         });
 
         $('#menu-delete').click(function () {
-            var id = $('#dpl-id').val();
-            delete_display(id);
+            var id = $('#menu-id').val();
+            delete_menu(id);
         });
 
     });
