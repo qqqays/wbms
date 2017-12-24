@@ -347,25 +347,25 @@ function getInfoList(page) {
 // ====================display list assemble=====================
 function assembleTable4dpl(json) {
     var str = '            <tr class="bg-aqua">\n' +
-        '                <th>id</th>\n' +
+        // '                <th>id</th>\n' +
         '                <th>pid</th>\n' +
         '                <th>iFrameUrl</th>\n' +
         '                <th>bannerImg</th>\n' +
         '                <th>作者</th>\n' +
         '                <th>状态</th>\n' +
-        '                <th>创建日期</th>\n' +
+        // '                <th>创建日期</th>\n' +
         '                <th class="bg-orange">编辑</th>\n' +
         '            </tr>'
 
     $.each(json, function (index, info) {
         str += '<tr>' +
-            '<td>' + info["id"] + '</td>' +
+            // '<td>' + info["id"] + '</td>' +
             '<td>' + info["pid"] + '</td>' +
             '<td>' + info["iframeUrl"] + '</td>' +
             '<td>' + info["bannerImg"] + '</td>' +
             '<td>' + info["publisher"] + '</td>' +
             '<td>' + info["state"] + '</td>' +
-            '<td>' + info["createTime"] + '</td>' +
+            // '<td>' + info["createTime"] + '</td>' +
             '<td><a href="/backend/p-display/' + info["id"] + '">编辑 </a> <a class="pull-right" href="javascript:void(0)" onclick="delete_info(\'' + info["id"] + '\')"> 删除</a></td>' +
             '</tr>';
     });
