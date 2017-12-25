@@ -31,7 +31,8 @@
         var id = $('#menu-id').val();
         var menuName = $('#menu-name').val();
         var pid = $('#menu-pid').val();
-        var url = $('#menu-pid').val() + "/" + $('#menu-id').val();
+        var parent_url = $('#menu-pid').val() == '' ? '' : '/' + $('#menu-pid').val();
+        var url = parent_url + "/" + $('#menu-id').val();
         var icon = $('#menu-icon').val();
         var sort = $('#menu-sort').val();
         var deep = $('#menu-deep').val();
@@ -46,7 +47,7 @@
 
     $('document').ready(function () {
 //        menu list
-//        getDisplayList(1);
+        getMenuList(1);
 
 //        $('.custom-box').addClass('collapsed-box');
         $('.custom-collapse').click();

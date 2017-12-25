@@ -330,7 +330,7 @@ function assembleTable4info(json) {
 
 function getInfoList(page) {
     $.ajax({
-        url: '/api/details',
+        url: '/api/gains/details',
         type: 'get',
         data: {pageNumber: page},
         success: function (d, s) {
@@ -376,7 +376,7 @@ function assembleTable4dpl(json) {
 
 function getDisplayList(page) {
     $.ajax({
-        url: '/api/splContents',
+        url: '/api/gains/splContents',
         type: 'get',
         data: {pageNumber: page},
         success: function (d, s) {
@@ -390,6 +390,75 @@ function getDisplayList(page) {
     });
 }
 
+// ==========================menu list assemble=====================
+function assembleTable4menu(json) {
+    var str =   '<tr class="bg-aqua">\n' +
+                '    <th>id</th>\n' +
+                '    <th>栏目名</th>\n' +
+                '    <th>父菜单</th>\n' +
+                '    <th>url</th>\n' +
+                '    <th>sort</th>\n' +
+                '    <th>display</th>\n' +
+                '    <th>hasSub</th>\n' +
+                '    <th>bannerImg</th>\n' +
+                '    <th>contentType</th>\n' +
+                '    <th class="bg-orange">编辑</th>\n' +
+                '</tr>';
+
+    $.each(json, function (index, info) {
+       if(info['deep'] == 0) {
+           str +=  '<tr>\n' +
+                   '    <td>'+ info["id"] +'</td>\n' +
+                   '    <td><i class="fa '+ info['icon'] +'"></i>'+ info["menuName"] +'</td>\n' +
+                   '    <td>'+ info["pid"] +'</td>\n' +
+                   '    <td>'+ info["url"] +'</td>\n' +
+                   '    <td>'+ info["sort"] +'</td>\n' +
+                   '    <td>'+ info["display"] +'</td>\n' +
+                   '    <td>'+ info["hasSub"] +'</td>\n' +
+                   '    <td>'+ info["bannerImg"] +'</td>\n' +
+                   '    <td>'+ info["contentType"] +'</td>\n' +
+                   '<td><a href="/backend/e-menu/' + info["id"] + '">编辑 </a> <a class="pull-right" href="javascript:void(0)" onclick="delete_menu(\'' + info["id"] + '\')"> 删除</a></td>' +
+                   '</tr>';
+       }
+
+       $.each(json, function (subIndex, subInfo) {
+          if(subInfo['pid'] == info['id']){
+           str +=   '<tr>\n' +
+                   '    <td>'+ subInfo["id"] +'</td>\n' +
+                   '    <td class="bg-maroon">---<i class="fa '+ info['icon'] +'"></i>'+ subInfo["menuName"] +'</td>\n' +
+                   '    <td>'+ subInfo["pid"] +'</td>\n' +
+                   '    <td>'+ subInfo["url"] +'</td>\n' +
+                   '    <td>'+ subInfo["sort"] +'</td>\n' +
+                   '    <td>'+ subInfo["display"] +'</td>\n' +
+                   '    <td>'+ subInfo["hasSub"] +'</td>\n' +
+                   '    <td>'+ subInfo["bannerImg"] +'</td>\n' +
+                   '    <td>'+ subInfo["contentType"] +'</td>\n' +
+                   '<td><a href="/backend/e-menu/' + subInfo["id"] + '">编辑 </a> <a class="pull-right" href="javascript:void(0)" onclick="delete_menu(\'' + subInfo["id"] + '\')"> 删除</a></td>' +
+                   '</tr>';
+          }
+       });
+    });
+
+    $('#menuList').html(str);
+}
+
+function getMenuList(page) {
+    $.ajax({
+        url: '/api/gains/menus',
+        type: 'get',
+        data:{pageNumber: page},
+        success: function (d, s) {
+            var json = JSON.parse(d);
+            assembleTable4menu(json['records']);
+            paging(json['pages'], json['current'], 'menu-footer', 'getMenuList');
+        },
+        error:function (d,s) {
+            console(d + s );
+        }
+    });
+}
+
+// ==========================jquery ui===================
 $('.connectedSortable').sortable({
     placeholder: 'sort-highlight',
     connectWith: '.connectedSortable',

@@ -2,6 +2,7 @@ package com.shuwang.wbms.common.util;
 
 import com.shuwang.wbms.common.enums.DisplayEnum;
 import com.shuwang.wbms.entity.MenuEntity;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -31,8 +32,9 @@ public class MenuPickUtil {
                     canSetActive = false;
                 } else if (me.getId().equals(act)) {
                     me.setActive(true);
-                    request.setAttribute("bannerImg", me.getBannerImg());
-                }else {
+                    if (StringUtils.isNotBlank(me.getBannerImg()))
+                        request.setAttribute("bannerImg", me.getBannerImg());
+                } else {
                     me.setActive(false);
                 }
 

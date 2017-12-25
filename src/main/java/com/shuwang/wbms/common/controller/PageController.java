@@ -14,22 +14,6 @@ import org.springframework.ui.Model;
 public class PageController {
 
     /**
-     * Gains the list of details
-     *
-     * @param iService
-     * @param pageNumber
-     * @param pageSize
-     * @param search
-     * @param type
-     * @param <T>
-     * @return
-     */
-    public <T> Page<T> datagram(IService<T> iService, Integer pageNumber, Integer pageSize, String search, String... type) {
-        String[] searchColumn = {"description", "title"};
-        return datagram(iService, pageNumber, pageSize, search, "updateDate", searchColumn, type);
-    }
-
-    /**
      * Base function for list of entity
      *
      * @param iService
@@ -70,7 +54,24 @@ public class PageController {
     }
 
     /**
+     * Gains the list of details
+     *
+     * @param iService
+     * @param pageNumber
+     * @param pageSize
+     * @param search
+     * @param type
+     * @param <T>
+     * @return
+     */
+    public <T> Page<T> datagram(IService<T> iService, Integer pageNumber, Integer pageSize, String search, String... type) {
+        String[] searchColumn = {"description", "title"};
+        return datagram(iService, pageNumber, pageSize, search, "updateDate", searchColumn, type);
+    }
+
+    /**
      * Simple struct for gaining entity of list.
+     *
      * Orders by id, page size equ 15, null of search, null of type.
      * @param iService
      * @param pageNumber
@@ -78,8 +79,21 @@ public class PageController {
      * @return
      */
     public <T> Page<T> datagram(IService<T> iService, Integer pageNumber) {
+        return datagram(iService, pageNumber, "id");
+    }
+
+    /**
+     * customs sort of columns
+     *
+     * @param iService
+     * @param pageNumber
+     * @param sort
+     * @param <T>
+     * @return
+     */
+    public <T> Page<T> datagram(IService<T> iService, Integer pageNumber, String sort){
         String[] fuck = {};
-        return datagram(iService, pageNumber, 15, "", "id", fuck);
+        return datagram(iService, pageNumber, 15, "", sort, fuck);
     }
 
     /**
