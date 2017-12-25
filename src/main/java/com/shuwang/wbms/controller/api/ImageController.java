@@ -132,4 +132,20 @@ public class ImageController extends ProController{
         return new JSONObject(datagram(imageService, pageNumber, pageSize, search, "originName", searchColumn, content)).toString();
     }
 
+    @GetMapping("")
+    public String acquireAllImg(@RequestParam(defaultValue = "0") Integer pageNumber, @RequestParam(defaultValue = "15") Integer pageSize, @RequestParam(defaultValue = "") String search) {
+        String[] searchColumn = {"originName", "alt", "title", "class1"};
+        return new JSONObject(datagram(imageService, pageNumber, pageSize, search, "originName", searchColumn)).toString();
+    }
+
+    @PutMapping("/{id}")
+    public String updateImg(@PathVariable String id, @RequestParam String alt, @RequestParam String title){
+        ImageEntity ie = imageService.selectById(id);
+
+        ie.setAlt(alt);
+        ie.setTitle(title);
+
+        return ie.updateById() + " update";
+    }
+
 }

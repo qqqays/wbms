@@ -13,8 +13,9 @@
         <section class="content">
             <div class="row">
                 <!-- right column -->
-                <div class="col-md-12">
-                    <#include "/edit/module/img-select-module.html">
+                <div class="col-md-12 connectedSortable">
+                    <#include "/edit/module/image-list.html">
+                    <#include "/edit/module/image-edit.html">
                 </div>
                 <!--/.col (right) -->
             </div>
@@ -31,34 +32,16 @@
 <script type="text/javascript">
 
     $('document').ready(function () {
+        getImgList(1);
+        $('#img-edit').click(function () {
+            window.location = "/backend/e-images/" + selectImgTake.getSelectImgs('selectItemDiv')[0].id;
+        });
 
-        $.ajax({
-            url:'/api/images/system',
-            type:'get',
-            data:{},
-            success:function (d, s) {
-                var json = JSON.parse(d);
-
-                $.each(json['records'], function (index, info) {
-                    $('#selectItemDiv').append('            <div id="'+ info['id'] +'" class="item">\n' +
-                        '                   <div class="img_show">\n' +
-                        '                    <img src="' + info['url'] + '"/>\n' +
-                        '                   </div>\n' +
-                        '                   <div class="img_title">\n' +
-                        '                    ' + info['originName'] +
-                        '                   </div>\n' +
-                        '                   <div class="img_isCheck">\n' +
-                        '                    <i class="iconfont icon-xuanzhong"></i>\n' +
-                        '                   </div>\n' +
-                        '                   </div>' +
-                        '');
-                });
-
-                selectImgTake.init("selectItemDiv",1);
-            },
-            error:function (d, s) {
-                console.log(d + s);
-            }
+        $('#img-update').click(function () {
+            var id = $('#img-id').val();
+            var alt = $('#img-alt').val();
+            var title = $('#img-title').val();
+            put_img(id, alt, title);
         });
     });
 </script>
