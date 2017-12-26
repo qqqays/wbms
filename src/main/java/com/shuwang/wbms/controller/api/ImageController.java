@@ -31,7 +31,7 @@ public class ImageController extends ProController{
     @Autowired
     private ImageService imageService;
 
-    public String addImg(String relationPath, String absolutionPath, String alt, String title, String class1, MultipartFile file) {
+    public String addImg(String relationPath, String absolutionPath, String alt, String title, Integer width, Integer height, String class1, MultipartFile file) {
 
         String originName = file.getOriginalFilename();
         String imgRelationPath = relationPath + originName;
@@ -44,6 +44,8 @@ public class ImageController extends ProController{
         ie.setAbsolutePath(absolutionPath);
         ie.setAlt(alt);
         ie.setTitle(title);
+        ie.setWidth(width);
+        ie.setHeight(height);
         ie.setClass1(class1);
         ie.setUrl(imgRelationPath);
 
@@ -59,7 +61,7 @@ public class ImageController extends ProController{
     }
 
     @PostMapping("/{content}")
-    public String addImage(@RequestParam(defaultValue = "") String alt, @RequestParam(defaultValue = "") String title, @PathVariable String content, @RequestParam MultipartFile[] files) {
+    public String addImage(@RequestParam(defaultValue = "") String alt, @RequestParam(defaultValue = "") String title, @RequestParam(defaultValue = "0") Integer width, @RequestParam(defaultValue = "0") Integer height, @PathVariable String content, @RequestParam MultipartFile[] files) {
 
         String relationPath = WinFilePathEnum.relationPath.getCustomPath(content);
         String absolutionPath = WinFilePathEnum.absolutionPath.getCustomPath(content);
@@ -73,7 +75,7 @@ public class ImageController extends ProController{
             if (files != null)
                 if (files.length > 0) {
                     for (MultipartFile file : files) {
-                        jsonArray.put(addImg(relationPath, absolutionPath, alt, title, content, file));
+                        jsonArray.put(addImg(relationPath, absolutionPath, alt, title, width, height, content, file));
                     }
                 }
         } catch (Exception e) {
@@ -102,7 +104,7 @@ public class ImageController extends ProController{
 
                     if (file != null) {
 
-                        addImg(relationPath, absolutionPath, "", "", "ckEditor", file);
+                        addImg(relationPath, absolutionPath, "", "", 0, 0, "ckEditor", file);
 
                         response.setContentType("text/html;charset=UTF-8");
                         PrintWriter out = response.getWriter();

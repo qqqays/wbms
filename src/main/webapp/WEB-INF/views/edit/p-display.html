@@ -35,14 +35,22 @@
 //        display list
         getDisplayList(1);
 
+        getImgList4Modal(1, 'system', 'modal-img-paging');
+
 //        $('.custom-box').addClass('collapsed-box');
         $('.custom-collapse').click();
 
         CKEDITOR.instances.editor.setData($('#fuck').html());
 
-        $('#submit-dpl-banner').click(function () {
+//        $('#submit-dpl-banner').click(function () {
+//            console.log("push images");
+//            pushImg('dpl-banner-upload', '', '', 'system', 'dpl-banner');
+//        });
+
+        $('#dpl-banner-upload').on('change', function () {
             console.log("push images");
-            pushImg('dpl-banner-upload', '', '', 'system', 'dpl-banner');
+            pushImg(this.id, '', '', 'system', 'dpl-banner');
+            $('.close').click();
         });
 
         $('#dpl-add').click(function () {

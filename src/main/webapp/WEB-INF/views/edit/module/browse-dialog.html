@@ -1,0 +1,61 @@
+<#macro imageChoose inputId showId showSrc>
+
+    <div class="form-group">
+        <label>banner图</label>
+        <!--modal-->
+        <button id="" style="display: block;" type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-default">
+            选择图片
+        </button>
+
+        <div class="modal fade" id="modal-default" style="display: none;">
+            <div class="" style="max-width: 50%; margin: 15% auto">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+
+                        <!--<h4 class="modal-title">图片浏览</h4>-->
+                        <div class="btn-group">
+                            <button id = "slt-sys-img" type="button" class="btn btn-success">系统图片</button>
+                            <button id = "slt-info-img" type="button" class="btn btn-success">新闻图片</button>
+                            <button id = "slt-server-img" type="button" class="btn btn-success">服务器图片</button>
+                            <button id = "slt-content-img" type="button" class="btn btn-success">内容图片</button>
+                            <button id = "slt-other-img" type="button" class="btn btn-microsoft">其他</button>
+                        </div>
+
+                    </div>
+
+                    <div class="modal-body">
+                        <div id="modal-img-lst" class="clearfix">
+
+                            <!--<div title="name.png" class="img-item" style="background-image: url('/images/banner.png');">-->
+                                <!--<div class="widget-image-meta">310x249</div>-->
+                            <!--</div>-->
+
+                        </div>
+                        <hr>
+                        <div id = "modal-img-paging" class="clearfix"></div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                        <a href="javascript:;" class="file">上传图片
+                            <input type="file" required="required" id="${inputId}">
+                        </a>
+                    </div>
+
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+
+        <!--<button id="submit-dpl-banner" type="button" class="btn btn-warning">确认上传</button>-->
+            <!--<p class="help-block">点击上传banner图</p>-->
+            <img alt="没有图片" id="${showId}" src="${showSrc!}">
+    </div>
+
+</#macro>
