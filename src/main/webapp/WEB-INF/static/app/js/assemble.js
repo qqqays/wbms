@@ -250,12 +250,16 @@ function assembleImgList(json) {
 
 }
 
+function setImgUrl(id, url) {
+    $('#' + id).attr('src', url);
+}
+
 function assembleImg4modal(json) {
 
     var str = '';
 
     $.each(json, function (index, info) {
-        str +=  '<div class="img-item" style="background-image: url('+ info["url"] +');">\n' +
+        str +=  '<div onclick="setImgUrl(\'dpl-banner\', this.dataset.value)" id="'+ info['id'] +'" data-value="'+ info['url'] +'" class="img-item" style="background-image: url('+ info["url"] +');">\n' +
                 '    <div class="widget-image-meta">'+ info["width"] +'x'+ info["height"] +'</div>\n' +
                 '</div>';
     });
@@ -286,23 +290,6 @@ function getImgList(page, dir, pagingArea, aFun, funName) {
 }
 
 function getImgList4edit(page, dir, pagingArea) {
-    // $.ajax({
-    //     url: '/api/images/' + dir,
-    //     type: 'get',
-    //     data: {pageNumber:page},
-    //     success: function (d, s) {
-    //         var json = JSON.parse(d);
-    //
-    //         var paramGroup = new Array(dir, pagingArea);
-    //
-    //         assembleImgList(json['records']);
-    //         pagingPro(json['pages'], json['current'], pagingArea, 'getImgList4edit', paramGroup);
-    //
-    //     },
-    //     error: function (d, s) {
-    //         console.log(d + s);
-    //     }
-    // });
 
     getImgList(page, dir, pagingArea, assembleImgList, 'getImgList4edit');
 }
