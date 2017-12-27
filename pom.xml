@@ -18,6 +18,7 @@
         <org.apache.commons.version>2.1.1</org.apache.commons.version>
         <cglib.version>3.2.5</cglib.version>
         <!--<log4j.version>1.2.17</log4j.version>-->
+        <shiro.version>1.4.0</shiro.version>
         <commons-logging.version>1.2</commons-logging.version>
         <commons-codec.version>1.10</commons-codec.version>
         <commons-lang3.version>3.7</commons-lang3.version>
@@ -225,6 +226,28 @@
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>6.0.2.Final</version>
+        </dependency>
+
+        <!-- shiro -->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-ehcache</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-web</artifactId>
+            <version>${shiro.version}</version>
         </dependency>
 
     </dependencies>

@@ -78,11 +78,13 @@
                     <#if subMenus1??>
                         <#list subMenus1 as subMenu>
                             <!-- /.item -->
+                            <#if subMenu.contentType == 'info'>
                             <li class="item">
                                 <div class="">
                                     <a href="${subMenu.url}" class="product-title">${subMenu.menuName}</a>
                                 </div>
                             </li>
+                            </#if>
                         </#list>
                     </#if>
                 </ul>
