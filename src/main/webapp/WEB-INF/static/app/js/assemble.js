@@ -227,7 +227,7 @@ function getMenuList(page) {
 }
 
 // ==========================images list assemble======================
-function assembleImgList(json) {
+function assembleImgList(json, listId) {
     var str = '';
     $.each(json, function (index, info) {
         str +=  '<div id="' + info['id'] + '" class="item">\n' +
@@ -244,9 +244,10 @@ function assembleImgList(json) {
 
     });
 
-    $('#selectItemDiv').html(str);
+    //selectItemDiv
+    $('#' + listId).html(str);
 
-    selectImgTake.init("selectItemDiv", 1);
+    selectImgTake.init(listId, 1);
 
 }
 
@@ -254,21 +255,21 @@ function setImgUrl(id, url) {
     $('#' + id).attr('src', url);
 }
 
-function assembleImg4modal(json) {
+function assembleImg4modal(json, listId, showId) {
 
     var str = '';
 
     $.each(json, function (index, info) {
-        str +=  '<div onclick="setImgUrl(\'dpl-banner\', this.dataset.value)" id="'+ info['id'] +'" data-value="'+ info['url'] +'" class="img-item" style="background-image: url('+ info["url"] +');">\n' +
+        str +=  '<div onclick="setImgUrl(\''+ showId +'\', this.dataset.value)" id="'+ info['id'] +'" data-value="'+ info['url'] +'" class="img-item" style="background-image: url('+ info["url"] +');">\n' +
                 '    <div class="widget-image-meta">'+ info["width"] +'x'+ info["height"] +'</div>\n' +
                 '</div>';
     });
 
-    $('#modal-img-lst').html(str);
+    $('#' + listId).html(str);
 
 }
 
-function getImgList(page, dir, pagingArea, aFun, funName) {
+function getImgList(page, dir, pagingArea, aFun, funName, listId, showId) {
     $.ajax({
         url: '/api/images/' + dir,
         type: 'get',
@@ -276,9 +277,9 @@ function getImgList(page, dir, pagingArea, aFun, funName) {
         success: function (d, s) {
             var json = JSON.parse(d);
 
-            var paramGroup = new Array(dir, pagingArea);
+            var paramGroup = new Array(dir, pagingArea, listId, showId);
 
-            aFun(json['records']);
+            aFun(json['records'], listId, showId);
 
             pagingPro(json['pages'], json['current'], pagingArea, funName, paramGroup);
 
@@ -289,12 +290,12 @@ function getImgList(page, dir, pagingArea, aFun, funName) {
     });
 }
 
-function getImgList4edit(page, dir, pagingArea) {
+function getImgList4edit(page, dir, pagingArea, listId) {
 
-    getImgList(page, dir, pagingArea, assembleImgList, 'getImgList4edit');
+    getImgList(page, dir, pagingArea, assembleImgList, 'getImgList4edit', listId);
 }
 
-function getImgList4Modal(page, dir, pagingArea) {
+function getImgList4Modal(page, dir, pagingArea, listId, showId) {
 
-    getImgList(page, dir, pagingArea, assembleImg4modal, 'getImgList4Modal');
+    getImgList(page, dir, pagingArea, assembleImg4modal, 'getImgList4Modal', listId, showId);
 }

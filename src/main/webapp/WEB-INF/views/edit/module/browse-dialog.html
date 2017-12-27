@@ -1,13 +1,13 @@
-<#macro imageChoose inputId showId showSrc>
+<#macro imageChoose modalId listId listPagingId inputId showId showSrc>
 
     <div class="form-group">
-        <label>banner图</label>
+        <label>选择 图片</label>
         <!--modal-->
-        <button id="" style="display: block;" type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-default">
+        <button id="" style="display: block;" type="button" class="btn btn-danger" data-toggle="modal" data-target="#${modalId!'modal-default'}">
             选择图片
         </button>
 
-        <div class="modal fade draggable" id="modal-default" style="display: none; background: none">
+        <div class="modal fade draggable" id="${modalId!'modal-default'}" style="display: none; background: none">
             <div class="" style="max-width: 50%; margin: 15% auto">
                 <div class="modal-content">
 
@@ -18,7 +18,7 @@
                         </button>
 
                         <!--<h4 class="modal-title">图片浏览</h4>-->
-                        <div class="btn-group">
+                        <div class = "btn-group">
                             <button id = "slt-sys-img" type="button" class="btn btn-success">系统图片</button>
                             <button id = "slt-info-img" type="button" class="btn btn-success">新闻图片</button>
                             <button id = "slt-server-img" type="button" class="btn btn-success">服务器图片</button>
@@ -29,7 +29,7 @@
                     </div>
 
                     <div class="modal-body">
-                        <div id="modal-img-lst" class="clearfix">
+                        <div id="${listId!'modal-img-lst'}" class="clearfix">
 
                             <!--<div title="name.png" class="img-item" style="background-image: url('/images/banner.png');">-->
                                 <!--<div class="widget-image-meta">310x249</div>-->
@@ -37,13 +37,13 @@
 
                         </div>
                         <hr>
-                        <div id = "modal-img-paging" class="clearfix"></div>
+                        <div id = "${listPagingId!'modal-img-paging'}" class="clearfix"></div>
                     </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
                         <a href="javascript:;" class="file">上传图片
-                            <input type="file" required="required" id="${inputId}">
+                            <input type="file" required="required" id="${inputId!'dft-input'}">
                         </a>
                     </div>
 

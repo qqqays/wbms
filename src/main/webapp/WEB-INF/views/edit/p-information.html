@@ -52,6 +52,9 @@
 //        选择编辑列表
         getInfoList(1);
 
+        //        image list
+        getImgList4Modal(1, 'system', 'info-cover-paging', 'info-cover-list', 'info-cover');
+
 //        $('.custom-box').addClass('collapsed-box');
         $('.custom-collapse').click();
 
@@ -81,7 +84,8 @@
             var state = $('#info-state')[0].value == 1 ? true : false;
             var updateDate = $('#info-updateDate').val() == '' ? today : $('#info-updateDate').val();
             var createDate = $('#info-createDate').val() == '' ? today : $('#info-createDate').val();
-            var bannerImg = $('#info-banner')[0].attributes['src'].value;
+//            var bannerImg = $('#info-banner')[0].attributes['src'].value;
+            var bannerImg = '';
             var coverImg = $('#info-cover')[0].attributes['src'].value;
             var class1 = paramArray[0];
             var class2 = paramArray[1];

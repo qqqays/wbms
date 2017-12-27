@@ -11,5 +11,5 @@ $('document').ready(function () {
 
     $('.connectedSortable .box-header, .connectedSortable .nav-tabs-custom').css('cursor', 'move');
 
-    $('#modal-default').draggable();
+    $('.draggable').draggable();
 });

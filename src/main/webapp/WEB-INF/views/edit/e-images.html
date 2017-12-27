@@ -32,7 +32,7 @@
 <script type="text/javascript">
 
     $('document').ready(function () {
-        getImgList4edit(1, '', 'img-paging');
+        getImgList4edit(1, '', 'img-paging', 'selectItemDiv');
 
         $('#img-edit').click(function () {
             window.location = "/backend/e-images/" + selectImgTake.getSelectImgs('selectItemDiv')[0].id;

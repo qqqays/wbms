@@ -72,16 +72,19 @@
             </div>
 
             <!--banner-->
-            <div class="form-group">
-                <label for="menu-banner-upload">banner图</label>
-                <input type="file" required="required" id="menu-banner-upload">
-                <button id="submit-menu-banner" type="button" class="btn btn-warning">确认上传</button>
+            <!--<div class="form-group">-->
+                <!--<label for="menu-banner-upload">banner图</label>-->
+                <!--<input type="file" required="required" id="menu-banner-upload">-->
+                <!--<button id="submit-menu-banner" type="button" class="btn btn-warning">确认上传</button>-->
 
-                <p class="help-block">点击上传banner图</p>
-                <img title="没有图片" id="menu-banner" src="${(menu.bannerImg)!''}">
-            </div>
+                <!--<p class="help-block">点击上传banner图</p>-->
+                <!--<img title="没有图片" id="menu-banner" src="${(menu.bannerImg)!''}">-->
+            <!--</div>-->
+            <#include "/edit/module/browse-dialog.html">
+            <@imageChoose modalId="what-fuck-menu" listId="menu-img-list" listPagingId="menu-img-paging" inputId="menu-banner-upload" showId="menu-banner" showSrc="${(menu.bannerImg)!''}"/>
 
-            <!--content type-->
+
+                <!--content type-->
             <div class="form-group">
                 <label>content type</label>
                 <select id="menu-contentType" class="form-control">

@@ -93,26 +93,29 @@
             </div>
 
             <!--banner-->
-            <div class="form-group">
-                <label for="info-banner-upload">banner图</label>
-                <input type="file" required="required" id="info-banner-upload">
-                <button id="submit-info-banner" type="button" class="btn btn-warning">确认上传</button>
+            <!--<div class="form-group">-->
+                <!--<label for="info-banner-upload">banner图</label>-->
+                <!--<input type="file" required="required" id="info-banner-upload">-->
+                <!--<button id="submit-info-banner" type="button" class="btn btn-warning">确认上传</button>-->
 
-                <p class="help-block">点击上传banner图</p>
-                <img title="没有图片" id="info-banner" src="${(info.bannerImg)!''}">
-            </div>
+                <!--<p class="help-block">点击上传banner图</p>-->
+                <!--<img title="没有图片" id="info-banner" src="${(info.bannerImg)!''}">-->
+            <!--</div>-->
 
             <!--cover images-->
-            <div class="form-group">
-                <label for="info-cover-upload">封面图</label>
-                <input type="file" required="required" id="info-cover-upload">
-                <button id="submit-info-cover" type="button" class="btn btn-warning">确认上传</button>
+            <!--<div class="form-group">-->
+                <!--<label for="info-cover-upload">封面图</label>-->
+                <!--<input type="file" required="required" id="info-cover-upload">-->
+                <!--<button id="submit-info-cover" type="button" class="btn btn-warning">确认上传</button>-->
 
-                <p class="help-block">点击上传封面图</p>
-                <img title="没有图片" id="info-cover" src="${(info.bannerImg)!''}">
-            </div>
+                <!--<p class="help-block">点击上传封面图</p>-->
+                <!--<img title="没有图片" id="info-cover" src="${(info.bannerImg)!''}">-->
+            <!--</div>-->
+            <#include "/edit/module/browse-dialog.html">
+            <@imageChoose modalId="what-fuck-cover" listId="info-cover-list" listPagingId="info-cover-paging" inputId="info-cover-upload" showId="info-cover" showSrc="${(info.coverImg)!''}"/>
 
-            <#include "/edit/common/ckeditor.html">
+
+                <#include "/edit/common/ckeditor.html">
         </form>
     </div>
     <!-- /.box-body -->
