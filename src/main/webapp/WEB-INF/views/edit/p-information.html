@@ -34,6 +34,47 @@
 <!--date picker-->
 <script src="/plugins/Forms/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <script>
+
+    var dir = 'info-dir';
+    var imgPaging = 'info-cover-paging';
+    var imgList = 'info-cover-list';
+    var cover = 'info-cover';
+
+    function imgListFun() {
+
+        getImgList4Modal(1, elementVal(dir), imgPaging, imgList, cover);
+
+    }
+
+//    common upload data function
+    function push_data(method) {
+        var today = new Date().toLocaleDateString().replace(/\//g, '-');
+
+        var paramArray = $('#info-menu').val().split(",");
+
+        var id = $('#info-id').val();
+        var title = $('#info-title').val();
+        var description = $('#info-description').val();
+        var content = CKEDITOR.instances.editor.getData();
+        var clicks = $('#info-clicks').val();
+        var publisher = $('#info-publisher').val();
+        var state = $('#info-state')[0].value == 1 ? true : false;
+        var updateDate = $('#info-updateDate').val() == '' ? today : $('#info-updateDate').val();
+        var createDate = $('#info-createDate').val() == '' ? today : $('#info-createDate').val();
+//        var bannerImg = $('#info-banner')[0].attributes['src'].value;
+        var bannerImg = '';
+        var coverImg = $('#info-cover')[0].attributes['src'].value;
+        var class1 = paramArray[0];
+        var class2 = paramArray[1];
+
+        if(method.toUpperCase() == 'PUT')
+            update_info(id, title, description, content, clicks, publisher, state, updateDate, createDate, bannerImg, coverImg, class1, class2);
+
+        if(method.toUpperCase() == 'POST')
+            push_info(title, description, content, clicks, publisher, state, updateDate, createDate, bannerImg, coverImg, class1, class2);
+
+    }
+
     //Date picker
     $('#info-createDate').datepicker({
         todayHighlight:true,
@@ -48,78 +89,47 @@
     });
 
     $('document').ready(function () {
-
 //        选择编辑列表
         getInfoList(1);
 
-        //        image list
-        getImgList4Modal(1, 'system', 'info-cover-paging', 'info-cover-list', 'info-cover');
+//      select change choose images
+        $('#info-dir').on('change', function () {
+            imgListFun();
+        });
 
-//        $('.custom-box').addClass('collapsed-box');
+//        image list
+        imgListFun();
+
         $('.custom-collapse').click();
 
+//        padding data to ckEditor
         CKEDITOR.instances.editor.setData($('#hidden-content').html());
 
+//        post image of banner
+//        $('#submit-info-banner').click(function () {
+//            pushImg('info-banner-upload', '', '', 'info', 'info-banner');
+//        });
 
-        $('#submit-info-banner').click(function () {
-            pushImg('info-banner-upload', '', '', 'info', 'info-banner');
+//        post image of cover
+        $('#info-cover-upload').on('change', function () {
+            console.log("push images");
+            pushImg(this.id, '', '', elementVal(dir), cover);
+            $('.close').click();
         });
-        $('#submit-info-cover').click(function () {
-            pushImg('info-cover-upload', '', '', 'info', 'info-cover');
-        });
 
-
-
+//        post info
         $('#info-add').click(function () {
-
-            var today = new Date().toLocaleDateString().replace(/\//g, '-');
-
-            var paramArray = $('#info-menu').val().split(",");
-
-            var title = $('#info-title').val();
-            var description = $('#info-description').val();
-            var content = CKEDITOR.instances.editor.getData();
-            var clicks = $('#info-clicks').val();
-            var publisher = $('#info-publisher').val();
-            var state = $('#info-state')[0].value == 1 ? true : false;
-            var updateDate = $('#info-updateDate').val() == '' ? today : $('#info-updateDate').val();
-            var createDate = $('#info-createDate').val() == '' ? today : $('#info-createDate').val();
-//            var bannerImg = $('#info-banner')[0].attributes['src'].value;
-            var bannerImg = '';
-            var coverImg = $('#info-cover')[0].attributes['src'].value;
-            var class1 = paramArray[0];
-            var class2 = paramArray[1];
-
-            push_info(title, description, content, clicks, publisher, state, updateDate, createDate, bannerImg, coverImg, class1, class2);
+            push_data('POST');
         });
 
+//        put info
         $('#info-update').click(function () {
-
-
-            var today = new Date().toLocaleDateString().replace(/\//g, '-');
-
-            var paramArray = $('#info-menu').val().split(",");
-
-            var id = $('#info-id').val();
-            var title = $('#info-title').val();
-            var description = $('#info-description').val();
-            var content = CKEDITOR.instances.editor.getData();
-            var clicks = $('#info-clicks').val();
-            var publisher = $('#info-publisher').val();
-            var state = $('#info-state')[0].value == 1 ? true : false;
-            var updateDate = $('#info-updateDate').val() == '' ? today : $('#info-updateDate').val();
-            var createDate = $('#info-createDate').val() == '' ? today : $('#info-createDate').val();
-            var bannerImg = $('#info-banner')[0].attributes['src'].value;
-            var coverImg = $('#info-cover')[0].attributes['src'].value;
-            var class1 = paramArray[0];
-            var class2 = paramArray[1];
-
-            update_info(id, title, description, content, clicks, publisher, state, updateDate, createDate, bannerImg, coverImg, class1, class2);
+            push_data('PUT');
         });
 
+//        delete info
         $('#info-delete').click(function () {
             var id = $('#info-id').val();
-
             delete_info(id);
         });
 

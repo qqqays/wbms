@@ -64,8 +64,13 @@ function general_delete(url) {
 }
 
 function generalAjax4img(formData, class1, showId) {
+    var url = '/api/images/system';
+
+    if(class1 != '')
+        url = '/api/images/' + class1;
+
     $.ajax({
-        url: '/api/images/' + class1,
+        url: url,
         type: 'POST',
         contentType: false,
         processData: false,

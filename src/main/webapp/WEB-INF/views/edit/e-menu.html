@@ -27,6 +27,17 @@
 <@javascript>
 <script>
 
+    var dir = 'menu-dir';
+    var imgPaging = 'menu-img-paging';
+    var imgList = 'menu-img-list';
+    var banner = 'menu-banner';
+
+    function imgListFun() {
+
+        getImgList4Modal(1, elementVal(dir), imgPaging, imgList, banner);
+
+    }
+
     function push_data(type) {
         var id = $('#menu-id').val();
         var menuName = $('#menu-name').val();
@@ -35,7 +46,8 @@
         var url = parent_url + "/" + $('#menu-id').val();
         var icon = $('#menu-icon').val();
         var sort = $('#menu-sort').val();
-        var deep = $('#menu-deep').val();
+//        var deep = $('#menu-deep').val();
+        var deep = $('menu-pid').val() == '' ? 0 : 1;
         var display = $('#menu-display').val();
         var hasSub = $('#menu-hasSub').val() == 0 ? false : true;
         var bannerImg = $('#menu-banner')[0].attributes['src'].value;
@@ -50,26 +62,40 @@
         getMenuList(1);
 
 //        img list
-        getImgList4Modal(1, 'system', 'menu-img-paging', 'menu-img-list', 'menu-banner');
+        imgListFun();
 
+//      select change choose images
+        $('#menu-dir').on('change', function () {
+            imgListFun();
+        });
 
-//        $('.custom-box').addClass('collapsed-box');
+//        collapse
         $('.custom-collapse').click();
 
-
-        $('#submit-menu-banner').click(function () {
+//        post banner image
+        $('#menu-banner-upload').on('change', function () {
             console.log("push images");
-            pushImg('menu-banner-upload', '', '', 'system', 'menu-banner');
+            pushImg(this.id, '', '', elementVal(dir), banner);
+            $('.close').click();
         });
 
+//        post menu
         $('#menu-add').click(function () {
-            push_data('POST');
+            if($('#menu-id').val() == '')
+                alert('must enter url');
+            else
+                push_data('POST');
         });
 
+//        put menu
         $('#menu-update').click(function () {
-            push_data('PUT');
+            if($('#menu-id').val() == '')
+                alert('must enter url');
+            else
+                push_data('PUT');
         });
 
+//        delete menu
         $('#menu-delete').click(function () {
             var id = $('#menu-id').val();
             delete_menu(id);

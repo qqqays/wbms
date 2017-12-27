@@ -31,50 +31,73 @@
 <@javascript>
 <script>
 
+    var dir = 'dpl-dir';
+    var imgPaging = 'dpl-img-paging';
+    var imgList = 'dpl-img-list';
+    var banner = 'dpl-banner';
+
+    function imgListFun() {
+
+        getImgList4Modal(1, elementVal(dir), imgPaging, imgList, banner);
+
+    }
+
+//    上传 数据 公共方法
+    function push_data(method) {
+        var id = $('#dpl-id').val();
+        var pid = $('#dpl-menu')[0].value;
+        var content = CKEDITOR.instances.editor.getData();
+        var iframeUrl = $('#dpl-iFrame').val();
+        var bannerImg = $('#dpl-banner')[0].attributes['src'].value;
+        var publisher = $('#dpl-publisher').val();
+        var state = $('#dpl-state')[0].value == 1 ? true : false;
+
+        if(method.toUpperCase() == 'PUT')
+            update_display(id, pid, content, iframeUrl, bannerImg, publisher, state);
+
+        if(method.toUpperCase() == 'POST')
+            push_display(pid, content, iframeUrl, bannerImg, publisher, state);
+
+    }
+
     $('document').ready(function () {
+
 //        display list
         getDisplayList(1);
 
 //        image list
-        getImgList4Modal(1, 'system', 'dpl-img-paging', 'dpl-img-list', 'dpl-banner');
+        imgListFun();
 
-//        $('.custom-box').addClass('collapsed-box');
+//      select change choose images
+        $('#dpl-dir').on('change', function () {
+            imgListFun();
+        });
+
+//        collapse
         $('.custom-collapse').click();
 
+//        ckEditor padding data
         CKEDITOR.instances.editor.setData($('#fuck').html());
 
-//        $('#submit-dpl-banner').click(function () {
-//            console.log("push images");
-//            pushImg('dpl-banner-upload', '', '', 'system', 'dpl-banner');
-//        });
-
+//        ===============上传 数据 事件==============
+//        post image
         $('#dpl-banner-upload').on('change', function () {
             console.log("push images");
-            pushImg(this.id, '', '', 'system', 'dpl-banner');
+            pushImg(this.id, '', '', elementVal(dir), banner);
             $('.close').click();
         });
 
+//        post display page
         $('#dpl-add').click(function () {
-            var pid = $('#dpl-menu')[0].value;
-            var content = CKEDITOR.instances.editor.getData();
-            var iframeUrl = $('#dpl-iFrame').val();
-            var bannerImg = $('#dpl-banner')[0].attributes['src'].value;
-            var publisher = $('#dpl-publisher').val();
-            var state = $('#dpl-state')[0].value == 1 ? true : false;
-            push_display(pid, content, iframeUrl, bannerImg, publisher, state);
+            push_data('POST');
         });
 
+//        put display page
         $('#dpl-update').click(function () {
-            var id = $('#dpl-id').val();
-            var pid = $('#dpl-menu')[0].value;
-            var content = CKEDITOR.instances.editor.getData();
-            var iframeUrl = $('#dpl-iFrame').val();
-            var bannerImg = $('#dpl-banner')[0].attributes['src'].value;
-            var publisher = $('#dpl-publisher').val();
-            var state = $('#dpl-state')[0].value == 1 ? true : false;
-            update_display(id, pid, content, iframeUrl, bannerImg, publisher, state);
+            push_data('PUT');
         });
 
+//        delete display page
         $('#dpl-delete').click(function () {
             var id = $('#dpl-id').val();
             delete_display(id);

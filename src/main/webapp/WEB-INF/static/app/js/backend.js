@@ -1,4 +1,9 @@
 
+// get element value
+function elementVal(ele) {
+    return $('#' + ele).val();
+}
+
 // ==========================jquery ui===================
 $('document').ready(function () {
     $('.connectedSortable').sortable({

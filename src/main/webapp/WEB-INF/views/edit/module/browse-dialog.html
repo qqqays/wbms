@@ -1,4 +1,4 @@
-<#macro imageChoose modalId listId listPagingId inputId showId showSrc>
+<#macro imageChoose modalId dirId listId listPagingId inputId showId showSrc>
 
     <div class="form-group">
         <label>选择 图片</label>
@@ -17,14 +17,31 @@
                             <span aria-hidden="true">×</span>
                         </button>
 
-                        <!--<h4 class="modal-title">图片浏览</h4>-->
-                        <div class = "btn-group">
-                            <button id = "slt-sys-img" type="button" class="btn btn-success">系统图片</button>
-                            <button id = "slt-info-img" type="button" class="btn btn-success">新闻图片</button>
-                            <button id = "slt-server-img" type="button" class="btn btn-success">服务器图片</button>
-                            <button id = "slt-content-img" type="button" class="btn btn-success">内容图片</button>
-                            <button id = "slt-other-img" type="button" class="btn btn-microsoft">其他</button>
+                        <div class="row">
+                            <div class="input-group input-group-sm col-sm-6 col-sm-offset-3">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-success btn-flat">选择目录</button>
+                                </span>
+
+                                <select id="${dirId!'dirId-dft'}" class="form-control">
+                                    <option value = ''>所有 图片</option>
+                                    <option value = 'system'>系统 目录</option>
+                                    <option value = 'info'>新闻 目录</option>
+                                    <option value = 'ckEditor'>编辑器目录</option>
+                                    <option value = 'other'>其他</option>
+                                </select>
+                            </div>
                         </div>
+
+                        <!--<h4 class="modal-title">图片浏览</h4>-->
+                        <!--<div class = "btn-group">-->
+                            <!--<button id = "slt-sys-img" type="button" class="btn btn-success">系统图片</button>-->
+                            <!--<button id = "slt-info-img" type="button" class="btn btn-success">新闻图片</button>-->
+                            <!--<button id = "slt-server-img" type="button" class="btn btn-success">服务器图片</button>-->
+                            <!--<button id = "slt-content-img" type="button" class="btn btn-success">内容图片</button>-->
+                            <!--<button id = "slt-other-img" type="button" class="btn btn-microsoft">其他</button>-->
+                        <!--</div>-->
+
 
                     </div>
 
@@ -42,6 +59,7 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+
                         <a href="javascript:;" class="file">上传图片
                             <input type="file" required="required" id="${inputId!'dft-input'}">
                         </a>
