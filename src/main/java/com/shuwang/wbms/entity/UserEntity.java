@@ -16,9 +16,7 @@ import java.sql.Timestamp;
 @TableName("users")
 public class UserEntity extends Model<UserEntity>{
 
-    @TableId(type = IdType.UUID)
-    private String id;
-
+    @TableId
     private String userName;
 
     private String password;
@@ -33,15 +31,7 @@ public class UserEntity extends Model<UserEntity>{
 
     @Override
     protected Serializable pkVal() {
-        return this.id;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+        return this.userName;
     }
 
     public String getUserName() {

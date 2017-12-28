@@ -19,9 +19,7 @@ import java.sql.Timestamp;
 @TableName("roles")
 public class RoleEntity extends Model<RoleEntity> {
 
-    @TableId(type = IdType.UUID)
-    private String id;
-
+    @TableId
     private String roleName;
 
     private String desc;
@@ -32,15 +30,7 @@ public class RoleEntity extends Model<RoleEntity> {
 
     @Override
     protected Serializable pkVal() {
-        return this.id;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+        return this.roleName;
     }
 
     public String getRoleName() {

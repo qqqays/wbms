@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shuwang.wbms.mapper.UserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.shuwang.wbms.entity.UserEntity">
+        <id column="userName" property="userName" />
+        <result column="password" property="password" />
+        <result column="state" property="state" />
+        <result column="createTime" property="createTime" />
+        <result column="desc" property="desc" />
+        <result column="avadar" property="avadar" />
+    </resultMap>
+
+</mapper>
