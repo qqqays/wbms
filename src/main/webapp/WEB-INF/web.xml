@@ -68,7 +68,7 @@
 
     <filter-mapping>
         <filter-name>shiroFilter</filter-name>
-        <url-pattern>/backend/*</url-pattern>
+        <url-pattern>/*</url-pattern>
     </filter-mapping>
 
     <!--解决 ajax 无法 put delete-->
