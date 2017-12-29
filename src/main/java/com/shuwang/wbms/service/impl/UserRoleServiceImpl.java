@@ -21,10 +21,10 @@ public class UserRoleServiceImpl extends ServiceImpl<UserRoleMapper, UserRoleEnt
 
     @Override
     public Set<String> findRolesByUid(String userName) {
-        // TODO Auto-generated method stub
+
         List<UserRoleEntity> list = this.selectList(new EntityWrapper<UserRoleEntity>().eq("userName", userName));
 
-        Set<String> set = new HashSet<String>();
+        Set<String> set = new HashSet<>();
         for (UserRoleEntity ur : list) {
             set.add(ur.getRoleName());
         }

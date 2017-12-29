@@ -21,6 +21,8 @@
         <property name="cacheManagerConfigFile" value="classpath:cache/shiro-ehcache.xml"/>
     </bean>
 
+
+
     <!-- Used by the SecurityManager to access security data (users, roles, etc).
          Many other realm implementations can be used too (PropertiesRealm,
          LdapRealm, etc. -->
@@ -87,7 +89,8 @@
                 <!--/login = anon-->
                 <!--/backend = logout-->
                 /backend/** = authc
-                /api/users/** = roles[admin]
+                /api/upload/ = rest[content]
+                /api/users/** = rest[user]
                 /api/siteMap = roles[super]
             </value>
         </property>

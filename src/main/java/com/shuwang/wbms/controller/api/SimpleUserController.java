@@ -5,6 +5,7 @@ import com.shuwang.wbms.common.controller.ProController;
 import com.shuwang.wbms.common.enums.ReturnCodeEnum;
 import com.shuwang.wbms.entity.SimpleUser;
 import com.shuwang.wbms.service.ISimpleUserService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

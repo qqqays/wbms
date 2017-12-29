@@ -3,6 +3,7 @@ package com.shuwang.wbms.security;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.shuwang.wbms.entity.UserEntity;
 import com.shuwang.wbms.entity.UserRoleEntity;
+import com.shuwang.wbms.service.IRoleAuthService;
 import com.shuwang.wbms.service.IUserRoleService;
 import com.shuwang.wbms.service.IUserService;
 import org.apache.shiro.authc.*;
@@ -28,12 +29,15 @@ public class MyRealm extends AuthorizingRealm {
     @Autowired
     private IUserRoleService userRoleService;
 
+    @Autowired
+    private IRoleAuthService roleAuthService;
+
     /**
      * Fucking the authentication
      *
      * @param authenticationToken token
      * @return AuthenticationInfo
-     * @throws AuthenticationException ?
+     * @throws AuthenticationException auth
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken)
@@ -76,7 +80,10 @@ public class MyRealm extends AuthorizingRealm {
 
         Set<String> roles = userRoleService.findRolesByUid(user.getUserName());
 
+        Set<String> perms = roleAuthService.findPermBySet(roles);
+
         info.setRoles(roles);
+        info.setStringPermissions(perms);
 
         return info;
     }

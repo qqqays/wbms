@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2017-12-27 17:50:30
+Date: 2017-12-29 17:35:17
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,16 +20,46 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `authorities`;
 CREATE TABLE `authorities` (
-  `id` varchar(64) NOT NULL,
-  `authName` varchar(255) DEFAULT NULL,
+  `authName` varchar(64) NOT NULL,
   `desc` varchar(255) DEFAULT NULL,
   `state` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`authName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of authorities
 -- ----------------------------
+INSERT INTO `authorities` VALUES ('*:*', null, '1');
+INSERT INTO `authorities` VALUES ('*:create', null, '1');
+INSERT INTO `authorities` VALUES ('*:delete', null, '1');
+INSERT INTO `authorities` VALUES ('*:read', null, '1');
+INSERT INTO `authorities` VALUES ('*:update', null, '1');
+INSERT INTO `authorities` VALUES ('content:*', null, '1');
+INSERT INTO `authorities` VALUES ('content:create', null, '1');
+INSERT INTO `authorities` VALUES ('content:delete', null, '1');
+INSERT INTO `authorities` VALUES ('content:read', null, '1');
+INSERT INTO `authorities` VALUES ('content:update', null, '1');
+INSERT INTO `authorities` VALUES ('perm:*', null, '1');
+INSERT INTO `authorities` VALUES ('perm:create', null, '1');
+INSERT INTO `authorities` VALUES ('perm:delete', null, '1');
+INSERT INTO `authorities` VALUES ('perm:read', null, '1');
+INSERT INTO `authorities` VALUES ('perm:update', null, '1');
+INSERT INTO `authorities` VALUES ('role:*', null, '1');
+INSERT INTO `authorities` VALUES ('role:create', null, '1');
+INSERT INTO `authorities` VALUES ('role:delete', null, '1');
+INSERT INTO `authorities` VALUES ('role:read', null, '1');
+INSERT INTO `authorities` VALUES ('role:update', null, '1');
+INSERT INTO `authorities` VALUES ('role_perms:create', null, '1');
+INSERT INTO `authorities` VALUES ('role_perms:delete', null, '1');
+INSERT INTO `authorities` VALUES ('system:read', null, '1');
+INSERT INTO `authorities` VALUES ('system:update', null, '1');
+INSERT INTO `authorities` VALUES ('user:*', null, '1');
+INSERT INTO `authorities` VALUES ('user:create', null, '1');
+INSERT INTO `authorities` VALUES ('user:delete', null, '1');
+INSERT INTO `authorities` VALUES ('user:read', null, '1');
+INSERT INTO `authorities` VALUES ('user:update', null, '1');
+INSERT INTO `authorities` VALUES ('user_role:create', null, '1');
+INSERT INTO `authorities` VALUES ('user_role:delete', null, '1');
 
 -- ----------------------------
 -- Table structure for backend_menu
@@ -219,17 +249,21 @@ INSERT INTO `menu` VALUES ('testtopmenu', '这是个顶部测试菜单', '', '/t
 -- ----------------------------
 DROP TABLE IF EXISTS `roles`;
 CREATE TABLE `roles` (
-  `id` varchar(64) NOT NULL,
-  `roleName` varchar(255) DEFAULT NULL,
+  `roleName` varchar(64) NOT NULL,
   `desc` varchar(255) DEFAULT NULL,
   `state` tinyint(1) DEFAULT NULL,
   `createTime` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`roleName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of roles
 -- ----------------------------
+INSERT INTO `roles` VALUES ('admin', 'admin', '1', '2017-12-29 11:05:56');
+INSERT INTO `roles` VALUES ('guest', 'guest', '1', null);
+INSERT INTO `roles` VALUES ('menber', 'menber', '1', null);
+INSERT INTO `roles` VALUES ('normal', 'normal', '1', null);
+INSERT INTO `roles` VALUES ('super', 'super', '1', '2017-12-29 11:06:13');
 
 -- ----------------------------
 -- Table structure for role_auth
@@ -237,14 +271,17 @@ CREATE TABLE `roles` (
 DROP TABLE IF EXISTS `role_auth`;
 CREATE TABLE `role_auth` (
   `id` varchar(64) NOT NULL,
-  `roleId` varchar(64) DEFAULT NULL,
-  `authId` varchar(64) DEFAULT NULL,
+  `roleName` varchar(64) DEFAULT NULL,
+  `authName` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of role_auth
 -- ----------------------------
+INSERT INTO `role_auth` VALUES ('asdfesfeadfggg', 'admin', 'content:*');
+INSERT INTO `role_auth` VALUES ('b', 'admin', 'system:*');
+INSERT INTO `role_auth` VALUES ('dfsafadsfsafas', 'super', '*:*');
 
 -- ----------------------------
 -- Table structure for seo
@@ -289,7 +326,6 @@ INSERT INTO `simple_user` VALUES ('619869cde1bb42778f11f4dd74793dec', 'lul', '18
 INSERT INTO `simple_user` VALUES ('847ead0e987740b997b87b08d93ef624', 'lul', '18');
 INSERT INTO `simple_user` VALUES ('8a8114ba39e4453ca33b999f3da8f471', 'luguo', '18');
 INSERT INTO `simple_user` VALUES ('a2cff75763ed4546998cb5918159d44a', 'fa', '15');
-INSERT INTO `simple_user` VALUES ('a3b529369a0a4ad38dbcf4fe0f23ef92', 'lul', '18');
 INSERT INTO `simple_user` VALUES ('abc', 'fdfedik', '32');
 INSERT INTO `simple_user` VALUES ('c2e7ebdd45c34f67a1b4d3832b8282f4', 'lul', '18');
 INSERT INTO `simple_user` VALUES ('c8a9344d7ad245eca1aa9f1f0f112fad', 'lul', '18');
@@ -356,19 +392,20 @@ INSERT INTO `sys_config` VALUES ('sdfsdafesdfa', '蜀旺新能源', '/upload-fil
 -- ----------------------------
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
-  `id` varchar(64) NOT NULL,
-  `userName` varchar(255) DEFAULT NULL,
+  `userName` varchar(64) NOT NULL,
   `password` varchar(255) DEFAULT NULL,
   `state` tinyint(1) DEFAULT NULL,
   `createTime` datetime DEFAULT NULL,
   `desc` varchar(255) DEFAULT NULL,
   `avadar` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`userName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
+INSERT INTO `users` VALUES ('luguo', 'aaa', '1', '2017-12-29 10:46:04', null, null);
+INSERT INTO `users` VALUES ('qays', '123', '1', '2017-12-29 10:43:16', 'fork', null);
 
 -- ----------------------------
 -- Table structure for user_role
@@ -376,11 +413,13 @@ CREATE TABLE `users` (
 DROP TABLE IF EXISTS `user_role`;
 CREATE TABLE `user_role` (
   `id` varchar(64) NOT NULL,
-  `userId` varchar(64) DEFAULT NULL,
-  `roleId` varchar(64) DEFAULT NULL,
+  `userName` varchar(64) DEFAULT NULL,
+  `roleName` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_role
 -- ----------------------------
+INSERT INTO `user_role` VALUES ('afsehfra', 'luguo', 'admin');
+INSERT INTO `user_role` VALUES ('dfasfsafeas', 'qays', 'super');
