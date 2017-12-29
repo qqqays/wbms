@@ -29,7 +29,10 @@ public class NewsController extends PageController{
     private ISeoService seoService;
 
     @GetMapping
-    public String news(Model model, @RequestParam(defaultValue = "") String s, @RequestParam(defaultValue = "0") Integer pg, @RequestParam(defaultValue = "5") Integer sz) {
+    public String news(Model model,
+                       @RequestParam(defaultValue = "") String s,
+                       @RequestParam(defaultValue = "0") Integer pg,
+                       @RequestParam(defaultValue = "5") Integer sz) {
 
         Page<DetailEntity> detailDatagram = datagram(detailService, pg, sz, s, "news");
 
@@ -39,7 +42,11 @@ public class NewsController extends PageController{
     }
 
     @GetMapping("/{content}")
-    public String content(Model model,@RequestParam(defaultValue = "") String s, @RequestParam(defaultValue = "0") Integer pg, @RequestParam(defaultValue = "5") Integer sz, @PathVariable String content) {
+    public String content(Model model,
+                          @RequestParam(defaultValue = "") String s,
+                          @RequestParam(defaultValue = "0") Integer pg,
+                          @RequestParam(defaultValue = "5") Integer sz,
+                          @PathVariable String content) {
 
         Page<DetailEntity> detailDatagram = datagram(detailService, pg, sz, s, "news", content);
 

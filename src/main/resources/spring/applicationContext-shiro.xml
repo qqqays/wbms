@@ -10,6 +10,8 @@
         <property name="realm" ref="myRealm"/>
     </bean>
 
+
+
     <!-- Let's use some enterprise caching support for better performance.  You can replace this with any enterprise
          caching framework implementation that you like (Terracotta+Ehcache, Coherence, GigaSpaces, etc -->
     <bean id="shiroCacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
@@ -76,15 +78,17 @@
         </property> -->
         <property name="filterChainDefinitions">
             <value>
-                /favicon.ico = anon
-                /app/** = anon
-                /plugins/** = anon
-                /images/** = anon
-                /login/captcha = anon
-                /login/doLogin = anon
-                /login = anon
-                /logout = logout
+                <!--/favicon.ico = anon-->
+                <!--/app/** = anon-->
+                <!--/plugins/** = anon-->
+                <!--/images/** = anon-->
+                <!--/login/captcha = anon-->
+                <!--/login/doLogin = anon-->
+                <!--/login = anon-->
+                <!--/backend = logout-->
                 /backend/** = authc
+                /api/users/** = roles[admin]
+                /api/siteMap = roles[super]
             </value>
         </property>
     </bean>

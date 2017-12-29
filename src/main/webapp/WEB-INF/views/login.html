@@ -3,12 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        input{
+            display: block;
+        }
+        button{
+            display: block;
+        }
+        img{
+            display: block;
+        }
+    </style>
 </head>
 <body>
-<form action="/login/authentication" method="post">
+<form action="/authentication" method="post">
     <input type="text" id="name" name="userName">
     <input type="text" id="pw" name="password">
+    <input type="text" id="kapatcha" name="kapatcha">
+    <img alt="如果看不清楚，请单击图片刷新！" class="pointer img" src="/captcha">
     <button type="submit" id="login">login</button>
+
 </form>
 
 <script type="text/javascript">

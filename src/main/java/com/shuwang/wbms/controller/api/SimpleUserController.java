@@ -5,6 +5,7 @@ import com.shuwang.wbms.common.controller.ProController;
 import com.shuwang.wbms.common.enums.ReturnCodeEnum;
 import com.shuwang.wbms.entity.SimpleUser;
 import com.shuwang.wbms.service.ISimpleUserService;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,10 +40,12 @@ public class SimpleUserController extends ProController {
         return simpleUserService.insert(user) + " insert";
     }
 
+    @RequiresRoles("super")
     @GetMapping("/{name}")
     public String getUser(@PathVariable String name) {
 //        return list2JsonStr(simpleUserService.selectList(new EntityWrapper<SimpleUser>().eq("name",name)));
-        return dataAndCode(ReturnCodeEnum.SUCCESS, simpleUserService.selectList(new EntityWrapper<SimpleUser>().eq("name", name)));
+        return dataAndCode(ReturnCodeEnum.SUCCESS, simpleUserService.selectList(new EntityWrapper<SimpleUser>()
+                .eq("name", name)));
     }
 
     @PutMapping("/{id}")

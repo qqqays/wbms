@@ -12,5 +12,7 @@ import org.springframework.stereotype.Service;
  * 12-15-2017 9:52
  */
 @Service
-public class BackendMenuServiceImpl extends ServiceImpl<BackendMenuMapper, BackendMenuEntity> implements IBackendMenuService{
+public class BackendMenuServiceImpl
+        extends ServiceImpl<BackendMenuMapper, BackendMenuEntity>
+        implements IBackendMenuService{
 }

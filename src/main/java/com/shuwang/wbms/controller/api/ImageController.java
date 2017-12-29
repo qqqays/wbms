@@ -26,12 +26,19 @@ import java.util.Iterator;
  */
 @RestController
 @RequestMapping("/api/images")
-public class ImageController extends ProController{
+public class ImageController extends ProController {
 
     @Autowired
     private ImageService imageService;
 
-    public String addImg(String relationPath, String absolutionPath, String alt, String title, Integer width, Integer height, String class1, MultipartFile file) {
+    public String addImg(String relationPath,
+                         String absolutionPath,
+                         String alt,
+                         String title,
+                         Integer width,
+                         Integer height,
+                         String class1,
+                         MultipartFile file) {
 
         String originName = file.getOriginalFilename();
         String imgRelationPath = relationPath + originName;
@@ -61,7 +68,12 @@ public class ImageController extends ProController{
     }
 
     @PostMapping("/{content}")
-    public String addImage(@RequestParam(defaultValue = "") String alt, @RequestParam(defaultValue = "") String title, @RequestParam(defaultValue = "0") Integer width, @RequestParam(defaultValue = "0") Integer height, @PathVariable String content, @RequestParam MultipartFile[] files) {
+    public String addImage(@RequestParam(defaultValue = "") String alt,
+                           @RequestParam(defaultValue = "") String title,
+                           @RequestParam(defaultValue = "0") Integer width,
+                           @RequestParam(defaultValue = "0") Integer height,
+                           @PathVariable String content,
+                           @RequestParam MultipartFile[] files) {
 
         String relationPath = WinFilePathEnum.relationPath.getCustomPath(content);
         String absolutionPath = WinFilePathEnum.absolutionPath.getCustomPath(content);
@@ -110,7 +122,8 @@ public class ImageController extends ProController{
                         PrintWriter out = response.getWriter();
                         String CKEditorFuncNum = request.getParameter("CKEditorFuncNum");
                         out.println("<script type=\"text/javascript\">");
-                        out.println("window.parent.CKEDITOR.tools.callFunction(" + CKEditorFuncNum + ",'" + relationPath + file.getOriginalFilename() + "','')");
+                        out.println("window.parent.CKEDITOR.tools.callFunction(" + CKEditorFuncNum + ",'"
+                                + relationPath + file.getOriginalFilename() + "','')");
                         out.println("</script>");
 
                         out.flush();
@@ -129,19 +142,24 @@ public class ImageController extends ProController{
     }
 
     @GetMapping("/{content}")
-    public String acquireImg(@RequestParam(defaultValue = "0") int pageNumber, @RequestParam(defaultValue = "10") int pageSize, @RequestParam(defaultValue = "") String search, @PathVariable String content) {
+    public String acquireImg(@RequestParam(defaultValue = "0") int pageNumber,
+                             @RequestParam(defaultValue = "10") int pageSize,
+                             @RequestParam(defaultValue = "") String search,
+                             @PathVariable String content) {
         String[] searchColumn = {"originName", "alt", "title", "class1"};
-        return new JSONObject(datagram(imageService, pageNumber, pageSize, search, "originName", searchColumn, content)).toString();
+        return page2JsonStr(datagram(imageService, pageNumber, pageSize, search, "originName", searchColumn, content));
     }
 
     @GetMapping("")
-    public String acquireAllImg(@RequestParam(defaultValue = "0") Integer pageNumber, @RequestParam(defaultValue = "15") Integer pageSize, @RequestParam(defaultValue = "") String search) {
+    public String acquireAllImg(@RequestParam(defaultValue = "0") Integer pageNumber,
+                                @RequestParam(defaultValue = "15") Integer pageSize,
+                                @RequestParam(defaultValue = "") String search) {
         String[] searchColumn = {"originName", "alt", "title", "class1"};
-        return new JSONObject(datagram(imageService, pageNumber, pageSize, search, "originName", searchColumn)).toString();
+        return page2JsonStr(datagram(imageService, pageNumber, pageSize, search, "originName", searchColumn));
     }
 
     @PutMapping("/{id}")
-    public String updateImg(@PathVariable String id, @RequestParam String alt, @RequestParam String title){
+    public String updateImg(@PathVariable String id, @RequestParam String alt, @RequestParam String title) {
         ImageEntity ie = imageService.selectById(id);
 
         ie.setAlt(alt);

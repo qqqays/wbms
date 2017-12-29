@@ -52,11 +52,16 @@ public class ViewInterceptor extends HandlerInterceptorAdapter {
 
     //entity wrapper
     Wrapper<SysConfigEntity> configEntityEntityWrapper = new EntityWrapper<SysConfigEntity>();
-    Wrapper<MenuEntity> topMenuEntityWrapper = new EntityWrapper<MenuEntity>().eq("deep",0).orderBy("sort");
-    Wrapper<MenuEntity> subMenuEntityWrapper = new EntityWrapper<MenuEntity>().eq("deep", 1).orderBy("sort");
+    Wrapper<MenuEntity> topMenuEntityWrapper = new EntityWrapper<MenuEntity>()
+            .eq("deep",0)
+            .orderBy("sort");
+    Wrapper<MenuEntity> subMenuEntityWrapper = new EntityWrapper<MenuEntity>()
+            .eq("deep", 1)
+            .orderBy("sort");
 
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+            throws Exception {
 
         String requestUri = request.getRequestURI();
         String[] aRequest = new String[]{"","",""};

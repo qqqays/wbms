@@ -235,7 +235,8 @@ public class ServerAlpha {
                             pw.write("you type error password!\r\n");
                             pw.flush();
                             if (i > 2) {
-                                limitMap.put(socketWrap.getSocket().getInetAddress().toString(), System.currentTimeMillis());
+                                limitMap.put(socketWrap.getSocket().getInetAddress().toString(),
+                                        System.currentTimeMillis());
                                 socketWrap.getSocket().close();
                             }
                         }
@@ -246,7 +247,8 @@ public class ServerAlpha {
                 System.out.println("current active thread: " + list.size());
 
                 while ((info = br.readLine()) != null) {
-                    System.out.println(identity + "@" + socketWrap.getSocket().getInetAddress().toString() + ":" + socketWrap.getSocket().getPort() + ">>" + info);
+                    System.out.println(identity + "@" + socketWrap.getSocket().getInetAddress().toString() + ":"
+                            + socketWrap.getSocket().getPort() + ">>" + info);
 
                     distMsg(info, socketWrap, list);
                 }

@@ -31,11 +31,15 @@ public class AboutController {
     private IMenuService menuService;
 
     @GetMapping
-    public String about(Model model){
+    public String about(Model model) {
 
-        MenuEntity menuEntity = menuService.selectOne(new EntityWrapper<MenuEntity>().eq("pid", "about").eq("deep",1).orderBy("sort"));
+        MenuEntity menuEntity = menuService.selectOne(new EntityWrapper<MenuEntity>().
+                eq("pid", "about").
+                eq("deep", 1).orderBy("sort"));
 
-        List<SplContentEntity> splContentEntities = splContentService.selectList(new EntityWrapper<SplContentEntity>().eq("pid", menuEntity.getId()).eq("state", 1));
+        List<SplContentEntity> splContentEntities = splContentService.selectList(new EntityWrapper<SplContentEntity>()
+                .eq("pid", menuEntity.getId())
+                .eq("state", 1));
 
         model.addAttribute("contents", splContentEntities);
 
@@ -45,7 +49,9 @@ public class AboutController {
     @GetMapping("/{content}")
     public String content(Model model, @PathVariable String content) {
 
-        List<SplContentEntity> splContentEntities = splContentService.selectList(new EntityWrapper<SplContentEntity>().eq("pid", content).eq("state", 1));
+        List<SplContentEntity> splContentEntities = splContentService.selectList(new EntityWrapper<SplContentEntity>()
+                .eq("pid", content)
+                .eq("state", 1));
 
         Iterator<SplContentEntity> it = splContentEntities.iterator();
 

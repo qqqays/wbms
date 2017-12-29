@@ -4,7 +4,10 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.shuwang.wbms.common.enums.ReturnCodeEnum;
 import com.shuwang.wbms.common.util.O2JUtil;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Collection;
 import java.util.Map;
 
@@ -14,6 +17,12 @@ import java.util.Map;
  * 12-20-2017 13:45
  */
 public class ProController extends PageController {
+
+    @Autowired
+    protected HttpServletRequest request;
+
+    @Autowired
+    protected HttpServletResponse response;
 
     public String list2JsonStr(Collection list){
         return O2JUtil.list2JsonStr(list);

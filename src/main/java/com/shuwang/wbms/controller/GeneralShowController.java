@@ -45,7 +45,11 @@ public class GeneralShowController extends ProController {
     private ISeoService seoService;
 
     @GetMapping("/{topMenu:^(?!.*?\\.).*$}")
-    public String top(Model model, @PathVariable String topMenu, @RequestParam(defaultValue = "") String s, @RequestParam(defaultValue = "0") Integer pg, @RequestParam(defaultValue = "5") Integer sz) {
+    public String top(Model model,
+                      @PathVariable String topMenu,
+                      @RequestParam(defaultValue = "") String s,
+                      @RequestParam(defaultValue = "0") Integer pg,
+                      @RequestParam(defaultValue = "5") Integer sz) {
 
         MenuEntity me = menuService.selectById(topMenu);
 
@@ -65,14 +69,21 @@ public class GeneralShowController extends ProController {
 
             List<SplContentEntity> splContentEntities;
 
-            splContentEntities = splContentService.selectList(new EntityWrapper<SplContentEntity>().eq("pid", topMenu).eq("state", 1));
+            splContentEntities = splContentService.selectList(new EntityWrapper<SplContentEntity>()
+                    .eq("pid", topMenu)
+                    .eq("state", 1));
 
             if (splContentEntities == null && me.isHasSub()) {
-                me = menuService.selectOne(new EntityWrapper<MenuEntity>().eq("pid", topMenu).eq("deep", 1).orderBy("sort"));
+                me = menuService.selectOne(new EntityWrapper<MenuEntity>()
+                        .eq("pid", topMenu)
+                        .eq("deep", 1)
+                        .orderBy("sort"));
             }
 
             if (me != null)
-                splContentEntities = splContentService.selectList(new EntityWrapper<SplContentEntity>().eq("pid", me.getId()).eq("state", 1));
+                splContentEntities = splContentService.selectList(new EntityWrapper<SplContentEntity>()
+                        .eq("pid", me.getId())
+                        .eq("state", 1));
 
             model.addAttribute("contents", splContentEntities);
 
@@ -85,21 +96,33 @@ public class GeneralShowController extends ProController {
     }
 
     @GetMapping("/{topMenu}/{subMenu:^(?!.*?\\.).*$}")
-    public String sub(Model model, @PathVariable String topMenu, @PathVariable String subMenu, @RequestParam(defaultValue = "") String s, @RequestParam(defaultValue = "0") Integer pg, @RequestParam(defaultValue = "5") Integer sz) {
+    public String sub(Model model,
+                      @PathVariable String topMenu,
+                      @PathVariable String subMenu,
+                      @RequestParam(defaultValue = "") String s,
+                      @RequestParam(defaultValue = "0") Integer pg,
+                      @RequestParam(defaultValue = "5") Integer sz) {
 
         MenuEntity me = menuService.selectById(subMenu);
+
+        if (me == null) {
+            return "/error/500";
+        }
 
         if (me.getContentType().equals("info")) {
 
             Page<DetailEntity> detailDatagram = datagram(detailService, pg, sz, s, topMenu, subMenu);
 
-            attrOfModel(model, detailDatagram, "/"+ topMenu +"/" + subMenu, s, sz);
+            attrOfModel(model, detailDatagram, "/" + topMenu + "/" + subMenu, s, sz);
 
             return "/display/generalInfoPage";
 
         } else if (me.getContentType().equals("display")) {
 
-            List<SplContentEntity> splContentEntities = splContentService.selectList(new EntityWrapper<SplContentEntity>().eq("pid", subMenu).eq("state", 1));
+            List<SplContentEntity> splContentEntities = splContentService
+                    .selectList(new EntityWrapper<SplContentEntity>()
+                            .eq("pid", subMenu)
+                            .eq("state", 1));
 
             Iterator<SplContentEntity> it = splContentEntities.iterator();
 
@@ -121,7 +144,10 @@ public class GeneralShowController extends ProController {
     }
 
     @GetMapping("/{topMenu}/{subMenu}/{id:^(?!.*?\\.).*$}")
-    public String info(Model model, @PathVariable String topMenu, @PathVariable String subMenu, @PathVariable String id) {
+    public String info(Model model,
+                       @PathVariable String topMenu,
+                       @PathVariable String subMenu,
+                       @PathVariable String id) {
 
         DetailEntity detailEntity = detailService.selectById(id);
 
