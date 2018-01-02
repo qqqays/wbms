@@ -1,0 +1,106 @@
+<#include "/edit/common/editLayout.html">
+    <@head>
+</@head>
+
+<@body>
+
+<div class="content-wrapper" style="min-height: 1036px;">
+    <!-- Content Header (Page header) -->
+    <#include "/edit/common/content-header.html">
+
+        <section class="content">
+            <div class="row">
+                <!-- right column -->
+                <div class="col-md-12 connectedSortable">
+                    <#include "/edit/module/product-list.html">
+
+                        <#include "/edit/module/product-edit.html">
+                </div>
+                <!--/.col (right) -->
+            </div>
+            <!-- /.row -->
+        </section>
+</div>
+<!--</form>-->
+</@body>
+
+<@javascript>
+<script>
+
+//    var dir = 'menu-dir';
+//    var imgPaging = 'menu-img-paging';
+//    var imgList = 'menu-img-list';
+//    var banner = 'menu-banner';
+//
+//    function imgListFun() {
+//
+//        getImgList4Modal(1, elementVal(dir), imgPaging, imgList, banner);
+//
+//    }
+//
+//    function push_data(type) {
+//        var id = $('#menu-id').val();
+//        var menuName = $('#menu-name').val();
+//        var pid = $('#menu-pid').val();
+//        var parent_url = $('#menu-pid').val() == '' ? '' : '/' + $('#menu-pid').val();
+//        var url = parent_url + "/" + $('#menu-id').val();
+//        var icon = $('#menu-icon').val();
+//        var sort = $('#menu-sort').val();
+////        var deep = $('#menu-deep').val();
+//        var deep = $('#menu-pid').val() == '' ? 0 : 1;
+//        var display = $('#menu-display').val();
+//        var hasSub = $('#menu-hasSub').val() == 0 ? false : true;
+//        var bannerImg = $('#menu-banner')[0].attributes['src'].value;
+//        var contentType = $('#menu-contentType').val();
+//
+//        operate_menu(id, menuName, pid, url, icon, sort, deep, display, hasSub, bannerImg,contentType, type);
+//    }
+//
+//
+//    $('document').ready(function () {
+////        menu list
+//        getMenuList(1);
+//
+////        img list
+//        imgListFun();
+//
+////      select change choose images
+//        $('#menu-dir').on('change', function () {
+//            imgListFun();
+//        });
+//
+////        collapse
+//        $('.custom-collapse').click();
+//
+////        post banner image
+//        $('#menu-banner-upload').on('change', function () {
+//            console.log("push images");
+//            pushImg(this.id, '', '', elementVal(dir), banner);
+//            $('.close').click();
+//        });
+//
+////        post menu
+//        $('#menu-add').click(function () {
+//            if($('#menu-id').val() == '')
+//                alert('must enter url');
+//            else
+//                push_data('POST');
+//        });
+//
+////        put menu
+//        $('#menu-update').click(function () {
+//            if($('#menu-id').val() == '')
+//                alert('must enter url');
+//            else
+//                push_data('PUT');
+//        });
+//
+////        delete menu
+//        $('#menu-delete').click(function () {
+//            var id = $('#menu-id').val();
+//            delete_menu(id);
+//        });
+//
+//    });
+</script>
+</@javascript>

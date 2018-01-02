@@ -21,6 +21,67 @@
     text-align: left;
 }
 
+/*=======================index css=========================*/
+.cert-icon{
+    /*background-image: ;*/
+    /*background-color: red;*/
+    width: 18vw;
+    height:18vw;
+    /*max-width: 228px;*/
+    max-height: 228px
+}
+
+.cert-icon-sub{
+    margin: 0 auto;
+    /*background-color: blue;*/
+    background-image: url('/images/index/rosh-icon.png');
+    background-size: cover;
+    width: 14vw;
+    height: 16vw;
+    max-width: 177px;
+    max-height:202px
+}
+
+.intro{
+    background-color: #e9f9f4;
+}
+
+.module1-back{
+    background-image: url('/images/index/module1-back.jpg');
+}
+
+.centre{
+    width: 25vw;
+    margin: 0 auto;
+}
+
+.centre-image{
+    width: 15vw;
+    height: 22vw;
+    margin: 0 auto;
+    background-image: url('/images/index/product1.png');
+    background-size: cover;
+}
+
+.centre-desc {
+
+}
+
+.news{
+    background-color: aqua;
+    padding: 20px 15vw;
+    display: flex;
+}
+
+.news-sub{
+    width: 30vw;
+    margin: 0 auto;
+}
+
+.news-list{
+    display: flex;
+}
+
 /*=======================submenu css=======================*/
 .custom-submenu > li {
     margin: 5px;
@@ -113,12 +174,14 @@
 }
 
 .navbar-nav{
-    margin-top: 12px;
+    /*margin-top: 12px;*/
+    margin-top: 22px;
 }
 
 .navbar-nav>li {
     margin-left: 10px;
-    padding-bottom: 28px;
+    /*padding-bottom: 28px;*/
+    padding-bottom: 15px;
 }
 
 
@@ -127,7 +190,8 @@
     margin-bottom: 0;
     /* background: #151515; */
     /*background: #f1f1f1;*/
-    padding: 15px 0;
+    /*padding: 15px 0;*/
+    padding: 4px 0;
     padding-bottom: 0;
 }
 

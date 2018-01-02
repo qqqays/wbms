@@ -42,6 +42,12 @@ public class BackendController extends ProController {
     @Autowired
     private IDetailService detailService;
 
+    @Autowired
+    private IProductService productService;
+
+    @Autowired
+    private ICaseService caseService;
+
     Wrapper<SysConfigEntity> sysConfigEntityWrapper = new EntityWrapper<SysConfigEntity>();
 
     @GetMapping
@@ -95,6 +101,12 @@ public class BackendController extends ProController {
             case "p-information":
                 DetailEntity de = detailService.selectById(id);
                 model.addAttribute("info", de);
+            case "e-product":
+                ProductEntity pe = productService.selectById(id);
+                model.addAttribute("product", pe);
+            case "e-case":
+                CaseEntity ce = caseService.selectById(id);
+                model.addAttribute("case", ce);
             default:
                 break;
         }

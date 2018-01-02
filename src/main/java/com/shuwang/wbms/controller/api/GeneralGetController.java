@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
+ * Just for backend
+ *
  * Created by Q-ays.
  * whosqays@gmail.com
  * 12-25-2017 8:57

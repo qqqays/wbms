@@ -3,14 +3,8 @@ package com.shuwang.wbms.controller;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.shuwang.wbms.common.controller.ProController;
-import com.shuwang.wbms.entity.DetailEntity;
-import com.shuwang.wbms.entity.MenuEntity;
-import com.shuwang.wbms.entity.SeoEntity;
-import com.shuwang.wbms.entity.SplContentEntity;
-import com.shuwang.wbms.service.IDetailService;
-import com.shuwang.wbms.service.IMenuService;
-import com.shuwang.wbms.service.ISeoService;
-import com.shuwang.wbms.service.ISplContentService;
+import com.shuwang.wbms.entity.*;
+import com.shuwang.wbms.service.*;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -44,12 +38,18 @@ public class GeneralShowController extends ProController {
     @Autowired
     private ISeoService seoService;
 
+    @Autowired
+    private IProductService productService;
+
+    @Autowired
+    private ICaseService caseService;
+
     @GetMapping("/{topMenu:^(?!.*?\\.).*$}")
     public String top(Model model,
                       @PathVariable String topMenu,
                       @RequestParam(defaultValue = "") String s,
                       @RequestParam(defaultValue = "0") Integer pg,
-                      @RequestParam(defaultValue = "5") Integer sz) {
+                      @RequestParam(defaultValue = "8") Integer sz) {
 
         MenuEntity me = menuService.selectById(topMenu);
 
@@ -89,7 +89,23 @@ public class GeneralShowController extends ProController {
 
             return "/display/generalSplPage";
 
-        } else {
+        } else if (me.getContentType().equals("product")){
+
+            Page<ProductEntity> productDatagram = datagram(productService, pg, sz, s, topMenu);
+
+            attrOfModel(model, productDatagram, "/" + topMenu, s, sz);
+
+            return "/display/generalProductPage";
+
+        } else if (me.getContentType().equals("case")){
+
+            Page<CaseEntity> caseDatagram = datagram(caseService, pg, sz, s, topMenu);
+
+            attrOfModel(model, caseDatagram, "/" + topMenu, s, sz);
+
+            return "/display/generalCasePage";
+
+        }else{
             return "";
 
         }
@@ -137,6 +153,21 @@ public class GeneralShowController extends ProController {
             model.addAttribute("contents", splContentEntities);
 
             return "/display/generalSplPage";
+
+        } else if (me.getContentType().equals("product")) {
+            Page<ProductEntity> productDatagram = datagram(productService, pg, sz, s, topMenu, subMenu);
+
+            attrOfModel(model, productDatagram, "/" + topMenu + "/" + subMenu, s, sz);
+
+            return "/display/generalProductPage";
+
+        } else if (me.getContentType().equals("case")) {
+            Page<CaseEntity> caseDatagram = datagram(caseService, pg, sz, s, topMenu, subMenu);
+
+            attrOfModel(model, caseDatagram, "/" + topMenu + "/" + subMenu, s, sz);
+
+            return "/display/generalCasePage";
+
         } else {
             return "";
         }

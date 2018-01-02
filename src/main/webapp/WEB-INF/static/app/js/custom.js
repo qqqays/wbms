@@ -84,8 +84,9 @@ $('document').ready(function () {
     });
 
     // ===============iframe===============
-
     window.setInterval("setIframeHeight(document.getElementById('myFrame'));", 1000);
 
+    // =================wow===================
+    new WOW().init();
 
 });

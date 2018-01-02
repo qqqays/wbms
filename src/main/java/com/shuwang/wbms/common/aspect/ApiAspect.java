@@ -29,7 +29,7 @@ public class ApiAspect {
         HttpServletRequest request = attributes.getRequest();
 
         //url
-        logger.info("url={}", request.getRequestURL());
+        logger.info("\nurl={}", request.getRequestURL());
 
         //method
         logger.info("request_method={}", request.getMethod());
@@ -51,6 +51,7 @@ public class ApiAspect {
 
     @AfterReturning(returning = "object", pointcut = "log()")
     public void doAfterReturning(Object object) {
-        logger.info("response={}", object.toString());
+//        返回结果
+//        logger.info("response={}", object.toString());
     }
 }

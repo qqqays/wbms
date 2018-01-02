@@ -22,7 +22,7 @@
                 <select id="info-menu" class="form-control">
                     <#list allMenus as menu>
                         <#if !menu.hasSub && menu.contentType == "info">
-                            <option value="${menu.pid!},${menu.id!}">${menu.menuName}</option>
+                            <option value="${menu.pid!},${menu.id!}" ${(info.class2 == menu.id)?string('selected="selected"','')}>${menu.menuName}</option>
                         </#if>
                     </#list>
                 </select>

@@ -23,7 +23,7 @@
                 <select id="dpl-menu" class="form-control">
                     <#list allMenus as menu>
                         <#if !menu.hasSub && menu.contentType == "display">
-                                <option value="${menu.id}">${menu.menuName}</option>
+                                <option value="${menu.id}" ${(display.pid == menu.id)?string('selected="selected"','')}>${menu.menuName}</option>
                         </#if>
                     </#list>
                 </select>
