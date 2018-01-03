@@ -70,6 +70,22 @@ public class PageController {
     }
 
     /**
+     * Gains the list of products and cases
+     *
+     * @param iService
+     * @param pageNumber
+     * @param pageSize
+     * @param search
+     * @param type
+     * @param <T>
+     * @return
+     */
+    public <T> Page<T> datagram4p(IService<T> iService, Integer pageNumber, Integer pageSize, String search, String... type) {
+        String[] searchColumn = {"description", "name"};
+        return datagram(iService, pageNumber, pageSize, search, "name", searchColumn, type);
+    }
+
+    /**
      * Simple struct for gaining entity of list.
      *
      * Orders by id, page size equ 15, null of search, null of type.

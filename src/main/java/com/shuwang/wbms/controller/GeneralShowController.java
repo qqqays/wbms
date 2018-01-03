@@ -91,7 +91,7 @@ public class GeneralShowController extends ProController {
 
         } else if (me.getContentType().equals("product")){
 
-            Page<ProductEntity> productDatagram = datagram(productService, pg, sz, s, topMenu);
+            Page<ProductEntity> productDatagram = datagram4p(productService, pg, sz, s, topMenu);
 
             attrOfModel(model, productDatagram, "/" + topMenu, s, sz);
 
@@ -99,7 +99,7 @@ public class GeneralShowController extends ProController {
 
         } else if (me.getContentType().equals("case")){
 
-            Page<CaseEntity> caseDatagram = datagram(caseService, pg, sz, s, topMenu);
+            Page<CaseEntity> caseDatagram = datagram4p(caseService, pg, sz, s, topMenu);
 
             attrOfModel(model, caseDatagram, "/" + topMenu, s, sz);
 
@@ -117,7 +117,7 @@ public class GeneralShowController extends ProController {
                       @PathVariable String subMenu,
                       @RequestParam(defaultValue = "") String s,
                       @RequestParam(defaultValue = "0") Integer pg,
-                      @RequestParam(defaultValue = "5") Integer sz) {
+                      @RequestParam(defaultValue = "8") Integer sz) {
 
         MenuEntity me = menuService.selectById(subMenu);
 
@@ -155,14 +155,14 @@ public class GeneralShowController extends ProController {
             return "/display/generalSplPage";
 
         } else if (me.getContentType().equals("product")) {
-            Page<ProductEntity> productDatagram = datagram(productService, pg, sz, s, topMenu, subMenu);
+            Page<ProductEntity> productDatagram = datagram4p(productService, pg, sz, s, topMenu, subMenu);
 
             attrOfModel(model, productDatagram, "/" + topMenu + "/" + subMenu, s, sz);
 
             return "/display/generalProductPage";
 
         } else if (me.getContentType().equals("case")) {
-            Page<CaseEntity> caseDatagram = datagram(caseService, pg, sz, s, topMenu, subMenu);
+            Page<CaseEntity> caseDatagram = datagram4p(caseService, pg, sz, s, topMenu, subMenu);
 
             attrOfModel(model, caseDatagram, "/" + topMenu + "/" + subMenu, s, sz);
 

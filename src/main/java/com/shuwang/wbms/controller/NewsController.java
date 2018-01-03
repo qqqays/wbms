@@ -32,7 +32,7 @@ public class NewsController extends PageController{
     public String news(Model model,
                        @RequestParam(defaultValue = "") String s,
                        @RequestParam(defaultValue = "0") Integer pg,
-                       @RequestParam(defaultValue = "5") Integer sz) {
+                       @RequestParam(defaultValue = "8") Integer sz) {
 
         Page<DetailEntity> detailDatagram = datagram(detailService, pg, sz, s, "news");
 
@@ -45,7 +45,7 @@ public class NewsController extends PageController{
     public String content(Model model,
                           @RequestParam(defaultValue = "") String s,
                           @RequestParam(defaultValue = "0") Integer pg,
-                          @RequestParam(defaultValue = "5") Integer sz,
+                          @RequestParam(defaultValue = "8") Integer sz,
                           @PathVariable String content) {
 
         Page<DetailEntity> detailDatagram = datagram(detailService, pg, sz, s, "news", content);

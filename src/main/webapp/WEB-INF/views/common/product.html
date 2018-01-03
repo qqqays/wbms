@@ -1,0 +1,48 @@
+<div class="row">
+
+    <#if detailDatagram??>
+        <#list detailDatagram.records as product>
+            <div class="col-xs-4 product">
+                <!-- Widget: user widget style 1 -->
+                <div class="box box-widget widget-user product-list animated zoomIn">
+                    <!-- Add the bg color to the header using any of the bg-* classes -->
+                    <div>
+                        <img src="${product.img}">
+                    </div>
+
+                    <div class="box-footer">
+                        <div class="row">
+
+                            <!-- /.col -->
+                            <div class="col-sm-4">
+                                <div class="description-block">
+                                    <h5 class="description-header">${product.name!}</h5>
+                                    <span class="description-text">${product.description!}</span>
+                                </div>
+                                <!-- /.description-block -->
+                            </div>
+
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                </div>
+                <!-- /.widget-user -->
+            </div>
+        </#list>
+    </#if>
+</div>
+
+<div class="row">
+    <div class="box-footer " style="border-top: none;">
+        <#if detailDatagram??>
+            <div class="col-md-6 hidden-sm hidden-xs">
+                <#include "/common/paginateBar.html" />
+                <@paginate pageData=detailDatagram actionUrl="${actionUrl}" urlParas="${s!}"  />
+            </div>
+            <div class="col-md-6">
+                <#include "/common/paginate.html" />
+                <@paginate currentPage=detailDatagram.getCurrent() totalPage=detailDatagram.getPages() actionUrl="${actionUrl}" urlParas="${sz!}${s!}"  />
+            </div>
+        </#if>
+    </div>
+</div>

@@ -46,4 +46,9 @@ public class FreeMarkerConnectController {
         return "/test/connect";
     }
 
+    @GetMapping("/swipe")
+    public String swipe() {
+        return "/test/swipe";
+    }
+
 }

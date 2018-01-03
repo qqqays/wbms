@@ -2,12 +2,8 @@ package com.shuwang.wbms.controller.api;
 
 import com.baomidou.mybatisplus.plugins.Page;
 import com.shuwang.wbms.common.controller.ProController;
-import com.shuwang.wbms.entity.DetailEntity;
-import com.shuwang.wbms.entity.MenuEntity;
-import com.shuwang.wbms.entity.SplContentEntity;
-import com.shuwang.wbms.service.IDetailService;
-import com.shuwang.wbms.service.IMenuService;
-import com.shuwang.wbms.service.ISplContentService;
+import com.shuwang.wbms.entity.*;
+import com.shuwang.wbms.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +27,12 @@ public class GeneralGetController extends ProController{
     private ISplContentService splContentService;
 
     @Autowired
+    private IProductService productService;
+
+    @Autowired
+    private ICaseService caseService;
+
+    @Autowired
     private IMenuService menuService;
 
     @GetMapping("/details")
@@ -47,10 +49,23 @@ public class GeneralGetController extends ProController{
         return page2JsonStr(dplGram);
     }
 
-    @GetMapping("/menus")
-    public String menus(@RequestParam(defaultValue = "0") Integer pageNumber){
-        Page<MenuEntity> menuGram = datagram(menuService, pageNumber, "sort");
+    @GetMapping("/products")
+    public String products(@RequestParam(defaultValue = "0") Integer pageNumber) {
+        Page<ProductEntity> pdtGram = datagram(productService, pageNumber);
+        return page2JsonStr(pdtGram);
+    }
 
+    @GetMapping("/cases")
+    public String cases(@RequestParam(defaultValue = "0") Integer pageNumber) {
+        Page<CaseEntity> csGram = datagram(caseService, pageNumber);
+        return page2JsonStr(csGram);
+    }
+
+    @GetMapping("/menus")
+    public String menus(@RequestParam(defaultValue = "0") Integer pageNumber) {
+
+        Page<MenuEntity> menuGram = datagram(menuService, pageNumber, "sort");
         return page2JsonStr(menuGram);
     }
+
 }

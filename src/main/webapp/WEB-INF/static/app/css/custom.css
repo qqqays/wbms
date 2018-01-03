@@ -1,3 +1,10 @@
+img{
+    max-width: 100%;
+}
+
+div{
+    overflow: hidden;
+}
 /*=====================header css========================*/
 .c-logo{
     width: 130px;
@@ -82,6 +89,83 @@
     display: flex;
 }
 
+/*========================case==========================*/
+
+.case-list{
+    opacity: 0.9;
+    box-shadow: 0 1px 12px rgba(0,0,0,0.6);
+}
+
+.case-list:hover{
+    z-index: 9999;
+    opacity: 1;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    background-color: #1d7dd8;
+    cursor: pointer;
+
+}
+
+.box-footer{
+    background-color: inherit;
+}
+
+.case .widget-user .widget-user-header {
+    height: 18vw;
+}
+
+.case .widget-user .box-footer {
+    padding-top: 10px;
+}
+
+@media screen and (min-width: 1400px) {
+    .case .widget-user .widget-user-header {
+        height: 16vw;
+    }
+}
+
+@media screen and (max-width: 750px){
+    .col-xs-3.case{
+        width: 33%;
+    }
+
+    .case .widget-user .box-footer {
+        padding: 0;
+    }
+
+}
+
+@media screen and (max-width: 600px){
+
+    .case .widget-user .widget-user-header {
+        height: 28vw;
+    }
+
+    .col-xs-3.case{
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .col-xs-3.case{width: 100%}
+}
+
+/*==========================product=========================*/
+@media screen and (max-width: 957px){
+
+    .product.col-xs-4{
+        width: 50%;
+    }
+
+    .box-widget.widget-user.product-list {
+    }
+}
+
+@media screen and (max-width: 550px){
+    .product.col-xs-4{
+        width: 100%;
+    }
+}
+
 /*=======================submenu css=======================*/
 .custom-submenu > li {
     margin: 5px;
@@ -157,6 +241,7 @@
 .skin-black-light .main-header .navbar .nav>li>a:hover, .skin-black-light .main-header .navbar .nav>li>a:active, .skin-black-light .main-header .navbar .nav>li>a:focus, .skin-black-light .main-header .navbar .nav .open>a, .skin-black-light .main-header .navbar .nav .open>a:hover, .skin-black-light .main-header .navbar .nav .open>a:focus, .skin-black-light .main-header .navbar .nav>.active>a {
     background-color: #c52d2f;
     color: #fff;
+    box-shadow: 0 0 10px rgba(25,0,0,0.3);
 }
 
 .skin-black-light .main-header .navbar .navbar-nav>li>a {
