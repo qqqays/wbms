@@ -1,10 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<div class="box box-warning custom-box">
+    <div class="box-header with-border bg-gray">
+        <h3 class="box-title"> 案例 编辑列表</h3>
+        <!--<div class="box-tools">-->
+        <!--<div class="input-group input-group-sm" style="width: 150px;">-->
+        <!--<input type="text" name="table_search" class="form-control pull-right" placeholder="Search">-->
 
-</body>
-</html>
+        <!--<div class="input-group-btn">-->
+        <!--<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <div class="pull-right box-tools">
+            <button type="button" class="btn btn-default btn-sm" onclick="getCaseList(1)" data-toggle="tooltip" data-original-title="refresh"><i class="fa fa-refresh"></i></button>
+
+            <button type="button" class="btn btn-default btn-sm custom-collapse" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse">
+                <i class="fa fa-minus"></i>
+            </button>
+
+            <button type="button" class="btn btn-default btn-sm" data-widget="remove" data-toggle="tooltip" title="" data-original-title="Remove">
+                <i class="fa fa-times"></i>
+            </button>
+
+        </div>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body bg-red">
+        <table class="table table-bordered table-hover">
+            <tbody id = 'caseList' class="bg-gray">
+
+            </tbody>
+        </table>
+    </div>
+    <!-- /.box-body -->
+    <div class="box-footer clearfix" id="case-footer">
+
+    </div>
+</div>

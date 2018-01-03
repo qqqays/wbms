@@ -299,3 +299,87 @@ function getImgList4Modal(page, dir, pagingArea, listId, showId) {
 
     getImgList(page, dir, pagingArea, assembleImg4modal, 'getImgList4Modal', listId, showId);
 }
+
+// ========================case list assemble==================
+function assembleTable4case(json) {
+    var str =   '<tr class="bg-aqua">\n' +
+        '    <th>name</th>\n' +
+        '    <th>description</th>\n' +
+        '    <th>img</th>\n' +
+        '    <th>class1</th>\n' +
+        '    <th>class2</th>\n' +
+        '    <th class="bg-orange">编辑</th>\n' +
+        '</tr>';
+
+    $.each(json, function (index, info) {
+        str += '<tr>' +
+            '<td>' + info["name"] + '</td>' +
+            '<td>' + info["description"] + '</td>' +
+            '<td>' + info["img"] + '</td>' +
+            '<td>' + info["class1"] + '</td>' +
+            '<td>' + info["class2"] + '</td>' +
+            '<td><a href="/backend/e-case/' + info["id"] + '">编辑 </a> <a class="pull-right" href="javascript:void(0)" onclick="delete_info(\'' + info["id"] + '\')"> 删除</a></td>' +
+            '</tr>';
+    });
+
+    $('#caseList').html(str);
+
+}
+
+function getCaseList(page) {
+    $.ajax({
+        url: '/api/gains/cases',
+        type: 'get',
+        data: {pageNumber: page},
+        success: function (d, s) {
+            var json = JSON.parse(d);
+            assembleTable4case(json['records']);
+            paging(json['pages'], json['current'], 'case-footer', 'getCaseList');
+        },
+        error: function (d, s) {
+            console.log(d + s);
+        }
+    });
+}
+
+// ========================product assemble=======================
+function assembleTable4product(json) {
+    var str =   '<tr class="bg-aqua">\n' +
+        '    <th>name</th>\n' +
+        '    <th>description</th>\n' +
+        '    <th>img</th>\n' +
+        '    <th>class1</th>\n' +
+        '    <th>class2</th>\n' +
+        '    <th class="bg-orange">编辑</th>\n' +
+        '</tr>';
+
+    $.each(json, function (index, info) {
+        str += '<tr>' +
+            '<td>' + info["name"] + '</td>' +
+            '<td>' + info["description"] + '</td>' +
+            '<td>' + info["img"] + '</td>' +
+            '<td>' + info["class1"] + '</td>' +
+            '<td>' + info["class2"] + '</td>' +
+            '<td><a href="/backend/e-case/' + info["id"] + '">编辑 </a> <a class="pull-right" href="javascript:void(0)" onclick="delete_info(\'' + info["id"] + '\')"> 删除</a></td>' +
+            '</tr>';
+    });
+
+    $('#productList').html(str);
+
+}
+
+function getProductList(page) {
+    $.ajax({
+        url: '/api/gains/products',
+        type: 'get',
+        data: {pageNumber: page},
+        success: function (d, s) {
+            var json = JSON.parse(d);
+            assembleTable4product(json['records']);
+            paging(json['pages'], json['current'], 'product-footer', 'getProductList');
+        },
+        error: function (d, s) {
+            console.log(d + s);
+        }
+    });
+}

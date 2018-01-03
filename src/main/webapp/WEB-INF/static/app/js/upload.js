@@ -310,3 +310,39 @@ function delete_img(id) {
 
     general_delete(url);
 }
+
+//增加案例，  修改案例
+function operate_case(id, name, description, img, class1, class2, contents, type) {
+    
+    var url = '/api/upload/case';
+    
+    var data = {
+        id: id,
+        name:name,
+        description:description,
+        img:img,
+        class1:class1,
+        class2:class2,
+        contents:contents
+    };
+
+    generalAjaxPro(url, type, data);
+
+}
+
+function operate_product(id, name, description, img, class1, class2, type) {
+   var url = '/api/upload/product'
+
+
+    var data = {
+        id: id,
+        name:name,
+        description:description,
+        img:img,
+        class1:class1,
+        class2:class2
+    };
+
+   generalAjaxPro(url, type, data);
+
+}

@@ -150,13 +150,19 @@ div{
 }
 
 /*==========================product=========================*/
+
+.product-list.widget-user .box-footer {
+    padding: 0;
+}
+
+.product-list.box{
+    background: inherit;
+}
+
 @media screen and (max-width: 957px){
 
     .product.col-xs-4{
         width: 50%;
-    }
-
-    .box-widget.widget-user.product-list {
     }
 }
 
