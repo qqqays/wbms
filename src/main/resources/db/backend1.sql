@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2017-12-29 17:35:17
+Date: 2018-01-04 17:56:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -80,16 +80,47 @@ CREATE TABLE `backend_menu` (
 -- ----------------------------
 -- Records of backend_menu
 -- ----------------------------
-INSERT INTO `backend_menu` VALUES ('e-display', '展示页面修改', 'management', '/backend/e-display', 'fa fa-circle-o text-orange', '3', '1', '0');
+INSERT INTO `backend_menu` VALUES ('e-case', '成功案例编辑', 'management', '/backend/e-case', 'fa fa-heartbeat text-yellow', '6', '1', '0');
+INSERT INTO `backend_menu` VALUES ('e-display', '展示页面编辑', 'management', '/backend/e-display', 'fa fa-circle-o text-orange', '3', '1', '0');
 INSERT INTO `backend_menu` VALUES ('e-images', '图片管理', 'management', '/backend/e-images', 'fa fa-circle-o text-gray', '2', '1', '0');
-INSERT INTO `backend_menu` VALUES ('e-info', '信息条目修改', 'management', '/backend/e-info', 'fa fa-circle-o text-green', '4', '1', '0');
+INSERT INTO `backend_menu` VALUES ('e-info', '信息条目编辑', 'management', '/backend/e-info', 'fa fa-circle-o text-green', '4', '1', '0');
 INSERT INTO `backend_menu` VALUES ('e-menu', '菜单管理', 'management', '/backend/e-menu', 'fa fa-circle-o text-yellow', '1', '1', '0');
+INSERT INTO `backend_menu` VALUES ('e-product', '产品信息编辑', 'management', '/backend/e-product', 'fa fa-certificate text-red', '5', '1', '0');
 INSERT INTO `backend_menu` VALUES ('management', '管理', 'null', '/backend/management', 'fa fa-laptop', '3', '0', '1');
 INSERT INTO `backend_menu` VALUES ('p-display', '展示页面制作', 'publish', '/backend/p-display', 'fa fa-circle-o text-blue', '2', '1', '0');
 INSERT INTO `backend_menu` VALUES ('p-information', '信息发布', 'publish', '/backend/p-information', 'fa fa-circle-o text-red', '1', '1', '0');
 INSERT INTO `backend_menu` VALUES ('publish', '发布', 'null', '/backend/publish', 'fa fa-edit', '4', '0', '1');
 INSERT INTO `backend_menu` VALUES ('sysConfig', '系统配置', 'null', '/backend/sysConfig', 'fa fa-th', '1', '0', '0');
 INSERT INTO `backend_menu` VALUES ('user', '用户', 'null', '/backend/user', 'fa fa-user', '2', '0', '0');
+
+-- ----------------------------
+-- Table structure for cases
+-- ----------------------------
+DROP TABLE IF EXISTS `cases`;
+CREATE TABLE `cases` (
+  `id` varchar(64) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `contents` longtext,
+  `img` varchar(255) DEFAULT NULL,
+  `class1` varchar(255) DEFAULT NULL,
+  `class2` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of cases
+-- ----------------------------
+INSERT INTO `cases` VALUES ('0b3cb5a454654631866c688a191a2f98', 'habcde', '大方啊', '<p>start的发送三分都是大方都是的</p>\n', '/upload-files//images/system/android-social-user.png', 'case', 'power');
+INSERT INTO `cases` VALUES ('aa', 'egfg', '4q5ygfdj6nhyt', 'reyg4er', '/images/case/case.png', 'case', 'saving');
+INSERT INTO `cases` VALUES ('asdf', 'defda', 'dsfedfe', 'dfeadfeasdfe', '/images/case/case.png', 'case', 'saving');
+INSERT INTO `cases` VALUES ('dfas', 'dfe', 'dsfedfe', 'dfeadfeasdfe', '/images/case/case.png', 'case', 'saving');
+INSERT INTO `cases` VALUES ('dfea', 'dfa', 'dsfedfe', 'dfeadfeasdfe', '/images/case/case.png', 'case', 'saving');
+INSERT INTO `cases` VALUES ('eafde', 'dfe', 'dsfedfe', 'dfeadfeasdfe', '/images/case/case.png', 'case', 'saving');
+INSERT INTO `cases` VALUES ('edfeadf', 'dasef', 'dsfedfe', 'dfeadfeasdfe', '/images/case/case.png', 'case', 'saving');
+INSERT INTO `cases` VALUES ('fedt', 'dfe', 'dsfedfe', 'dfeadfeasdfe', '/images/case/case.png', 'case', 'saving');
+INSERT INTO `cases` VALUES ('fg', 'eqtt', 'dfea', 'qefd', '/images/case/case.png', 'case', 'saving');
+INSERT INTO `cases` VALUES ('ghj', 'asde', 'dsfedfe', 'dfeadfeasdfe', '/images/case/case.png', 'case', 'saving');
 
 -- ----------------------------
 -- Table structure for detail
@@ -173,6 +204,7 @@ INSERT INTO `images` VALUES ('46e98410248e430d9559243012010ca8', null, 'alert.pn
 INSERT INTO `images` VALUES ('491039a307854ee0ad2878705f4c1031', null, 'android-camera.png', '', '', '/upload-files//images/system/android-camera.png', null, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', '512', '512', 'system', null, null);
 INSERT INTO `images` VALUES ('5d4fa0e897aa4696b56c6ef8ce81b9df', null, 'android-add-contact.png', '', '', '/upload-files//images/system/android-add-contact.png', null, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', '0', '0', 'system', null, null);
 INSERT INTO `images` VALUES ('63dd9ec756fa4d998e00e2aa7186674e', null, '00368.jpg', 'good', 'morning', '/upload-files//images/system/00368.jpg', null, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', '0', '0', 'system', null, null);
+INSERT INTO `images` VALUES ('7992ef24581441e88c6b6ff80edb0a08', null, 'android-close.png', '', '', '/upload-files//images/system/android-close.png', null, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', '512', '512', 'system', null, null);
 INSERT INTO `images` VALUES ('7bb6b1d0b8bb44d2bfafea57681d929a', null, 'android-location.png', '', '', '/upload-files//images/system/android-location.png', null, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', '0', '0', 'system', null, null);
 INSERT INTO `images` VALUES ('7f2440f3896d42d0b8bf977e843e9930', null, 'android-search.png', '范德萨', '范德萨 ', '/upload-files//images/system/android-search.png', null, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', '512', '512', 'system', null, null);
 INSERT INTO `images` VALUES ('808a211999c84cecb6ed206888a50791', null, 'alert-circled.png', '', '', '/upload-files//images/system/alert-circled.png', null, '/upload-files//images/system/', 'E:/src/java/wbms/out/artifacts/wbms_Web_exploded/upload-files//images/system/', '512', '512', 'system', null, null);
@@ -225,24 +257,61 @@ CREATE TABLE `menu` (
 -- ----------------------------
 INSERT INTO `menu` VALUES ('about', '关于我们', 'null', '/about', 'fa-fw fa-sun-o', '1', '0', null, '3', null, '1', '/images/banner1.jpg', '0', 'display');
 INSERT INTO `menu` VALUES ('adf', '好滴', 'about', '/about/adf', '', '5', '1', null, '1', null, '0', '/upload-files//images/system/QQ图片20170919163710.jpg', '0', 'display');
-INSERT INTO `menu` VALUES ('adfaaaefdas', '地方', 'case', '/case/adfaaaefdas', '', '5', '1', null, '1', null, '0', '/upload-files//images/info/android-dropdown.png', '0', 'info');
 INSERT INTO `menu` VALUES ('afdeae', '测试2', 'testtopmenu', '/testtopmenu/afdeae', '', '2', '1', null, '1', null, '0', '/images/banner1.jpg', '0', 'display');
 INSERT INTO `menu` VALUES ('bb7bfe771dfc488d86e751ceffbdea60', '测试菜单sub', 'testtopmenu', '/testtopmenu/bb7bfe771dfc488d86e751ceffbdea60', '', '0', '1', null, '3', null, '0', '/images/banner1.jpg', '0', 'display');
-INSERT INTO `menu` VALUES ('case', '成功案例', '', '/case', 'fa-fw fa-sun-o', '4', '0', null, '3', null, '0', '/images/banner1.jpg', '0', 'display');
+INSERT INTO `menu` VALUES ('case', '成功案例', '', '/case', 'fa-fw fa-sun-o', '4', '0', null, '3', null, '0', '/images/banner1.jpg', '0', 'case');
 INSERT INTO `menu` VALUES ('company', '公司新闻', 'news', '/news/company', null, '0', '1', null, '1', null, '0', null, '0', 'info');
 INSERT INTO `menu` VALUES ('contact', '联系我们', 'null', '/contact', 'fa-fw fa-sun-o', '5', '0', null, '3', null, '0', null, '0', 'display');
 INSERT INTO `menu` VALUES ('index', '首  页', 'null', '/index', 'fa-fw fa-sun-o', '0', '0', null, '3', null, '0', null, '0', null);
 INSERT INTO `menu` VALUES ('industry', '行业动态', 'news', '/news/industry', null, '0', '1', null, '1', null, '0', null, '0', 'info');
 INSERT INTO `menu` VALUES ('infosub', '信息子', 'testinfotop', '/testinfotop/infosub', '', '0', '1', null, '1', null, '0', '', '0', 'info');
+INSERT INTO `menu` VALUES ('mono', '单晶', 'product', '/product/mono', '', '1', '1', null, '1', null, '0', '', '0', 'product');
 INSERT INTO `menu` VALUES ('news', '新闻资讯', 'null', '/news', 'fa-fw fa-sun-o', '2', '0', null, '3', null, '1', null, '0', 'info');
 INSERT INTO `menu` VALUES ('open', '打开', 'testtopmenu', '/testtopmenu/open', '', '4', '1', null, '1', null, '0', '/upload-files//images/system/android-location.png', '0', 'info');
-INSERT INTO `menu` VALUES ('product', '产品中心', 'null', '/product', 'fa-fw fa-sun-o', '3', '0', null, '3', null, '0', null, '0', 'display');
+INSERT INTO `menu` VALUES ('poly', '多晶', 'product', '/product/poly', '', '2', '1', null, '1', null, '0', '', '0', 'product');
+INSERT INTO `menu` VALUES ('power', '发电', 'case', '/case/power', '', '1', '1', null, '1', null, '0', '', '0', 'case');
+INSERT INTO `menu` VALUES ('product', '产品中心', '', '/product', 'fa-fw fa-sun-o', '3', '0', null, '3', null, '0', '', '0', 'product');
+INSERT INTO `menu` VALUES ('saving', '节能', 'case', '/case/saving', '', '1', '1', null, '1', null, '0', '', '0', 'case');
 INSERT INTO `menu` VALUES ('sbuinfo2', '信息2', 'testinfotop', '/testinfotop/sbuinfo2', '', '2', '1', null, '1', null, '0', '', '0', 'info');
 INSERT INTO `menu` VALUES ('subAbout', '关于子菜单', 'about', '/about/subAbout', null, '0', '1', null, '1', null, '0', '/images/banner2.jpg', '0', 'display');
 INSERT INTO `menu` VALUES ('subAbout2', '子菜单2', 'about', '/about/subAbout2', null, '1', '1', null, '1', null, '0', null, '0', 'display');
 INSERT INTO `menu` VALUES ('test', '测试3', 'testtopmenu', '/testtopmenu/test', '', '5', '1', null, '1', null, '0', '', '0', 'display');
 INSERT INTO `menu` VALUES ('testinfotop', '信息 顶部', '', '/testinfotop', '', '6', '0', null, '3', null, '1', '', '0', 'info');
-INSERT INTO `menu` VALUES ('testtopmenu', '这是个顶部测试菜单', '', '/testtopmenu', '', '7', '0', null, '3', null, '1', '/upload-files//images/system/android-hand.png', '0', 'display');
+INSERT INTO `menu` VALUES ('testtopmenu', '顶部测试菜单', '', '/testtopmenu', '', '7', '0', null, '3', null, '1', '/upload-files//images/system/android-hand.png', '0', 'display');
+
+-- ----------------------------
+-- Table structure for products
+-- ----------------------------
+DROP TABLE IF EXISTS `products`;
+CREATE TABLE `products` (
+  `id` varchar(64) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `img` varchar(255) DEFAULT NULL,
+  `class1` varchar(255) DEFAULT NULL,
+  `class2` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of products
+-- ----------------------------
+INSERT INTO `products` VALUES ('16639698636241bea3d2ca8dd1bca308', '哇哈他', '第三方', '/upload-files//images/system/QQ图片20170919163710.jpg', 'product', 'poly');
+INSERT INTO `products` VALUES ('4146bf0cecb9482db004ea9a6f9cd5ef', 'fesdaf大范甘迪光伏', 'dsaasdffdsfesad安抚', '/upload-files//images/ckEditor/alert.png', 'product', 'mono');
+INSERT INTO `products` VALUES ('829e6b6c20764cbb89fa72814717d486', 'dsdaf大范迪光伏', 'dsaasdsfddfgdgf 飞得更高发电', '/upload-files//images/system/android-archive.png', 'product', 'mono');
+INSERT INTO `products` VALUES ('d', 'dfdsafesad', 'fesagdsg', '/images/index/product1.png', 'product', 'poly');
+INSERT INTO `products` VALUES ('dfds', 'dfdsafesad', 'fesagdsg', '/images/index/product1.png', 'product', 'poly');
+INSERT INTO `products` VALUES ('dfdsf', 'dfdsafesa', 'fesagdsg', '/images/index/product1.png', 'product', 'poly');
+INSERT INTO `products` VALUES ('eaf', 'dfdsafesad', 'fesagdsg', '/images/index/product1.png', 'product', 'poly');
+INSERT INTO `products` VALUES ('ef5fa53b1ecb477ea1d902d837a6bc9e', 'fesdaf大范甘迪光伏', 'dsaasdffdsfesad安抚', '/upload-files//images/system/android-alarm.png', 'product', 'mono');
+INSERT INTO `products` VALUES ('ertg', 'dfdsafesad', 'fesagdsg', '/images/index/product1.png', 'product', 'poly');
+INSERT INTO `products` VALUES ('f', 'dfdsafesad', 'fesagdsg', '/images/index/product1.png', 'product', 'poly');
+INSERT INTO `products` VALUES ('f7cfd31bc6414be88a6d8cb0aa1470cd', 'fesdaf大范甘迪光伏', 'dsaasdffdsfesad', '/upload-files//images/system/android-add.png', 'product', 'mono');
+INSERT INTO `products` VALUES ('fdsafd', 'dfdsafesad', 'fesagdsg', '/images/index/product1.png', 'product', 'poly');
+INSERT INTO `products` VALUES ('gfjhg', 'bfdsafesad', 'fesagdsg', '/images/index/product1.png', 'product', 'mono');
+INSERT INTO `products` VALUES ('jg', 'jfdsafesad', 'fesagdsg', '/images/index/product1.png', 'product', 'poly');
+INSERT INTO `products` VALUES ('jgf', 'gfdsafesad', 'fesagdsg', '/images/index/product1.png', 'product', 'poly');
+INSERT INTO `products` VALUES ('jtre', 'edfdsafesad', 'fesagdsg', '/images/index/product1.png', 'product', 'mono');
 
 -- ----------------------------
 -- Table structure for roles
@@ -355,6 +424,7 @@ INSERT INTO `spl_content` VALUES ('2d4ff786ae064f9d8f77cf2968469e90', 'product',
 INSERT INTO `spl_content` VALUES ('4c97a30d43e94bc390883eaf27eb4858', 'subAbout', '<p>start</p>\n\n<p>dsfsa</p>\n\n<p>fs</p>\n\n<p>dfasfkdsjfkds&nbsp; asfdsfeiosdjafklsadf;</p>\n\n<p>fesdfsa</p>\n\n<p>feadfasfesafasfesafdsdaf</p>\n\n<p>fdsafd</p>\n\n<p>fdsfesaf</p>\n\n<p>sfesafsadfdsa</p>\n', '', '/upload-files//images/system/android-share.png', 'qays', '1', null, null);
 INSERT INTO `spl_content` VALUES ('5ec0ca20fbdf41099d9224caab550cfc', 'subAbout2', '<p>start</p>\n\n<p>&nbsp;</p>\n\n<p>what fu d&nbsp; &nbsp; asfsdf</p>\n', '', '/upload-files//images/system/android-add-contact.png', 'luguo ', '1', null, '2017-12-21');
 INSERT INTO `spl_content` VALUES ('832dbccab2f5455f9dd1087b1c5a44b7', 'subAbout', '<p>start</p>\n\n<p>&nbsp;</p>\n\n<p>what fu d&nbsp; &nbsp; asfsdf</p>\n', '', '/upload-files//images/system/android-add-contact.png', 'luguo ', '1', null, '2017-12-21');
+INSERT INTO `spl_content` VALUES ('88704f49a939484f912e4b5320ebe14b', 'adf', '<p style=\"margin-left:40px\"><img alt=\"\" src=\"/upload-files//images/system/logo.png\" /><img alt=\"enlightened\" src=\"http://localhost:8080/plugins/Editors/myCkeditor/plugins/smiley/images/lightbulb.png\" style=\"height:23px; width:23px\" title=\"enlightened\" /><iframe frameborder=\"0\" scrolling=\"no\" src=\"http://www.baidu.com\"></iframe>start</p>\n\n<form action=\"what\" enctype=\"text/plain\" id=\"test1\" method=\"post\" name=\"ttttest1\">\n<p><input name=\"wat\" type=\"text\" value=\"122\" /></p>\n\n<p><textarea name=\"dfas\" rows=\"3\">asfdgesdfsdge</textarea></p>\n\n<p><input name=\"wefdsa\" type=\"submit\" value=\"ggdsa\" /></p>\n</form>\n\n<p>&nbsp;</p>\n', '', '', 'luguo', '1', null, null);
 INSERT INTO `spl_content` VALUES ('8dbe82fee1e241b1bdb3d9201aed059f', 'testtopmenu', '<p><span style=\"font-size:10px\">fdsa</span><span style=\"font-size:12px\">fdsfadsafsasdfa<span style=\"font-family:Lucida Sans Unicode,Lucida Grande,sans-serif\">fdsafasfdsaf</span></span></p>\n\n<p>&nbsp;</p>\n\n<p><span style=\"font-family:Comic Sans MS,cursive\"><em><strong>waht the fu</strong></em></span></p>\n\n<p><span style=\"font-family:Comic Sans MS,cursive\"><em><strong>sdsfasdsfsafes</strong></em></span></p>\n\n<p><span style=\"font-family:Comic Sans MS,cursive\"><em><strong>dsasdaedfa</strong></em></span></p>\n\n<p>&nbsp;</p>\n\n<p><span style=\"font-family:Comic Sans MS,cursive\"><em><strong><img alt=\"\" src=\"/upload-files//images/system/android-book.png\" style=\"height:512px; width:512px\" /></strong></em></span></p>\n', '', '', 'fasdfas luguo ', '1', null, null);
 INSERT INTO `spl_content` VALUES ('aaee6d78e78944308c1455ea68e31335', 'subAbout', '<p>start</p>\n\n<p>&nbsp;</p>\n\n<p>what fu d&nbsp; &nbsp; asfsdf</p>\n', '', '/upload-files//images/system/android-add-contact.png', 'luguo ', '0', null, '2017-12-21');
 INSERT INTO `spl_content` VALUES ('abbdfcd78c5c45fbb5a192574f0614f0', 'bb7bfe771dfc488d86e751ceffbdea60', '<p>start</p>\n\n<p>fea</p>\n\n<p>dfea</p>\n\n<p>&nbsp;</p>\n\n<p>dfa</p>\n\n<p>&nbsp;</p>\n\n<p>aaafde</p>\n\n<p>a</p>\n', '', '', 'fdsa', '1', null, null);
@@ -404,7 +474,7 @@ CREATE TABLE `users` (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES ('luguo', 'aaa', '1', '2017-12-29 10:46:04', null, null);
+INSERT INTO `users` VALUES ('luguo', 'aaaa', '1', '2017-12-29 10:46:04', null, null);
 INSERT INTO `users` VALUES ('qays', '123', '1', '2017-12-29 10:43:16', 'fork', null);
 
 -- ----------------------------
