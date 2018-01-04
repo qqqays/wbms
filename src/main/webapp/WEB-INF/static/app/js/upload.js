@@ -330,8 +330,16 @@ function operate_case(id, name, description, img, class1, class2, contents, type
 
 }
 
+//删除案例
+function delete_case(id) {
+    var url = '/api/upload/case/' + id;
+
+    general_delete(url);
+}
+
+//增加产品， 修改产品
 function operate_product(id, name, description, img, class1, class2, type) {
-   var url = '/api/upload/product'
+   var url = '/api/upload/product';
 
 
     var data = {
@@ -345,4 +353,11 @@ function operate_product(id, name, description, img, class1, class2, type) {
 
    generalAjaxPro(url, type, data);
 
+}
+
+//删除 产品
+function delete_product(id) {
+    var url = '/api/upload/product/' + id;
+
+    general_delete(url);
 }

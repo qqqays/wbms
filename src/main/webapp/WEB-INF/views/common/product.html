@@ -1,5 +1,6 @@
 <div class="row">
-
+    <div id="masonry">
+    <!--<div id="fh5co-board" data-columns>-->
     <#if detailDatagram??>
         <#list detailDatagram.records as product>
             <div class="col-xs-4 product">
@@ -28,8 +29,18 @@
                 </div>
                 <!-- /.widget-user -->
             </div>
+
+                    <!--<div class="item">-->
+                        <!--<div class="animate-box bounceIn animated">-->
+                            <!--<a href="${product.img!}" class="image-popup fh5co-board-img" title="fuck"><img src="${product.img!}" alt="Free HTML5 Bootstrap template"></a>-->
+                            <!--<div class="fh5co-desc">${product.description}</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
         </#list>
     </#if>
+
+    </div>
 </div>
 
 <div class="row">
@@ -45,4 +56,5 @@
             </div>
         </#if>
     </div>
+</div>
 </div>

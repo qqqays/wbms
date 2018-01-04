@@ -27,80 +27,71 @@
 <@javascript>
 <script>
 
-//    var dir = 'menu-dir';
-//    var imgPaging = 'menu-img-paging';
-//    var imgList = 'menu-img-list';
-//    var banner = 'menu-banner';
-//
-//    function imgListFun() {
-//
-//        getImgList4Modal(1, elementVal(dir), imgPaging, imgList, banner);
-//
-//    }
-//
-//    function push_data(type) {
-//        var id = $('#menu-id').val();
-//        var menuName = $('#menu-name').val();
-//        var pid = $('#menu-pid').val();
-//        var parent_url = $('#menu-pid').val() == '' ? '' : '/' + $('#menu-pid').val();
-//        var url = parent_url + "/" + $('#menu-id').val();
-//        var icon = $('#menu-icon').val();
-//        var sort = $('#menu-sort').val();
-////        var deep = $('#menu-deep').val();
-//        var deep = $('#menu-pid').val() == '' ? 0 : 1;
-//        var display = $('#menu-display').val();
-//        var hasSub = $('#menu-hasSub').val() == 0 ? false : true;
-//        var bannerImg = $('#menu-banner')[0].attributes['src'].value;
-//        var contentType = $('#menu-contentType').val();
-//
-//        operate_menu(id, menuName, pid, url, icon, sort, deep, display, hasSub, bannerImg,contentType, type);
-//    }
-//
-//
+    var dir = 'product-dir';
+    var imgPaging = 'product-cover-paging';
+    var imgList = 'product-cover-list';
+    var cover = 'product-cover';
+
+    function imgListFun() {
+
+        getImgList4Modal(1, elementVal(dir), imgPaging, imgList, cover);
+
+    }
+
+    function push_data(type) {
+        var id = $('#product-id').val();
+        var name = $('#product-name').val();
+        var description = $('#product-description').val();
+        var img = $('#product-cover')[0].attributes['src'].value;
+        var class1 = 'product';
+        var class2 = $('#product-class2').val();
+//        var contents = CKEDITOR.instances.editor.getData();
+
+        operate_product(id, name, description, img, class1, class2, type);
+    }
+
+
     $('document').ready(function () {
-//        product list
+//        case list
         getProductList(1);
-//
-////        img list
-//        imgListFun();
-//
-////      select change choose images
-//        $('#menu-dir').on('change', function () {
-//            imgListFun();
-//        });
-//
-////        collapse
-//        $('.custom-collapse').click();
-//
-////        post banner image
-//        $('#menu-banner-upload').on('change', function () {
-//            console.log("push images");
-//            pushImg(this.id, '', '', elementVal(dir), banner);
-//            $('.close').click();
-//        });
-//
-////        post menu
-//        $('#menu-add').click(function () {
-//            if($('#menu-id').val() == '')
-//                alert('must enter url');
-//            else
-//                push_data('POST');
-//        });
-//
-////        put menu
-//        $('#menu-update').click(function () {
-//            if($('#menu-id').val() == '')
-//                alert('must enter url');
-//            else
-//                push_data('PUT');
-//        });
-//
-////        delete menu
-//        $('#menu-delete').click(function () {
-//            var id = $('#menu-id').val();
-//            delete_menu(id);
-//        });
-//
+
+//        img list
+        imgListFun();
+
+//      select change choose images
+        $('#product-dir').on('change', function () {
+            imgListFun();
+        });
+
+//        collapse
+        $('.custom-collapse').click();
+
+//        ckEditor padding data
+//        CKEDITOR.instances.editor.setData($('#case-contents').html());
+
+//        post cover image
+        $('#product-cover-upload').on('change', function () {
+            console.log("push images");
+            pushImg(this.id, '', '', elementVal(dir), cover);
+            $('.close').click();
+        });
+
+//        post product
+        $('#case-add').click(function () {
+            push_data('POST');
+        });
+
+//        put product
+        $('#case-update').click(function () {
+            push_data('PUT');
+        });
+
+//        delete product
+        $('#case-delete').click(function () {
+            var id = $('#product-id').val();
+            delete_product(id);
+        });
+
     });
 </script>
 </@javascript>

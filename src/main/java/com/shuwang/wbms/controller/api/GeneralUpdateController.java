@@ -122,7 +122,7 @@ public class GeneralUpdateController {
 
     @PutMapping("/case")
     public String updateCase(CaseEntity caseEntity) {
-        return caseEntity.insert() + " insert";
+        return caseEntity.updateById() + " update";
     }
 
     @DeleteMapping("/case/{id}")

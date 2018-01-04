@@ -318,7 +318,7 @@ function assembleTable4case(json) {
             '<td>' + info["img"] + '</td>' +
             '<td>' + info["class1"] + '</td>' +
             '<td>' + info["class2"] + '</td>' +
-            '<td><a href="/backend/e-case/' + info["id"] + '">编辑 </a> <a class="pull-right" href="javascript:void(0)" onclick="delete_info(\'' + info["id"] + '\')"> 删除</a></td>' +
+            '<td><a href="/backend/e-case/' + info["id"] + '">编辑 </a> <a class="pull-right" href="javascript:void(0)" onclick="delete_case(\'' + info["id"] + '\')"> 删除</a></td>' +
             '</tr>';
     });
 
@@ -360,7 +360,7 @@ function assembleTable4product(json) {
             '<td>' + info["img"] + '</td>' +
             '<td>' + info["class1"] + '</td>' +
             '<td>' + info["class2"] + '</td>' +
-            '<td><a href="/backend/e-case/' + info["id"] + '">编辑 </a> <a class="pull-right" href="javascript:void(0)" onclick="delete_info(\'' + info["id"] + '\')"> 删除</a></td>' +
+            '<td><a href="/backend/e-product/' + info["id"] + '">编辑 </a> <a class="pull-right" href="javascript:void(0)" onclick="delete_product(\'' + info["id"] + '\')"> 删除</a></td>' +
             '</tr>';
     });
 
