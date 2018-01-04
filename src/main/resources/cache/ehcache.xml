@@ -55,5 +55,5 @@
 		timeToIdleSeconds="60" timeToLiveSeconds="60" overflowToDisk="false"
 		statistics="true">
 	</cache>
-	
+
 </ehcache>

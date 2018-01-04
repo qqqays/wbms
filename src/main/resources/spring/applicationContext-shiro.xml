@@ -27,13 +27,23 @@
          Many other realm implementations can be used too (PropertiesRealm,
          LdapRealm, etc. -->
     <bean id="myRealm" class="com.shuwang.wbms.security.MyRealm">
-        <!--<property name="credentialsMatcher">-->
-        	<!--<bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">-->
-        		<!--<property name="hashAlgorithmName" value="MD5"></property>-->
-        		<!--<property name="hashIterations" value="1024"></property>-->
-        	<!--</bean>-->
-        <!--</property>-->
+        <property name="credentialsMatcher">
+        	<bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+        		<property name="hashAlgorithmName" value="MD5"></property>
+        		<property name="hashIterations" value="1"></property>
+        	</bean>
+        </property>
+        <!--<property name="credentialsMatcher" ref="credentialsMatcher"></property>-->
     </bean>
+
+    <!--<bean id="credentialsMatcher"-->
+          <!--class="com.shuwang.wbms.security.RetryLimitCredentialsMatcher">-->
+        <!--<constructor-arg index="0" ref="shiroCacheManager"/>-->
+        <!--<constructor-arg index="1" value="fuck"/>-->
+        <!--&lt;!&ndash;<property name="storedCredentialsHexEncoded" value="true"/>&ndash;&gt;-->
+        <!--<property name="hashAlgorithmName" value="MD5"></property>-->
+        <!--<property name="hashIterations" value="1"></property>-->
+    <!--</bean>-->
 
     <!-- =========================================================
          Shiro Spring-specific integration

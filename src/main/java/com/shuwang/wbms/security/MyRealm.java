@@ -9,6 +9,7 @@ import com.shuwang.wbms.service.IUserService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
+import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,9 +52,9 @@ public class MyRealm extends AuthorizingRealm {
             throw new UnknownAccountException();
         }
 
-        if (!user.getPassword().equals(new String((char[]) token.getCredentials()))) {
-            throw new IncorrectCredentialsException();
-        }
+//        if (!user.getPassword().equals(new String((char[]) token.getCredentials()))) {
+//            throw new IncorrectCredentialsException();
+//        }
 
         if (!user.isState()) {
             throw new LockedAccountException();
@@ -61,7 +62,11 @@ public class MyRealm extends AuthorizingRealm {
 
 //        ByteSource byteSource = ByteSource.Util.bytes(token.getUsername());
 
-        return new SimpleAuthenticationInfo(user, token.getCredentials(), getName());
+         SimpleHash password = new SimpleHash("md5", user.getPassword());
+
+//        ((UsernamePasswordToken) authenticationToken).setPassword(password);
+
+        return new SimpleAuthenticationInfo(user, password, getName());
 //        return null;
     }
 

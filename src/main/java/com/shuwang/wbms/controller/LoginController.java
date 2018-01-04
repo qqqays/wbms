@@ -42,13 +42,14 @@ public class LoginController extends ProController{
         try {
             subject.login(token);
         } catch (UnknownAccountException | IncorrectCredentialsException | LockedAccountException e) {
+            e.printStackTrace();
             return "redirect:/login";
         } catch (AuthenticationException e) {
             System.out.println("fuck");
             e.printStackTrace();
         }
 
-        System.out.println(request.getSession().getAttribute("KAPTCHA_SESSION_KEY").toString());
+//        System.out.println(request.getSession().getAttribute("KAPTCHA_SESSION_KEY").toString());
 
         return "redirect:/backend";
     }
