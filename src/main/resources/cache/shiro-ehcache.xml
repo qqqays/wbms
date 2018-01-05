@@ -98,7 +98,7 @@ even after a JVM restart.  -->
     <cache name="loginRetryCache"
            maxEntriesLocalHeap="2000"
            eternal="false"
-           timeToIdleSeconds="600"
+           timeToIdleSeconds="601"
            timeToLiveSeconds="0"
            overflowToDisk="false"
            statistics="true"/>
