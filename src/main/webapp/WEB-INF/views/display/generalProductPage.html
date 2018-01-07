@@ -44,17 +44,49 @@
 <!--<script src="http://www.jq22.com/demo/jQuery-pbl201703182206/js/jquery.magnific-popup.min.js"></script>-->
 <!--<script src="http://www.jq22.com/demo/jQuery-pbl201703182206/js/salvattore.min.js"></script>-->
 <!--<script src="http://www.jq22.com/demo/jQuery-pbl201703182206/js/main.js"></script>-->
-<script src="http://www.jq22.com/demo/pubu-141023172523/js/jquery.masonry.min.js"></script>
+<!--<script src="http://www.jq22.com/demo/pubu-141023172523/js/jquery.masonry.min.js"></script>-->
+<script src="https://unpkg.com/masonry-layout@4.2.1/dist/masonry.pkgd.min.js"></script>
 <script>
-    $(function() {
-        var $container = $('#masonry');
-        $container.imagesLoaded(function() {
-            $container.masonry({
-                itemSelector: '.product',
-//                gutter: 20,
-                isAnimated: true
-            });
-        });
+//    $(function() {
+//        var $container = $('#masonry');
+//        $container.imagesLoaded(function() {
+//            $container.masonry({
+//                itemSelector: '.product',
+////                gutter: 20,
+//                isAnimated: true
+//            });
+//        });
+//    });
+    $(function () {
+//        var $container = $('#masonry');
+//        $container.imagesLoaded.progress(function() {
+//            $container.masonry({
+//                itemSelector: '.product',
+////                horizontalOrder: false,
+//                percentPosition: true,
+//                originTop: false,
+//                transitionDuration: '0.8s',
+//                stagger: 30,
+//                isAnimated: true
+//            });
+//        });
+//
+//        $container.on('layoutComplete', function (event, laidOutItems) {
+//            this.masonry({
+//            });
+//        })
     });
+
+var msnry = new Masonry('#masonry', {
+                itemSelector: '.product',
+                percentPosition: true,
+                originTop: true,
+                transitionDuration: '0.8s',
+                stagger: 30,
+                isAnimated: true
+});
+$('document').ready(function () {
+    msnry.layout();
+});
 </script>
 </@javascript>

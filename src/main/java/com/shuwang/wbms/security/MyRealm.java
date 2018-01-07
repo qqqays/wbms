@@ -1,8 +1,6 @@
 package com.shuwang.wbms.security;
 
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.shuwang.wbms.entity.UserEntity;
-import com.shuwang.wbms.entity.UserRoleEntity;
 import com.shuwang.wbms.service.IRoleAuthService;
 import com.shuwang.wbms.service.IUserRoleService;
 import com.shuwang.wbms.service.IUserService;
@@ -14,7 +12,6 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.jws.soap.SOAPBinding;
 import java.util.Set;
 
 /**
@@ -64,10 +61,7 @@ public class MyRealm extends AuthorizingRealm {
 
          SimpleHash password = new SimpleHash("md5", user.getPassword());
 
-//        ((UsernamePasswordToken) authenticationToken).setPassword(password);
-
         return new SimpleAuthenticationInfo(user, password, getName());
-//        return null;
     }
 
     /**

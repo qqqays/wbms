@@ -3,7 +3,9 @@ img{
 }
 
 div{
+    text-overflow: ellipsis;
     overflow: hidden;
+    white-space: nowrap;
 }
 /*=====================header css========================*/
 .c-logo{
