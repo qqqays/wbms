@@ -13,4 +13,9 @@ CKEDITOR.editorConfig = function( config ) {
     // config.callFunction()
     // filebrowserImageBrowseUrl
     // config.filebrowserImage2BrowseUrl = "/api/images";
+    // The final output will also reflect this setting, including the <body> contents only if this setting is disabled.
+    config.fullPage= true;
+
+    // set editor html no display auto filter
+    config.allowedContent= true;
 };
