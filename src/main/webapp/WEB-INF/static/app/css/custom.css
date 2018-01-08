@@ -153,6 +153,10 @@ div{
 
 /*==========================product=========================*/
 
+.product{
+    cursor:pointer;
+}
+
 .product-list.widget-user .box-footer {
     padding: 0;
 }
