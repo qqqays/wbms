@@ -15,7 +15,13 @@ CKEDITOR.editorConfig = function( config ) {
     // config.filebrowserImage2BrowseUrl = "/api/images";
     // The final output will also reflect this setting, including the <body> contents only if this setting is disabled.
     config.fullPage= true;
-
     // set editor html no display auto filter
-    config.allowedContent= true;
+    // config.allowedContent= true;
+    config.toolbarCanCollapse = true;
+    // config.entities = true;
+    config.forcePasteAsPlainText =false;
+    config.startupMode ='source';
+    // config.startupOutlineBlocks = true;
+    config.shiftEnterMode = CKEDITOR.ENTER_P;
+    config.enterMode = CKEDITOR.ENTER_BR;
 };

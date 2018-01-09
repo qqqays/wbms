@@ -3,10 +3,57 @@ img{
 }
 
 div{
-    text-overflow: ellipsis;
+    /*text-overflow: ellipsis;*/
     overflow: hidden;
+    /*white-space: nowrap;*/
+}
+
+.longtext{
+    text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+@media (min-width: 1500px) {
+    .container{
+        width: 1400px;
+    }
+}
+
+@keyframes q-action {
+    0%{
+        transform: rotateZ(0) rotateX(0) rotateY(0);
+        /*background-color: green;*/
+    }
+
+    50%{
+        transform: rotateX(360deg) rotateY(360deg) rotateZ(180deg);
+        /*background-color: red;*/
+    }
+
+    100%{
+        /*transform: rotateZ(360deg) rotateX(0) rotateY(0);*/
+        /*background-color: blue;*/
+    }
+}
+
+@keyframes logo-color {
+    0%{
+        background-color: transparent;
+    }
+
+    33%{
+        background-color: #efef8f;
+    }
+
+    66%{
+        background-color: orchid;
+    }
+
+    100%{
+        background-color: transparent;
+    }
+}
+
 /*=====================header css========================*/
 .c-logo{
     width: 130px;
@@ -31,6 +78,19 @@ div{
 }
 
 /*=======================index css=========================*/
+
+.index-c{
+    padding: 3vw 0;
+}
+
+.index-m {
+    padding: 7vw 20vw;
+}
+
+.img-title{
+    padding-bottom: 2vw;
+}
+
 .cert-icon{
     /*background-image: ;*/
     /*background-color: red;*/
@@ -70,6 +130,7 @@ div{
     margin: 0 auto;
     background-image: url('/images/index/product1.png');
     background-size: cover;
+    cursor: pointer;
 }
 
 .centre-desc {
@@ -77,20 +138,40 @@ div{
 }
 
 .news{
-    background-color: aqua;
-    padding: 20px 15vw;
+    background-color: #ffcccc;
     display: flex;
 }
 
 .news-sub{
-    width: 30vw;
+    /*width: 30vw;*/
     margin: 0 auto;
+    text-align: center;
+
 }
 
 .news-list{
+    margin: 2vw 0;
     display: flex;
+    padding-left: 6vw;
+    cursor: pointer;
+    border-bottom: 1px dotted snow;
 }
 
+.news-title{
+    padding-left: 3vw;
+}
+
+.dd{
+    font-size:2.7em;
+    font-weight: 800;
+    margin: 0;
+    color: #182f0d;
+}
+
+.yyyy-mm{
+    font-size:1.3em;
+    color: #b35e14;
+}
 /*========================case==========================*/
 
 .case-list{
@@ -254,6 +335,7 @@ div{
     background-color: #c52d2f;
     color: #fff;
     box-shadow: 0 0 10px rgba(25,0,0,0.3);
+    animation: swing .5s cubic-bezier(0.68, 0.15, 0.69, 0.11);
 }
 
 .skin-black-light .main-header .navbar .navbar-nav>li>a {
