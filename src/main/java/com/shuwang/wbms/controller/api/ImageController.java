@@ -168,4 +168,24 @@ public class ImageController extends ProController {
         return ie.updateById() + " update";
     }
 
+    @DeleteMapping("/{id}")
+    public String deleteImg(@PathVariable String id) {
+        ImageEntity imageEntity = imageService.selectById(id);
+
+        try {
+            File targetFile = new File(imageEntity.getAbsolutePath(), imageEntity.getOriginName());
+
+            if (targetFile.exists()) {
+                if (!targetFile.delete()) {
+                    throw new IOException("file delete failed");
+                }
+            }
+
+            return imageEntity.deleteById() + " delete";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return "delete failed";
+    }
 }

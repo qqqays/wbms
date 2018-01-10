@@ -23,22 +23,25 @@ div{
     0%{
         transform: rotateZ(0) rotateX(0) rotateY(0);
         /*background-color: green;*/
+        /*top:0*/
     }
 
     50%{
         transform: rotateX(360deg) rotateY(360deg) rotateZ(180deg);
         /*background-color: red;*/
+        /*top:-100px*/
     }
 
     100%{
-        /*transform: rotateZ(360deg) rotateX(0) rotateY(0);*/
+        transform: rotateZ(360deg) rotateX(0) rotateY(0);
         /*background-color: blue;*/
+        /*top:-200px;*/
     }
 }
 
 @keyframes logo-color {
     0%{
-        background-color: transparent;
+        background-color: #ffffff;
     }
 
     33%{
@@ -50,7 +53,7 @@ div{
     }
 
     100%{
-        background-color: transparent;
+        background-color: #ffffff;
     }
 }
 
@@ -117,6 +120,7 @@ div{
 
 .module1-back{
     background-image: url('/images/index/module1-back.jpg');
+    background-size: cover;
 }
 
 .centre{
@@ -126,7 +130,7 @@ div{
 
 .centre-image{
     width: 15vw;
-    height: 22vw;
+    height: 21vw;
     margin: 0 auto;
     background-image: url('/images/index/product1.png');
     background-size: cover;
@@ -153,12 +157,12 @@ div{
     margin: 2vw 0;
     display: flex;
     padding-left: 6vw;
-    cursor: pointer;
     border-bottom: 1px dotted snow;
 }
 
 .news-title{
     padding-left: 3vw;
+    cursor: pointer;
 }
 
 .dd{
@@ -171,6 +175,7 @@ div{
 .yyyy-mm{
     font-size:1.3em;
     color: #b35e14;
+    margin-bottom: 0;
 }
 /*========================case==========================*/
 

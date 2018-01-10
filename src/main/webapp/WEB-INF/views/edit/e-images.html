@@ -44,6 +44,11 @@
             var title = $('#img-title').val();
             put_img(id, alt, title);
         });
+
+        $('#img-delete').click(function () {
+            var id = selectImgTake.getSelectImgs('selectItemDiv')[0].id;
+                delete_img(id);
+        });
     });
 </script>
 </@javascript>

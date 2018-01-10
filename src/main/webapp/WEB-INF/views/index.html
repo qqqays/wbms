@@ -62,9 +62,11 @@
         <!--产品介绍-->
         <div class="intro index-c">
             <div><img class="img-title" src="/images/index/credit.png"> </div>
-            <p style="padding: 2.5vw">产品介绍something</p>
+            <p style="padding: 1.5vw;font-size: 16px;color: #646464;">四川蜀旺新能源股份有限公司是专门从事太阳能研究与开发的高新技术企业，目前拥有最先进的机械设备和多项专利技术
+                <br>多年的磨练，使我们的产品在研发、生产、销售到服务拥有丰富的经验...
+            </p>
             <div>
-                <img  src="/images/index/product-intro.png">
+                <img  src="/images/index/p-in-f.png">
             </div>
         </div>
 
@@ -74,7 +76,6 @@
                 <div style="width: 270px;color: white;text-align: left">
                     <h2 style="font-size: x-large; padding: 20px 0">西部太阳能全产业领导者</h2>
                     <p>蜀旺新能源着眼于全球可持续发展，以推动光伏平价上网和普及绿色能源为己任，提供从光伏产品到光伏应用的整体解决方案不断开拓创新，引领光伏进步</p>
-                    <!--<button type="button">了解更多</button>-->
                     <div style="cursor:pointer;border: 1px white solid; color: red;margin-top: 30px;padding: 3px 10px;width: 100px">了解更多</div>
                 </div>
             </div>
@@ -88,32 +89,17 @@
             </section>
 
             <section class="content" style="display: flex">
-                <div class="centre">
-                    <div class="centre-image"></div>
-                    <div class="centre-desc">
-                        <p>小尺寸光伏组件</p>
-                        <p>36-电池片</p>
-                        <button class="btn btn-flat bg-maroon">了解更多</button>
-                    </div>
-                </div>
 
+                <#list products.records as product>
                 <div class="centre">
-                    <div class="centre-image"></div>
+                    <div class="centre-image" style="background-image: url('${product.img!}');"></div>
                     <div class="centre-desc">
-                        <p>小尺寸光伏组件</p>
-                        <p>36-电池片</p>
-                        <button class="btn btn-flat bg-maroon">了解更多</button>
+                        <p>${product.name}</p>
+                        <p>${product.description}</p>
+                        <a class="btn btn-flat bg-maroon" >了解更多</a>
                     </div>
                 </div>
-
-                <div class="centre">
-                    <div class="centre-image"></div>
-                    <div class="centre-desc">
-                        <p>小尺寸光伏组件</p>
-                        <p>36-电池片</p>
-                        <button class="btn btn-flat bg-maroon">了解更多</button>
-                    </div>
-                </div>
+                </#list>
 
             </section>
         </div>
@@ -121,51 +107,48 @@
         <!--news-->
         <div class="news index-c">
             <div class="container">
-                <div class="news-sub col-sm-6">
-                    <img src="/images/banner.png" style="height: 24vw;width: 100%">
-                    <h4>The title of the news</h4>
-                    <p>The description of the news</p>
+                <!--<div><img class="img-title" src="/images/index/credit.png"> </div>-->
+                <section class="content-header">
+                    <img class="img-title" src="/images/index/credit.png">
+                </section>
+
+                <div class="row">
+                <div class="news-sub col-sm-6 col-xs-12">
+                    <!--<img src="${(news.records[0].coverImg)!'/images/banner.png'}" style="height: 24vw;">-->
+                    <div style="background-image: url('${(news.records[0].coverImg)!}');height: 24vw;background-size: cover">
+                        <div class="pull-left bg-teal">
+                            <p class="dd">${(news.records[0].updateDate)?string('dd')}</p>
+                            <p class="yyyy-mm">${(news.records[0].updateDate)?string('yyyy-MM')}</p>
+                        </div>
+                    </div>
+                    <h4>${news.records[0].title}</h4>
+                    <p>${news.records[0].description}</p>
                 </div>
 
                 <div class="news-sub col-sm-6">
-                    <div class="news-list">
-                        <div>
-                            <p class="dd">20</p>
-                            <p class="yyyy-mm">2017-9</p>
-                        </div>
-                        <div class="news-title">
-                            <h4>The title of the news</h4>
-                            <p>The description of the news</p>
-                        </div>
-                    </div>
 
-                    <div class="news-list">
-                        <div>
-                            <p class="dd">20</p>
-                            <p class="yyyy-mm">2017-9</p>
-                        </div>
-                        <div class="news-title">
-                            <h4>The title of the news</h4>
-                            <p>The description of the news</p>
-                        </div>
-                    </div>
+                    <#list news.records as piece>
+                        <#if piece_index &gt; 0 >
+                            <div class="news-list">
+                                <div>
+                                    <p class="dd">${(piece.updateDate)?string('dd')}</p>
+                                    <p class="yyyy-mm">${(piece.updateDate)?string('yyyy-MM')}</p>
+                                </div>
+                                <div class="news-title" onclick="window.open('/${piece.class1}/${piece.class2}/${piece.id}','_self')">
+                                    <h4>${piece.title}</h4>
+                                    <p>${piece.description}</p>
+                                </div>
+                            </div>
+                        </#if>
+                    </#list>
 
-                    <div class="news-list">
-                        <div>
-                            <p class="dd">20</p>
-                            <p class="yyyy-mm">2017-9</p>
-                        </div>
-                        <div class="news-title">
-                            <h4>The title of the news</h4>
-                            <p>The description of the news</p>
-                        </div>
-                    </div>
-
-                    <a class="btn btn-app bg-purple" style="    animation: q-action 3s infinite ease-out;">
-                        <i class="fa fa-chrome fa-spin" style="color: chartreuse"></i> more
+                    <a class="btn btn-app bg-purple" href="/news" style="animation: q-action 3s infinite ease-out;">
+                        <i class="fa fa-chrome fa-spin" style="color: #ffac41"></i> more
                     </a>
                 </div>
             </div>
+            </div>
+
         </div>
 
         <!--项目案例-->
@@ -177,13 +160,15 @@
 
             <section class="content">
                 <div class="row">
+
+                    <#list cases.records as case>
                     <div class="col-xs-3 case">
                         <!-- Widget: user widget style 1 -->
                         <div class="box box-widget widget-user case-list animated pulse">
                             <!-- Add the bg color to the header using any of the bg-* classes -->
-                            <div class="widget-user-header bg-black" style="background: url('/upload-files//images/system/android-social-user.png') center center;">
-                                <h3 class="widget-user-username">Elizabeth Pierce</h3>
-                                <h5 class="widget-user-desc">Web Designer</h5>
+                            <div class="widget-user-header bg-black" style="background: url('${case.img!}') center center;">
+                                <h3 class="widget-user-username">${case.name}</h3>
+                                <h5 class="widget-user-desc">${case.description}</h5>
                             </div>
 
                             <div class="box-footer">
@@ -191,8 +176,8 @@
 
                                     <!-- /.col -->
                                     <div class="description-block">
-                                        <h5 class="description-header">habcde</h5>
-                                        <span class="description-text">大方啊</span>
+                                        <h5 class="description-header">${case.name}</h5>
+                                        <span class="description-text">${case.description}</span>
                                     </div>
                                     <!-- /.description-block -->
 
@@ -202,95 +187,16 @@
                         </div>
                         <!-- /.widget-user -->
                     </div>
-
-
-                    <div class="col-xs-3 case">
-                        <!-- Widget: user widget style 1 -->
-                        <div class="box box-widget widget-user case-list animated pulse">
-                            <!-- Add the bg color to the header using any of the bg-* classes -->
-                            <div class="widget-user-header bg-black" style="background: url('/images/case/case.png') center center;">
-                                <h3 class="widget-user-username">Elizabeth Pierce</h3>
-                                <h5 class="widget-user-desc">Web Designer</h5>
-                            </div>
-
-                            <div class="box-footer">
-                                <div class="row">
-
-                                    <!-- /.col -->
-                                    <div class="description-block">
-                                        <h5 class="description-header">eqtt</h5>
-                                        <span class="description-text">dfea</span>
-                                    </div>
-                                    <!-- /.description-block -->
-
-                                </div>
-                                <!-- /.row -->
-                            </div>
-                        </div>
-                        <!-- /.widget-user -->
-                    </div>
-
-
-                    <div class="col-xs-3 case">
-                        <!-- Widget: user widget style 1 -->
-                        <div class="box box-widget widget-user case-list animated pulse">
-                            <!-- Add the bg color to the header using any of the bg-* classes -->
-                            <div class="widget-user-header bg-black" style="background: url('/images/case/case.png') center center;">
-                                <h3 class="widget-user-username">Elizabeth Pierce</h3>
-                                <h5 class="widget-user-desc">Web Designer</h5>
-                            </div>
-
-                            <div class="box-footer">
-                                <div class="row">
-
-                                    <!-- /.col -->
-                                    <div class="description-block">
-                                        <h5 class="description-header">egfg</h5>
-                                        <span class="description-text">4q5ygfdj6nhyt</span>
-                                    </div>
-                                    <!-- /.description-block -->
-
-                                </div>
-                                <!-- /.row -->
-                            </div>
-                        </div>
-                        <!-- /.widget-user -->
-                    </div>
-
-
-                    <div class="col-xs-3 case">
-                        <!-- Widget: user widget style 1 -->
-                        <div class="box box-widget widget-user case-list animated pulse">
-                            <!-- Add the bg color to the header using any of the bg-* classes -->
-                            <div class="widget-user-header bg-black" style="background: url('/images/case/case.png') center center;">
-                                <h3 class="widget-user-username">Elizabeth Pierce</h3>
-                                <h5 class="widget-user-desc">Web Designer</h5>
-                            </div>
-
-                            <div class="box-footer">
-                                <div class="row">
-
-                                    <!-- /.col -->
-                                    <div class="description-block">
-                                        <h5 class="description-header">dfe</h5>
-                                        <span class="description-text">dsfedfe</span>
-                                    </div>
-                                    <!-- /.description-block -->
-
-                                </div>
-                                <!-- /.row -->
-                            </div>
-                        </div>
-                        <!-- /.widget-user -->
-                    </div>
-
-
+                    </#list>
                 </div>
             </section>
         </div>
+
         <!--全国有售-->
-        <div>
-            contact
+        <div class="index-c">
+            <h1>全国有售</h1>
+            <h4>地球这么大我们经营太阳</h4>
+            <a href="/contact" class="btn btn-flat bg-red">联系我们</a>
         </div>
     </div>
         <!--</form>-->

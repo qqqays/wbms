@@ -77,6 +77,7 @@ public class GeneralShowController extends ProController {
                 me = menuService.selectOne(new EntityWrapper<MenuEntity>()
                         .eq("pid", topMenu)
                         .eq("deep", 1)
+                        .eq("display", 1)
                         .orderBy("sort"));
             }
 

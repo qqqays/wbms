@@ -35,7 +35,11 @@ public class AboutController {
 
         MenuEntity menuEntity = menuService.selectOne(new EntityWrapper<MenuEntity>().
                 eq("pid", "about").
+                eq("display", 1).
                 eq("deep", 1).orderBy("sort"));
+
+        if(menuEntity == null)
+            return "/display/about";
 
         List<SplContentEntity> splContentEntities = splContentService.selectList(new EntityWrapper<SplContentEntity>()
                 .eq("pid", menuEntity.getId())
