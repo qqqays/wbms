@@ -54,31 +54,6 @@ public class LoginController extends ProController{
         return "redirect:/backend";
     }
 
-    @PostMapping("/authentication1")
-    public String maAuthenticator(@RequestParam String userName, @RequestParam String password){
-
-        SecurityManager securityManager = new DefaultSecurityManager(new MyRealm1());
-
-        SecurityUtils.setSecurityManager(securityManager);
-
-        UsernamePasswordToken token = new UsernamePasswordToken(userName, password);
-
-        Subject subject = SecurityUtils.getSubject();
-
-        try {
-            subject.login(token);
-        } catch (UnknownAccountException | IncorrectCredentialsException | LockedAccountException e) {
-            return "redirect:/login";
-        } catch (AuthenticationException e) {
-            System.out.println("what the fuck");
-            e.printStackTrace();
-        }
-
-        System.out.println(request.getSession().getAttribute("KAPTCHA_SESSION_KEY").toString());
-
-        return "redirect:/backend";
-    }
-
     @RequestMapping("/logout")
     public String logout() {
         Subject subject = SecurityUtils.getSubject();
