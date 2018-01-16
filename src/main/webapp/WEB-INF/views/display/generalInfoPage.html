@@ -1,34 +1,22 @@
-<#include "/common/layout.html">
-    <@head>
-    <style>
-        td{
-            border: solid 1px black;
-        }
-        body{
-            text-align: center;
-        }
-        table{
-            margin: 0 auto;
-            border: solid 1px;
-            border-collapse: collapse;
-        }
-    </style>
+<#include "/common/layout.html"/>
+<@head>
+
 </@head>
 
 <@body>
-<#include "/common/banner.html">
+<#include "/common/banner.html"/>
 
-    <div class="content-wrapper">
+<div class="content-wrapper">
 
-        <div class="container">
-            <#include "/common/subMenu.html">
+    <div class="container">
+        <#include "/common/subMenu.html"/>
 
-                <section class="content">
-                    <#include "/common/detail.html">
-                </section>
-        </div>
+        <section class="content">
+            <#include "/common/detail.html"/>
+        </section>
     </div>
-    <!--</form>-->
+</div>
+<!--</form>-->
 </@body>
 
 <@javascript></@javascript>

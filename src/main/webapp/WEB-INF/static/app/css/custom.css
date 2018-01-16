@@ -184,7 +184,7 @@ div{
     box-shadow: 0 1px 12px rgba(0,0,0,0.6);
     background-color: white;
     top:0;
-    transition:all .3s ease;
+    transition:all .5s;
 }
 
 .case-list:hover{
@@ -193,8 +193,7 @@ div{
     box-shadow: 0 1px 1px rgba(0,0,0,0.1);
     background-color: #1d7dd8;
     cursor: pointer;
-    top:2px;
-
+    top:3px;
 }
 
 .box-footer{

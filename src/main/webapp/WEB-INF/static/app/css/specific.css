@@ -1,0 +1,49 @@
+/*===================This css is used for displaying pages ======================*/
+
+/*---------------------------about------------------------*/
+.a-img-div > div {
+    padding: 3vw;
+}
+
+.a-p-div > p {
+    color: grey;
+    font-size: 1.3em;
+    padding-bottom: 3vw;
+}
+
+.a-p-div1>p{
+    font-size: 1.3em;
+    padding-bottom: 3vw;
+}
+
+.a-h-div{
+    padding-bottom: 2vw;
+}
+
+.a-h-div>h1{
+    color:#c52d2f;
+}
+
+.display, .display div{
+    overflow: visible;
+}
+
+.credit-img {
+    box-shadow: 1px 8px 20px 3px #695555;
+    top:0;
+    position: relative;
+    transition: all 2s cubic-bezier(0.76, 0, 1, -0.11);
+}
+
+.credit-img:hover{
+    transition: all .5s;
+    box-shadow: none;
+    top:1vw;
+    transition-delay: .2s;
+}
+
+.a-img-div1-sub {
+    text-align: center;
+    padding:3vw 1vw;
+    overflow: visible;
+}
