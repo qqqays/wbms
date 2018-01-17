@@ -116,7 +116,7 @@ function assembleTable4dpl(json) {
             '<td>' + info["publisher"] + '</td>' +
             '<td>' + info["state"] + '</td>' +
             // '<td>' + info["createTime"] + '</td>' +
-            '<td><a href="/backend/p-display/' + info["id"] + '">编辑 </a> <a class="pull-right" href="javascript:void(0)" onclick="delete_info(\'' + info["id"] + '\')"> 删除</a></td>' +
+            '<td><a href="/backend/p-display/' + info["id"] + '">编辑 </a> <a class="pull-right" href="javascript:void(0)" onclick="delete_display(\'' + info["id"] + '\')"> 删除</a></td>' +
             '</tr>';
     });
 
