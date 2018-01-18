@@ -28,6 +28,8 @@ public class ProductEntity extends Model<ProductEntity>{
 
     private String class2;
 
+    private String page;
+
     @Override
     protected Serializable pkVal() {
         return this.id;
@@ -79,5 +81,13 @@ public class ProductEntity extends Model<ProductEntity>{
 
     public void setClass2(String class2) {
         this.class2 = class2;
+    }
+
+    public String getPage() {
+        return page;
+    }
+
+    public void setPage(String page) {
+        this.page = page;
     }
 }

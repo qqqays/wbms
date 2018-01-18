@@ -1,3 +1,17 @@
+// =============================common============================
+function isnull(value) {
+    if(value == '' || value == null || value == undefined)
+        return true;
+    else 
+        return false;
+}
+
+function eleIsNull(eleId) {
+    var eleVal = $('#' + eleId).val();
+
+    return isnull(eleVal)
+}
+
 // ==========================qr-code=================
 var fu = false;
 
@@ -19,10 +33,6 @@ function show_code() {
         $('#qr-code').removeClass('zoomOut');
         $('#qr-code').addClass('zoomIn');
     }, 2000);
-}
-
-function hide_code() {
-
 }
 
 function qr_code() {
@@ -90,3 +100,4 @@ $('document').ready(function () {
     new WOW().init();
 
 });
+

@@ -21,19 +21,50 @@
             <div class="display">
                 <!--=----------------------------------------------------------------------------------=-->
 
+                <div class="text-center">
+                    <img src="/images/contact/join-us.png">
+                </div>
+
+                <div class="row" style="padding-top: 5vw">
+                    <div class="col-sm-6 contact-p-div">
+                        <img src="/images/contact/WELCOMETOSHUWANG.png" style="padding-bottom: 3vw">
+                        <p>我们有一群吃不胖的人！我们是充满激情和活力的团队！</p>
+                        <p>我们有一群吃不胖的人！我们是充满激情和活力的团队！</p>
+                        <p>我们有一群吃不胖的人！我们是充满激情和活力的团队！</p>
+                        <p>我们有一群吃不胖的人！我们是充满激情和活力的团队！</p>
+                        <p>我们有一群吃不胖的人！我们是充满激情和活力的团队！</p>
+                        <p>我们有一群吃不胖的人！我们是充满激情和活力的团队！</p>
+                        <p>我们有一群吃不胖的人！我们是充满激情和活力的团队！</p>
+                        <p>我们有一群吃不胖的人！我们是充满激情和活力的团队！</p>
+                        <p>我们有一群吃不胖的人！我们是充满激情和活力的团队！</p>
+                    </div>
+                    <div class="col-sm-6"><img src="/images/contact/contact1.png"></div>
+                </div>
+
+                <!--=-------------------------------------------------------------------------------------=-->
+            </div>
+        </section>
+    </div>
+
+
+    <div class="container">
+        <section class="content">
+            <div class="display">
+                <!--=----------------------------------------------------------------------------------=-->
+
                 <div class="text-center" style="padding: 2vw">
                     <img src="/images/contact/contact.png">
                 </div>
 
-                <form role="form">
+                <form role="form" class="text-center">
 
                     <div class="form-group col-sm-6">
                         <div class="input-group input-group-lg">
                             <div class="input-group-addon">
                                 <i class="glyphicon glyphicon-user"></i>
                             </div>
-                            <input value="" type="text" placeholder="姓名" class="form-control">
-                            <div class="input-group-addon bg-blue">
+                            <input id="name" type="text" placeholder="姓名" class="form-control">
+                            <div class="input-group-addon bg-blue hidden-xs">
                                 <i class="glyphicon glyphicon-music"></i>
                             </div>
                         </div>
@@ -45,8 +76,8 @@
                             <div class="input-group-addon">
                                 <i class="glyphicon glyphicon-envelope"></i>
                             </div>
-                            <input value="" type="email" placeholder="邮箱" class="form-control">
-                            <div class="input-group-addon bg-red">
+                            <input id="email" type="email" placeholder="邮箱" class="form-control">
+                            <div class="input-group-addon bg-red hidden-xs">
                                 <i class="glyphicon glyphicon-send"></i>
                             </div>
                         </div>
@@ -57,8 +88,8 @@
                             <div class="input-group-addon">
                                 <i class="glyphicon glyphicon-phone-alt"></i>
                             </div>
-                            <input value="" type="tel" placeholder="电话" class="form-control">
-                            <div class="input-group-addon bg-green">
+                            <input id="phone" type="tel" placeholder="电话" class="form-control">
+                            <div class="input-group-addon bg-green hidden-xs">
                                 <i class="glyphicon glyphicon-comment"></i>
                             </div>
                         </div>
@@ -69,23 +100,65 @@
                             <div class="input-group-addon">
                                 <i class="glyphicon glyphicon-home"></i>
                             </div>
-                            <input value="" type="text" placeholder="住址" class="form-control">
-                            <div class="input-group-addon bg-orange">
+                            <input id="address" type="text" placeholder="住址" class="form-control">
+                            <div class="input-group-addon bg-orange hidden-xs">
                                 <i class="glyphicon glyphicon-tree-deciduous"></i>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group col-sm-12">
-                        <textarea class="form-control" rows="5" placeholder="留言信息"></textarea>
+                        <textarea class="form-control" id="msg" rows="5" placeholder="留言信息"></textarea>
                     </div>
 
+                    <button type="button" id="suggests-submit" class="btn btn-info btn-lg btn-flat">提交信息</button>
                 </form>
 
                 <!--=-------------------------------------------------------------------------------------=-->
             </div>
         </section>
     </div>
+    <script>
+        function suggests(name, phone, email, address, msg) {
+            $.ajax({
+                url:'/api/sendMail',
+                type:'GET',
+                data:{name:name,phone:phone,email:email,address:address, msg:msg},
+                success:function (d, s) {
+                    if(d == 'success')
+                        alert('发送成功');
+                    else if(d == 'frequent')
+                        alert('频繁请求');
+                    else
+                        alert('未知错误，你可以直接拨打电话：xxxx');
+                },
+                error:function (d, s) {
+                    alert('出现未知错误，你可以直接拨打电话：xxxx');
+                }
+            });
+        }
+
+        $('document').ready(function () {
+            $('#suggests-submit').click(function () {
+                if(eleIsNull('name'))
+                    alert('未填写姓名');
+                else if(eleIsNull('phone'))
+                    alert('未填写电话')
+                else{
+                    var name = $('#name').val();
+                    var phone = $('#phone').val();
+                    var email = $('#email').val();
+                    var address = $('#address').val();
+                    var msg = $('#msg').val();
+                    suggests(name, phone, email, address, msg);
+                }
+
+            });
+        });
+    </script>
+
+
+
 
     <!--===========================================content=========================================-->
 

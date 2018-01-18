@@ -3,7 +3,7 @@
         <#list detailDatagram.records as case>
             <div class="col-xs-3 case">
                 <!-- Widget: user widget style 1 -->
-                <div class="box box-widget widget-user case-list animated pulse">
+                <div class="box box-widget widget-user case-list animated pulse" onclick="window.open('/${case.class1}/${case.class2}/${case.id}','_self')">
                     <!-- Add the bg color to the header using any of the bg-* classes -->
                     <div class="widget-user-header bg-black"
                          style="background: url('${case.img!}') center center;">
@@ -27,9 +27,11 @@
                 </div>
                 <!-- /.widget-user -->
             </div>
-
-
         </#list>
+    </#if>
+
+    <#if case??>
+        ${case.contents}
     </#if>
 </div>
 

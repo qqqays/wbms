@@ -73,7 +73,7 @@ public class GeneralShowController extends ProController {
                     .eq("pid", topMenu)
                     .eq("state", 1));
 
-            if (splContentEntities == null && me.isHasSub()) {
+            if ((splContentEntities == null || splContentEntities.size() == 0) && me.isHasSub()) {
                 me = menuService.selectOne(new EntityWrapper<MenuEntity>()
                         .eq("pid", topMenu)
                         .eq("deep", 1)
@@ -181,7 +181,6 @@ public class GeneralShowController extends ProController {
                        @PathVariable String subMenu,
                        @PathVariable String id) {
 
-        DetailEntity detailEntity = detailService.selectById(id);
 
         SeoEntity seoEntity = seoService.selectById(id);
 
@@ -189,8 +188,26 @@ public class GeneralShowController extends ProController {
             model.addAttribute("seo", seoEntity);
         }
 
-        model.addAttribute("detail", detailEntity);
+        if (topMenu.equals("case")) {
+            CaseEntity caseEntity = caseService.selectById(id);
 
-        return "/display/generalInfoPage";
+            model.addAttribute("case", caseEntity);
+
+            return "/display/generalCasePage";
+        } else if (topMenu.equals("product")) {
+            ProductEntity productEntity = productService.selectById(id);
+
+//            model.addAttribute("product", productEntity);
+
+            return "/display/static/" + productEntity.getPage();
+        } else {
+
+            DetailEntity detailEntity = detailService.selectById(id);
+
+            model.addAttribute("detail", detailEntity);
+
+            return "/display/generalInfoPage";
+        }
+
     }
 }

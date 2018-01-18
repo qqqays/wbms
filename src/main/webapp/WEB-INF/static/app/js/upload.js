@@ -338,7 +338,7 @@ function delete_case(id) {
 }
 
 //增加产品， 修改产品
-function operate_product(id, name, description, img, class1, class2, type) {
+function operate_product(id, name, description, img, class1, class2, page, type) {
    var url = '/api/upload/product';
 
 
@@ -348,7 +348,8 @@ function operate_product(id, name, description, img, class1, class2, type) {
         description:description,
         img:img,
         class1:class1,
-        class2:class2
+        class2:class2,
+        page:page
     };
 
    generalAjaxPro(url, type, data);

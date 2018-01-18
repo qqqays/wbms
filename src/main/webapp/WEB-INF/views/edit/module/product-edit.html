@@ -1,6 +1,6 @@
 <div class="box box-success">
     <div class="box-header with-border bg-green">
-        <h3 class="box-title">案例 发布</h3>
+        <h3 class="box-title">产品 发布</h3>
         <div class="pull-right box-tools">
             <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse">
                 <i class="fa fa-minus"></i></button>
@@ -39,6 +39,11 @@
                         <option value="poly" ${(product.class2 == 'poly')?string('selected="selected"','')}>多晶组件</option>
                         <option value="mono" ${(product.class2 == 'mono')?string('selected="selected"','')}>单晶组件</option>
                     </select>
+                </div>
+
+                <div class="form-group">
+                    <label>页面</label>
+                    <input type="text" id="product-page" value="${product.page}" placeholder="product单页面" class="form-control">
                 </div>
 
                 <!--ck editor-->

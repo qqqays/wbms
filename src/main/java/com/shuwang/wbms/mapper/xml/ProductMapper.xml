@@ -10,6 +10,6 @@
         <result column="img" property="img" />
         <result column="class1" property="class1" />
         <result column="class2" property="class2" />
+        <result column="page" property="page"/>
     </resultMap>
-
 </mapper>
