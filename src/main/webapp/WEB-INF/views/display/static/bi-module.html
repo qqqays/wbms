@@ -1,0 +1,20 @@
+<#macro before bgColor order >
+    <div class="product-m ${bgColor}">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-sm-6 ${order}">
+                    <#nested/>
+                </div>
+</#macro>
+
+<#macro behind>
+    <div class="col-sm-6 product-p">
+        <#nested/>
+    </div>
+
+    </div>
+    </div>
+    </div>
+</#macro>
+

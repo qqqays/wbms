@@ -269,6 +269,44 @@ div{
     }
 }
 
+/*=============================product page=====================*/
+.product-icon{
+    width: 24vw;
+    height:20vw;
+    max-height: 228px;
+}
+
+.product-icon-sub{
+    margin: 0 auto;
+    /*background-color: blue;*/
+    background-image: url('/images/product/product-icon.png');
+    background-size: cover;
+    width: 13vw;
+    height: 14.6vw;
+    max-width: 177px;
+    max-height:202px
+}
+
+.orderBehind{
+    order:99;
+}
+
+.product-m-c{
+    background-color: lavender;
+}
+
+.orderBefore{
+    order:-99;
+}
+
+.order1{
+    order:1;
+}
+
+.order-1{
+    order:-1;
+}
+
 /*=======================submenu css=======================*/
 .custom-submenu > li {
     margin: 5px;
