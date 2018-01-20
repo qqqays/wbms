@@ -198,7 +198,7 @@ public class ServerAlpha {
 
         @Override
         public void run() {
-            System.out.println(Thread.currentThread().getName() + " connected! " + new Date().toString());
+            System.out.println("\n" + Thread.currentThread().getName() + " connected! " + new Date().toString());
 
             try (InputStream is = socketWrap.getSocket().getInputStream();
                  InputStreamReader ir = new InputStreamReader(is);
@@ -260,18 +260,22 @@ public class ServerAlpha {
                 }
 
             } catch (IOException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
+                System.out.println("\nthrows Exception: " + e.getMessage());
             } finally {
                 try {
                     socketWrap.getSocket().close(); //closes socket;
-                    System.out.println("Socket closed");
+                    System.out.println(Thread.currentThread().getName() + " Socket closed " + new Date().toString());
                 } catch (IOException e) {
-                    e.printStackTrace();
+//                    e.printStackTrace();
+                    System.out.println("throws Exception: " + e.getMessage());
                 }
 
-                list.remove(socketWrap); //removes socket from map
-                mass(socketWrap.getIdentity() + " out line!");
-                System.out.println("Remove this socket from list, sizes : " + list.size());
+                //removes socket from map
+                if (list.remove(socketWrap)) {
+                    mass(socketWrap.getIdentity() + " out line!");
+                    System.out.println("Remove this socket from list, sizes : " + list.size());
+                }
             }
         }
     }
