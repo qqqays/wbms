@@ -35,12 +35,12 @@ public class ServerAlpha {
             map = new HashMap<>();
         }
 
-        public SocketWrap(String identity, PrintWriter printWriter, Socket socket) {
-            this.identity = identity;
-            this.printWriter = printWriter;
-            this.socket = socket;
-            map = new HashMap<>();
-        }
+//        public SocketWrap(String identity, PrintWriter printWriter, Socket socket) {
+//            this.identity = identity;
+//            this.printWriter = printWriter;
+//            this.socket = socket;
+//            map = new HashMap<>();
+//        }
 
         String getIdentity() {
             return identity;
@@ -62,29 +62,35 @@ public class ServerAlpha {
             return socket;
         }
 
-        public Map<String, String> getMap() {
+        Map<String, String> getMap() {
             return map;
         }
     }
 
 
     //    mass
-    static void mass(String identity, String msg) {
+    private static void mass(String identity, String msg) {
         mass(identity + ">> " + msg);
     }
 
-    static void mass(String msg) {
-        Iterator<SocketWrap> it = list.iterator();
+    private static void mass(String msg) {
+//        Iterator<SocketWrap> it = list.iterator();
+//
+//        while (it.hasNext()) { //Sends message to all sockets
+//            SocketWrap sw = it.next();
+//            PrintWriter pw = sw.getPrintWriter();
+//            pw.write(msg + "\n");
+//            pw.flush();
+//        }
 
-        while (it.hasNext()) { //Sends message to all sockets
-            SocketWrap sw = it.next();
+        for (SocketWrap sw : list) { //Sends messages to all sockets
             PrintWriter pw = sw.getPrintWriter();
-            pw.write(msg +"\n");
+            pw.write(msg + "\n");
             pw.flush();
         }
     }
 
-    //    distribute messages
+    //Distributes messages
     static void distMsg(String msg, SocketWrap socketWrap, List<SocketWrap> list) {
 
         Iterator<SocketWrap> it = list.iterator();
@@ -177,7 +183,7 @@ public class ServerAlpha {
         }
     }
 
-    // this thread accept and send message
+    // This thread was used for accepting and sending message
     static class ThreadPool implements Runnable {
         SocketWrap socketWrap = null;
 
@@ -270,10 +276,10 @@ public class ServerAlpha {
         }
     }
 
-    public static String head(Map<String,String> headMap){
+    private static String head(Map<String, String> headMap) {
         StringBuilder sb = new StringBuilder();
 
-        for (Map.Entry<String,String> entry : headMap.entrySet()) {
+        for (Map.Entry<String, String> entry : headMap.entrySet()) {
             sb.append(entry.getKey());
             sb.append(": ");
             sb.append(entry.getValue());
@@ -283,13 +289,13 @@ public class ServerAlpha {
         return sb.toString();
     }
 
-    public static void printHead(int maxThread, int limitTime){
-        Map<String,String> map = new HashMap<>();
+    private static void printHead(int maxThread, int limitTime) {
+        Map<String, String> map = new HashMap<>();
         map.put("Start", new Date().toString());
         map.put("Password", password);
         map.put("Max threads", maxThread + "");
         map.put("Limit Time", limitTime + "");
-        map.put("Create by", "Qays");
+        map.put("Create by", "Q-ays");
 
         System.out.println(head(map));
     }
@@ -311,6 +317,7 @@ public class ServerAlpha {
 
             ExecutorService fixedThreadPool = Executors.newFixedThreadPool(max);
 
+            //noinspection InfiniteLoopStatement
             while (true) {
                 if (list.size() < max) {
 
