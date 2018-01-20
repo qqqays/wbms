@@ -4,7 +4,7 @@ img{
 
 div{
     /*text-overflow: ellipsis;*/
-    overflow: hidden;
+    /*overflow: hidden;*/
     /*white-space: nowrap;*/
 }
 
@@ -272,8 +272,13 @@ div{
 /*=============================product page=====================*/
 .product-icon{
     width: 24vw;
-    height:20vw;
+    height:21vw;
     max-height: 228px;
+}
+
+.product-icon>p{
+    font-size:1.8em;
+    color:darkred;
 }
 
 .product-icon-sub{
@@ -285,6 +290,51 @@ div{
     height: 14.6vw;
     max-width: 177px;
     max-height:202px
+}
+
+.product-m {
+    padding: 3vw 0;
+    text-align: center;
+}
+
+.product-m-s {
+    margin: 0 auto;
+}
+
+.product-p {
+    text-align: left;
+    padding-left:5vw;
+}
+
+.product-p>h3{
+    padding: 2.5vw 0;
+}
+
+.product-p>p{
+    font-size: 1.3em;
+    line-height: 1.6em;
+}
+
+.product-p li{
+    font-size: 1.3em;
+    padding: .3vw;
+}
+
+.product-m .row {
+    display: flex;
+    align-items: center;
+}
+
+.product-b{
+    height: 34vw;
+    min-height: 300px;
+    background-size: cover;
+}
+
+@media (max-width: 768px) {
+    .product-m .row {
+        display: block;
+    }
 }
 
 .orderBehind{

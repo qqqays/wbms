@@ -18,6 +18,7 @@ public class ThreadFuck {
 
     public static long getCurrentTime(){
         try {
+            System.out.println(Thread.activeCount());
             Thread.sleep(3 * 1000);
         } catch (InterruptedException e) {
             e.printStackTrace();

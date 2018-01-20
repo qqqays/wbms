@@ -76,7 +76,7 @@ public class ServerAlpha {
     static void mass(String msg) {
         Iterator<SocketWrap> it = list.iterator();
 
-        while (it.hasNext()) { //send message to all sockets
+        while (it.hasNext()) { //Sends message to all sockets
             SocketWrap sw = it.next();
             PrintWriter pw = sw.getPrintWriter();
             pw.write(msg +"\n");
@@ -110,7 +110,7 @@ public class ServerAlpha {
                         SocketWrap sw = it.next();
                         if (sw.getIdentity().equals(param)) {
                             PrintWriter pw1 = sw.getPrintWriter();
-                            pw1.write(socketWrap.getIdentity() + "@You: " + msg.substring(end + 2) + "\r\n");
+                            pw1.write(socketWrap.getIdentity() + "@you: " + msg.substring(end + 2) + "\r\n");
                             pw1.flush();
                             pw.write(socketWrap.getIdentity() + ">> " + msg);
                         }
@@ -118,7 +118,7 @@ public class ServerAlpha {
                     break;
 
                 case "users":
-                    StringBuilder sb = new StringBuilder("--Here some users: ");
+                    StringBuilder sb = new StringBuilder("--User list: ");
                     while (it.hasNext()) {
                         SocketWrap sw = it.next();
                         sb.append(sw.getIdentity());
@@ -133,7 +133,7 @@ public class ServerAlpha {
                     break;
 
                 case "get":
-                    String value1 = map.get(param) == null ? "Not find the value!" : map.get(param);
+                    String value1 = map.get(param) == null ? "Can not find this value!" : map.get(param);
                     pw.write(value1);
                     break;
 
@@ -144,13 +144,13 @@ public class ServerAlpha {
                     sb2.append(socket.getInetAddress());
                     sb2.append(":");
                     sb2.append(socket.getPort());
-                    String info = map == null ? "not find map" : map.toString();
+                    String info = map == null ? "Can not find this map" : map.toString();
                     sb2.append(info);
                     pw.write(sb2.toString());
                     break;
 
                 case "showAll":
-                    StringBuilder sb1 = new StringBuilder("All socket information: ");
+                    StringBuilder sb1 = new StringBuilder("All information of sockets : ");
                     while (it.hasNext()) {
                         SocketWrap sw1 = it.next();
 
@@ -166,7 +166,7 @@ public class ServerAlpha {
                     break;
 
                 default:
-                    pw.write("The cmd that you typed not find !");
+                    pw.write("Can not find the command you typed !");
             }
 
             pw.write("\r\n");
@@ -192,7 +192,7 @@ public class ServerAlpha {
 
         @Override
         public void run() {
-            System.out.println(Thread.currentThread().getName() + " connected!");
+            System.out.println(Thread.currentThread().getName() + " connected! " + new Date().toString());
 
             try (InputStream is = socketWrap.getSocket().getInputStream();
                  InputStreamReader ir = new InputStreamReader(is);
@@ -226,7 +226,7 @@ public class ServerAlpha {
 
                             socketWrap.setIdentity(identity);
 
-                            pw.write(identity + ", welcome to join\r\n");
+                            pw.write("Hi " + identity + ", welcome to join\r\n");
                             pw.write("You can type something here:\r\n");
                             pw.flush();
 
@@ -244,7 +244,7 @@ public class ServerAlpha {
 
                 mass(identity + " on line!");
                 list.add(socketWrap);
-                System.out.println("current active thread: " + list.size());
+                System.out.println("Current activated users: " + list.size());
 
                 while ((info = br.readLine()) != null) {
                     System.out.println(identity + "@" + socketWrap.getSocket().getInetAddress().toString() + ":"
@@ -270,6 +270,30 @@ public class ServerAlpha {
         }
     }
 
+    public static String head(Map<String,String> headMap){
+        StringBuilder sb = new StringBuilder();
+
+        for (Map.Entry<String,String> entry : headMap.entrySet()) {
+            sb.append(entry.getKey());
+            sb.append(": ");
+            sb.append(entry.getValue());
+            sb.append("\n");
+        }
+
+        return sb.toString();
+    }
+
+    public static void printHead(int maxThread, int limitTime){
+        Map<String,String> map = new HashMap<>();
+        map.put("Start", new Date().toString());
+        map.put("Password", password);
+        map.put("Max threads", maxThread + "");
+        map.put("Limit Time", limitTime + "");
+        map.put("Create by", "Qays");
+
+        System.out.println(head(map));
+    }
+
     public static void main(String[] args) {
 
         int max = 5; //The max number of thread pool
@@ -279,6 +303,8 @@ public class ServerAlpha {
         if (args.length > 0) {
             password = args[0];
         }
+
+        printHead(max, limitTime);
 
         try {
             ServerSocket serverSocket = new ServerSocket(18888, 1);
