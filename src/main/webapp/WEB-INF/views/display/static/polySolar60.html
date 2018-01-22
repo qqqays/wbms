@@ -1,0 +1,51 @@
+<#include "/common/layout.html"/>
+<@head>
+<style>
+
+</style>
+</@head>
+
+<@body>
+
+<div style="min-height:670px">
+    <div class="" style="background-image:  url('/images/product/banner3.png');height: 34vw;background-size: cover">
+    </div>
+
+   <#include "/display/static/product-head.html"/>
+    <@productHead solar='多晶' pieces='60' power='5-360' effect='17.4' tolerance='0 ~ +5'/>
+
+    <#include "/display/static/bi-module.html"/>
+    <@before order='orderBefore' bgColor=''>
+        <img src="/images/product/poly-60-p1.png">
+    </@before>
+    <@behind>
+        <h3>外观精美， 应用广泛</h3>
+        <p>蜀旺兴能源多晶组件是我们最普遍使用的组件。多晶组件能够实现空间利用最大化。
+        作为行业最值得信赖的组件之一，以良好的可靠性，精美的观赏性，以及与所有主流的系统配件兼容的领先特性
+        深受屋顶和电站项目客户的青睐</p>
+    </@behind>
+
+    <div class="product-m product-b" style="background-image: url('/images/product/glass-bg.jpg');background-position:center;">
+
+    </div>
+
+    <#include "/display/static/bi-module.html"/>
+    <@before order='orderBehind'>
+        <img src="/images/product/warranty.png">
+    </@before>
+    <@behind>
+        <h3>业界领先的基于标称功率的产品质保</h3>
+        <ul>
+            <li>第一年97.5%，其后第二年到第二五年，每年最大衰减值0.7，至质量保证期开始日的第25年以80.7%的比例结束</li>
+            <li>12年产品质保</li>
+            <li>25年线性性能质保</li>
+        </ul>
+    </@behind>
+
+</div>
+
+<#include "/display/static/product-foot.html"/>
+
+</@body>
+
+<@javascript></@javascript>

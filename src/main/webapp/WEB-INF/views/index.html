@@ -86,9 +86,9 @@
                 <div class="centre">
                     <div class="centre-image" style="background-image: url('${product.img!}');"></div>
                     <div class="centre-desc">
-                        <p>${product.name}</p>
+                        <h4>${product.name}</h4>
                         <p>${product.description}</p>
-                        <a class="btn btn-flat bg-maroon">了解更多</a>
+                        <a class="btn btn-flat bg-maroon" href="${product.class1}/${product.class2}/${product.id}">了解更多</a>
                     </div>
                 </div>
             </#list>
@@ -107,7 +107,7 @@
             <div class="row">
                 <div class="news-sub col-sm-6 col-xs-12">
                     <!--<img src="${(news.records[0].coverImg)!'/images/banner.png'}" style="height: 24vw;">-->
-                    <div style="background-image: url('${(news.records[0].coverImg)!}');height: 24vw;background-size: cover">
+                    <div style="background-image: url('${(news.records[0].coverImg)!}');height: 24vw;background-size: cover;cursor: pointer" onclick="window.open('${news.records[0].class1}/${news.records[0].class2}/${news.records[0].id}','_self')">
                         <div class="pull-left bg-teal">
                             <p class="dd">${(news.records[0].updateDate)?string('dd')}</p>
                             <p class="yyyy-mm">${(news.records[0].updateDate)?string('yyyy-MM')}</p>
@@ -157,7 +157,7 @@
                 <#list cases.records as case>
                     <div class="col-xs-3 case">
                         <!-- Widget: user widget style 1 -->
-                        <div class="box box-widget widget-user case-list animated pulse">
+                        <div class="box box-widget widget-user case-list animated pulse" onclick="window.open('/${case.class1}/${case.class2}/${case.id}','_self')">
                             <!-- Add the bg color to the header using any of the bg-* classes -->
                             <div class="widget-user-header bg-black"
                                  style="background: url('${case.img!}') center center;">

@@ -1,47 +1,83 @@
 <#include "/common/layout.html"/>
 <@head>
 <style>
+@media (max-width: 600px) {
+    .product-p > p{
+        margin-bottom: 0;
+        line-height: 22px;
+    }
 
+    .product-p > h3{
+
+    }
+
+    .cus1{
+        padding-left: 21vw;
+    }
+}
 </style>
 </@head>
 
 <@body>
 
 <div style="min-height:670px">
-    <div class="" style="background-image:  url('/images/banner.png');height: 34vw;background-size: cover">
+    <div class="" style="background-image:  url('/images/product/banner3.png');height: 34vw;background-size: cover">
     </div>
 
    <#include "/display/static/product-head.html"/>
+    <@productHead solar='单晶' pieces='72' power='5-360' effect='17.4' tolerance='0 ~ +5'/>
 
     <#include "/display/static/bi-module.html"/>
     <@before order='orderBehind' bgColor=''>
-        <img src="/images/product/product1.png">
+        <img src="/images/product/mono-60-p2.png">
     </@before>
     <@behind>
         <h3>从心定义，回归本色</h3>
-        <ul>
-            <li>世界级的晶体硅光伏组件制造商</li>
-            <li>世界级的晶体硅光伏组件制造商</li>
-            <li>世界级的晶体硅光伏组件制造商</li>
-            <li>世界级的晶体硅光伏组件制造商</li>
-            <li>世界级的晶体硅光伏组件制造商</li>
-            <li>世界级的晶体硅光伏组件制造商</li>
-            <li>世界级的晶体硅光伏组件制造商</li>
-        </ul>
+        <p>我们关注到更加简约的使用体验
+        重新定义了更加符合光伏发电系统使用太阳能电池板的外观
+        蜀旺光能采用统一的深黑色单晶硅电池片
+        具有美观、高效、质量可靠的优点</p>
     </@behind>
 
-    <div class="product-m product-b" style="background-image: url('/images/product/product-bg.png')"></div>
+    <div class="product-m" style="background-image: url('/images/product/product-bg.png');background-position: center;height: 36vw;background-size: cover;min-height: 240px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 product-p" style="text-align: center;white-space: nowrap;text-overflow: ellipsis;overflow: hidden">
+                    <h3 style="padding: 0 0 2vw 0">完美兼容，超强拓展</h3>
+                    <p >单晶72片较普通组件节省系统配件和电缆，减少BOS和日常运维成本，并降低了系统损耗</p>
+                    <p >是大型电站的完美解决方案。通过串组更多的组件降低33%BOS成本</p>
+                    <p>单晶72片光伏组件可提高发电量和可靠性。</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <#include "/display/static/bi-module.html"/>
     <@before order='orderBehind' bgColor='product-m-c'>
-        <img src="/images/product/product1.png">
+        <img src="/images/product/mono-72-p2.png">
     </@before>
     <@behind>
-        <h3>更高的功率 更好的空间利用率</h3>
-        <p>蜀旺新能源产品提供 270-295W 输出功率等多种选择， 同时采用被钝化技术， 降低串联电阻， 降低功率损耗， 具有更高的转换效率和可靠性</p>
+        <h3>比专业更近一步</h3>
+        <p>经过先进工业切片技术，品质卓越，坚固耐用</p>
+        <p>确保高效的光点转化能力</p>
+        <p>让你尽情享用的艺术品</p>
+        <p>让你尽快得到投资回报</p>
     </@behind>
 
-    <div class="product-m product-b" style="background-image: url('/images/product/product-bg.png')"></div>
+    <div class="product-m product-b" style="background-image: url('/images/product/left-bg.png');background-position:center;display: flex;align-items: center">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6"></div>
+                <div class="col-sm-6 product-p cus1">
+                    <h3>大型地面电站的理想选择</h3>
+                    <p>单晶72片大功率光伏组件为大型项目安装提供了最值得信赖的解决方案。单晶72片大功率光伏组件有着与蜀旺其他组件同等严格的质量管理和测试标准，
+                    单晶硅组件因其更高的转换效率而使系统成本更低。
+                    此外，单晶硅72片光伏组件在同一组串中增加50%的组件数量，更大的降低了BOS成本。</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
 
     <#include "/display/static/bi-module.html"/>
     <@before order='orderBehind'>
@@ -50,10 +86,12 @@
     <@behind>
         <h3>业界领先的基于标称功率的产品质保</h3>
         <ul>
-            <li>第一年97.5%</li>
-            <li>第一年97.5%</li>
-            <li>第一年97.5%</li>
-            <li>第一年97.5%</li>
+            <li>第一年97.5%，其后第二年到第二五年，每年最大衰减值0.7，至质量保证期开始日的第25年以80.7%的比例结束</li>
+            <li>12年产品质保</li>
+            <li>25年线性性能质保</li>
+            <li>施行苛刻的环境测试（盐雾，氨水以及沙暴腐蚀测试）</li>
+            <li>长期可靠性测试</li>
+            <li>2次EL测试确保组件无隐裂</li>
         </ul>
     </@behind>
 

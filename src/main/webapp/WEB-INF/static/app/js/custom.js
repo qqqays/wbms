@@ -99,5 +99,30 @@ $('document').ready(function () {
     // =================wow===================
     new WOW().init();
 
+    // ======================swipe===============
+    var swipeBody = $(".wrapper");
+
+    var mc = new Hammer(swipeBody[0]);
+    mc.on('swipeleft', function(ev) {
+        $('#nav-wrapper').removeClass('toggled');
+
+        console.info('turn to left');
+    });
+
+    mc.on('swiperight', function (ev) {
+        $('#nav-wrapper').addClass('toggled');
+
+        console.info('turn to right');
+    });
+
+    // =======================submenu at phone screen=================
+    var submenuWidth = 0;
+    $('.custom-submenu li').each(function () {
+        console.log($(this).width());
+        submenuWidth += $(this).width();
+    });
+
+    // $('.content-header').width(submenuWidth + 50);
+
 });
 
