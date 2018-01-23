@@ -1,8 +1,8 @@
 // =============================common============================
 function isnull(value) {
-    if(value == '' || value == null || value == undefined)
+    if (value == '' || value == null || value == undefined)
         return true;
-    else 
+    else
         return false;
 }
 
@@ -25,7 +25,7 @@ function show_code() {
         $('#qr-code').removeClass('tada');
         $('#qr-code').removeClass('hinge');
         $('#qr-code').addClass('zoomOut');
-    },1000);
+    }, 1000);
 
     setTimeout(function () {
         $('#qr-code').attr('src', '/images/qr-code-sw.jpg');
@@ -37,13 +37,13 @@ function show_code() {
 
 function qr_code() {
     $('#qr-code').mouseenter(function () {
-        if(!fu){
+        if (!fu) {
             show_code();
         }
     });
 
     $('#qr-code').click(function () {
-        if(fu) {
+        if (fu) {
             $('#qr-code').removeClass('zoomIn');
             $('#qr-code').addClass('hinge');
             setTimeout(function () {
@@ -53,7 +53,7 @@ function qr_code() {
                 $('#qr-code').attr('src', '/images/scan.png');
                 fu = false;
                 fa = false;
-            },2000);
+            }, 2000);
         }
     });
 }
@@ -63,7 +63,8 @@ function setIframeHeight(iframe) {
     if (iframe) {
         var iframeWin = iframe.contentWindow /*|| iframe.contentDocument.parentWindow*/;
         if (iframeWin.document.body) {
-            iframe.height = iframeWin.document.body.scrollHeight;/*iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;*/
+            iframe.height = iframeWin.document.body.scrollHeight;
+            /*iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;*/
         }
     }
 };
@@ -74,17 +75,17 @@ $('document').ready(function () {
     $('#qr-code').addClass('animated');
     $(window).scroll(function () {
 
-        if($('#qr-code').position().top - window.scrollY < 860 && fa && !fu){
+        if ($('#qr-code').position().top - window.scrollY < 860 && fa && !fu) {
             show_code();
             fa = false;
         }
 
-        if($('#qr-code').position().top - window.scrollY > 1200)
+        if ($('#qr-code').position().top - window.scrollY > 1200)
             fa = true;
     });
 
     // ================shares code ===================
-    if(window.innerWidth < 350) {
+    if (window.innerWidth < 350) {
         $('.shares-code').hide();
     }
 
@@ -103,7 +104,7 @@ $('document').ready(function () {
     var swipeBody = $(".wrapper");
 
     var mc = new Hammer(swipeBody[0]);
-    mc.on('swipeleft', function(ev) {
+    mc.on('swipeleft', function (ev) {
         $('#nav-wrapper').removeClass('toggled');
 
         console.info('turn to left');
@@ -116,13 +117,53 @@ $('document').ready(function () {
     });
 
     // =======================submenu at phone screen=================
+
+
     var submenuWidth = 0;
     $('.custom-submenu li').each(function () {
         console.log($(this).width());
-        submenuWidth += $(this).width();
+        submenuWidth += $(this).width() + 10;
     });
+    if ($(window).width() < 600)
+        $('#submenu').width(submenuWidth + 1);
 
-    // $('.content-header').width(submenuWidth + 50);
+    var submenu = $('#submenu');
+
+    if (submenu.length > 0) {
+        var offset = $(submenu[0].parentNode).width() - submenuWidth;
+
+        var mc1 = new Hammer(submenu[0]);
+        var left;
+        mc1.on('panstart', function (e) {
+            left = parseInt(submenu.css('left'));
+            submenu[0].style.transition = '';
+            console.log(left);
+            mc.stop();
+        });
+
+        mc1.on('panmove', function (e) {
+            submenu[0].style.left = left + e.deltaX + 'px';
+        });
+
+        mc1.on('panend', function (e) {
+
+            var currentLeft = parseInt(submenu.css('left'));
+
+            console.log(offset);
+
+            if (currentLeft > 0)
+                submenu[0].style.left = '0px';
+            else {
+                if (currentLeft < offset && offset < 0) {
+                    submenu[0].style.left = offset + 'px';
+                } else
+                    submenu[0].style.left = '0px';
+            }
+
+            submenu[0].style.transition = 'left .5s';
+        });
+
+    }
 
 });
 

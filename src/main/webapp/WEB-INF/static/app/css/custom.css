@@ -116,6 +116,11 @@ div {
     max-height: 202px
 }
 
+.cert-icon-sub:hover{
+    animation: rubberBand 1s infinite;
+    animation-delay: 2s;
+}
+
 .intro {
     background-color: #e9f9f4;
 }
@@ -137,6 +142,10 @@ div {
     background-image: url('/images/index/product1.png');
     background-size: cover;
     cursor: pointer;
+}
+
+.centre-image:hover{
+    animation:pulse 2s;
 }
 
 .centre-desc {
@@ -295,6 +304,10 @@ div {
     max-height: 202px
 }
 
+.product-icon-sub:hover{
+    animation:pulse 1s;
+}
+
 .product-m {
     overflow: hidden;
     padding: 3vw 0;
@@ -429,12 +442,13 @@ div {
 
 .custom-submenu > .active > a, .custom-submenu > .active > a:hover, .custom-submenu > .active > a:focus {
     color: #c52d2f;
-    border-bottom: solid 3px #c52d2f;
+    border-bottom: solid 3px #c52d2f99;
 }
 
 .custom-submenu > li > a:hover {
     color: #c52d2f;
-    border-bottom: solid 3px #c52d2f;
+    border-bottom: solid 3px #c52d2f99;
+    transition: all .3s;
 }
 
 .custom-submenu > li:hover, .custom-submenu > li:focus {
@@ -444,6 +458,7 @@ div {
 .custom-submenu {
     /*float: left;*/
     overflow: hidden;
+    margin-bottom: -2px;
 }
 
 .custom-submenu:after {
@@ -453,10 +468,12 @@ div {
 @media (max-width: 600px) {
     .custom-submenu > li, .custom-submenu > li > a, .content-header{
         padding: 0;
+        /*transition: all 1s;*/
     }
 
     ul.custom-submenu {
         padding-left: 0;
+        margin-bottom: -6px;
     }
 
 }
@@ -495,6 +512,11 @@ div {
 }
 
 /*=====================modify system css=========================*/
+
+.content-wrapper{
+    /*background-color: white;*/
+}
+
 .skin-black-light .main-header .navbar .nav > li > a {
     /*color: #dddddd;*/
 }
@@ -508,6 +530,7 @@ div {
     color: snow;
     box-shadow: 0 0 10px rgba(25, 0, 0, 0.3);
     animation: swing .5s cubic-bezier(0.68, 0.15, 0.69, 0.11);
+    animation-delay:.2s;
 }
 
 .skin-black-light .main-header .navbar .navbar-nav > li > a {
