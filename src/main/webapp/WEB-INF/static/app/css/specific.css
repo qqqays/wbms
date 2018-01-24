@@ -48,6 +48,54 @@
     overflow: visible;
 }
 
+.custom-col {
+    width: 20%;
+    position: relative;
+    float: left;
+}
+
+.custom-col > h1 {
+    color: #504848cf;
+}
+
+.custom-col > p{
+    color: #3e3939ad;
+}
+
+@media screen and (max-width: 1200px) {
+    .custom-col{
+        width: 25%;
+    }
+}
+
+@media (max-width:1000px) {
+    .custom-col{
+        width: 33%;
+    }
+}
+
+@media (max-width: 600px){
+    .custom-col{
+        width: 50%;
+    }
+}
+
+@media (max-width: 400px) {
+    .custom-col{
+        width: 100%;
+        padding: 10px 0;
+        border-bottom: 1px solid grey;
+    }
+
+    .custom-col > h1 {
+        margin: 10px 0;
+    }
+
+    .custom-col > p{
+        margin: 0 0 4px;
+    }
+}
+
 /*-------------------------------contact-----------------------------*/
 .custom-i {
     width: 100%;

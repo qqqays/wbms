@@ -57,6 +57,39 @@ div {
     }
 }
 
+/*===================jump words================*/
+.bumpy-char {
+    line-height: 3.4em;
+    position: relative;
+}
+
+/*========================delay for animated==============================*/
+
+.delay300{
+    animation-delay: 300ms;
+}
+.delay600{
+    animation-delay: 600ms;
+}
+.delay900{
+    animation-delay: 900ms;
+}
+.delay1200{
+    animation-delay: 1200ms;
+}
+.delay1500{
+    animation-delay: 1500ms;
+}
+.delay2000{
+    animation-delay: 2000ms;
+}
+.delay2500{
+    animation-delay: 2500ms;
+}
+.delay3000{
+    animation-delay: 3000ms;
+}
+
 /*=====================header css========================*/
 .c-logo {
     width: 130px;
@@ -88,6 +121,10 @@ div {
     padding: 3vw 0;
 }
 
+.index-c .content-header > img{
+    max-width: 60vw;
+}
+
 .index-m {
     padding: 7vw 20vw;
 }
@@ -96,13 +133,16 @@ div {
     padding-bottom: 2vw;
 }
 
+.cert{
+}
+
 .cert-icon {
     /*background-image: ;*/
     /*background-color: red;*/
     width: 18vw;
     height: 18vw;
     /*max-width: 228px;*/
-    max-height: 228px
+    max-height: 228px;
 }
 
 .cert-icon-sub {
@@ -144,6 +184,13 @@ div {
     cursor: pointer;
 }
 
+@media (max-width: 768px) {
+    .centre-image{
+        width: 24vw;
+        height: 34vw;
+    }
+}
+
 .centre-image:hover{
     animation:pulse 2s;
 }
@@ -153,7 +200,7 @@ div {
 }
 
 .news {
-    background-color: #ffcccc;
+    background-color: #e9f9f4;
     display: flex;
 }
 
@@ -376,7 +423,7 @@ div {
         text-align: center;
     }
 
-    .product-p > h3, .product-m h1 {
+    .product-p > h3, .product-m h1, .custom-col > h1 {
         font-size: 20px;
         margin-top: 0;
         text-align: center;

@@ -69,7 +69,15 @@ function setIframeHeight(iframe) {
     }
 };
 
+
 $('document').ready(function () {
+
+    // =================wow===================
+    new WOW({offset:50}).init();
+
+    // ==============jump=======================
+    $('.jump').bumpyText();
+
     // ================qr code=================
     qr_code();
     $('#qr-code').addClass('animated');
@@ -96,9 +104,6 @@ $('document').ready(function () {
 
     // ===============iframe===============
     window.setInterval("setIframeHeight(document.getElementById('myFrame'));", 1000);
-
-    // =================wow===================
-    new WOW().init();
 
     // ======================swipe===============
     var swipeBody = $(".wrapper");

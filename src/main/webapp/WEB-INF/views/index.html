@@ -15,35 +15,35 @@
 
     <div class="container index-c">
         <section class="content-header">
-            <img class="img-title" src="/images/index/credit.png">
+            <img class="img-title fadeInDown delay1200 animated wow" src="/images/index/credit.png">
         </section>
 
         <!--产品认证-->
-        <section class="content" style="display: flex;min-height: 110px;margin: 1vw">
+        <section class="content cert" style="display: flex;min-height: 110px;margin: 1vw">
 
-            <div class="cert-icon">
-                <div class="cert-icon-sub"></div>
-                <p class="hidden-xs">CQC认证</p>
+            <div class="cert-icon fadeInDown delay300 animated wow">
+                <div class="cert-icon-sub" style="background-image: url('/images/index/cqc-icon.png')"></div>
+                <p class="">CQC认证</p>
             </div>
 
-            <div class="cert-icon">
-                <div class="cert-icon-sub"></div>
-                <p class="hidden-xs">CQC认证</p>
+            <div class="cert-icon fadeInDown delay600 animated wow">
+                <div class="cert-icon-sub" style="background-image: url('/images/index/ce-icon.png')"></div>
+                <p class="">CE认证</p>
             </div>
 
-            <div class="cert-icon">
-                <div class="cert-icon-sub"></div>
-                <p class="hidden-xs">CQC认证</p>
+            <div class="cert-icon fadeInUp delay900 animated wow">
+                <div class="cert-icon-sub" style="background-image: url('/images/index/rosh-icon.png')"></div>
+                <p class="">ROSH认证</p>
             </div>
 
-            <div class="cert-icon">
-                <div class="cert-icon-sub"></div>
-                <p class="hidden-xs">CQC认证</p>
+            <div class="cert-icon fadeInDown delay600 animated wow">
+                <div class="cert-icon-sub" style="background-image: url('/images/index/iec-icon.png')"></div>
+                <p class="">IEC认证</p>
             </div>
 
-            <div class="cert-icon">
-                <div class="cert-icon-sub"></div>
-                <p class="hidden-xs">CQC认证</p>
+            <div class="cert-icon fadeInDown delay300 animated wow">
+                <div class="cert-icon-sub" style="background-image: url('/images/index/vde-icon.png')"></div>
+                <p class="">VDE认证</p>
             </div>
 
         </section>
@@ -51,22 +51,22 @@
 
     <!--产品介绍-->
     <div class="intro index-c">
-        <div><img class="img-title" src="/images/index/credit.png"></div>
-        <p style="padding: 1.5vw;font-size: 16px;color: #646464;">四川蜀旺新能源股份有限公司是专门从事太阳能研究与开发的高新技术企业，目前拥有最先进的机械设备和多项专利技术
+        <div class="content-header"><img class="img-title img-title fadeInDown delay1200 animated wow" src="/images/index/intro.png"></div>
+        <p class="fadeInUp animated delay600 wow" style="padding: 1.5vw;font-size: 16px;color: #646464;">四川蜀旺新能源股份有限公司是专门从事太阳能研究与开发的高新技术企业，目前拥有最先进的机械设备和多项专利技术
             <br>多年的磨练，使我们的产品在研发、生产、销售到服务拥有丰富的经验...
         </p>
         <div>
-            <img src="/images/index/p-in-f.png">
+            <img class="animated delay300 fadeInLeft wow" src="/images/index/p-in-f.png">
         </div>
     </div>
 
     <!--了解更多-->
-    <div class="module1-back index-c">
+    <div class="module1-back index-c animated wow zoomIn">
         <div class="index-m" align="right">
             <div style="width: 270px;color: white;text-align: left">
-                <h2 style="font-size: x-large; padding: 20px 0">西部太阳能全产业领导者</h2>
-                <p>蜀旺新能源着眼于全球可持续发展，以推动光伏平价上网和普及绿色能源为己任，提供从光伏产品到光伏应用的整体解决方案不断开拓创新，引领光伏进步</p>
-                <div style="cursor:pointer;border: 1px white solid; color: red;margin-top: 30px;padding: 3px 10px;width: 100px">
+                <h2 class="animated delay900 wow fadeInDown" style="font-size: x-large; padding: 20px 0">西部太阳能全产业领导者</h2>
+                <p class="animated delay600 wow fadeInDown">蜀旺新能源着眼于全球可持续发展，以推动光伏平价上网和普及绿色能源为己任，提供从光伏产品到光伏应用的整体解决方案不断开拓创新，引领光伏进步</p>
+                <div class="animated delay300 wow fadeInDown" style="cursor:pointer;border: 1px white solid; color: red;margin-top: 30px;padding: 3px 10px;width: 100px">
                     了解更多
                 </div>
             </div>
@@ -77,10 +77,10 @@
     <div class="container index-c">
 
         <section class="content-header">
-            <img class="img-title" src="/images/index/credit.png">
+            <img class="img-title img-title fadeInDown delay900 animated wow" src="/images/index/centre.png">
         </section>
 
-        <section class="content" style="display: flex">
+        <section class="content animated delay600 wow fadeInUp" style="display: flex">
 
             <#list products.records as product>
                 <div class="centre">
@@ -101,10 +101,10 @@
         <div class="container">
             <!--<div><img class="img-title" src="/images/index/credit.png"> </div>-->
             <section class="content-header">
-                <img class="img-title" src="/images/index/credit.png">
+                <img class="img-title img-title fadeInDown delay900 animated wow" src="/images/index/news.png">
             </section>
 
-            <div class="row">
+            <div class="row animated delay300 wow fadeInUp">
                 <div class="news-sub col-sm-6 col-xs-12">
                     <!--<img src="${(news.records[0].coverImg)!'/images/banner.png'}" style="height: 24vw;">-->
                     <div style="background-image: url('${(news.records[0].coverImg)!}');height: 24vw;background-size: cover;cursor: pointer" onclick="window.open('${news.records[0].class1}/${news.records[0].class2}/${news.records[0].id}','_self')">
@@ -148,10 +148,10 @@
     <div class="container index-c">
 
         <section class="content-header">
-            <img class="img-title" src="/images/index/credit.png">
+            <img class="img-title img-title fadeInDown delay900 animated wow" data-wow-delay="1000ms" src="/images/index/case.png">
         </section>
 
-        <section class="content">
+        <section class="content animated delay600 wow fadeInUp">
             <div class="row">
 
                 <#list cases.records as case>

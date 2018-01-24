@@ -1,0 +1,37 @@
+<#include "/common/layout.html"/>
+<@head>
+<!--<link rel="stylesheet" type="text/css" href="http://www.jq22.com/demo/tiaozi20160926/css/styles.css">-->
+<style>
+    .bumpy-char {
+        line-height: 3.4em;
+        position: relative;
+    }
+</style>
+</@head>
+
+<@body>
+<div id="page">
+    <div id="container" class="content clearfix">
+        <h1 id="logo"></h1>
+        <p class="example">what the fuck !</p>
+        <p class="example">sjdifoasjpdsfjd djfasiod jdiso f</p>
+
+    </div>
+</div>
+</@body>
+
+<@javascript>
+<script type="text/javascript" src="http://www.jq22.com/demo/tiaozi20160926/jquery.bumpytext.packed.js"></script>
+<script type="text/javascript" src="http://www.jq22.com/demo/tiaozi20160926/easying.js"></script>
+
+<script>
+
+    //<![CDATA[
+    $(document).ready(function() {
+
+        $('p.example').bumpyText();
+
+    });            //]]>
+
+</script>
+</@javascript>
