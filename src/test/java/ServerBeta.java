@@ -55,7 +55,6 @@ public class ServerBeta {
                 String info;
                 String identity;
 
-                //todo verifies
                 for (int i = 0; ; i++) {
 
                     pw.write("Enter password: \n");

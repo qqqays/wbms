@@ -76,7 +76,8 @@ $('document').ready(function () {
     new WOW({offset:50}).init();
 
     // ==============jump=======================
-    $('.jump').bumpyText();
+    $('.jumping').bumpyText();
+    $('.jumpingN').bumpyText();
 
     // ================qr code=================
     qr_code();

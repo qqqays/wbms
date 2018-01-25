@@ -1,42 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--<head>-->
+<!--<meta charset="UTF-8">-->
+<!--<title>Title</title>-->
+<!--<style>-->
+<!--input{-->
+<!--display: block;-->
+<!--}-->
+<!--button{-->
+<!--display: block;-->
+<!--}-->
+<!--img{-->
+<!--display: block;-->
+<!--}-->
+<!--</style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<form action="/authentication" method="post">-->
+<!--<input type="text" id="name" name="userName">-->
+<!--<input type="text" id="pw" name="password">-->
+<!--<input type="text" id="kapatcha" name="kapatcha">-->
+<!--<img alt="如果看不清楚，请单击图片刷新！" class="pointer img" src="/captcha">-->
+<!--<button type="submit" id="login">login</button>-->
+
+<!--</form>-->
+
+<!--<script type="text/javascript">-->
+<!--//    $('document').ready(function () {-->
+<!--//        $('#login').click(function () {-->
+<!--//-->
+<!--//            $.ajax({-->
+<!--//                url:'/login/authentication',-->
+<!--//                type:'POST',-->
+<!--//                data:{userName:$('#name').val(), password:$('#pw').val()}-->
+<!--//                success-->
+<!--//            });-->
+<!--//        });-->
+<!--//    });-->
+<!--</script>-->
+<!--</body>-->
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <style>
-        input{
-            display: block;
-        }
-        button{
-            display: block;
-        }
-        img{
-            display: block;
-        }
-    </style>
+    <!--<link rel="stylesheet" href="http://www.jq22.com/demo/jQuery-login20160222/css/jq22.css">-->
+    <link rel="stylesheet" href="/app/css/jq22.css">
 </head>
 <body>
-<form action="/authentication" method="post">
-    <input type="text" id="name" name="userName">
-    <input type="text" id="pw" name="password">
-    <input type="text" id="kapatcha" name="kapatcha">
-    <img alt="如果看不清楚，请单击图片刷新！" class="pointer img" src="/captcha">
-    <button type="submit" id="login">login</button>
+<!-- begin -->
+<div id="login">
+    <div class="wrapper">
+        <div class="login">
+            <form action="/authentication" method="post" class="container offset1 loginform">
+                <div id="owl-login">
+                    <div class="hand"></div>
+                    <div class="hand hand-r"></div>
+                    <div class="arms">
+                        <div class="arm"></div>
+                        <div class="arm arm-r"></div>
+                    </div>
+                </div>
+                <div class="pad">
 
-</form>
+                    <div class="control-group">
+                        <div class="controls">
+                            <label for="userName" class="control-label fa fa-user"></label>
+                            <input id="userName" type="text" name="userName" placeholder="用户名" tabindex="1"
+                                   autofocus="autofocus" class="form-control input-medium">
+                        </div>
+                    </div>
 
-<script type="text/javascript">
-//    $('document').ready(function () {
-//        $('#login').click(function () {
-//
-//            $.ajax({
-//                url:'/login/authentication',
-//                type:'POST',
-//                data:{userName:$('#name').val(), password:$('#pw').val()}
-//                success
-//            });
-//        });
-//    });
-</script>
+                    <div class="control-group">
+                        <div class="controls">
+                            <label for="password" class="control-label fa fa-asterisk"></label>
+                            <input id="password" type="password" name="password" placeholder="密码" tabindex="2"
+                                   class="form-control input-medium">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions"><a href="#" tabindex="5" class="btn pull-left btn-link text-muted">Forgot
+                    password?</a><a href="#" tabindex="6" class="btn btn-link text-muted">Sign Up</a>
+
+                    <button type="submit" tabindex="4" class="btn btn-primary">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="/plugins/jquery/dist/jquery.min.js"></script>
+    <script>
+        $(function () {
+
+            $('#login #password').focus(function () {
+                $('#owl-login').addClass('password');
+            }).blur(function () {
+                $('#owl-login').removeClass('password');
+            });
+        });
+    </script>
+</div>
+<!-- end -->
+
 </body>
 </html>

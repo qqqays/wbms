@@ -59,7 +59,16 @@ div {
 
 /*===================jump words================*/
 .bumpy-char {
-    line-height: 3.4em;
+    /*line-height: 3.4em;*/
+    line-height: 2.1em;
+    position: relative;
+}
+
+.jumping{
+}
+
+.jumpingN > .bumpy-char{
+    line-height: 1em;
     position: relative;
 }
 
@@ -67,6 +76,7 @@ div {
 
 .delay300{
     animation-delay: 300ms;
+    animation-duration: 1s;
 }
 .delay600{
     animation-delay: 600ms;
@@ -88,6 +98,26 @@ div {
 }
 .delay3000{
     animation-delay: 3000ms;
+}
+
+.delay4000{
+    animation-delay: 4000ms;
+}
+
+.duration1{
+    animation-duration: 1s;
+}
+
+.duration2{
+    animation-duration: 2s;
+}
+
+.duration3{
+    animation-duration: 3s;
+}
+
+.duration4{
+    animation-duration: 4s;
 }
 
 /*=====================header css========================*/
@@ -335,6 +365,18 @@ div {
     /*max-height: 228px;*/
 }
 
+@media (min-width: 1200px){
+    .product-icon{
+        height: 18vw;
+    }
+}
+
+@media (min-width: 1600px){
+    .product-icon{
+        height: 15vw;
+    }
+}
+
 .product-icon > p {
     font-size: 1.8em;
     color: darkred;
@@ -371,7 +413,7 @@ div {
 }
 
 .product-p > h3 {
-    padding: 2.5vw 0;
+    padding: 1.5vw 0 2.5vw 0;
     font-size: 2.2em;
 }
 
@@ -526,15 +568,54 @@ div {
 }
 
 /*========================detail=====================*/
-.detail {
+.detail-list {
     text-align: left;
     padding-left: 30px;
 }
 
-.detail h4 , .detail-body > p, .detail-foot{
+.detail-list h4 , .detail-list-desc > p, .detail-list-foot{
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+
+.detail-head{
+    overflow: hidden;
+    text-align: center;
+}
+
+.detail-head > h2{
+    word-wrap:break-word;
+    border-bottom: 1px #bcbcbc dashed;
+    color: #397bcb;
+    padding: 0 10px 10px 10px;
+    font-weight: 500;
+    font-size: 24px;
+    margin-bottom: 0;
+}
+
+.detail-head > div{
+    padding-top: 1vw;
+    padding-bottom: 3vw;
+}
+
+.detail-head > div > span {
+    color: #666666;
+    font-size: 12px;
+    text-align: center;
+    line-height: 22px;
+    word-break: keep-all;
+    padding: 10px 3vw 25px 0;
+}
+
+.detail-body{
+    overflow: hidden;
+}
+
+.news-type-list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 /*======================footer===================*/
