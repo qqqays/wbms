@@ -1,51 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<!--<head>-->
-<!--<meta charset="UTF-8">-->
-<!--<title>Title</title>-->
-<!--<style>-->
-<!--input{-->
-<!--display: block;-->
-<!--}-->
-<!--button{-->
-<!--display: block;-->
-<!--}-->
-<!--img{-->
-<!--display: block;-->
-<!--}-->
-<!--</style>-->
-<!--</head>-->
-<!--<body>-->
-<!--<form action="/authentication" method="post">-->
-<!--<input type="text" id="name" name="userName">-->
-<!--<input type="text" id="pw" name="password">-->
-<!--<input type="text" id="kapatcha" name="kapatcha">-->
-<!--<img alt="如果看不清楚，请单击图片刷新！" class="pointer img" src="/captcha">-->
-<!--<button type="submit" id="login">login</button>-->
-
-<!--</form>-->
-
-<!--<script type="text/javascript">-->
-<!--//    $('document').ready(function () {-->
-<!--//        $('#login').click(function () {-->
-<!--//-->
-<!--//            $.ajax({-->
-<!--//                url:'/login/authentication',-->
-<!--//                type:'POST',-->
-<!--//                data:{userName:$('#name').val(), password:$('#pw').val()}-->
-<!--//                success-->
-<!--//            });-->
-<!--//        });-->
-<!--//    });-->
-<!--</script>-->
-<!--</body>-->
 <head>
-    <!--<link rel="stylesheet" href="http://www.jq22.com/demo/jQuery-login20160222/css/jq22.css">-->
     <link rel="stylesheet" href="/app/css/jq22.css">
+    <style>
+        iframe{
+            border: none;
+        }
+    </style>
 </head>
 <body>
+
 <!-- begin -->
-<div id="login">
+<div id="login" style="">
     <div class="wrapper">
         <div class="login">
             <form action="/authentication" method="post" class="container offset1 loginform">
@@ -74,6 +40,13 @@
                                    class="form-control input-medium">
                         </div>
                     </div>
+
+                    <div>
+
+                    <input type="text" placeholder="验证码" name="captcha" style="padding: 9px 6px;float: left;width: 50%"/>
+                        <img id="captcha" src="/captcha" style="width: 50%;height: 42px">
+                    </div>
+
                 </div>
 
                 <div class="form-actions"><a href="#" tabindex="5" class="btn pull-left btn-link text-muted">Forgot
@@ -84,6 +57,17 @@
             </form>
         </div>
     </div>
+    <!--<iframe src="http://www.jq22.com/js/a14.html" width="100%" height="800px"></iframe>-->
+    <!--<iframe src="http://www.jq22.com/code/20180123235723.html" width="100%" height="800px"></iframe>-->
+    <!--<iframe src="http://www.jq22.com/code/20171205224044.html" width="100%" height="800px"></iframe>-->
+    <!--<iframe src="http://www.jq22.com/code/20171225005506.html" width="100%" height="400px"></iframe>-->
+    <iframe src="/plugins/BgHtml/fly.html" width="100%" height="680px"></iframe>
+    <!--<iframe src="http://www.jq22.com/code/20171215010113.html" width="100%" height="800px"></iframe>-->
+    <!--<iframe src="http://www.jq22.com/code/20171119000528.html" width="100%" height="800px"></iframe>-->
+    <!--<iframe src="http://www.jq22.com/code/20171115013612.html" width="100%" height="800px"></iframe>-->
+    <!--<iframe src="http://www.jq22.com/code/20171109001314.html" width="100%" height="800px"></iframe>-->
+
+
     <script src="/plugins/jquery/dist/jquery.min.js"></script>
     <script>
         $(function () {
@@ -92,6 +76,10 @@
                 $('#owl-login').addClass('password');
             }).blur(function () {
                 $('#owl-login').removeClass('password');
+            });
+
+            $('#captcha').click(function () {
+                this.src = '/captcha';
             });
         });
     </script>

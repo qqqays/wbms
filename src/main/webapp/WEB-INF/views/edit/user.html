@@ -5,21 +5,21 @@
 <@body>
 
 <div class="content-wrapper">
+    <iframe src="http://www.jq22.com/code/20171205224044.html" width="100%" height="1000"></iframe>
     <div class="container">
         <section class="content">
-            <h1>user management</h1>
-            <form>
-                <input type="text" name="">
-                <input type="text">
-                <input type="text">
-            </form>
-            
-            <form>
-                <input type="text" id="userId">
-                <button type="button" id="ok">fuck</button>
-                <button type="button" id="delete">what</button>
-            </form>
-            
+            <!--<h1>user management</h1>-->
+            <!--<form>-->
+                <!--<input type="text" name="">-->
+                <!--<input type="text">-->
+                <!--<input type="text">-->
+            <!--</form>-->
+
+            <!--<form>-->
+                <!--<input type="text" id="userId">-->
+                <!--<button type="button" id="ok">update</button>-->
+                <!--<button type="button" id="delete">delete</button>-->
+            <!--</form>-->
 
         </section>
     </div>
@@ -28,25 +28,25 @@
 </@body>
 
 <@javascript>
-<script type="text/javascript">
-    $(function () {
-     $('#ok').click(function () {
-         var id = $('#userId').val();
+<!--<script type="text/javascript">-->
+    <!--$(function () {-->
+     <!--$('#ok').click(function () {-->
+         <!--var id = $('#userId').val();-->
 
-         var url = '/api/users/' + id;
+         <!--var url = '/api/users/' + id;-->
 
-         var data = {
-             name: "what",
-             age: 33
-         };
+         <!--var data = {-->
+             <!--name: "what",-->
+             <!--age: 33-->
+         <!--};-->
 
-         general_put(url, data);
-     });
+         <!--general_put(url, data);-->
+     <!--});-->
 
-     $('#delete').click(function () {
-         var url = '/api/users/' + $('#userId').val();
-         general_delete(url);
-     });
-    });
-</script>
+     <!--$('#delete').click(function () {-->
+         <!--var url = '/api/users/' + $('#userId').val();-->
+         <!--general_delete(url);-->
+     <!--});-->
+    <!--});-->
+<!--</script>-->
 </@javascript>

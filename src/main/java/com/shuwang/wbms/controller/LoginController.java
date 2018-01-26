@@ -33,7 +33,11 @@ public class LoginController extends ProController{
     }
 
     @PostMapping("/authentication")
-    public String authenticator(@RequestParam String userName, @RequestParam String password, HttpServletRequest request) {
+    public String authenticator(@RequestParam String userName, @RequestParam String password, @RequestParam String captcha, HttpServletRequest request) {
+
+        if (!request.getSession().getAttribute("KAPTCHA_SESSION_KEY").equals(captcha)) {
+            return "redirect:/login";
+        }
 
         Subject subject = SecurityUtils.getSubject();
 

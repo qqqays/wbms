@@ -137,8 +137,9 @@
                 <!--/login = anon-->
                 <!--/backend = logout-->
                 /backend/** = authc
-                /api/upload/ = rest[content]
+                /api/upload/** = rest[content]
                 /api/users/** = rest[user]
+                /api/images/** = rest[content]
                 /api/siteMap = roles[super]
             </value>
         </property>
