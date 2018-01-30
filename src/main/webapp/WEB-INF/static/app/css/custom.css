@@ -2,6 +2,10 @@ img {
     max-width: 100%;
 }
 
+.row img{
+    max-width: 96%;
+}
+
 div {
     /*text-overflow: ellipsis;*/
     /*overflow: hidden;*/
@@ -169,7 +173,7 @@ div {
 .cert-icon {
     /*background-image: ;*/
     /*background-color: red;*/
-    width: 18vw;
+    width: 19vw;
     height: 18vw;
     /*max-width: 228px;*/
     max-height: 228px;
@@ -184,6 +188,20 @@ div {
     height: 16vw;
     max-width: 177px;
     max-height: 202px
+}
+
+.cert-icon > p{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 10px 0;
+    color: #500e8a8c;
+}
+
+@media (max-width: 500px) {
+    .cert-icon p{
+        font-size: .7em;
+    }
 }
 
 .cert-icon-sub:hover{
@@ -238,14 +256,40 @@ div {
     /*width: 30vw;*/
     margin: 0 auto;
     text-align: center;
-
+    max-width: 100vw;
+    padding-right: 20px;
 }
 
 .news-list {
     margin: 2vw 0;
     display: flex;
     padding-left: 6vw;
-    border-bottom: 1px dotted snow;
+    /*border-bottom: 1px dotted #3f1b949e;*/
+}
+
+@media (max-width: 500px) {
+    .news-list{
+        padding-left: 1vw;
+    }
+}
+
+.news-list > div{
+    min-width: 67px;
+}
+
+.news-title > h4, .news-sub > h4{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #292416c2;
+    font-weight: 600;
+}
+
+.news-title > p, .news-sub > p {
+    max-height: 63px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #443131b5;
 }
 
 .news-title {
@@ -297,6 +341,38 @@ div {
     padding-top: 10px;
 }
 
+.case-footer{
+    /*height: 7vw;*/
+    /*overflow: hidden;*/
+    /*min-height: 100px;*/
+}
+
+.case-footer h5{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.case-footer p{
+    height: 5vw;
+    overflow: hidden;
+    min-height: 72px;
+    text-align: left;
+}
+
+.case-footer > .row {
+    margin: 0;
+}
+
+.description-block>.description-header{
+    padding-left: 10px;
+}
+
+.description-block>.description-text{
+    padding: 10px;
+    color: #2d1515bd;
+}
+
 @media screen and (min-width: 1400px) {
     .case .widget-user .widget-user-header {
         height: 16vw;
@@ -318,6 +394,11 @@ div {
 
     .case .widget-user .widget-user-header {
         height: 28vw;
+        min-height: 200px;
+    }
+
+    .widget-user .widget-user-username{
+        font-size: 18px;
     }
 
     .col-xs-3.case {
@@ -573,10 +654,19 @@ div {
     padding-left: 30px;
 }
 
-.detail-list h4 , .detail-list-desc > p, .detail-list-foot{
+.detail-list-desc > p{
+    overflow: hidden;
+    max-height: 58px;
+}
+
+.detail-list h4 , .detail-list-foot{
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+
+.detail-list-foot > span {
+    margin: 0 2px;
 }
 
 .detail-head{
@@ -592,6 +682,13 @@ div {
     font-weight: 500;
     font-size: 24px;
     margin-bottom: 0;
+}
+
+@media (max-width: 500px){
+    .detail-head > h2 {
+        font-size: 17px;
+        font-weight: 600;
+    }
 }
 
 .detail-head > div{
@@ -610,6 +707,11 @@ div {
 
 .detail-body{
     overflow: hidden;
+    /*text-align: center;*/
+}
+
+.detail-body span, .detail-body p{
+    text-align: left;
 }
 
 .news-type-list{
@@ -643,6 +745,13 @@ div {
 
 .content-wrapper{
     /*background-color: white;*/
+}
+
+@media (max-width: 500px){
+    .content{
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 
 .skin-black-light .main-header .navbar .nav > li > a {

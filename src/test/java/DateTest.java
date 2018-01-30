@@ -1,3 +1,4 @@
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -8,7 +9,11 @@ import java.util.Date;
 public class DateTest {
 
 
+
     public static void main(String[] args) {
-        System.out.println(new Date());
+//        System.out.println(new Date());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String dateTime = sdf.format(1417140957L);
+        System.out.println(dateTime);
     }
 }

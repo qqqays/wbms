@@ -58,6 +58,7 @@
     <mvc:resources location="/WEB-INF/static/plugins/" mapping="/plugins/**" />
     <mvc:resources location="/WEB-INF/static/iframe/" mapping="/iframe/**"/>
     <mvc:resources location="/upload-files/" mapping="/upload-files/**"/>
+    <mvc:resources mapping="/uploads/**" location="/uploads/"/>
     <!--<mvc:resources location="/WEB-INF/json" mapping="/json/**"/>-->
     <!--<mvc:resources location="/files/" mapping="/files/**"/>-->
     <!--<mvc:resources location="/upload/" mapping="/upload/**" />-->
@@ -101,6 +102,7 @@
             <mvc:exclude-mapping path="/images/**"/>
             <mvc:exclude-mapping path="/app/**"/>
             <mvc:exclude-mapping path="/upload-files/**"/>
+            <mvc:exclude-mapping path="/uploads/**"/>
             <mvc:exclude-mapping path="/iframe/**"/>
 
 

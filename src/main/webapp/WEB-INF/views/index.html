@@ -88,7 +88,7 @@
                     <div class="centre-desc">
                         <h4>${product.name}</h4>
                         <p>${product.description}</p>
-                        <a class="btn btn-flat bg-maroon" href="${product.class1}/${product.class2}/${product.id}">了解更多</a>
+                        <a class="btn btn-flat bg-danger" href="${product.class1}/${product.class2}/${product.id}">了解更多</a>
                     </div>
                 </div>
             </#list>
@@ -105,9 +105,9 @@
             </section>
 
             <div class="row animated delay300 wow fadeInUp">
-                <div class="news-sub col-sm-6 col-xs-12">
+                <div class="news-sub col-sm-6">
                     <!--<img src="${(news.records[0].coverImg)!'/images/banner.png'}" style="height: 24vw;">-->
-                    <div style="background-image: url('${(news.records[0].coverImg)!}');height: 24vw;background-size: cover;cursor: pointer" onclick="window.open('${news.records[0].class1}/${news.records[0].class2}/${news.records[0].id}','_self')">
+                    <div style="background-image: url('${(news.records[0].coverImg)!"/images/banner1.jpg"}');height: 24vw;background-size: cover;cursor: pointer" onclick="window.open('${news.records[0].class1}/${news.records[0].class2}/${news.records[0].id}','_self')">
                         <div class="pull-left bg-teal">
                             <p class="dd">${(news.records[0].updateDate)?string('dd')}</p>
                             <p class="yyyy-mm">${(news.records[0].updateDate)?string('yyyy-MM')}</p>
@@ -115,6 +115,7 @@
                     </div>
                     <h4>${news.records[0].title}</h4>
                     <p>${news.records[0].description}</p>
+                <hr>
                 </div>
 
                 <div class="news-sub col-sm-6">
@@ -132,11 +133,12 @@
                                     <p>${piece.description}</p>
                                 </div>
                             </div>
+                            <hr>
                         </#if>
                     </#list>
 
-                    <a class="btn btn-app bg-purple" href="/news" style="animation: q-action 3s infinite ease-out;">
-                        <i class="fa fa-chrome fa-spin" style="color: #ffac41"></i> more
+                    <a class="btn bg-purple" href="/news" style="/*animation: q-action 3s infinite ease-out;*/">
+                        <i class="fa fa-chrome fa-spin" style="color: #ffac41"></i> 更多新闻
                     </a>
                 </div>
             </div>
@@ -160,18 +162,18 @@
                         <div class="box box-widget widget-user case-list animated pulse" onclick="window.open('/${case.class1}/${case.class2}/${case.id}','_self')">
                             <!-- Add the bg color to the header using any of the bg-* classes -->
                             <div class="widget-user-header bg-black"
-                                 style="background: url('${case.img!}') center center;">
+                                 style="background: url('${case.img!}') center center;;background-size: cover">
                                 <h3 class="widget-user-username">${case.name}</h3>
-                                <h5 class="widget-user-desc">${case.description}</h5>
+                                <!--<h5 class="widget-user-desc">${case.description}</h5>-->
                             </div>
 
-                            <div class="box-footer">
+                            <div class="box-footer case-footer">
                                 <div class="row">
 
                                     <!-- /.col -->
                                     <div class="description-block">
                                         <h5 class="description-header">${case.name}</h5>
-                                        <span class="description-text">${case.description}</span>
+                                        <p class="description-text">${case.description}</p>
                                     </div>
                                     <!-- /.description-block -->
 

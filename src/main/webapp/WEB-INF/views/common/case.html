@@ -6,18 +6,18 @@
                 <div class="box box-widget widget-user case-list animated pulse" onclick="window.open('/${case.class1}/${case.class2}/${case.id}','_self')">
                     <!-- Add the bg color to the header using any of the bg-* classes -->
                     <div class="widget-user-header bg-black"
-                         style="background: url('${case.img!}') center center;">
-                        <h3 class="widget-user-username">Elizabeth Pierce</h3>
-                        <h5 class="widget-user-desc">Web Designer</h5>
+                         style="background: url('${case.img!}') center center;background-size: cover">
+                        <h3 class="widget-user-username">${case.name!}</h3>
+                        <!--<h5 class="widget-user-desc">Web Designer</h5>-->
                     </div>
 
-                    <div class="box-footer">
+                    <div class="box-footer case-footer">
                         <div class="row">
 
                             <!-- /.col -->
                                 <div class="description-block">
                                     <h5 class="description-header">${case.name!}</h5>
-                                    <span class="description-text">${case.description!}</span>
+                                    <p class="description-text">${case.description!}</p>
                                 </div>
                                 <!-- /.description-block -->
 
