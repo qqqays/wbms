@@ -1,3 +1,6 @@
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.testng.annotations.Test;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -9,6 +12,11 @@ import java.util.Date;
 public class DateTest {
 
 
+    @Test
+    public void fuck(){
+        System.out.println(RequestMethod.POST);
+        System.out.println("get".toUpperCase().equals(RequestMethod.GET.toString()));
+    }
 
     public static void main(String[] args) {
 //        System.out.println(new Date());

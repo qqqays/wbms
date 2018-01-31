@@ -1,13 +1,16 @@
 package com.shuwang.wbms.controller;
 
 import com.google.code.kaptcha.servlet.KaptchaExtend;
+import com.shuwang.wbms.common.anno.UserLog;
 import com.shuwang.wbms.common.controller.ProController;
 import com.shuwang.wbms.security.MyRealm1;
+import com.shuwang.wbms.service.ILogService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.mgt.DefaultSecurityManager;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,11 +30,15 @@ import java.io.IOException;
 @Controller
 public class LoginController extends ProController{
 
+    @Autowired
+    private ILogService logService;
+
     @RequestMapping("/login")
     public String login() {
         return "/login";
     }
 
+    @UserLog("Login")
     @PostMapping("/authentication")
     public String authenticator(@RequestParam String userName, @RequestParam String password, @RequestParam String captcha, HttpServletRequest request) {
 
@@ -56,8 +63,6 @@ public class LoginController extends ProController{
             System.out.println("fuck");
             e.printStackTrace();
         }
-
-//        System.out.println(request.getSession().getAttribute("KAPTCHA_SESSION_KEY").toString());
 
         return "redirect:/backend";
     }

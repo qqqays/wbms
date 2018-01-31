@@ -2,6 +2,7 @@ package com.shuwang.wbms.service;
 
 import com.baomidou.mybatisplus.service.IService;
 import com.shuwang.wbms.entity.DetailEntity;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * Created by Q-ays.

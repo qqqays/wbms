@@ -20,4 +20,8 @@
         <result column="class3" property="class3" />
     </resultMap>
 
+    <update id="click">
+        UPDATE detail SET clicks = clicks + 1 WHERE id = #{id}
+    </update>
+
 </mapper>
