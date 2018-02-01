@@ -64,6 +64,8 @@ public class LoginController extends ProController{
             e.printStackTrace();
         }
 
+        System.out.println();
+
         return "redirect:/backend";
     }
 
@@ -84,5 +86,6 @@ public class LoginController extends ProController{
     public  void captcha() throws ServletException, IOException {
         KaptchaExtend kaptchaExtend =  new KaptchaExtend();
         kaptchaExtend.captcha(request, response);
+        System.out.println(request.getSession().getAttribute("KAPTCHA_SESSION_KEY"));
     }
 }

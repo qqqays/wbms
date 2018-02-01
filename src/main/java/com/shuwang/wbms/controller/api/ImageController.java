@@ -1,11 +1,10 @@
 package com.shuwang.wbms.controller.api;
 
 import com.shuwang.wbms.common.controller.ProController;
-import com.shuwang.wbms.common.enums.WinFilePathEnum;
+import com.shuwang.wbms.common.enums.FilePathEnum;
 import com.shuwang.wbms.entity.ImageEntity;
 import com.shuwang.wbms.service.ImageService;
 import org.json.JSONArray;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -31,7 +30,7 @@ public class ImageController extends ProController {
     @Autowired
     private ImageService imageService;
 
-    public String addImg(String relationPath,
+    private String addImg(String relationPath,
                          String absolutionPath,
                          String alt,
                          String title,
@@ -75,8 +74,11 @@ public class ImageController extends ProController {
                            @PathVariable String content,
                            @RequestParam MultipartFile[] files) {
 
-        String relationPath = WinFilePathEnum.relationPath.getCustomPath(content);
-        String absolutionPath = WinFilePathEnum.absolutionPath.getCustomPath(content);
+//        String relationPath = WinFilePathEnum.relationPath.getCustomPath(content);
+//        String absolutionPath = WinFilePathEnum.absolutionPath.getCustomPath(content);
+
+        String relationPath = FilePathEnum.imagesPath.getRelationPath(content);
+        String absolutionPath = FilePathEnum.imagesPath.getAbsolutionPath(content);
 
         System.out.println(absolutionPath);
         System.out.println(relationPath);
@@ -104,8 +106,11 @@ public class ImageController extends ProController {
 
         if (multipartResolver.isMultipart(request)) {
 
-            String relationPath = WinFilePathEnum.relationPath.getCustomPath("ckEditor");
-            String absolutionPath = WinFilePathEnum.absolutionPath.getCustomPath("ckEditor");
+//            String relationPath = WinFilePathEnum.relationPath.getCustomPath("ckEditor");
+//            String absolutionPath = WinFilePathEnum.absolutionPath.getCustomPath("ckEditor");
+
+            String relationPath = FilePathEnum.imagesPath.getRelationPath("ckEditor");
+            String absolutionPath = FilePathEnum.imagesPath.getAbsolutionPath("ckEditor");
 
             MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
             Iterator<String> it = multiRequest.getFileNames();

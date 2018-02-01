@@ -28,6 +28,8 @@ public class ProductEntity extends Model<ProductEntity>{
 
     private String class2;
 
+    private String class3;
+
     private String page;
 
     @Override
@@ -81,6 +83,14 @@ public class ProductEntity extends Model<ProductEntity>{
 
     public void setClass2(String class2) {
         this.class2 = class2;
+    }
+
+    public String getClass3() {
+        return class3;
+    }
+
+    public void setClass3(String class3) {
+        this.class3 = class3;
     }
 
     public String getPage() {

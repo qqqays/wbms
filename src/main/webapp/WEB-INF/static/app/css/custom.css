@@ -137,6 +137,11 @@ div {
     padding: 19px 0 0 5px;
 }
 
+.multi-color-nav{
+    animation: logo-color 30s infinite cubic-bezier(0.4, 0.94, 0.74, 0.1);
+    box-shadow: inset 0px 1px 9px 0px #337ab7c2;
+}
+
 .navbar-header .shares-code > p {
     margin: 0;
     font-size: 12px;
@@ -243,8 +248,46 @@ div {
     animation:pulse 2s;
 }
 
-.centre-desc {
+.centre-desc > h4{
+    font-size: 23px;
+    color: #00000099;
+}
 
+.centre-desc > p{
+    font-size: 17px;
+    color: #0000008a;
+}
+
+.centre-desc > a.btn-lg{
+    width: 140px;
+    padding: 8px 16px;
+    font-size: 17px;
+    line-height: 1.3333333;
+}
+
+@media (max-width: 650px){
+    .centre-desc > h4{
+        font-size: 18px;
+        color: #00000099;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .centre-desc > p{
+        font-size: 14px;
+        color: #0000008a;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .centre-desc > a.btn-lg{
+        width: auto;
+        padding: 1px 5px;
+        font-size: 12px;
+        line-height: 1.5;
+    }
 }
 
 .news {
@@ -289,7 +332,8 @@ div {
     max-height: 63px;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: #443131b5;
+    color: #44313178;
+    text-align: left;
 }
 
 .news-title {
@@ -298,15 +342,15 @@ div {
 }
 
 .dd {
-    font-size: 2.7em;
-    font-weight: 800;
-    margin: 0;
-    color: #182f0d;
+    font-size: 4em;
+    font-weight: 600;
+    margin: -5px -15px -18px -15px;
+    color: #c52d2f;
 }
 
 .yyyy-mm {
     font-size: 1.3em;
-    color: #b35e14;
+    color: #c52d2f;
     margin-bottom: 0;
 }
 
@@ -315,7 +359,7 @@ div {
 .case-list {
     opacity: 0.9;
     box-shadow: 0 1px 12px rgba(0, 0, 0, 0.6);
-    background-color: white;
+    background-color: #d2d2d2;
     top: 0;
     transition: all .5s;
 }
@@ -324,7 +368,7 @@ div {
     /*z-index: 9999;*/
     opacity: 1;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-    background-color: #1d7dd8;
+    background-color: #c52d2f; /*#1d7dd8*/
     cursor: pointer;
     top: 3px;
 }
@@ -351,6 +395,7 @@ div {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    color: white;
 }
 
 .case-footer p{
@@ -364,13 +409,17 @@ div {
     margin: 0;
 }
 
+
 .description-block>.description-header{
     padding-left: 10px;
+    font-size: 20px;
+    font-weight: 500;
 }
 
 .description-block>.description-text{
     padding: 10px;
-    color: #2d1515bd;
+    /*color: #2d1515bd;*/
+    color: white;
 }
 
 @media screen and (min-width: 1400px) {

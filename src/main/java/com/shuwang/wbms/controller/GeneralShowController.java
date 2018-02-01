@@ -90,7 +90,7 @@ public class GeneralShowController extends ProController {
 
             return "/display/generalSplPage";
 
-        } else if (me.getContentType().equals("product")){
+        } else if (me.getContentType().equals("product")) {
 
             Page<ProductEntity> productDatagram = datagram4p(productService, pg, sz, s, topMenu);
 
@@ -98,7 +98,7 @@ public class GeneralShowController extends ProController {
 
             return "/display/generalProductPage";
 
-        } else if (me.getContentType().equals("case")){
+        } else if (me.getContentType().equals("case")) {
 
             Page<CaseEntity> caseDatagram = datagram4p(caseService, pg, sz, s, topMenu);
 
@@ -106,7 +106,7 @@ public class GeneralShowController extends ProController {
 
             return "/display/generalCasePage";
 
-        }else{
+        } else {
             return "";
 
         }
@@ -156,6 +156,7 @@ public class GeneralShowController extends ProController {
             return "/display/generalSplPage";
 
         } else if (me.getContentType().equals("product")) {
+
             Page<ProductEntity> productDatagram = datagram4p(productService, pg, sz, s, topMenu, subMenu);
 
             attrOfModel(model, productDatagram, "/" + topMenu + "/" + subMenu, s, sz);
@@ -179,7 +180,10 @@ public class GeneralShowController extends ProController {
     public String info(Model model,
                        @PathVariable String topMenu,
                        @PathVariable String subMenu,
-                       @PathVariable String id) {
+                       @PathVariable String id,
+                       @RequestParam(defaultValue = "") String s,
+                       @RequestParam(defaultValue = "0") Integer pg,
+                       @RequestParam(defaultValue = "8") Integer sz) {
 
 
         SeoEntity seoEntity = seoService.selectById(id);
@@ -195,11 +199,14 @@ public class GeneralShowController extends ProController {
 
             return "/display/generalCasePage";
         } else if (topMenu.equals("product")) {
-            ProductEntity productEntity = productService.selectById(id);
 
-//            model.addAttribute("product", productEntity);
 
-            return "/display/static/" + productEntity.getPage();
+            Page<ProductEntity> productDatagram = datagram4p(productService, pg, sz, s, topMenu, subMenu, id);
+
+            attrOfModel(model, productDatagram, "/" + topMenu + "/" + subMenu + "/" + id, s, sz);
+
+            return "/display/generalProductPage";
+
         } else {
 
             DetailEntity detailEntity = detailService.selectById(id);
@@ -208,6 +215,25 @@ public class GeneralShowController extends ProController {
 
             return "/display/generalInfoPage";
         }
+
+    }
+
+    @GetMapping("/{topMenu}/{subMenu}/{type}/{id:^(?!.*?\\.).*$}")
+    public String treble(@PathVariable String topMenu,
+                         @PathVariable String subMenu,
+                         @PathVariable String type,
+                         @PathVariable String id) {
+
+        if (topMenu.equals("product")){
+
+            ProductEntity productEntity = productService.selectById(id);
+
+//            model.addAttribute("product", productEntity);
+
+            return "/display/static/" + productEntity.getPage();
+        }
+
+        return "/error/500";
 
     }
 }

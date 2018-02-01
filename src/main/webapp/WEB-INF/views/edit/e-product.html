@@ -45,10 +45,11 @@
         var img = $('#product-cover')[0].attributes['src'].value;
         var class1 = 'product';
         var class2 = $('#product-class2').val();
+        var class3 = $('#product-class3').val();
         var page = elementVal('product-page');
 //        var contents = CKEDITOR.instances.editor.getData();
 
-        operate_product(id, name, description, img, class1, class2, page, type);
+        operate_product(id, name, description, img, class1, class2, class3, page, type);
     }
 
 

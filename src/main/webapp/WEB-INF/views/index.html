@@ -82,16 +82,43 @@
 
         <section class="content animated delay600 wow fadeInUp" style="display: flex">
 
-            <#list products.records as product>
-                <div class="centre">
-                    <div class="centre-image" style="background-image: url('${product.img!}');"></div>
+            <!--<#list products.records as product>-->
+                <!--<div class="centre">-->
+                    <!--<div class="centre-image" style="background-image: url('${product.img!}');"></div>-->
+                    <!--<div class="centre-desc">-->
+                        <!--<h4 style="">${product.description}</h4>-->
+                        <!--<p style="">${product.name}</p>-->
+                        <!--<a class="btn btn-flat bg-red btn-lg" href="${product.class1}/${product.class2}/${product.id}">了解更多</a>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</#list>-->
+
+            <div class="centre">
+                    <div class="centre-image" style="background-image: url('/images/index/product1.png');"></div>
                     <div class="centre-desc">
-                        <h4>${product.name}</h4>
-                        <p>${product.description}</p>
-                        <a class="btn btn-flat bg-danger" href="${product.class1}/${product.class2}/${product.id}">了解更多</a>
+                        <h4 style="">小尺寸光伏组件</h4>
+                        <p style="">36-电池片</p>
+                        <a class="btn btn-flat bg-red btn-lg" href="/product/small">了解更多</a>
                     </div>
                 </div>
-            </#list>
+
+            <div class="centre">
+                    <div class="centre-image" style="background-image: url('/images/index/product1.png');"></div>
+                    <div class="centre-desc">
+                        <h4 style="">常规尺寸光伏组件</h4>
+                        <p style="">60-电池片</p>
+                        <a class="btn btn-flat bg-red btn-lg" href="/product/normal">了解更多</a>
+                    </div>
+                </div>
+
+            <div class="centre">
+                    <div class="centre-image" style="background-image: url('/images/index/product1.png');"></div>
+                    <div class="centre-desc">
+                        <h4 style="">大尺寸光伏组件</h4>
+                        <p style="">72-电池片</p>
+                        <a class="btn btn-flat bg-red btn-lg" href="/product/large">了解更多</a>
+                    </div>
+                </div>
 
         </section>
     </div>
@@ -108,7 +135,7 @@
                 <div class="news-sub col-sm-6">
                     <!--<img src="${(news.records[0].coverImg)!'/images/banner.png'}" style="height: 24vw;">-->
                     <div style="background-image: url('${(news.records[0].coverImg)!"/images/banner1.jpg"}');height: 24vw;background-size: cover;cursor: pointer" onclick="window.open('${news.records[0].class1}/${news.records[0].class2}/${news.records[0].id}','_self')">
-                        <div class="pull-left bg-teal">
+                        <div class="pull-left bg-white">
                             <p class="dd">${(news.records[0].updateDate)?string('dd')}</p>
                             <p class="yyyy-mm">${(news.records[0].updateDate)?string('yyyy-MM')}</p>
                         </div>
@@ -153,11 +180,11 @@
             <img class="img-title img-title fadeInDown delay900 animated wow" data-wow-delay="1000ms" src="/images/index/case.png">
         </section>
 
-        <section class="content animated delay600 wow fadeInUp">
+        <section class="content">
             <div class="row">
 
                 <#list cases.records as case>
-                    <div class="col-xs-3 case">
+                    <div class="col-xs-3 case animated delay600 wow fadeInUp">
                         <!-- Widget: user widget style 1 -->
                         <div class="box box-widget widget-user case-list animated pulse" onclick="window.open('/${case.class1}/${case.class2}/${case.id}','_self')">
                             <!-- Add the bg color to the header using any of the bg-* classes -->

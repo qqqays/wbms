@@ -32,12 +32,22 @@
             <#include "/edit/module/browse-dialog.html">
                 <@imageChoose modalId="product-cover-modal" dirId="product-dir" listId="product-cover-list" listPagingId="product-cover-paging" inputId="product-cover-upload" showId="product-cover" showSrc="${(product.img)!''}"/>
 
-                <!--select-->
+                <!--size-->
+                <div class="form-group">
+                    <label>选择 尺寸</label>
+                    <select id="product-class2" class="form-control">
+                        <option value="small" ${(product.class2 == 'small')?string('selected="selected"','')}>小尺寸</option>
+                        <option value="normal" ${(product.class2 == 'normal')?string('selected="selected"','')}>普通尺寸</option>
+                        <option value="large" ${(product.class2 == 'large')?string('selected="selected"','')}>大尺寸</option>
+                    </select>
+                </div>
+
+                <!--type-->
                 <div class="form-group">
                     <label>选择 类别</label>
-                    <select id="product-class2" class="form-control">
-                        <option value="poly" ${(product.class2 == 'poly')?string('selected="selected"','')}>多晶组件</option>
-                        <option value="mono" ${(product.class2 == 'mono')?string('selected="selected"','')}>单晶组件</option>
+                    <select id="product-class3" class="form-control">
+                        <option value="poly" ${(product.class3 == 'poly')?string('selected="selected"','')}>多晶组件</option>
+                        <option value="mono" ${(product.class3 == 'mono')?string('selected="selected"','')}>单晶组件</option>
                     </select>
                 </div>
 

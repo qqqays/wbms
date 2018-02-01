@@ -51,11 +51,14 @@ public class ApiAspect {
         //ip
         logger.info("ip={}", request.getRemoteAddr());
 
+//        api
+        logger.info("api={}", request.getRequestURI());
+
         //类方法
 //        logger.info("class_method={}", joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
-        logger.info("class_method={}", joinPoint.getSignature());
+//        logger.info("class_method={}", joinPoint.getSignature());
 
-        if (!request.getMethod().toUpperCase().equals(RequestMethod.GET.toString())){
+        if (!request.getMethod().toUpperCase().equals(RequestMethod.GET.toString())) {
             try {
                 logService.apiLogInsert(
                         ((UserEntity) SecurityUtils.getSubject().getPrincipal()).getUserName(),
