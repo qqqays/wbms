@@ -45,8 +45,10 @@ public class ViewInterceptor extends HandlerInterceptorAdapter {
 //    menus list
     List<MenuEntity> allTopMenus;
     List<MenuEntity> allSubMenus1;
+//    List<MenuEntity> allSubMenus2;
     List<MenuEntity> topMenus; //current top menus
-    List<MenuEntity> subMenus1; //current submenus
+    List<MenuEntity> subMenus1; //current submenus1
+//    List<MenuEntity> subMenus2; //current submenus2
     List<MenuEntity> footMenus; //current foot menus
     List<MenuEntity> navSliderMenus; //side menus
 
@@ -58,6 +60,9 @@ public class ViewInterceptor extends HandlerInterceptorAdapter {
     Wrapper<MenuEntity> subMenuEntityWrapper = new EntityWrapper<MenuEntity>()
             .eq("deep", 1)
             .orderBy("sort");
+//    Wrapper<MenuEntity> subMenuEntityWrapper2 = new EntityWrapper<MenuEntity>()
+//            .eq("deep",2)
+//            .orderBy("sort");
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
@@ -80,11 +85,13 @@ public class ViewInterceptor extends HandlerInterceptorAdapter {
 
         allTopMenus = menuService.selectList(topMenuEntityWrapper);
         allSubMenus1 = menuService.selectList(subMenuEntityWrapper);
+//        allSubMenus2 = menuService.selectList(subMenuEntityWrapper2);
 
         footMenus = MenuPickUtil.pickMenu(allTopMenus, DisplayEnum.FOOT, "deactivate", request);
         navSliderMenus = MenuPickUtil.pickMenu(allSubMenus1, DisplayEnum.TOP, "deactivate", request);
         topMenus = MenuPickUtil.topMenus(allTopMenus, aRequest[1], request);
         subMenus1 = MenuPickUtil.topSubMenus(allSubMenus1, aRequest[2], aRequest[1], request);
+//        subMenus2 = MenuPickUtil.topSubMenus(allSubMenus2, aRequest[3], aRequest[2], request);
 
 
         request.setAttribute("config", sysConfigEntity);
@@ -92,6 +99,7 @@ public class ViewInterceptor extends HandlerInterceptorAdapter {
 
         request.setAttribute("topMenus", topMenus);
         request.setAttribute("subMenus1", subMenus1);
+//        request.setAttribute("subMenus2", subMenus2);
         request.setAttribute("footMenus", footMenus);
         request.setAttribute("navSliderMenus", navSliderMenus);
 

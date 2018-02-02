@@ -1,45 +1,89 @@
+<div class="row hidden type">
+    <div class="col-md-12" style="text-align: center;margin-bottom: 2vw">
+        <a class="btn btn-xs bg-red" id="mono" href="#">单晶</a>
+        <a class="btn btn-xs bg-red" id="poly" href="#">多晶</a>
+    </div>
+</div>
+
+<script>
+    $('document').ready(function () {
+        var str = window.location.pathname;
+        var strs = str.split("/");
+
+        if (strs.length == 3) {
+            $('#mono').click(function () {
+                window.location.href = window.location.pathname + '/mono';
+            });
+
+            $('#poly').click(function () {
+                window.location.href = window.location.pathname + '/poly';
+            });
+
+            $('.type').removeClass('hidden');
+
+        } else if (strs.length == 4) {
+
+            $('#mono').click(function () {
+                window.location.href = '/' + strs[1] + '/' + strs[2] + '/mono';
+            });
+
+            $('#poly').click(function () {
+                window.location.href = '/' + strs[1] + '/' + strs[2] + '/poly';
+            });
+
+            $('.type').removeClass('hidden');
+
+        } else {
+            $('.type').addClass('hidden');
+
+        }
+    });
+</script>
+
 <div class="row">
-
     <div id="masonry">
-    <!--<div id="fh5co-board" data-columns>-->
-    <#if detailDatagram??>
-        <#list detailDatagram.records as product>
-            <div class="col-xs-4 product">
-                <!-- Widget: user widget style 1 -->
-                <div class="box box-widget widget-user product-list animated zoomIn">
-                    <!-- Add the bg color to the header using any of the bg-* classes -->
-                    <div>
-                        <img src="${product.img}">
-                    </div>
-
-                    <div class="box-footer">
-                        <div class="row">
-
-                            <!-- /.col -->
-                                <div class="description-block">
-                                    <h5 class="description-header">${product.name!}</h5>
-                                    <p class="description-text"></p>
-
-                                    <a href="/${product.class1}/${product.class2}/${product.class3}/${product.id}" class="btn btn-flat bg-olive">了解更多</a>
-                                <!-- /.description-block -->
-                            </div>
-
+        <!--<div id="fh5co-board" data-columns>-->
+        <#if detailDatagram??>
+            <#list detailDatagram.records as product>
+                <div class="col-xs-4 product">
+                    <!-- Widget: user widget style 1 -->
+                    <div class="box box-widget widget-user product-list animated zoomIn">
+                        <!-- Add the bg color to the header using any of the bg-* classes -->
+                        <div class="product-i-div">
+                            <a href="/${product.class1}/${product.class2}/${product.class3}/${product.id}">
+                                <img src="${product.img}">
+                            </a>
                         </div>
-                        <!-- /.row -->
+
+                        <div class="box-footer">
+                            <div class="row">
+
+                                <!-- /.col -->
+                                <div class="product-desc description-block">
+                                    <h5 class="">${product.name!}</h5>
+                                    <p class="">${product.description}</p>
+
+                                    <a href="/${product.class1}/${product.class2}/${product.class3}/${product.id}"
+                                       class="btn btn-flat bg-red">了解更多</a>
+                                    <!-- /.description-block -->
+                                </div>
+
+                            </div>
+                            <!-- /.row -->
+                        </div>
                     </div>
+                    <!-- /.widget-user -->
                 </div>
-                <!-- /.widget-user -->
-            </div>
 
-                    <!--<div class="item">-->
-                        <!--<div class="animate-box bounceIn animated">-->
-                            <!--<a href="${product.img!}" class="image-popup fh5co-board-img" title="fuck"><img src="${product.img!}" alt="Free HTML5 Bootstrap template"></a>-->
-                            <!--<div class="fh5co-desc">${product.description}</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
+                <!--<div class="item">-->
+                <!--<div class="animate-box bounceIn animated">-->
+                <!--<a href="${product.img!}" class="image-popup fh5co-board-img" title="fuck"><img src="${product.img!}" alt="Free HTML5 Bootstrap template"></a>-->
+                <!--<div class="fh5co-desc">${product.description}</div>-->
+                <!--</div>-->
+                <!--</div>-->
 
-        </#list>
-    </#if>
+            </#list>
+        </#if>
 
     </div>
 </div>
@@ -49,11 +93,12 @@
         <#if detailDatagram??>
             <div class="col-md-6 hidden-sm hidden-xs">
                 <#include "/common/paginateBar.html" />
-                <@paginate pageData=detailDatagram actionUrl="${actionUrl}" urlParas="${s!}"  />
+                <@paginate pageData=detailDatagram actionUrl="${actionUrl}" urlParas="${s!}" />
             </div>
             <div class="col-md-6">
                 <#include "/common/paginate.html" />
-                <@paginate currentPage=detailDatagram.getCurrent() totalPage=detailDatagram.getPages() actionUrl="${actionUrl}" urlParas="${sz!}${s!}"  />
+                <@paginate currentPage=detailDatagram.getCurrent() totalPage=detailDatagram.getPages()
+                actionUrl="${actionUrl}" urlParas="${sz!}${s!}" />
             </div>
         </#if>
     </div>

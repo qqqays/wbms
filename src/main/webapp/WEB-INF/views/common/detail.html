@@ -8,7 +8,7 @@
                 <!--detail list-->
                 <#if detailDatagram??>
                     <#list detailDatagram.records as detail>
-                        <div class="detail-list">
+                        <div class="detail-list animated delay600 wow fadeInUp">
                             <div class="detail-list-head"><h4><a href="/${detail.class1}/${detail.class2}/${detail.id}">
                                 ${detail.title}</a></h4></div>
                             <div class="detail-list-desc"><p>${detail.description}</p></div>
@@ -27,6 +27,11 @@
                     </div>
 
                     <div class="detail-body">${detail.content}</div>
+
+                    <div class="detail-foot" style="text-align: center;padding-top: 1vw">
+                        <!--<a href="/${detail.class1}/${detail.class2}"></a>-->
+                        <#include "/common/returnList.html"/>
+                    </div>
                 </#if>
 
             </div>

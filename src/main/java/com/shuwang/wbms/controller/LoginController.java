@@ -85,6 +85,7 @@ public class LoginController extends ProController{
     @ResponseBody
     public  void captcha() throws ServletException, IOException {
         KaptchaExtend kaptchaExtend =  new KaptchaExtend();
+        request.setCharacterEncoding("UTF-8");
         kaptchaExtend.captcha(request, response);
         System.out.println(request.getSession().getAttribute("KAPTCHA_SESSION_KEY"));
     }

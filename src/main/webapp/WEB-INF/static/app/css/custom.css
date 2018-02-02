@@ -17,6 +17,13 @@ div {
     white-space: nowrap;
 }
 
+.banner{
+    height: 34vw;
+    background-size: cover;
+    max-height:545px;
+    min-height: 150px;
+}
+
 @media (min-width: 1500px) {
     .container {
         width: 1400px;
@@ -151,7 +158,7 @@ div {
 
 .shares-code p {
     text-align: left;
-    color: crimson;
+    color: #333333bf;
 }
 
 /*=======================index css=========================*/
@@ -194,6 +201,14 @@ div {
     max-width: 177px;
     max-height: 202px
 }
+
+@media (min-width: 1000px){
+    .cert-icon-sub{
+        width: 8vw;
+        height: 9vw;
+    }
+}
+
 
 .cert-icon > p{
     white-space: nowrap;
@@ -267,7 +282,7 @@ div {
 
 @media (max-width: 650px){
     .centre-desc > h4{
-        font-size: 18px;
+        font-size: 14px;
         color: #00000099;
         text-overflow: ellipsis;
         overflow: hidden;
@@ -303,8 +318,12 @@ div {
     padding-right: 20px;
 }
 
+.news-sub > hr{
+    margin: 0;
+}
+
 .news-list {
-    margin: 2vw 0;
+    margin: .5vw 0;
     display: flex;
     padding-left: 6vw;
     /*border-bottom: 1px dotted #3f1b949e;*/
@@ -457,7 +476,8 @@ div {
 
 @media screen and (max-width: 400px) {
     .col-xs-3.case {
-        width: 100%
+        width: 80%;
+        margin-left: 10%;
     }
 }
 
@@ -473,6 +493,27 @@ div {
 
 .product-list.box {
     background: inherit;
+}
+
+.product-i-div{
+    text-align: center;
+}
+
+.product-i-div img{
+    width: 60%;
+}
+
+.product-desc > h5{
+    padding-left: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #0000008c;
+    margin: 0;
+}
+
+.product-desc > p{
+    padding: 10px;
+    color: #2d1515bd;
 }
 
 @media screen and (max-width: 957px) {
@@ -521,6 +562,13 @@ div {
     height: 14.6vw;
     max-width: 177px;
     max-height: 202px
+}
+
+@media (min-width: 1000px) {
+    .product-icon-sub{
+        width:6.7vw;
+        height: 7.5vw;
+    }
 }
 
 .product-icon-sub:hover{
@@ -646,6 +694,10 @@ div {
 }
 
 /*=======================submenu css=======================*/
+.submenu-wrapper{
+    border-bottom: 1px solid #dcdcdc;
+}
+
 .custom-submenu > li {
     margin: 5px;
     padding: 10px;
@@ -812,7 +864,7 @@ div {
 }
 
 .skin-black-light .main-header .navbar .nav > li > a:hover, .skin-black-light .main-header .navbar .nav > li > a:active, .skin-black-light .main-header .navbar .nav > li > a:focus, .skin-black-light .main-header .navbar .nav .open > a, .skin-black-light .main-header .navbar .nav .open > a:hover, .skin-black-light .main-header .navbar .nav .open > a:focus, .skin-black-light .main-header .navbar .nav > .active > a {
-    background-color: #c52d2f8f;
+    background-color: #c52d2fc2;
     color: snow;
     box-shadow: 0 0 10px rgba(25, 0, 0, 0.3);
     animation: swing .5s cubic-bezier(0.68, 0.15, 0.69, 0.11);

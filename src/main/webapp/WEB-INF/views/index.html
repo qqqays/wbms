@@ -52,7 +52,7 @@
     <!--产品介绍-->
     <div class="intro index-c">
         <div class="content-header"><img class="img-title img-title fadeInDown delay1200 animated wow" src="/images/index/intro.png"></div>
-        <p class="fadeInUp animated delay600 wow" style="padding: 1.5vw;font-size: 16px;color: #646464;">四川蜀旺新能源股份有限公司是专门从事太阳能研究与开发的高新技术企业，目前拥有最先进的机械设备和多项专利技术
+        <p class="hidden-xs fadeInUp animated delay600 wow" style="padding: 1.5vw;font-size: 16px;color: #646464;">四川蜀旺新能源股份有限公司是专门从事太阳能研究与开发的高新技术企业，目前拥有最先进的机械设备和多项专利技术
             <br>多年的磨练，使我们的产品在研发、生产、销售到服务拥有丰富的经验...
         </p>
         <div>
@@ -94,29 +94,29 @@
             <!--</#list>-->
 
             <div class="centre">
-                    <div class="centre-image" style="background-image: url('/images/index/product1.png');"></div>
+                    <div class="centre-image" style="background-image: url('/images/product/mono-36.png');"></div>
                     <div class="centre-desc">
-                        <h4 style="">小尺寸光伏组件</h4>
+                        <h4 style="">太阳能路灯专用组件</h4>
                         <p style="">36-电池片</p>
-                        <a class="btn btn-flat bg-red btn-lg" href="/product/small">了解更多</a>
+                        <a class="btn btn-flat bg-red btn-lg" href="/product/slice36">了解更多</a>
                     </div>
                 </div>
 
             <div class="centre">
-                    <div class="centre-image" style="background-image: url('/images/index/product1.png');"></div>
+                    <div class="centre-image" style="background-image: url('/images/product/mono-60.png');"></div>
                     <div class="centre-desc">
-                        <h4 style="">常规尺寸光伏组件</h4>
+                        <h4 style="">并离网发电专用组件</h4>
                         <p style="">60-电池片</p>
-                        <a class="btn btn-flat bg-red btn-lg" href="/product/normal">了解更多</a>
+                        <a class="btn btn-flat bg-red btn-lg" href="/product/slice60">了解更多</a>
                     </div>
                 </div>
 
             <div class="centre">
-                    <div class="centre-image" style="background-image: url('/images/index/product1.png');"></div>
+                    <div class="centre-image" style="background-image: url('/images/product/mono-72.png');"></div>
                     <div class="centre-desc">
-                        <h4 style="">大尺寸光伏组件</h4>
+                        <h4 style="">并离网发电专用组件</h4>
                         <p style="">72-电池片</p>
-                        <a class="btn btn-flat bg-red btn-lg" href="/product/large">了解更多</a>
+                        <a class="btn btn-flat bg-red btn-lg" href="/product/slice72">了解更多</a>
                     </div>
                 </div>
 
@@ -131,10 +131,10 @@
                 <img class="img-title img-title fadeInDown delay900 animated wow" src="/images/index/news.png">
             </section>
 
-            <div class="row animated delay300 wow fadeInUp">
-                <div class="news-sub col-sm-6">
+            <div class="row">
+                <div class="news-sub col-sm-6 animated delay300 wow fadeInUp">
                     <!--<img src="${(news.records[0].coverImg)!'/images/banner.png'}" style="height: 24vw;">-->
-                    <div style="background-image: url('${(news.records[0].coverImg)!"/images/banner1.jpg"}');height: 24vw;background-size: cover;cursor: pointer" onclick="window.open('${news.records[0].class1}/${news.records[0].class2}/${news.records[0].id}','_self')">
+                    <div style="background-image: url('${(news.records[0].coverImg)!"/images/banner1.jpg"}');max-height:300px;min-height:150px;height: 24vw;background-size: cover;cursor: pointer" onclick="window.open('${news.records[0].class1}/${news.records[0].class2}/${news.records[0].id}','_self')">
                         <div class="pull-left bg-white">
                             <p class="dd">${(news.records[0].updateDate)?string('dd')}</p>
                             <p class="yyyy-mm">${(news.records[0].updateDate)?string('yyyy-MM')}</p>
@@ -149,7 +149,7 @@
 
                     <#list news.records as piece>
                         <#if piece_index &gt; 0 >
-                            <div class="news-list">
+                            <div class="news-list animated delay600 wow fadeInUp">
                                 <div>
                                     <p class="dd">${(piece.updateDate)?string('dd')}</p>
                                     <p class="yyyy-mm">${(piece.updateDate)?string('yyyy-MM')}</p>
