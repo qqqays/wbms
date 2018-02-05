@@ -40,15 +40,6 @@
 
 <div class="row">
     <div class="box-footer " style="border-top: none;">
-        <#if detailDatagram??>
-            <div class="col-md-6 hidden-xs hidden-sm">
-                <#include "/common/paginateBar.html" />
-                <@paginate pageData=detailDatagram actionUrl="${actionUrl}" urlParas="${s!}"  />
-            </div>
-            <div class="col-md-6">
-                <#include "/common/paginate.html" />
-                <@paginate currentPage=detailDatagram.getCurrent() totalPage=detailDatagram.getPages() actionUrl="${actionUrl}" urlParas="${sz!}${s!}"  />
-            </div>
-        </#if>
+        <#include "/common/paginatePro.html"/>
     </div>
 </div>
