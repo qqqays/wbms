@@ -44,7 +44,7 @@ public class CustomGenerator {
         });*/
 
         dsc.setDriverName("com.mysql.jdbc.Driver");
-        dsc.setUrl("jdbc:mysql://localhost:3306/backend1?useUnicode=true&amp;characterEncoding=UTF-8&amp;generateSimpleParameterMetadata=true");
+        dsc.setUrl("jdbc:mysql://localhost:3306/backend1?useUnicode=true&amp;characterEncoding=UTF-8&amp;generateSimpleParameterMetadata=true&useSSL=false");
         dsc.setUsername("root");
         dsc.setPassword("Qays1234-");
         mpg.setDataSource(dsc);
