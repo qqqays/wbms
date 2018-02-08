@@ -81,3 +81,7 @@ img{
 .pagination>li>a:hover{
     cursor: pointer;
 }
+
+.table-bordered > tbody > tr > td{
+    min-width: 80px;
+}
