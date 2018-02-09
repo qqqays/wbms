@@ -390,10 +390,17 @@ function assembleTable4log(json) {
 
     var field = {
         id:'id',
-        user:'user'
+        user:'user',
+        dateTime:'dateTime',
+        ip:'ip',
+        api:'api',
+        reqMethod:'reqMethod',
+        classMethod:'classMethod',
+        note:'note'
+
     };
 
-    $('#logList').html(str);
+    $('#logList').html(baseAssemble(json,field,'logs','delete_log'));
 
 }
 
@@ -413,7 +420,7 @@ function getLogList(page) {
     });
 }
 
-function baseAssemble(data,field,menu,deletefunction) {
+function baseAssemble(data,field,menu,deleteFunction) {
 
     var str = '<tr class="bg-aqua">\n';
 
@@ -430,7 +437,7 @@ function baseAssemble(data,field,menu,deletefunction) {
         for(var p in field){
             str += '<td>' + info[p] + '</td>';
         }
-        str += '<td><a href="/backend/'+ menu +'/' + info["id"] + '">编辑 </a> <a class="pull-right" href="javascript:void(0)" onclick="'+ deletefunction +'(\'' + info["id"] + '\')"> 删除</a></td>';
+        str += '<td><a href="/backend/'+ menu +'/' + info["id"] + '">编辑 </a> <a class="pull-right" href="javascript:void(0)" onclick="'+ deleteFunction +'(\'' + info["id"] + '\')"> 删除</a></td>';
         str += '</tr>';
     });
 
