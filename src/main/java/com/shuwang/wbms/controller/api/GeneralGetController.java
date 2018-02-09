@@ -35,6 +35,9 @@ public class GeneralGetController extends ProController{
     @Autowired
     private IMenuService menuService;
 
+    @Autowired
+    private ILogService logService;
+
     @GetMapping("/details")
     public String details(@RequestParam(defaultValue = "0") Integer pageNumber) {
         Page<DetailEntity> infoGram = datagram(detailService, pageNumber);
@@ -66,6 +69,13 @@ public class GeneralGetController extends ProController{
 
         Page<MenuEntity> menuGram = datagram(menuService, pageNumber, "sort");
         return page2JsonStr(menuGram);
+    }
+
+    @GetMapping("/logs")
+    public String logs(@RequestParam(defaultValue = "0") Integer pageNumber) {
+        Page<LogEntity> logGram = datagram(logService, pageNumber, "dateTime");
+
+        return page2JsonStr(logGram);
     }
 
 }

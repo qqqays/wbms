@@ -1,0 +1,33 @@
+<#include "/edit/common/editLayout.html">
+    <@head>
+</@head>
+
+<@body>
+
+<div class="content-wrapper" style="min-height: 1036px;">
+    <!-- Content Header (Page header) -->
+    <#include "/edit/common/content-header.html">
+
+        <section class="content">
+            <div class="row">
+                <!-- right column -->
+                <div class="col-xs-12">
+                    <#include "/edit/module/log-list.html">
+                </div>
+                <!--/.col (right) -->
+            </div>
+            <!-- /.row -->
+        </section>
+</div>
+<!--</form>-->
+</@body>
+
+<@javascript>
+<script type="text/javascript">
+
+
+    $(function () {
+        getDisplayList(1);
+    });
+</script>
+</@javascript>

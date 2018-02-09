@@ -383,3 +383,57 @@ function getProductList(page) {
         }
     });
 }
+
+// ===========================log assemble=========================
+
+function assembleTable4log(json) {
+
+    var field = {
+        id:'id',
+        user:'user'
+    };
+
+    $('#logList').html(str);
+
+}
+
+function getLogList(page) {
+    $.ajax({
+        url: '/api/gains/logs',
+        type: 'get',
+        data: {pageNumber: page},
+        success: function (d, s) {
+            var json = JSON.parse(d);
+            assembleTable4log(json['records']);
+            paging(json['pages'], json['current'], 'log-footer', 'getLogList');
+        },
+        error: function (d, s) {
+            console.log(d + s);
+        }
+    });
+}
+
+function baseAssemble(data,field,menu,deletefunction) {
+
+    var str = '<tr class="bg-aqua">\n';
+
+    for(var p in field){
+        str += '<th>' + field[p] + '</th>\n';
+    }
+
+    str += '<th class="bg-orange">编辑</th>\n';
+
+    str += '</tr>';
+
+    $.each(data, function (index, info) {
+        str += '<tr>';
+        for(var p in field){
+            str += '<td>' + info[p] + '</td>';
+        }
+        str += '<td><a href="/backend/'+ menu +'/' + info["id"] + '">编辑 </a> <a class="pull-right" href="javascript:void(0)" onclick="'+ deletefunction +'(\'' + info["id"] + '\')"> 删除</a></td>';
+        str += '</tr>';
+    });
+
+    return str;
+
+}
