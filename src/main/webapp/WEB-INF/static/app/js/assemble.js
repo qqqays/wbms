@@ -46,35 +46,62 @@ function pagingPro(pages, current, showId, method, paramGroup) {
     $('#' + showId).html(str);
 }
 
-// ====================information list assemble=====================
-function assembleTable4info(json) {
-    var str = '<tr class="bg-aqua">\n' +
-        '    <th>文章标题</th>\n' +
-        '    <th>描述</th>\n' +
-        '    <th>点击数</th>\n' +
-        '    <th>作者</th>\n' +
-        '    <th>状态</th>\n' +
-        '    <th>创建日期</th>\n' +
-        '    <th>父菜单</th>\n' +
-        '    <th>子菜单</th>\n' +
-        '    <th class=bg-orange>编辑</th>\n' +
-        '</tr>';
 
-    $.each(json, function (index, info) {
-        str += '<tr>' +
-            '<td>' + info["title"] + '</td>' +
-            '<td>' + info["description"] + '</td>' +
-            '<td>' + info["clicks"] + '</td>' +
-            '<td>' + info["publisher"] + '</td>' +
-            '<td>' + info["state"] + '</td>' +
-            '<td>' + info["createDate"] + '</td>' +
-            '<td>' + info["class1"] + '</td>' +
-            '<td>' + info["class2"] + '</td>' +
-            '<td><a href="/backend/p-information/' + info["id"] + '">编辑 </a><a class="pull-right" href="javascript:void(0)" onclick="delete_info(\'' + info["id"] + '\')"> 删除</a></td>' +
-            '</tr>';
+// =========================base assemble=========================
+
+function table_head(field) {
+    var str = '<tr class="bg-aqua">\n';
+
+    for(var p in field){
+        str += '<th>' + field[p] + '</th>\n';
+    }
+
+    str += '<th class="bg-orange">编辑</th>\n';
+
+    str += '</tr>';
+
+    return str;
+}
+
+function table_body(data, field, menu, deleteFunction) {
+
+    var str = '';
+
+    $.each(data, function (index, info) {
+        str += '<tr>';
+        for(var p in field){
+            str += '<td>' + info[p] + '</td>';
+        }
+        str += '<td><a href="/backend/'+ menu +'/' + info["id"] + '">编辑 </a> ' +
+            '<a class="pull-right" href="javascript:void(0)" onclick="'+
+            deleteFunction +'(\'' + info["id"] + '\')"> 删除</a></td>';
+        str += '</tr>';
     });
 
-    $('#infoList').html(str);
+    return str
+}
+
+function baseAssemble(data,field,menu,deleteFunction) {
+
+    return table_head(field) + table_body(data,field,menu, deleteFunction);
+
+}
+
+// ====================information list assemble=====================
+function assembleTable4info(json) {
+
+    var field = {
+        title:'文章标题',
+        description:'描述',
+        clicks:'点击数',
+        publisher:'作者',
+        state:'状态',
+        createDate:'创建日期',
+        class1:'父菜单',
+        class2:'子菜单'
+    }
+
+    $('#infoList').html(baseAssemble(json,field,'p-information','delete_info'));
 
 }
 
@@ -96,31 +123,16 @@ function getInfoList(page) {
 
 // ====================display list assemble=====================
 function assembleTable4dpl(json) {
-    var str =   '<tr class="bg-aqua">\n' +
-        // '    <th>id</th>\n' +
-        '    <th>pid</th>\n' +
-        '    <th>iFrameUrl</th>\n' +
-        '    <th>bannerImg</th>\n' +
-        '    <th>作者</th>\n' +
-        '    <th>状态</th>\n' +
-        // '    <th>创建日期</th>\n' +
-        '    <th class="bg-orange">编辑</th>\n' +
-        '</tr>';
 
-    $.each(json, function (index, info) {
-        str += '<tr>' +
-            // '<td>' + info["id"] + '</td>' +
-            '<td>' + info["pid"] + '</td>' +
-            '<td>' + info["iframeUrl"] + '</td>' +
-            '<td>' + info["bannerImg"] + '</td>' +
-            '<td>' + info["publisher"] + '</td>' +
-            '<td>' + info["state"] + '</td>' +
-            // '<td>' + info["createTime"] + '</td>' +
-            '<td><a href="/backend/p-display/' + info["id"] + '">编辑 </a> <a class="pull-right" href="javascript:void(0)" onclick="delete_display(\'' + info["id"] + '\')"> 删除</a></td>' +
-            '</tr>';
-    });
+    var field = {
+        pid:'pid',
+        iframeUrl:'iframeUrl',
+        bannerImg:'bannerImg',
+        publisher:'publisher',
+        state:'state'
+    }
 
-    $('#dplList').html(str);
+    $('#dplList').html(baseAssemble(json,field,'p-display','delete_display'));
 
 }
 
@@ -142,6 +154,7 @@ function getDisplayList(page) {
 
 // ==========================menu list assemble=====================
 function assembleTable4menu(json) {
+
     var str = '<tr class="bg-aqua">\n' +
         '    <th>id</th>\n' +
         '    <th>栏目名</th>\n' +
@@ -302,27 +315,16 @@ function getImgList4Modal(page, dir, pagingArea, listId, showId) {
 
 // ========================case list assemble==================
 function assembleTable4case(json) {
-    var str =   '<tr class="bg-aqua">\n' +
-        '    <th>name</th>\n' +
-        '    <th>description</th>\n' +
-        '    <th>img</th>\n' +
-        '    <th>class1</th>\n' +
-        '    <th>class2</th>\n' +
-        '    <th class="bg-orange">编辑</th>\n' +
-        '</tr>';
 
-    $.each(json, function (index, info) {
-        str += '<tr>' +
-            '<td>' + info["name"] + '</td>' +
-            '<td>' + info["description"] + '</td>' +
-            '<td>' + info["img"] + '</td>' +
-            '<td>' + info["class1"] + '</td>' +
-            '<td>' + info["class2"] + '</td>' +
-            '<td><a href="/backend/e-case/' + info["id"] + '">编辑 </a> <a class="pull-right" href="javascript:void(0)" onclick="delete_case(\'' + info["id"] + '\')"> 删除</a></td>' +
-            '</tr>';
-    });
+    var field = {
+        name:'name',
+        description:'description',
+        img:'img',
+        class1:'类1',
+        class2:'class2'
+    }
 
-    $('#caseList').html(str);
+    $('#caseList').html(baseAssemble(json,field,'e-case','delete_case'));
 
 }
 
@@ -344,27 +346,15 @@ function getCaseList(page) {
 
 // ========================product assemble=======================
 function assembleTable4product(json) {
-    var str =   '<tr class="bg-aqua">\n' +
-        '    <th>name</th>\n' +
-        '    <th>description</th>\n' +
-        '    <th>img</th>\n' +
-        '    <th>class1</th>\n' +
-        '    <th>class2</th>\n' +
-        '    <th class="bg-orange">编辑</th>\n' +
-        '</tr>';
+    var filed = {
+        name:'name',
+        description:'description',
+        img:'img',
+        class1:'类1',
+        class2:'class2'
+    }
 
-    $.each(json, function (index, info) {
-        str += '<tr>' +
-            '<td>' + info["name"] + '</td>' +
-            '<td>' + info["description"] + '</td>' +
-            '<td>' + info["img"] + '</td>' +
-            '<td>' + info["class1"] + '</td>' +
-            '<td>' + info["class2"] + '</td>' +
-            '<td><a href="/backend/e-product/' + info["id"] + '">编辑 </a> <a class="pull-right" href="javascript:void(0)" onclick="delete_product(\'' + info["id"] + '\')"> 删除</a></td>' +
-            '</tr>';
-    });
-
-    $('#productList').html(str);
+    $('#productList').html(baseAssemble(json,filed,'e-product','delete_product'));
 
 }
 
@@ -418,29 +408,4 @@ function getLogList(page) {
             console.log(d + s);
         }
     });
-}
-
-function baseAssemble(data,field,menu,deleteFunction) {
-
-    var str = '<tr class="bg-aqua">\n';
-
-    for(var p in field){
-        str += '<th>' + field[p] + '</th>\n';
-    }
-
-    str += '<th class="bg-orange">编辑</th>\n';
-
-    str += '</tr>';
-
-    $.each(data, function (index, info) {
-        str += '<tr>';
-        for(var p in field){
-            str += '<td>' + info[p] + '</td>';
-        }
-        str += '<td><a href="/backend/'+ menu +'/' + info["id"] + '">编辑 </a> <a class="pull-right" href="javascript:void(0)" onclick="'+ deleteFunction +'(\'' + info["id"] + '\')"> 删除</a></td>';
-        str += '</tr>';
-    });
-
-    return str;
-
 }
