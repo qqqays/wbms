@@ -27,8 +27,8 @@ public class MailSendController {
                             + ", \n留言内容： " + msg;
 
         try {
-            MailUtil.sendEmail("sales@swpv.net", "网站上的客户留言", content, false);
-//            MailUtil.sendEmail("whosqays@gmail.com", "网站上的客户留言", content, false);
+//            MailUtil.sendEmail("sales@swpv.net", "网站上的客户留言", content, false);
+            MailUtil.sendEmail("whosqays@gmail.com", "网站上的客户留言", content, false);
         }catch (Exception e){
             e.printStackTrace();
             return "error";
