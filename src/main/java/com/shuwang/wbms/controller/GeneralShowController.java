@@ -54,62 +54,65 @@ public class GeneralShowController extends ProController {
         MenuEntity me = menuService.selectById(topMenu);
 
         if (me == null) {
-            return "";
+            return "/error/500";
         }
 
-        if (me.getContentType().equals("info")) {
+        switch (me.getContentType()) {
 
-            Page<DetailEntity> detailDatagram = datagram(detailService, pg, sz, s, topMenu);
+            case "info":
 
-            attrOfModel(model, detailDatagram, "/" + topMenu, s, sz);
+                Page<DetailEntity> detailDatagram = datagram(detailService, pg, sz, s, topMenu);
 
-            return "/display/generalInfoPage";
+                attrOfModel(model, detailDatagram, "/" + topMenu, s, sz);
 
-        } else if (me.getContentType().equals("display")) {
+                return "/display/generalInfoPage";
 
-            List<SplContentEntity> splContentEntities;
+            case "display":
 
-            splContentEntities = splContentService.selectList(new EntityWrapper<SplContentEntity>()
-                    .eq("pid", topMenu)
-                    .eq("state", 1));
+                List<SplContentEntity> splContentEntities;
 
-            if ((splContentEntities == null || splContentEntities.size() == 0) && me.isHasSub()) {
-                me = menuService.selectOne(new EntityWrapper<MenuEntity>()
-                        .eq("pid", topMenu)
-                        .eq("deep", 1)
-                        .eq("display", 1)
-                        .orderBy("sort"));
-            }
-
-            if (me != null)
                 splContentEntities = splContentService.selectList(new EntityWrapper<SplContentEntity>()
-                        .eq("pid", me.getId())
+                        .eq("pid", topMenu)
                         .eq("state", 1));
 
-            model.addAttribute("contents", splContentEntities);
+                if ((splContentEntities == null || splContentEntities.size() == 0) && me.isHasSub()) {
+                    me = menuService.selectOne(new EntityWrapper<MenuEntity>()
+                            .eq("pid", topMenu)
+                            .eq("deep", 1)
+                            .eq("display", 1)
+                            .orderBy("sort"));
+                }
 
-            return "/display/generalSplPage";
+                if (me != null)
+                    splContentEntities = splContentService.selectList(new EntityWrapper<SplContentEntity>()
+                            .eq("pid", me.getId())
+                            .eq("state", 1));
 
-        } else if (me.getContentType().equals("product")) {
+                model.addAttribute("contents", splContentEntities);
 
-            Page<ProductEntity> productDatagram = datagram4p(productService, pg, sz, s, topMenu);
+                return "/display/generalSplPage";
 
-            attrOfModel(model, productDatagram, "/" + topMenu, s, sz);
+            case "product":
 
-            return "/display/generalProductPage";
+                Page<ProductEntity> productDatagram = datagram4p(productService, pg, sz, s, topMenu);
 
-        } else if (me.getContentType().equals("case")) {
+                attrOfModel(model, productDatagram, "/" + topMenu, s, sz);
 
-            Page<CaseEntity> caseDatagram = datagram4p(caseService, pg, sz, s, topMenu);
+                return "/display/generalProductPage";
 
-            attrOfModel(model, caseDatagram, "/" + topMenu, s, sz);
+            case "case":
 
-            return "/display/generalCasePage";
+                Page<CaseEntity> caseDatagram = datagram4p(caseService, pg, sz, s, topMenu);
 
-        } else {
-            return "";
+                attrOfModel(model, caseDatagram, "/" + topMenu, s, sz);
+
+                return "/display/generalCasePage";
+
+            default:
+                return "/error/500";
 
         }
+
     }
 
     @GetMapping("/{topMenu}/{subMenu:^(?!.*?\\.).*$}")
@@ -126,52 +129,51 @@ public class GeneralShowController extends ProController {
             return "/error/500";
         }
 
-        if (me.getContentType().equals("info")) {
+        switch (me.getContentType()) {
+            case "info":
 
-            Page<DetailEntity> detailDatagram = datagram(detailService, pg, sz, s, topMenu, subMenu);
+                Page<DetailEntity> detailDatagram = datagram(detailService, pg, sz, s, topMenu, subMenu);
 
-            attrOfModel(model, detailDatagram, "/" + topMenu + "/" + subMenu, s, sz);
+                attrOfModel(model, detailDatagram, "/" + topMenu + "/" + subMenu, s, sz);
 
-            return "/display/generalInfoPage";
+                return "/display/generalInfoPage";
 
-        } else if (me.getContentType().equals("display")) {
+            case "display":
 
-            List<SplContentEntity> splContentEntities = splContentService
-                    .selectList(new EntityWrapper<SplContentEntity>()
-                            .eq("pid", subMenu)
-                            .eq("state", 1));
+                List<SplContentEntity> splContentEntities = splContentService
+                        .selectList(new EntityWrapper<SplContentEntity>()
+                                .eq("pid", subMenu)
+                                .eq("state", 1));
 
-            Iterator<SplContentEntity> it = splContentEntities.iterator();
-
-            while (it.hasNext()) {
-                SplContentEntity sce = it.next();
-
-                if (StringUtils.isNotBlank(sce.getBannerImg())) {
-                    model.addAttribute("bannerImg", sce.getBannerImg());
+                for (SplContentEntity sce : splContentEntities) {
+                    if (StringUtils.isNotBlank(sce.getBannerImg())) {
+                        model.addAttribute("bannerImg", sce.getBannerImg());
+                    }
                 }
-            }
 
-            model.addAttribute("contents", splContentEntities);
+                model.addAttribute("contents", splContentEntities);
 
-            return "/display/generalSplPage";
+                return "/display/generalSplPage";
 
-        } else if (me.getContentType().equals("product")) {
+            case "product":
 
-            Page<ProductEntity> productDatagram = datagram4p(productService, pg, sz, s, topMenu, subMenu);
+                Page<ProductEntity> productDatagram = datagram4p(productService, pg, sz, s, topMenu, subMenu);
 
-            attrOfModel(model, productDatagram, "/" + topMenu + "/" + subMenu, s, sz);
+                attrOfModel(model, productDatagram, "/" + topMenu + "/" + subMenu, s, sz);
 
-            return "/display/generalProductPage";
+                return "/display/generalProductPage";
 
-        } else if (me.getContentType().equals("case")) {
-            Page<CaseEntity> caseDatagram = datagram4p(caseService, pg, sz, s, topMenu, subMenu);
+            case "case":
 
-            attrOfModel(model, caseDatagram, "/" + topMenu + "/" + subMenu, s, sz);
+                Page<CaseEntity> caseDatagram = datagram4p(caseService, pg, sz, s, topMenu, subMenu);
 
-            return "/display/generalCasePage";
+                attrOfModel(model, caseDatagram, "/" + topMenu + "/" + subMenu, s, sz);
 
-        } else {
-            return "";
+                return "/display/generalCasePage";
+
+            default:
+                return "/error/500";
+
         }
 
     }
@@ -192,28 +194,32 @@ public class GeneralShowController extends ProController {
             model.addAttribute("seo", seoEntity);
         }
 
-        if (topMenu.equals("case")) {
-            CaseEntity caseEntity = caseService.selectById(id);
+        switch (topMenu) {
+            case "case":
 
-            model.addAttribute("case", caseEntity);
+                CaseEntity caseEntity = caseService.selectById(id);
 
-            return "/display/generalCasePage";
-        } else if (topMenu.equals("product")) {
+                model.addAttribute("case", caseEntity);
 
+                return "/display/generalCasePage";
 
-            Page<ProductEntity> productDatagram = datagram4p(productService, pg, sz, s, topMenu, subMenu, id);
+            case "product":
 
-            attrOfModel(model, productDatagram, "/" + topMenu + "/" + subMenu + "/" + id, s, sz);
+                Page<ProductEntity> productDatagram = datagram4p(productService, pg, sz, s, topMenu, subMenu, id);
 
-            return "/display/generalProductPage";
+                attrOfModel(model, productDatagram, "/" + topMenu + "/" + subMenu + "/" + id, s, sz);
 
-        } else {
+                return "/display/generalProductPage";
 
-            DetailEntity detailEntity = detailService.selectById(id);
+            default:
 
-            model.addAttribute("detail", detailEntity);
+                DetailEntity detailEntity = detailService.selectById(id);
 
-            return "/display/generalInfoPage";
+                detailService.click(id);
+
+                model.addAttribute("detail", detailEntity);
+
+                return "/display/generalInfoPage";
         }
 
     }
@@ -224,7 +230,7 @@ public class GeneralShowController extends ProController {
                          @PathVariable String type,
                          @PathVariable String id) {
 
-        if (topMenu.equals("product")){
+        if (topMenu.equals("product")) {
 
             ProductEntity productEntity = productService.selectById(id);
 

@@ -9,4 +9,5 @@ import org.apache.ibatis.annotations.Param;
  * 12-11-2017 13:04
  */
 public interface IDetailService extends IService<DetailEntity>{
+    int click(String id);
 }

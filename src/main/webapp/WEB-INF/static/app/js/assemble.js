@@ -31,7 +31,8 @@ function pagingPro(pages, current, showId, method, paramGroup) {
         if (current == i) {
             str += '<li><a class="bg-maroon" href="javascript:void(0)">' + i + '</a></li>';
         } else {
-            str += '<li><a onclick=' + assembleParam(method, i, paramGroup) + ' href="javascript:void(0)">' + i + '</a></li>';
+            str += '<li><a onclick=' + assembleParam(method, i, paramGroup) +
+                ' href="javascript:void(0)">' + i + '</a></li>';
         }
     }
 
@@ -180,7 +181,9 @@ function assembleTable4menu(json) {
                 '    <td>' + info["hasSub"] + '</td>\n' +
                 '    <td>' + info["bannerImg"] + '</td>\n' +
                 '    <td>' + info["contentType"] + '</td>\n' +
-                '<td><a href="/backend/e-menu/' + info["id"] + '">编辑 </a> <a class="pull-right" href="javascript:void(0)" onclick="delete_menu(\'' + info["id"] + '\')"> 删除</a></td>' +
+                '<td><a href="/backend/e-menu/' + info["id"] + '">编辑 </a> ' +
+                '<a class="pull-right" href="javascript:void(0)" ' +
+                'onclick="delete_menu(\'' + info["id"] + '\')"> 删除</a></td>' +
                 '</tr>';
         }
 
@@ -188,7 +191,8 @@ function assembleTable4menu(json) {
             if (subInfo['pid'] == info['id']) {
                 str += '<tr>\n' +
                     '    <td>' + subInfo["id"] + '</td>\n' +
-                    '    <td class="bg-maroon">---<i class="fa ' + info['icon'] + '"></i>' + subInfo["menuName"] + '</td>\n' +
+                    '    <td class="bg-maroon">---<i class="fa ' + info['icon'] + '"></i>' +
+                    subInfo["menuName"] + '</td>\n' +
                     '    <td>' + subInfo["pid"] + '</td>\n' +
                     '    <td>' + subInfo["url"] + '</td>\n' +
                     '    <td>' + subInfo["sort"] + '</td>\n' +
@@ -196,7 +200,9 @@ function assembleTable4menu(json) {
                     '    <td>' + subInfo["hasSub"] + '</td>\n' +
                     '    <td>' + subInfo["bannerImg"] + '</td>\n' +
                     '    <td>' + subInfo["contentType"] + '</td>\n' +
-                    '<td><a href="/backend/e-menu/' + subInfo["id"] + '">编辑 </a> <a class="pull-right" href="javascript:void(0)" onclick="delete_menu(\'' + subInfo["id"] + '\')"> 删除</a></td>' +
+                    '<td><a href="/backend/e-menu/' + subInfo["id"] + '">编辑 </a> ' +
+                    '<a class="pull-right" href="javascript:void(0)" ' +
+                    'onclick="delete_menu(\'' + subInfo["id"] + '\')"> 删除</a></td>' +
                     '</tr>';
                 this.deep = -1;
             }
@@ -215,7 +221,9 @@ function assembleTable4menu(json) {
                '    <td>' + info["hasSub"] + '</td>\n' +
                '    <td>' + info["bannerImg"] + '</td>\n' +
                '    <td>' + info["contentType"] + '</td>\n' +
-               '<td><a href="/backend/e-menu/' + info["id"] + '">编辑 </a> <a class="pull-right" href="javascript:void(0)" onclick="delete_menu(\'' + info["id"] + '\')"> 删除</a></td>' +
+               '<td><a href="/backend/e-menu/' + info["id"] + '">编辑 </a> ' +
+               '<a class="pull-right" href="javascript:void(0)" ' +
+               'onclick="delete_menu(\'' + info["id"] + '\')"> 删除</a></td>' +
                '</tr>';
        }
     });
@@ -273,7 +281,9 @@ function assembleImg4modal(json, listId, showId) {
     var str = '';
 
     $.each(json, function (index, info) {
-        str +=  '<div onclick="setImgUrl(\''+ showId +'\', this.dataset.value)" id="'+ info['id'] +'" data-value="'+ info['url'] +'" class="img-item" style="background-image: url('+ info["url"] +');">\n' +
+        str +=  '<div onclick="setImgUrl(\''+ showId +'\', this.dataset.value)" id="'+ info['id'] +
+            '" data-value="'+ info['url'] +'" class="img-item" ' +
+            'style="background-image: url('+ info["url"] +');">\n' +
                 '    <div class="widget-image-meta">'+ info["width"] +'x'+ info["height"] +'</div>\n' +
                 '</div>';
     });
