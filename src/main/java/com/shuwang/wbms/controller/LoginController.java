@@ -1,5 +1,7 @@
 package com.shuwang.wbms.controller;
 
+import com.google.code.kaptcha.Constants;
+import com.google.code.kaptcha.Producer;
 import com.google.code.kaptcha.servlet.KaptchaExtend;
 import com.shuwang.wbms.common.anno.UserLog;
 import com.shuwang.wbms.common.controller.ProController;
@@ -14,8 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 
@@ -26,6 +31,13 @@ import java.io.IOException;
  */
 @Controller
 public class LoginController extends ProController{
+
+    private Producer captchaProducer = null;
+
+    @Autowired
+    public void setCaptchaProducer(Producer captchaProducer) {
+        this.captchaProducer = captchaProducer;
+    }
 
     @Autowired
     private ILogService logService;
@@ -81,9 +93,33 @@ public class LoginController extends ProController{
     @RequestMapping("/captcha")
     @ResponseBody
     public  void captcha() throws ServletException, IOException {
-        KaptchaExtend kaptchaExtend =  new KaptchaExtend();
-        request.setCharacterEncoding("UTF-8");
-        kaptchaExtend.captcha(request, response);
-        System.out.println(request.getSession().getAttribute("KAPTCHA_SESSION_KEY"));
+//        KaptchaExtend kaptchaExtend =  new KaptchaExtend();
+//        request.setCharacterEncoding("UTF-8");
+//        kaptchaExtend.captcha(request, response);
+//        System.out.println(request.getSession().getAttribute("KAPTCHA_SESSION_KEY"));
+
+        response.setDateHeader("Expires", 0);// 禁止server端缓存
+        // 设置标准的 HTTP/1.1 no-cache headers.
+        response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
+        // 设置IE扩展 HTTP/1.1 no-cache headers (use addHeader).
+        response.addHeader("Cache-Control", "post-check=0, pre-check=0");
+        response.setHeader("Pragma", "no-cache");// 设置标准 HTTP/1.0 不缓存图片
+        response.setContentType("image/jpeg");// 返回一个 jpeg 图片，默认是text/html(输出文档的MIMI类型)
+        String capText = captchaProducer.createText();// 为图片创建文本
+
+        // 将文本保存在session中。这里就使用包中的静态变量吧
+        request.getSession().setAttribute(Constants.KAPTCHA_SESSION_KEY, capText);
+
+        BufferedImage bi = captchaProducer.createImage(capText); // 创建带有文本的图片
+        ServletOutputStream out = response.getOutputStream();
+        // 图片数据输出
+        ImageIO.write(bi, "jpg", out);
+        try {
+            out.flush();
+        } finally {
+            out.close();
+        }
+
+//        System.out.println("Session 验证码是：" + request.getSession().getAttribute(Constants.KAPTCHA_SESSION_KEY));
     }
 }
