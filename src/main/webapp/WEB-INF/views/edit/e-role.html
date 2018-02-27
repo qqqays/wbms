@@ -1,0 +1,63 @@
+<#include "/edit/common/editLayout.html">
+    <@head>
+</@head>
+
+<@body>
+
+<div class="content-wrapper" style="min-height: 1036px;">
+    <!-- Content Header (Page header) -->
+    <#include "/edit/common/content-header.html">
+
+        <section class="content">
+            <div class="row">
+                <!-- right column -->
+                <div class="col-md-12 connectedSortable">
+                    <#include "/edit/module/product-list.html">
+
+                        <#include "/edit/module/role-edit.html">
+                </div>
+                <!--/.col (right) -->
+            </div>
+            <!-- /.row -->
+        </section>
+</div>
+<!--</form>-->
+</@body>
+
+<@javascript>
+<script>
+    function push_data(type) {
+
+        var roleName = $('#roleName').val();
+        var desc = $('#role-description').val();
+        var state = $('#role-state')[0].value == 1;
+        var today = getNowFormatDate();
+        operate_role(roleName, desc, state, today, type);
+    }
+
+    $('document').ready(function () {
+//        case list
+        getProductList(1);
+
+//        collapse
+        $('.custom-collapse').click();
+
+//        post product
+        $('#role-add').click(function () {
+            push_data('POST');
+        });
+
+//        put product
+//        $('#case-update').click(function () {
+//            push_data('PUT');
+//        });
+
+//        delete product
+        $('#role-delete').click(function () {
+            var role = $('#roleName').val();
+            delete_role(role);
+        });
+
+    });
+</script>
+</@javascript>

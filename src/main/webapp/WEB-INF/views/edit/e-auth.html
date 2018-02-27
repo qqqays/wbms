@@ -1,0 +1,62 @@
+<#include "/edit/common/editLayout.html">
+    <@head>
+</@head>
+
+<@body>
+
+<div class="content-wrapper" style="min-height: 1036px;">
+    <!-- Content Header (Page header) -->
+    <#include "/edit/common/content-header.html">
+
+        <section class="content">
+            <div class="row">
+                <!-- right column -->
+                <div class="col-md-12 connectedSortable">
+                    <#include "/edit/module/product-list.html">
+
+                        <#include "/edit/module/auth-edit.html">
+                </div>
+                <!--/.col (right) -->
+            </div>
+            <!-- /.row -->
+        </section>
+</div>
+<!--</form>-->
+</@body>
+
+<@javascript>
+<script>
+    function push_data(type) {
+
+        var authName = $('#authName').val();
+        var desc = $('#auth-description').val();
+        var state = $('#auth-state')[0].value == 1;
+        operate_auth(authName, desc, state, type);
+    }
+
+    $('document').ready(function () {
+//        case list
+        getProductList(1);
+
+//        collapse
+        $('.custom-collapse').click();
+
+//        post product
+        $('#auth-add').click(function () {
+            push_data('POST');
+        });
+
+//        put product
+//        $('#case-update').click(function () {
+//            push_data('PUT');
+//        });
+
+//        delete product
+        $('#auth-delete').click(function () {
+            var auth = $('#authName').val();
+            delete_auth(auth);
+        });
+
+    });
+</script>
+</@javascript>

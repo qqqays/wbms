@@ -363,3 +363,64 @@ function delete_product(id) {
 
     general_delete(url);
 }
+
+//新增用户
+function operate_user(userName, password, state, createTime, desc, avadar, type) {
+    var url = '/api/manager/user';
+    
+    var data = {
+        userName:userName,
+        password:password,
+        state:state,
+        createTime:createTime,
+        desc:desc,
+        avadar:avadar
+    };
+    
+    generalAjaxPro(url,type,data);
+}
+
+// 删除用户
+function delete_user(username) {
+    var url = '/api/manager/user/' + username;
+    general_delete(url);
+}
+
+// 新增角色
+function operate_role(roleName, desc, state, createTime, type) {
+    var url = '/api/manager/role';
+    
+    var data = {
+        roleName:roleName,
+        desc:desc,
+        state:state,
+        createTime:createTime
+    };
+    
+    generalAjaxPro(url, type, data);
+}
+
+function delete_role(role) {
+    var url = '/api/manager/role/' + 'role';
+
+    general_delete(url);
+}
+
+// 新增权限
+function operate_auth(authName, desc, state, type) {
+    var url = '/api/manager/authorities';
+
+    var data = {
+        authName:authName,
+        desc:desc,
+        state:state
+    };
+
+    generalAjaxPro(url, type, data);
+}
+
+function delete_auth(authorities) {
+    var url = '/api/manager/authorities/' + authorities;
+
+    general_delete(url);
+}

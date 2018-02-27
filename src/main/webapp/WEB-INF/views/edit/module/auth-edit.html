@@ -1,0 +1,54 @@
+<div class="box box-success">
+    <div class="box-header with-border bg-green">
+        <h3 class="box-title">添加权限</h3>
+        <div class="pull-right box-tools">
+            <button type="button" class="btn btn-default btn-sm" data-widget="collapse" data-toggle="tooltip" title="" data-original-title="Collapse">
+                <i class="fa fa-minus"></i></button>
+            <!--<button type="button" class="btn btn-default btn-sm" data-widget="remove" data-toggle="tooltip" title="" data-original-title="Remove">-->
+            <!--<i class="fa fa-times"></i></button>-->
+        </div>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <form role="form">
+
+            <!--name-->
+            <div class="form-group">
+                <label>权限名称</label>
+                <input id="authName" type="text" value="${auth.userName!}" class="form-control" placeholder="权限名" >
+            </div>
+
+            <!--description-->
+            <div class="form-group">
+                <label>描述</label>
+                <textarea id="auth-description" class="form-control" rows="3" placeholder="描述 ...">${role.description!}</textarea>
+            </div>
+
+            <!--select-->
+            <div class="form-group">
+                <label>状态</label>
+                <select id="auth-state" class="form-control">
+                    <#if auth.state>
+                        <option value="1"  selected="selected">打开的 </option>
+                        <option value="0">关闭的 </option>
+                        <#else>
+                            <option value="1">打开的 </option>
+                            <option value="0" selected="selected">关闭的 </option>
+                    </#if>
+                </select>
+            </div>
+        </form>
+    </div>
+    <!-- /.box-body -->
+
+    <div class="box-footer">
+        <button id="auth-add" type="button" class="btn btn-warning btn-flat">新增</button>
+
+        <#if product??>
+            <button id="auth-update" type="button" class="btn btn-primary btn-flat">修改</button>
+            <button id="auth-delete" type="button" class="btn btn-default btn-flat">删除</button>
+            <#else>
+        </#if>
+    </div>
+</div>
+

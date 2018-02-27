@@ -1,13 +1,9 @@
 package com.shuwang.wbms.controller.api;
 
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.shuwang.wbms.entity.*;
 import com.shuwang.wbms.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by Q-ays.
@@ -39,9 +35,9 @@ public class UserManageController {
         return userEntity.insert() + " insert";
     }
 
-    @DeleteMapping("/user")
-    public String deleteUser(String id) {
-        return userService.deleteById(id) + " delete";
+    @DeleteMapping("/user/{username}")
+    public String deleteUser(@PathVariable String username) {
+        return userService.deleteById(username) + " delete";
     }
 
     //    role
@@ -50,9 +46,9 @@ public class UserManageController {
         return roleEntity.insert() + " insert";
     }
 
-    @DeleteMapping("/role")
-    public String deleteRole(String id){
-        return roleService.deleteById(id) + " delete";
+    @DeleteMapping("/role/{roleName}")
+    public String deleteRole(@PathVariable String roleName) {
+        return roleService.deleteById(roleName) + " delete";
     }
 
     //    auth
@@ -61,9 +57,9 @@ public class UserManageController {
         return authEntity.insert() + " insert";
     }
 
-    @DeleteMapping("/authorities")
-    public String deleteAuth(String id){
-        return authService.deleteById(id) + " delete";
+    @DeleteMapping("/authorities/{authName}")
+    public String deleteAuth(@PathVariable String authName) {
+        return authService.deleteById(authName) + " delete";
     }
 
     //    user-role
@@ -72,9 +68,19 @@ public class UserManageController {
         return userRoleEntity.insert() + " insert";
     }
 
+    @DeleteMapping("/user-role/{id}")
+    public String deleteUserRole(@PathVariable String id) {
+        return userRoleService.deleteById(id) + " delete";
+    }
+
     //    role-authorities
     @PostMapping("/role-auth")
     public String createRoleAuth(RoleAuthEntity roleAuthEntity) {
         return roleAuthEntity.insert() + " insert";
+    }
+
+    @DeleteMapping("/role-auth/{id}")
+    public String deleteRoleAuth(@PathVariable String id) {
+        return roleAuthService.deleteById(id) + " delete";
     }
 }
