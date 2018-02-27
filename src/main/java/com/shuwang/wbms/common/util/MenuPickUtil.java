@@ -32,6 +32,7 @@ public class MenuPickUtil {
                     canSetActive = false;
                 } else if (me.getId().equals(act)) {
                     me.setActive(true);
+                    request.setAttribute("activeMenu", me.getMenuName());
                     if (StringUtils.isNotBlank(me.getBannerImg()))
                         request.setAttribute("bannerImg", me.getBannerImg());
                 } else {
@@ -52,15 +53,13 @@ public class MenuPickUtil {
     public static List<MenuEntity> topSubMenus(List<MenuEntity> list, String act, String pId, HttpServletRequest request) {
         List<MenuEntity> rList = new ArrayList<>();
 
-        Iterator<MenuEntity> it = list.iterator();
-
-        while (it.hasNext()) {
-            MenuEntity me = it.next();
+        for (MenuEntity me : list) {
 
             if (me.getPid().equals(pId)) {
                 rList.add(me);
             }
         }
+
         return pickMenu(rList, DisplayEnum.TOP, act, request);
     }
 }
