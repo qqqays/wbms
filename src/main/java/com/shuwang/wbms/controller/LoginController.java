@@ -51,7 +51,8 @@ public class LoginController extends ProController{
 
     @UserLog("Login")
     @PostMapping("/authentication")
-    public String authenticator(@RequestParam String userName, @RequestParam String password, @RequestParam String captcha, HttpServletRequest request) {
+    public String authenticator(@RequestParam String userName, @RequestParam String password,
+                                @RequestParam String captcha, HttpServletRequest request) {
 
         if (request.getSession().getAttribute("KAPTCHA_SESSION_KEY") == null) {
             return "redirect:/login";

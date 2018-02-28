@@ -48,6 +48,21 @@ public class BackendController extends ProController {
     @Autowired
     private ICaseService caseService;
 
+    @Autowired
+    private IUserService userService;
+
+    @Autowired
+    private IRoleService roleService;
+
+    @Autowired
+    private IAuthService authService;
+
+    @Autowired
+    private IUserRoleService userRoleService;
+
+    @Autowired
+    private IRoleAuthService roleAuthService;
+
     Wrapper<SysConfigEntity> sysConfigEntityWrapper = new EntityWrapper<SysConfigEntity>();
 
     @GetMapping
@@ -69,7 +84,6 @@ public class BackendController extends ProController {
 
         return "/edit/sysConfig";
     }
-
 
 
     @GetMapping("/{content}")
@@ -101,12 +115,37 @@ public class BackendController extends ProController {
             case "p-information":
                 DetailEntity de = detailService.selectById(id);
                 model.addAttribute("info", de);
+                break;
             case "e-product":
                 ProductEntity pe = productService.selectById(id);
                 model.addAttribute("product", pe);
+                break;
             case "e-case":
                 CaseEntity ce = caseService.selectById(id);
                 model.addAttribute("case", ce);
+                break;
+            case "e-user":
+                UserEntity ue = userService.selectById(id);
+                List<UserRoleEntity> userRoleEntityList = userRoleService.selectList(new EntityWrapper<UserRoleEntity>()
+                        .eq("userName", ue.getUserName()));
+                List<RoleEntity> roleEntityList = roleService.selectList(new EntityWrapper<RoleEntity>());
+                model.addAttribute("user", ue);
+                model.addAttribute("roleList", roleEntityList);
+                model.addAttribute("urList", userRoleEntityList);
+                break;
+            case "e-role":
+                RoleEntity re = roleService.selectById(id);
+                List<RoleAuthEntity> roleAuthEntityList = roleAuthService.selectList(new EntityWrapper<RoleAuthEntity>()
+                        .eq("roleName", re.getRoleName()));
+                List<AuthEntity> authEntityList = authService.selectList(new EntityWrapper<AuthEntity>());
+                model.addAttribute("role", re);
+                model.addAttribute("authList", authEntityList);
+                model.addAttribute("raList", roleAuthEntityList);
+                break;
+            case "e-auth":
+                AuthEntity ae = authService.selectById(id);
+                model.addAttribute("auth", ae);
+                break;
             default:
                 break;
         }

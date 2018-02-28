@@ -1,5 +1,6 @@
 package com.shuwang.wbms.controller.api;
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.shuwang.wbms.entity.*;
 import com.shuwang.wbms.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,6 +74,12 @@ public class UserManageController {
         return userRoleService.deleteById(id) + " delete";
     }
 
+    @DeleteMapping("/user-role")
+    public String deleteUserRoles(@RequestParam String user, @RequestParam String role) {
+        return userRoleService.delete(new EntityWrapper<UserRoleEntity>().eq("userName", user).
+                and().eq("roleName", role)) + " delete";
+    }
+
     //    role-authorities
     @PostMapping("/role-auth")
     public String createRoleAuth(RoleAuthEntity roleAuthEntity) {
@@ -82,5 +89,11 @@ public class UserManageController {
     @DeleteMapping("/role-auth/{id}")
     public String deleteRoleAuth(@PathVariable String id) {
         return roleAuthService.deleteById(id) + " delete";
+    }
+
+    @DeleteMapping("/role-auth")
+    public String deleteRoleAuths(@RequestParam String role, @RequestParam String auth) {
+        return roleAuthService.delete(new EntityWrapper<RoleAuthEntity>().eq("roleName", role)
+                .and().eq("authName", auth)) + " delete";
     }
 }

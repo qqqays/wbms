@@ -71,7 +71,7 @@
         		<!--<property name="hashIterations" value="1"></property>-->
         	<!--</bean>-->
         <!--</property>-->
-        <property name="credentialsMatcher" ref="credentialsMatcher"></property>
+        <property name="credentialsMatcher" ref="credentialsMatcher"/>
     </bean>
 
     <bean id="credentialsMatcher"
@@ -79,8 +79,8 @@
         <constructor-arg index="0" ref="shiroCacheManager"/>
         <constructor-arg index="1" value="loginRetryCache"/>
         <!--<property name="storedCredentialsHexEncoded" value="true"/>-->
-        <property name="hashAlgorithmName" value="MD5"></property>
-        <property name="hashIterations" value="1"></property>
+        <property name="hashAlgorithmName" value="MD5"/>
+        <property name="hashIterations" value="1"/>
     </bean>
 
     <!-- =========================================================
