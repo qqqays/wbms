@@ -5,7 +5,9 @@ import com.google.code.kaptcha.Producer;
 import com.google.code.kaptcha.servlet.KaptchaExtend;
 import com.shuwang.wbms.common.anno.UserLog;
 import com.shuwang.wbms.common.controller.ProController;
+import com.shuwang.wbms.entity.UserEntity;
 import com.shuwang.wbms.service.ILogService;
+import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
@@ -73,9 +75,9 @@ public class LoginController extends ProController{
             e.printStackTrace();
         }
 
-        Object obj = subject.getPrincipal();
+        UserEntity userEntity = (UserEntity) subject.getPrincipal();
 
-        request.setAttribute("userInfo", subject.getPrincipal());
+        request.getSession().setAttribute("userInfo", userEntity);
 
         return "redirect:/backend";
     }
