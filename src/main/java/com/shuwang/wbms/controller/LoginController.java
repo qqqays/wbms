@@ -73,7 +73,9 @@ public class LoginController extends ProController{
             e.printStackTrace();
         }
 
-        System.out.println();
+        Object obj = subject.getPrincipal();
+
+        request.setAttribute("userInfo", subject.getPrincipal());
 
         return "redirect:/backend";
     }

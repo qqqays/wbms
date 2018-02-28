@@ -61,6 +61,8 @@ public class MyRealm extends AuthorizingRealm {
 
          SimpleHash password = new SimpleHash("md5", user.getPassword());
 
+        user.setPassword("");
+
         return new SimpleAuthenticationInfo(user, password, getName());
     }
 
