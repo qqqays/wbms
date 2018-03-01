@@ -8,7 +8,9 @@ public enum ReturnCodeEnum {
     UNKNOWN_ERROR(-1, "Servers internal error"),
     PARAM_ERROR(-2, "Params error"),
     UNMATCHED_METHOD(-3, "No method matched error"),
-    VALID_ERROR(-4, "The param verification failed");
+    VALID_ERROR(-4, "The param verification failed"),
+    PRINCIPAL_NOT_FIND(-5, "Can not find the user information in session!"),
+    PASSWORD_ERROR(-6, "Password incorrect");
 
     private Integer code;
 

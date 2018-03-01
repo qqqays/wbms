@@ -85,7 +85,6 @@ public class BackendController extends ProController {
         return "/edit/sysConfig";
     }
 
-
     @GetMapping("/{content}")
     public String common(Model model, @PathVariable String content) {
 

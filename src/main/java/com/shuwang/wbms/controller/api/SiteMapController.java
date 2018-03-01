@@ -24,7 +24,7 @@ public class SiteMapController extends ProController{
     }
 
     @GetMapping("/exception")
-    public void exception() throws Exception{
+    public void  exception() throws Exception{
         throw new CustomException(ReturnCodeEnum.SUCCESS);
     }
 
