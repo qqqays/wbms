@@ -29,5 +29,4 @@ other: ehcache, freemarker, maven, adminLTE2, druid, logback, tomcat.
 1. 导入resource/db/backend1.sql
 2. maven import
 
-
-![后台管理实例](https://gitee.com/uploads/images/2018/0301/155246_74824662_1274933.png "94L(QHW}DX8Y5}`7HBY)4PJ.png")
+![后台管理实例](https://gitee.com/uploads/images/2018/0301/155536_394a3d25_1274933.png "6Y9XP2LD[4$HVB7@66@MDX2.png")
