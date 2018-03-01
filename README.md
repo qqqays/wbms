@@ -16,5 +16,11 @@ other: ehcache, freemarker, maven, adminLTE2, druid, logback, tomcat.
 7. 持久层 mybatis-plus
 8. 容器 tomcat
 
+- **用途**
 
+1. 快速部署用于中小型企业信息展示、新闻发布的小型网站，能方便快捷的拓展和开发新的功能。
+2. 前后端可分离生成动态页面，也可一体通过freemarker生成静态页面。
+3. 简单的修改freemarker，快速的修改页面结构。
+4. restful风格url和api
+4. 用户，角色，权限粒度细，简单配置shiro就能灵活的控制网站后台操作权限。
 
