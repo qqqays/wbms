@@ -8,6 +8,24 @@
             <!--<i class="fa fa-times"></i></button>-->
         </div>
     </div>
+
+    <div class="box-body">
+
+        <form role="form">
+        <!--password-->
+        <div class="form-group">
+            <label>用户 密码</label>
+            <input id="password0" type="password" value="${user.password!}" class="form-control" placeholder="原密码" >
+            <input id="password1" type="password" value="${user.password!}" class="form-control" placeholder="新密码" >
+            <input id="password2" type="password" value="${user.password!}" class="form-control" placeholder="确认密码" >
+        </div>
+
+            <div class="form-control">
+                <button id="update-password" type="button" class="btn btn-warning btn-flat">修改密码</button>
+            </div>
+        </form>
+    </div>
+
     <!-- /.box-header -->
     <div class="box-body">
         <form role="form">
@@ -16,14 +34,6 @@
             <div class="form-group">
                 <label>用户名称</label>
                 <input id="userName" type="text" value="${userInfo.userName!}" class="form-control" placeholder="用户名称" >
-            </div>
-
-            <!--name-->
-            <div class="form-group">
-                <label>用户 密码</label>
-                <input id="password0" type="password" value="${user.password!}" class="form-control" placeholder="原密码" >
-                <input id="password1" type="password" value="${user.password!}" class="form-control" placeholder="新密码" >
-                <input id="password2" type="password" value="${user.password!}" class="form-control" placeholder="确认密码" >
             </div>
 
             <!--description-->
@@ -37,13 +47,8 @@
     <!-- /.box-body -->
 
     <div class="box-footer">
-        <button id="user-add" type="button" class="btn btn-warning btn-flat">新增</button>
-
-        <#if product??>
-            <button id="user-update" type="button" class="btn btn-primary btn-flat">修改</button>
-            <button id="user-delete" type="button" class="btn btn-default btn-flat">删除</button>
-            <#else>
-        </#if>
+        <button id="update-profile" type="button" class="btn btn-warning btn-flat">修改个人信息</button>
     </div>
+
 </div>
 
