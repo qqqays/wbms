@@ -424,3 +424,29 @@ function delete_auth(authorities) {
 
     general_delete(url);
 }
+
+// 修改个人信息
+function update_profile(userName, desc, avadar, type) {
+    var url = '/api/profile/me';
+
+    var data = {
+        userName:userName,
+        desc:desc,
+        avadar:avadar
+    };
+
+    generalAjaxPro(url, type, data);
+}
+
+// 修改密码
+
+function update_password(origin, now, type) {
+    var url = '/api/profile/password';
+
+    var data = {
+        originPwd:origin,
+        newPwd:now
+    };
+
+    generalAjaxPro(url, type, data);
+}

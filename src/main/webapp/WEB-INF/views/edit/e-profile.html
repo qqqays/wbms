@@ -26,5 +26,31 @@
 <@javascript>
 <script>
 
+    function push_profile(type) {
+        var name = $('#userName').val();
+        var desc = $('#user-description').val();
+
+        update_profile(name, desc, '', type);
+    }
+    
+    function push_password(type) {
+        var origin = $('#password0').val();
+        var now1 = $('#password1').val();
+        var now2 = $('#password2').val();
+
+        if(now1 == now2)
+            update_password(origin, now1, type);
+    }
+
+    $('document').ready(function () {
+        $('#update-profile').click(function () {
+            push_profile('PUT');
+        });
+
+        $('#update-password').click(function () {
+            push_password('PUT');
+        });
+
+    });
 </script>
 </@javascript>

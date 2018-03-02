@@ -23,6 +23,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
     @Autowired
     private IUserRoleService userRoleService;
 
+    @Autowired
+    private UserMapper userMapper;
+
     @Override
     public boolean deleteById(Serializable id) {
 
@@ -30,5 +33,15 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
 
         return userRoleService.delete(new EntityWrapper<UserRoleEntity>().eq("userName", userEntity.getUserName()))
                 && super.deleteById(id);
+    }
+
+    @Override
+    public boolean updateProfile(String newName, String desc, String avadar, String originName) {
+        return userMapper.updateProfile(newName, desc, avadar, originName);
+    }
+
+    @Override
+    public boolean updateProfile(UserEntity now, UserEntity origin) {
+        return updateProfile(now.getUserName(),now.getDesc(),now.getAvadar(),origin.getUserName());
     }
 }

@@ -7,9 +7,9 @@ import com.shuwang.wbms.service.IUserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 
 /**
@@ -17,24 +17,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * whosqays@gmail.com
  * 03-01-2018 16:22
  */
-@Controller
+@RestController
 @RequestMapping("/api/profile")
 public class ProfileController {
+
+    @Autowired
+    private IUserService userService;
 
     @PutMapping("/me")
     public String me(UserEntity userEntity) {
 
         UserEntity userEntity1 = getUserInSession();
 
-        userEntity.setPassword(userEntity1.getPassword());
-
-        return userEntity.updateById() + " update";
+        if (userService.updateProfile(userEntity, userEntity1)) {
+            setUserInsession(userEntity);
+            return "true update";
+        }else {
+            return "update failed";
+        }
     }
 
     @PutMapping("/password")
     public String password(String originPwd, String newPwd) {
 
-        UserEntity userEntity = getUserInSession();
+        UserEntity userEntity = getUserInSession().selectById();
 
         if (userEntity.getPassword().equals(originPwd))
             userEntity.setPassword(newPwd);
@@ -54,6 +60,15 @@ public class ProfileController {
             throw new CustomException(ReturnCodeEnum.PRINCIPAL_NOT_FIND);
         }
 
-        return userEntity.selectById();
+        return userEntity;
+    }
+
+    private void setUserInsession(UserEntity userEntity){
+
+        UserEntity userEntity1 = getUserInSession();
+
+        userEntity1.setUserName(userEntity.getUserName());
+        userEntity1.setAvadar(userEntity.getAvadar());
+        userEntity.setDesc(userEntity.getDesc());
     }
 }

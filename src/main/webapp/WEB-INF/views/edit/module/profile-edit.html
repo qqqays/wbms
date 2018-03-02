@@ -19,10 +19,7 @@
             <input id="password1" type="password" value="${user.password!}" class="form-control" placeholder="新密码" >
             <input id="password2" type="password" value="${user.password!}" class="form-control" placeholder="确认密码" >
         </div>
-
-            <div class="form-control">
                 <button id="update-password" type="button" class="btn btn-warning btn-flat">修改密码</button>
-            </div>
         </form>
     </div>
 
@@ -39,7 +36,7 @@
             <!--description-->
             <div class="form-group">
                 <label>描述</label>
-                <textarea id="user-description" class="form-control" rows="3" placeholder="描述 ...">${userInfo.description!}</textarea>
+                <textarea id="user-description" class="form-control" rows="3" placeholder="描述 ...">${userInfo.desc!}</textarea>
             </div>
 
         </form>
