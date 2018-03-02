@@ -3,6 +3,7 @@ package com.shuwang.wbms.service.impl;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.shuwang.wbms.entity.RoleAuthEntity;
+import com.shuwang.wbms.entity.RoleEntity;
 import com.shuwang.wbms.mapper.RoleAuthMapper;
 import com.shuwang.wbms.service.IRoleAuthService;
 import org.springframework.stereotype.Service;
@@ -33,5 +34,15 @@ public class RoleAuthImpl extends ServiceImpl<RoleAuthMapper, RoleAuthEntity> im
         }
 
         return aSet;
+    }
+
+    @Override
+    public boolean insertBatch(List<RoleAuthEntity> entityList) {
+
+        String roleName = entityList.get(0).getRoleName();
+
+        super.delete(new EntityWrapper<RoleAuthEntity>().eq("roleName", roleName));
+
+        return super.insertBatch(entityList);
     }
 }

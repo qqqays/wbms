@@ -136,7 +136,7 @@ public class BackendController extends ProController {
                 RoleEntity re = roleService.selectById(id);
                 List<RoleAuthEntity> roleAuthEntityList = roleAuthService.selectList(new EntityWrapper<RoleAuthEntity>()
                         .eq("roleName", re.getRoleName()));
-                List<AuthEntity> authEntityList = authService.selectList(new EntityWrapper<AuthEntity>());
+                List<AuthEntity> authEntityList = authService.noneAuthList(re.getRoleName());
                 model.addAttribute("role", re);
                 model.addAttribute("authList", authEntityList);
                 model.addAttribute("raList", roleAuthEntityList);

@@ -31,6 +31,18 @@
                 <textarea id="user-description" class="form-control" rows="3" placeholder="描述 ...">${user.desc!}</textarea>
             </div>
 
+            <div class="form-group">
+                <label>Multiple</label>
+                <select class="form-control select2 select2-hidden-accessible" multiple="multiple" data-placeholder="Select a State" style="width: 100%;" tabindex="-1" aria-hidden="true">
+
+                    <#list roleList as role>
+                    <option value="${role.roleName}">${role.desc}</option>
+                    </#list>
+
+                </select>
+
+            </div>
+
             <!--select-->
             <div class="form-group">
                 <label>状态</label>

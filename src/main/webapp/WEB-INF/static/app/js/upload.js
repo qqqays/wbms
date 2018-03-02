@@ -386,6 +386,30 @@ function delete_user(username) {
     general_delete(url);
 }
 
+// 用户添加角色
+function addRole4User(roleList, username, type) {
+    var url = '/api/manager/user-role';
+
+    var json = [];
+
+    for(var i = 0; i < roleList.length; i ++){
+        var data = {
+            userName:username,
+            roleName:roleList[i]
+        };
+
+        json.push(data);
+    }
+
+    var json1 = {
+        userRoleEntities:json
+    };
+
+    console.log(json);
+
+    generalAjaxPro(url, type, json1);
+}
+
 // 新增角色
 function operate_role(roleName, desc, state, createTime, type) {
     var url = '/api/manager/role';

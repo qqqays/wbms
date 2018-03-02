@@ -1,5 +1,5 @@
 <#include "/edit/common/editLayout.html">
-    <@head>
+<@head>
 </@head>
 
 <@body>
@@ -25,6 +25,9 @@
 </@body>
 
 <@javascript>
+
+<script src="/plugins/select2/dist/js/select2.min.js"></script>
+
 <script>
     function push_data(type) {
 
@@ -35,10 +38,22 @@
         var today = getNowFormatDate();
 
         operate_user(userName, password, state, today, desc, '', type);
+        add_role();
+    }
+    
+    function add_role() {
+        var roleList = $('.select2').val();
+        var usrename = $('#userName').val();
 
+        addRole4User(roleList, usrename, 'POST');
     }
 
     $('document').ready(function () {
+//      Initialize Select2 Elements
+        $('.select2').select2();
+        <#list urList as ur>
+            $('.select2').val('${ur.roleName}').trigger('change');
+        </#list>
 //        case list
         getProductList(1);
 

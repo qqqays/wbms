@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.shuwang.wbms.entity.UserRoleEntity;
 import com.shuwang.wbms.mapper.UserRoleMapper;
 import com.shuwang.wbms.service.IUserRoleService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -29,5 +30,12 @@ public class UserRoleServiceImpl extends ServiceImpl<UserRoleMapper, UserRoleEnt
             set.add(ur.getRoleName());
         }
         return set;
+    }
+
+    @Override
+    public boolean insertBatch(List<UserRoleEntity> entityList) {
+        String username = entityList.get(0).getUserName();
+        super.delete(new EntityWrapper<UserRoleEntity>().eq("userName", username));
+        return super.insertBatch(entityList);
     }
 }

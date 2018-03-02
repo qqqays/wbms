@@ -2,9 +2,12 @@ package com.shuwang.wbms.controller.api;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.shuwang.wbms.entity.*;
+import com.shuwang.wbms.mapper.RoleMapper;
 import com.shuwang.wbms.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * Created by Q-ays.
@@ -29,6 +32,18 @@ public class UserManageController {
 
     @Autowired
     private IRoleAuthService roleAuthService;
+
+    class UserRolesWrapper {
+        private List<UserRoleEntity> userRoleEntities;
+
+        public List<UserRoleEntity> getUserRoleEntities() {
+            return userRoleEntities;
+        }
+
+        public void setUserRoleEntities(List<UserRoleEntity> userRoleEntities) {
+            this.userRoleEntities = userRoleEntities;
+        }
+    }
 
     //    user
     @PostMapping("/user")
@@ -65,8 +80,8 @@ public class UserManageController {
 
     //    user-role
     @PostMapping("/user-role")
-    public String createUserRole(UserRoleEntity userRoleEntity) {
-        return userRoleEntity.insert() + " insert";
+    public String createUserRole(UserRolesWrapper userRolesWrapper) {
+        return userRoleService.insertBatch(userRolesWrapper.getUserRoleEntities()) + " insert";
     }
 
     @DeleteMapping("/user-role/{id}")
@@ -82,8 +97,8 @@ public class UserManageController {
 
     //    role-authorities
     @PostMapping("/role-auth")
-    public String createRoleAuth(RoleAuthEntity roleAuthEntity) {
-        return roleAuthEntity.insert() + " insert";
+    public String createRoleAuth(List<RoleAuthEntity> roleAuthEntities) {
+        return roleAuthService.insertBatch(roleAuthEntities) + " insert";
     }
 
     @DeleteMapping("/role-auth/{id}")
@@ -96,4 +111,5 @@ public class UserManageController {
         return roleAuthService.delete(new EntityWrapper<RoleAuthEntity>().eq("roleName", role)
                 .and().eq("authName", auth)) + " delete";
     }
+
 }
