@@ -10,7 +10,5 @@ import com.shuwang.wbms.entity.UserEntity;
  */
 public interface IUserService extends IService<UserEntity>{
 
-    boolean updateProfile(String newName, String desc, String avadar, String originName);
-
     boolean updateProfile(UserEntity now, UserEntity origin);
 }

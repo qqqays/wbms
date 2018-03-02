@@ -10,4 +10,8 @@
         <result column="createTime" property="createTime" />
     </resultMap>
 
+    <select id="noneRoleList" resultMap="BaseResultMap">
+        select * from roles where not EXISTS(select 1 from user_role where roles.roleName = user_role.roleName and user_role.userName = #{username})
+    </select>
+
 </mapper>

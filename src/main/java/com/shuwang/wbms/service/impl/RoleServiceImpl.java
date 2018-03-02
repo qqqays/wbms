@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by Q-ays.
@@ -28,6 +29,9 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, RoleEntity> impleme
     @Autowired
     private IRoleAuthService roleAuthService;
 
+    @Autowired
+    private RoleMapper roleMapper;
+
     @Override
     public boolean deleteById(Serializable id) {
 
@@ -36,5 +40,10 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, RoleEntity> impleme
         return userRoleService.delete(new EntityWrapper<UserRoleEntity>().eq("roleName", roleEntity.getRoleName()))
                 && roleAuthService.delete(new EntityWrapper<RoleAuthEntity>().eq("roleName", roleEntity.getRoleName()))
                 && super.deleteById(id);
+    }
+
+    @Override
+    public List<RoleEntity> noneRoleList(String username) {
+        return roleMapper.noneRoleList(username);
     }
 }

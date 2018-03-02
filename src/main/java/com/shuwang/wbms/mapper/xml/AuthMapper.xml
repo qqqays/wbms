@@ -9,4 +9,7 @@
         <result column="state" property="state" />
     </resultMap>
 
+    <select id="noneAuthList" resultMap="BaseResultMap">
+        select * from authorities where not EXISTS(select 1 from role_auth where role_auth.authName = authorities.authName and role_auth.roleName = #{roleName})
+    </select>
 </mapper>

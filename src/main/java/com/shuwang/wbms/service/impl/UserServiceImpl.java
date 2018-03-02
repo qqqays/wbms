@@ -35,7 +35,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
                 && super.deleteById(id);
     }
 
-    @Override
     public boolean updateProfile(String newName, String desc, String avadar, String originName) {
         return userMapper.updateProfile(newName, desc, avadar, originName);
     }

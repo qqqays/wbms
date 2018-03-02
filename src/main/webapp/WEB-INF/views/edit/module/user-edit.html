@@ -28,7 +28,7 @@
             <!--description-->
             <div class="form-group">
                 <label>描述</label>
-                <textarea id="user-description" class="form-control" rows="3" placeholder="描述 ...">${user.description!}</textarea>
+                <textarea id="user-description" class="form-control" rows="3" placeholder="描述 ...">${user.desc!}</textarea>
             </div>
 
             <!--select-->
@@ -51,7 +51,7 @@
     <div class="box-footer">
         <button id="user-add" type="button" class="btn btn-warning btn-flat">新增</button>
 
-        <#if product??>
+        <#if user??>
             <button id="user-update" type="button" class="btn btn-primary btn-flat">修改</button>
             <button id="user-delete" type="button" class="btn btn-default btn-flat">删除</button>
             <#else>
