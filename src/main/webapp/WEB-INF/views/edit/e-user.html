@@ -32,7 +32,8 @@
     function push_data(type) {
 
         var userName = $('#userName').val();
-        var password = $('#password1').val();
+        var password1 = $('#password1').val();
+        var password2 = $('#password2').val();
         var desc = $('#user-description').val();
         var state = $('#user-state')[0].value == 1;
         var today = getNowFormatDate();
@@ -40,11 +41,11 @@
         var roleList = $('.select2').val();
         var username = $('#userName').val();
 
-        if($('.select2').val() != '') {
+        if($('.select2').val() != '' && password1 == password2) {
             addRole4User(roleList, username, 'POST');
-            operate_user(userName, password, state, today, desc, '', type);
+            operate_user(userName, password1, state, today, desc, '', type);
         }else {
-            alert('必须选择一个角色')
+            alert('必须选择一个角色/两次密码不一致')
 
         }
     }

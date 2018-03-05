@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
-       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:task="http://www.springframework.org/schema/task"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
 	http://www.springframework.org/schema/context
@@ -11,17 +11,23 @@
 	http://www.springframework.org/schema/aop
 	http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
 	http://www.springframework.org/schema/mvc
-	http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd">
+	http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
 
 
     <context:component-scan base-package="com.shuwang.wbms.controller" />
     <context:component-scan base-package="com.shuwang.wbms.common.aspect" />
     <context:component-scan base-package="com.shuwang.wbms.common.handle" />
+    <context:component-scan base-package="com.shuwang.wbms.common.scheduler"/>
     <!--<context:component-scan base-package="com.shuwang.wbms.common.configuration"/>-->
 
     <!-- 开启aop，对类代理 -->
     <aop:config proxy-target-class="true" />
     <aop:aspectj-autoproxy proxy-target-class="true" />
+
+    <!--scheduler task -->
+    <task:executor id="executor" pool-size="5"/>
+    <task:scheduler id="scheduler" pool-size="10"/>
+    <task:annotation-driven scheduler="scheduler" executor="executor"/>
 
     <!--kaptcha-->
     <bean id="captchaProducer" class="com.google.code.kaptcha.impl.DefaultKaptcha">
@@ -47,9 +53,6 @@
             </bean>
         </property>
     </bean>
-
-    <!--user role wrapper-->
-    <!--<bean id="userRoleWrapper" class="com.shuwang.wbms.controller.api.UserManageController$UserRolesWrapper"/>-->
 
     <!-- freemarker的配置 -->
     <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
