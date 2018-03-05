@@ -64,7 +64,7 @@ function table_head(field) {
     return str;
 }
 
-function table_body(data, field, menu, deleteFunction) {
+function table_body(data, field, menu, deleteFunction,id) {
 
     var str = '';
 
@@ -73,9 +73,9 @@ function table_body(data, field, menu, deleteFunction) {
         for(var p in field){
             str += '<td>' + info[p] + '</td>';
         }
-        str += '<td><a href="/backend/'+ menu +'/' + info["id"] + '">编辑 </a> ' +
+        str += '<td><a href="/backend/'+ menu +'/' + info[id] + '">编辑 </a> ' +
             '<a class="pull-right" href="javascript:void(0)" onclick="'+
-            deleteFunction +'(\'' + info["id"] + '\')"> 删除</a></td>';
+            deleteFunction +'(\'' + info[id] + '\')"> 删除</a></td>';
         str += '</tr>';
     });
 
@@ -84,8 +84,12 @@ function table_body(data, field, menu, deleteFunction) {
 
 function baseAssemble(data,field,menu,deleteFunction) {
 
-    return table_head(field) + table_body(data,field,menu, deleteFunction);
+    return table_head(field) + table_body(data,field,menu, deleteFunction,'id');
 
+}
+
+function baseAssemble4u(data, field, menu, deleteFunction, id) {
+    return table_head(field) + table_body(data,field,menu, deleteFunction,id);
 }
 
 // ====================information list assemble=====================
@@ -419,3 +423,34 @@ function getLogList(page) {
         }
     });
 }
+
+// ==========================user list assemble========================
+// todo user list
+function assembleTable4User(json) {
+    var field = {
+        userName:'用户名',
+        state:'状态',
+        desc:'描述'
+    };
+
+    $('#userList').html(baseAssemble4u(json, field, 'e-user', 'delete_user', 'userName'));
+}
+
+function getUserList(page) {
+    $.ajax({
+        url: '/api/manager/users',
+        type: 'get',
+        data: {pageNumber: page},
+        success: function (d, s) {
+            var json = JSON.parse(d);
+            assembleTable4User(json['records']);
+            paging(json['pages'], json['current'], 'user-footer', 'getUserList');
+        },
+        error: function (d, s) {
+            console.log(d + s);
+        }
+    });
+}
+
+// ============================role list assemble ======================
+// todo role list

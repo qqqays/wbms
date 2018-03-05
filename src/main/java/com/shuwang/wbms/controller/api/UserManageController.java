@@ -1,6 +1,8 @@
 package com.shuwang.wbms.controller.api;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.plugins.Page;
+import com.shuwang.wbms.common.controller.ProController;
 import com.shuwang.wbms.entity.*;
 import com.shuwang.wbms.mapper.RoleMapper;
 import com.shuwang.wbms.service.*;
@@ -20,7 +22,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/manager")
-public class UserManageController {
+public class UserManageController extends ProController{
 
     @Autowired
     private IUserService userService;
@@ -38,33 +40,55 @@ public class UserManageController {
     private IRoleAuthService roleAuthService;
 
     //    user
-    @PostMapping("/user")
+    @GetMapping("/users")
+    public String getUsers(@RequestParam(defaultValue = "0") Integer pageNumber){
+
+        Page<UserEntity> uGram = datagram(userService, pageNumber, "userName");
+
+        return page2JsonStr(uGram);
+    }
+
+    @PostMapping("/users")
     public String createUser(UserEntity userEntity) {
         return userEntity.insert() + " insert";
     }
 
-    @DeleteMapping("/user/{username}")
+    @DeleteMapping("/users/{username}")
     public String deleteUser(@PathVariable String username) {
         return userService.deleteById(username) + " delete";
     }
 
-    @PutMapping("/user")
+    @PutMapping("/users")
     public String updateUser(UserEntity userEntity){
         return userEntity.updateById() + " update";
     }
 
     //    role
-    @PostMapping("/role")
+    @GetMapping("/roles")
+    public String getRoles(@RequestParam(defaultValue = "0") Integer pageNumber) {
+        Page<RoleEntity> rGram = datagram(roleService, pageNumber, "roleName");
+
+        return page2JsonStr(rGram);
+    }
+
+    @PostMapping("/roles")
     public String createRole(RoleEntity roleEntity) {
         return roleEntity.insert() + " insert";
     }
 
-    @DeleteMapping("/role/{roleName}")
+    @DeleteMapping("/roles/{roleName}")
     public String deleteRole(@PathVariable String roleName) {
         return roleService.deleteById(roleName) + " delete";
     }
 
     //    auth
+    @GetMapping("/authorities")
+    public String getAuthorities(@RequestParam(defaultValue = "0") Integer pageNumber){
+        Page<AuthEntity> aGram = datagram(authService, pageNumber);
+
+        return page2JsonStr(aGram);
+    }
+
     @PostMapping("/authorities")
     public String createAuth(AuthEntity authEntity) {
         return authEntity.insert() + " insert";

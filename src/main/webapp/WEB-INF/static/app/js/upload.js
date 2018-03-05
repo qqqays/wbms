@@ -364,9 +364,9 @@ function delete_product(id) {
     general_delete(url);
 }
 
-//新增用户
+//新增用户, 修改用户
 function operate_user(userName, password, state, createTime, desc, avadar, type) {
-    var url = '/api/manager/user';
+    var url = '/api/manager/users';
     
     var data = {
         userName:userName,
@@ -382,7 +382,7 @@ function operate_user(userName, password, state, createTime, desc, avadar, type)
 
 // 删除用户
 function delete_user(username) {
-    var url = '/api/manager/user/' + username;
+    var url = '/api/manager/users/' + username;
     general_delete(url);
 }
 

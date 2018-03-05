@@ -12,7 +12,7 @@
             <div class="row">
                 <!-- right column -->
                 <div class="col-md-12 connectedSortable">
-                    <#include "/edit/module/product-list.html">
+                    <#include "/edit/module/user-list.html">
 
                         <#include "/edit/module/user-edit.html">
                 </div>
@@ -56,7 +56,7 @@
             $('.select2').val('${ur.roleName}').trigger('change');
         </#list>
 //        case list
-        getProductList(1);
+        getUserList(1);
 
 //        collapse
         $('.custom-collapse').click();
