@@ -48,6 +48,9 @@
         </property>
     </bean>
 
+    <!--user role wrapper-->
+    <!--<bean id="userRoleWrapper" class="com.shuwang.wbms.controller.api.UserManageController$UserRolesWrapper"/>-->
+
     <!-- freemarker的配置 -->
     <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
         <property name="templateLoaderPath" value="/WEB-INF/views/" />

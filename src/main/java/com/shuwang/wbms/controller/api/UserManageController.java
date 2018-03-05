@@ -5,8 +5,12 @@ import com.shuwang.wbms.entity.*;
 import com.shuwang.wbms.mapper.RoleMapper;
 import com.shuwang.wbms.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,18 +37,6 @@ public class UserManageController {
     @Autowired
     private IRoleAuthService roleAuthService;
 
-    class UserRolesWrapper {
-        private List<UserRoleEntity> userRoleEntities;
-
-        public List<UserRoleEntity> getUserRoleEntities() {
-            return userRoleEntities;
-        }
-
-        public void setUserRoleEntities(List<UserRoleEntity> userRoleEntities) {
-            this.userRoleEntities = userRoleEntities;
-        }
-    }
-
     //    user
     @PostMapping("/user")
     public String createUser(UserEntity userEntity) {
@@ -54,6 +46,11 @@ public class UserManageController {
     @DeleteMapping("/user/{username}")
     public String deleteUser(@PathVariable String username) {
         return userService.deleteById(username) + " delete";
+    }
+
+    @PutMapping("/user")
+    public String updateUser(UserEntity userEntity){
+        return userEntity.updateById() + " update";
     }
 
     //    role
@@ -80,8 +77,8 @@ public class UserManageController {
 
     //    user-role
     @PostMapping("/user-role")
-    public String createUserRole(UserRolesWrapper userRolesWrapper) {
-        return userRoleService.insertBatch(userRolesWrapper.getUserRoleEntities()) + " insert";
+    public String createUserRole(@RequestBody List<UserRoleEntity> userRoleEntities) {
+        return userRoleService.insertBatch(userRoleEntities) + " insert";
     }
 
     @DeleteMapping("/user-role/{id}")

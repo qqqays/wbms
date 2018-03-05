@@ -88,15 +88,24 @@ public class BackendController extends ProController {
     @GetMapping("/{content}")
     public String common(Model model, @PathVariable String content) {
 
-        List<MenuEntity> menuEntities = menuService.selectList(new EntityWrapper<MenuEntity>().orderBy("sort"));
-        model.addAttribute("allMenus", menuEntities);
+//        List<MenuEntity> menuEntities = menuService.selectList(new EntityWrapper<MenuEntity>().orderBy("sort"));
+//        model.addAttribute("allMenus", menuEntities);
+
+        switch (content) {
+            case "e-user":
+                List<RoleEntity> roleEntityList = roleService.selectList(new EntityWrapper<RoleEntity>());
+                model.addAttribute("roleList", roleEntityList);
+                break;
+            default:
+                break;
+        }
         return "/edit/" + content;
     }
 
     @GetMapping("/{content}/{id}")
     public String menu(Model model, @PathVariable String content, @PathVariable String id) {
 
-        List<MenuEntity> menuEntities = menuService.selectList(new EntityWrapper<MenuEntity>().orderBy("sort"));
+//        List<MenuEntity> menuEntities = menuService.selectList(new EntityWrapper<MenuEntity>().orderBy("sort"));
 
         switch (content) {
             case "e-menu":
@@ -149,7 +158,7 @@ public class BackendController extends ProController {
                 break;
         }
 
-        model.addAttribute("allMenus", menuEntities);
+//        model.addAttribute("allMenus", menuEntities);
         return "/edit/" + content;
     }
 }

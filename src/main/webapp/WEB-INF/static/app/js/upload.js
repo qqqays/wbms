@@ -388,7 +388,6 @@ function delete_user(username) {
 
 // 用户添加角色
 function addRole4User(roleList, username, type) {
-    var url = '/api/manager/user-role';
 
     var json = [];
 
@@ -401,13 +400,21 @@ function addRole4User(roleList, username, type) {
         json.push(data);
     }
 
-    var json1 = {
-        userRoleEntities:json
-    };
+    $.ajax({
+        url: "/api/manager/user-role",
+        type: "POST",
+        contentType : 'application/json;charset=utf-8', //设置请求头信息
+        dataType:"json",
+        data: JSON.stringify(json),    //将Json对象序列化成Json字符串，JSON.stringify()原生态方法
+        // data: $.toJSON(json),            //将Json对象序列化成Json字符串，toJSON()需要引用jquery.json.min.js
+        success: function(data){
+            alert(data);
+        },
+        error: function(res){
+            alert(res.responseText);
+        }
+    });
 
-    console.log(json);
-
-    generalAjaxPro(url, type, json1);
 }
 
 // 新增角色

@@ -37,15 +37,16 @@
         var state = $('#user-state')[0].value == 1;
         var today = getNowFormatDate();
 
-        operate_user(userName, password, state, today, desc, '', type);
-        add_role();
-    }
-    
-    function add_role() {
         var roleList = $('.select2').val();
-        var usrename = $('#userName').val();
+        var username = $('#userName').val();
 
-        addRole4User(roleList, usrename, 'POST');
+        if($('.select2').val() != '') {
+            addRole4User(roleList, username, 'POST');
+            operate_user(userName, password, state, today, desc, '', type);
+        }else {
+            alert('必须选择一个角色')
+
+        }
     }
 
     $('document').ready(function () {
@@ -60,15 +61,15 @@
 //        collapse
         $('.custom-collapse').click();
 
-//        post product
+//        post user
         $('#user-add').click(function () {
             push_data('POST');
         });
 
-//        put product
-//        $('#case-update').click(function () {
-//            push_data('PUT');
-//        });
+//        put user
+        $('#user-update').click(function () {
+            push_data('PUT');
+        });
 
 //        delete product
         $('#user-delete').click(function () {
