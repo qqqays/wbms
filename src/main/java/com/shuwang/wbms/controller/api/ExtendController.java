@@ -1,10 +1,7 @@
 package com.shuwang.wbms.controller.api;
 
 import com.shuwang.wbms.common.util.SysCmdUtil;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Some controllers I do not know where should placed.
@@ -17,8 +14,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/extend")
 public class ExtendController {
 
-    @PostMapping("/backupDatabase")
+    @PostMapping("/backup-database")
     public String backupDatabase(@RequestParam(defaultValue = "backup.sql") String filename) {
-        return SysCmdUtil.backupDatebase(filename);
+        return SysCmdUtil.backupDatabase(filename);
+    }
+
+    @GetMapping("/lookup-backup")
+    public String lookup() {
+        return SysCmdUtil.lookupDB();
+    }
+
+    @PostMapping("/recovery")
+    public String recovery(@RequestParam(defaultValue = "backup.sql") String filename) {
+        return SysCmdUtil.recoverDatabase(filename);
     }
 }

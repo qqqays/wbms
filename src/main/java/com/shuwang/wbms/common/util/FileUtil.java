@@ -38,4 +38,14 @@ public class FileUtil {
              return file.mkdir();
          }
     }
+
+    public synchronized static String getBackPath(){
+        String path = "/home";
+        if(RunningSystem.isWin10())
+            path = CustomizedPropertyConfigurer.getContextProperty("backup.path.win10");
+        if(RunningSystem.isLinux())
+            path = CustomizedPropertyConfigurer.getContextProperty("backup.path.linux");
+
+        return path;
+    }
 }
