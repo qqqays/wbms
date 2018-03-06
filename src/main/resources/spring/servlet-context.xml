@@ -33,6 +33,7 @@
         <property name="locations">
             <list>
                 <value>classpath:properties/jdbc.properties</value>
+                <value>classpath:properties/extend.properties</value>
             </list>
         </property>
     </bean>

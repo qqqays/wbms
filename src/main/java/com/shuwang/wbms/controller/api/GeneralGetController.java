@@ -79,8 +79,8 @@ public class GeneralGetController extends ProController {
         return page2JsonStr(logGram);
     }
 
-    @GetMapping("/password")
-    public String pwd() {
-        return CustomizedPropertyConfigurer.getContextProperty("jdbc.password");
-    }
+//    @GetMapping("/password")
+//    public String pwd() {
+//        return CustomizedPropertyConfigurer.getContextProperty("jdbc.password");
+//    }
 }

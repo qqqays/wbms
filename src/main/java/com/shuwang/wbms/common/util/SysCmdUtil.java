@@ -64,13 +64,42 @@ public class SysCmdUtil {
         }
     }
 
+    public static String backupDatabase(String username, String password, String database, String path, String filename) {
+        return exec("mysqldump" + " " + "-u" + username + " " + "-p" + password + " " + database + " > " + path + "/" + filename);
+    }
+
+    public static String backupDatebase(String filename) {
+
+        String path = "/home";
+
+        if (RunningSystem.isLinux()) {
+            path = CustomizedPropertyConfigurer.getContextProperty("backup.path.Linux");
+            if (!FileUtil.checkDir(path))
+                return "Can not find or create directory";
+        }
+
+        if (RunningSystem.isWin10()) {
+            path = CustomizedPropertyConfigurer.getContextProperty("backup.path.win10");
+            if (!FileUtil.checkDir(path))
+                return "Can not find or create directory";
+        }
+
+        return backupDatabase(CustomizedPropertyConfigurer.getContextProperty("jdbc.username"),
+                CustomizedPropertyConfigurer.getContextProperty("jdbc.password"),
+                CustomizedPropertyConfigurer.getContextProperty("database.name"), path, filename);
+    }
+
     public static void main(String[] args) {
         try {
 
             System.out.println(exec("dir"));
             if (FileUtil.checkDir("e:/abc")) {
                 System.out.println(exec("mysqldump -uroot -pQays1234- swsun > e:/abc/swsun.sql\n"));
-                System.out.println(exec(new String[]{"cmd", "/c", "mysqldump -uroot -pQays1234- shuanglv > e:/abc/shuanglv.sql\n","Qays1234-"}));
+                System.out.println(backupDatabase("root", "Qays1234-", "shuanglv", "e:/abc", "shuanglv.sql"));
+//                System.out.println(exec(new String[]{"cmd", "/c", "mysqldump -uroot -p shuanglv > e:/abc/shuanglv.sql", "cmd","/c","Qays1234-"}));
+//                System.out.println("Qays1234-\n");
+//                System.out.println(exec("(mysqldump -uroot -p shuanglv > e:/abc/shuanglv.sql) < Qays1234-"));
+//                System.out.println(exec("d: && cd Git && dir"));
             }
         } catch (Exception e) {
             e.printStackTrace();
