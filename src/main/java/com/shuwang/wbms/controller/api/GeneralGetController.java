@@ -2,6 +2,7 @@ package com.shuwang.wbms.controller.api;
 
 import com.baomidou.mybatisplus.plugins.Page;
 import com.shuwang.wbms.common.controller.ProController;
+import com.shuwang.wbms.common.util.CustomizedPropertyConfigurer;
 import com.shuwang.wbms.entity.*;
 import com.shuwang.wbms.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,14 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Just for backend
- *
+ * <p>
  * Created by Q-ays.
  * whosqays@gmail.com
  * 12-25-2017 8:57
  */
 @RestController
 @RequestMapping("/api/gains/")
-public class GeneralGetController extends ProController{
+public class GeneralGetController extends ProController {
     @Autowired
     private IDetailService detailService;
 
@@ -45,7 +46,7 @@ public class GeneralGetController extends ProController{
     }
 
     @GetMapping("/splContents")
-    public String  contents(@RequestParam(defaultValue = "0") Integer pageNumber) {
+    public String contents(@RequestParam(defaultValue = "0") Integer pageNumber) {
 
         Page<SplContentEntity> dplGram = datagram(splContentService, pageNumber);
 
@@ -78,4 +79,8 @@ public class GeneralGetController extends ProController{
         return page2JsonStr(logGram);
     }
 
+    @GetMapping("/password")
+    public String pwd() {
+        return CustomizedPropertyConfigurer.getContextProperty("jdbc.password");
+    }
 }

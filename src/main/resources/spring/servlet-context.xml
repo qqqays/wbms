@@ -29,6 +29,14 @@
     <task:scheduler id="scheduler" pool-size="10"/>
     <task:annotation-driven scheduler="scheduler" executor="executor"/>
 
+    <bean id="customizedPropertyConfigurer" class="com.shuwang.wbms.common.util.CustomizedPropertyConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:properties/jdbc.properties</value>
+            </list>
+        </property>
+    </bean>
+
     <!--kaptcha-->
     <bean id="captchaProducer" class="com.google.code.kaptcha.impl.DefaultKaptcha">
         <property name="config">
