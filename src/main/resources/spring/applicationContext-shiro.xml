@@ -142,6 +142,7 @@
                 /api/images/** = rest[content]
                 /api/siteMap = roles[super]
                 /api/manager/** = roles[super]
+                /api/extend/database/** = roles[super]
             </value>
         </property>
     </bean>

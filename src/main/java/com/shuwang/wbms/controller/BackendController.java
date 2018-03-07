@@ -73,24 +73,25 @@ public class BackendController extends ProController {
         return "/edit/backend";
     }
 
-    @GetMapping("/sysConfig")
-    public String content(Model model) {
-
-        SysConfigEntity sysConfigEntity = sysConfigService.selectOne(sysConfigEntityWrapper);
-
-        SeoEntity seoEntity = seoService.selectById("system");
-
-        model.addAttribute("sysConfig", sysConfigEntity);
-        model.addAttribute("seoConfig", seoEntity);
-
-        return "/edit/sysConfig";
-    }
+//    @GetMapping("/sysConfig")
+//    public String content(Model model) {
+//
+//        SysConfigEntity sysConfigEntity = sysConfigService.selectOne(sysConfigEntityWrapper);
+//
+//        SeoEntity seoEntity = seoService.selectById("system");
+//
+//        model.addAttribute("sysConfig", sysConfigEntity);
+//        model.addAttribute("seoConfig", seoEntity);
+//
+//        return "/edit/sysConfig";
+//    }
 
     @GetMapping("/{content}")
     public String common(Model model, @PathVariable String content) {
 
-//        List<MenuEntity> menuEntities = menuService.selectList(new EntityWrapper<MenuEntity>().orderBy("sort"));
-//        model.addAttribute("allMenus", menuEntities);
+        //新闻，基础页面选择菜单栏目
+        List<MenuEntity> menuEntities = menuService.selectList(new EntityWrapper<MenuEntity>().orderBy("sort"));
+        model.addAttribute("allMenus", menuEntities);
 
         switch (content) {
             case "e-user":
@@ -118,7 +119,7 @@ public class BackendController extends ProController {
     @GetMapping("/{content}/{id}")
     public String menu(Model model, @PathVariable String content, @PathVariable String id) {
 
-//        List<MenuEntity> menuEntities = menuService.selectList(new EntityWrapper<MenuEntity>().orderBy("sort"));
+        List<MenuEntity> menuEntities = menuService.selectList(new EntityWrapper<MenuEntity>().orderBy("sort"));
 
         switch (content) {
             case "e-menu":
@@ -171,7 +172,7 @@ public class BackendController extends ProController {
                 break;
         }
 
-//        model.addAttribute("allMenus", menuEntities);
+        model.addAttribute("allMenus", menuEntities);
         return "/edit/" + content;
     }
 }

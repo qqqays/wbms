@@ -44,10 +44,15 @@
         $('#backup').click(function () {
 
             var url = '/api/extend/database/backup';
+            var backupName = $('#backupName').val();
             var data = {
-                filename:$('#backupName').val()
+                filename: backupName
             };
-            generalAjaxPro(url, 'POST', data);
+
+            if(isnull(backupName))
+                alert('请填写备份名称');
+            else
+                generalAjax(url, 'POST', data,'备份');
         });
 
         $('#recovery').click(function () {
@@ -56,7 +61,7 @@
                 filename:$('.select2').val()
             };
 
-            generalAjaxPro(url,'POST',data);
+            generalAjax(url,'POST',data,'恢复，建议先备份再恢复');
         });
 
         $('#delete').click(function () {
@@ -65,7 +70,7 @@
                 filename:$('.select2').val()
             };
 
-            generalAjaxPro(url,'POST',data);
+            generalAjax(url,'POST',data,'删除，删除后不能再恢复');
         });
 
         $('#refresh').click(function () {

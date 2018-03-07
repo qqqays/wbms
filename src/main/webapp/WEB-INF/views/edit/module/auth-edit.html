@@ -10,45 +10,46 @@
     </div>
     <!-- /.box-header -->
     <div class="box-body">
-        <form role="form">
+        <h1>开发中</h1>
+        <!--<form role="form">-->
 
-            <!--name-->
-            <div class="form-group">
-                <label>权限名称</label>
-                <input id="authName" type="text" value="${auth.userName!}" class="form-control" placeholder="权限名" >
-            </div>
+            <!--&lt;!&ndash;name&ndash;&gt;-->
+            <!--<div class="form-group">-->
+                <!--<label>权限名称</label>-->
+                <!--<input id="authName" type="text" value="${auth.userName!}" class="form-control" placeholder="权限名" >-->
+            <!--</div>-->
 
-            <!--description-->
-            <div class="form-group">
-                <label>描述</label>
-                <textarea id="auth-description" class="form-control" rows="3" placeholder="描述 ...">${role.description!}</textarea>
-            </div>
+            <!--&lt;!&ndash;description&ndash;&gt;-->
+            <!--<div class="form-group">-->
+                <!--<label>描述</label>-->
+                <!--<textarea id="auth-description" class="form-control" rows="3" placeholder="描述 ...">${role.description!}</textarea>-->
+            <!--</div>-->
 
-            <!--select-->
-            <div class="form-group">
-                <label>状态</label>
-                <select id="auth-state" class="form-control">
-                    <#if auth.state>
-                        <option value="1"  selected="selected">打开的 </option>
-                        <option value="0">关闭的 </option>
-                        <#else>
-                            <option value="1">打开的 </option>
-                            <option value="0" selected="selected">关闭的 </option>
-                    </#if>
-                </select>
-            </div>
-        </form>
+            <!--&lt;!&ndash;select&ndash;&gt;-->
+            <!--<div class="form-group">-->
+                <!--<label>状态</label>-->
+                <!--<select id="auth-state" class="form-control">-->
+                    <!--<#if auth.state>-->
+                        <!--<option value="1"  selected="selected">打开的 </option>-->
+                        <!--<option value="0">关闭的 </option>-->
+                        <!--<#else>-->
+                            <!--<option value="1">打开的 </option>-->
+                            <!--<option value="0" selected="selected">关闭的 </option>-->
+                    <!--</#if>-->
+                <!--</select>-->
+            <!--</div>-->
+        <!--</form>-->
     </div>
     <!-- /.box-body -->
 
     <div class="box-footer">
-        <button id="auth-add" type="button" class="btn btn-warning btn-flat">新增</button>
+        <!--<button id="auth-add" type="button" class="btn btn-warning btn-flat">新增</button>-->
 
-        <#if product??>
-            <button id="auth-update" type="button" class="btn btn-primary btn-flat">修改</button>
-            <button id="auth-delete" type="button" class="btn btn-default btn-flat">删除</button>
-            <#else>
-        </#if>
-    </div>
+        <!--<#if product??>-->
+            <!--<button id="auth-update" type="button" class="btn btn-primary btn-flat">修改</button>-->
+            <!--<button id="auth-delete" type="button" class="btn btn-default btn-flat">删除</button>-->
+            <!--<#else>-->
+        <!--</#if>-->
+    <!--</div>-->
 </div>
 
