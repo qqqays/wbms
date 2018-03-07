@@ -39,4 +39,4 @@ extend.properties 配置如图。
 3. maven import
 
 - **实例**
-![后台管理实例](https://gitee.com/uploads/images/2018/0301/155536_394a3d25_1274933.png "6Y9XP2LD[4$HVB7@66@MDX2.png")
+![输入图片说明](https://gitee.com/uploads/images/2018/0307/170603_efccbd9c_1274933.png "屏幕截图.png")
