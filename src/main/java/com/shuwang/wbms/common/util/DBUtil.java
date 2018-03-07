@@ -65,7 +65,7 @@ public class DBUtil {
         if (RunningSystem.isWin10())
             return SysCmdUtil.exec("cd /d " + CustomizedPropertyConfigurer.getContextProperty("backup.path.win10") + " && dir");
         if (RunningSystem.isLinux())
-            return SysCmdUtil.exec("cd " + CustomizedPropertyConfigurer.getContextProperty("backup.path.Linux") + " && ls -g");
+            return SysCmdUtil.exec("cd " + CustomizedPropertyConfigurer.getContextProperty("backup.path.linux") + " && ls -g");
 
         return error_code;
     }
