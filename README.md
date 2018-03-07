@@ -27,7 +27,12 @@ other: ehcache, freemarker, maven, adminLTE2, druid, logback, tomcat.
 - **快速开始**
 
 1. 导入resource/db/backend1.sql
-2. maven import
+2. 添加properties配置，如图。
+![输入图片说明](https://gitee.com/uploads/images/2018/0307/165954_59e8ff3a_1274933.png "[%DRL$`)MGP@U4BCWEE@O3X.png")
+jdbc是数据库配置，extend是数据库备份目录配置。
+extend.properties 配置如图。
+![输入图片说明](https://gitee.com/uploads/images/2018/0307/170153_2290e8c4_1274933.png "A2`$TU45B_2PXX111XJ)}QQ.png")
+3. maven import
 
 - **实例**
 ![后台管理实例](https://gitee.com/uploads/images/2018/0301/155536_394a3d25_1274933.png "6Y9XP2LD[4$HVB7@66@MDX2.png")
