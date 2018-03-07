@@ -1,3 +1,17 @@
+// ====================generalGet=====================
+function generalGet(url, data, func) {
+    $.ajax({
+        url:url,
+        type:'GET',
+        data:data,
+        success:function (d, s) {
+            func(d);
+        },
+        error:function (d, s) {
+            alert(d);
+        }
+    });
+}
 
 // ===================paging==================
 function paging(pages, current, showId, method) {

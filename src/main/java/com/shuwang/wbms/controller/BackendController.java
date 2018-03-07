@@ -3,6 +3,7 @@ package com.shuwang.wbms.controller;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.shuwang.wbms.common.controller.ProController;
+import com.shuwang.wbms.common.util.DBUtil;
 import com.shuwang.wbms.entity.*;
 import com.shuwang.wbms.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,6 +96,18 @@ public class BackendController extends ProController {
             case "e-user":
                 List<RoleEntity> roleEntityList = roleService.selectList(new EntityWrapper<RoleEntity>());
                 model.addAttribute("roleList", roleEntityList);
+                break;
+            case "sysConfig":
+                SysConfigEntity sysConfigEntity = sysConfigService.selectOne(sysConfigEntityWrapper);
+                SeoEntity seoEntity = seoService.selectById("system");
+
+                model.addAttribute("sysConfig", sysConfigEntity);
+                model.addAttribute("seoConfig", seoEntity);
+                break;
+            case "db-manage":
+                List<String> list = DBUtil.dbFileList();
+
+                model.addAttribute("fileList", list);
                 break;
             default:
                 break;

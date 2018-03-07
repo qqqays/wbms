@@ -1,0 +1,76 @@
+<#include "/edit/common/editLayout.html">
+<@head>
+</@head>
+
+<@body>
+
+<div class="content-wrapper" style="min-height: 1036px;">
+    <!-- Content Header (Page header) -->
+    <#include "/edit/common/content-header.html">
+
+        <section class="content">
+            <div class="row">
+                <!-- right column -->
+                <div class="col-md-12 connectedSortable">
+                    <#include "/edit/module/db-edit.html"/>
+                </div>
+                <!--/.col (right) -->
+            </div>
+            <!-- /.row -->
+        </section>
+</div>
+<!--</form>-->
+</@body>
+
+<@javascript>
+<script src="/plugins/select2/dist/js/select2.min.js"></script>
+
+<script>
+    
+    function showInfo(d) {
+        console.log(d);
+        $('#sql-file').html(d);
+    }
+    
+    $('document').ready(function () {
+        $('.select2').select2();
+
+        $('#lookup-file').click(function () {
+
+            var info = generalGet('/api/extend/database/lookup', {}, showInfo);
+
+        });
+
+        $('#backup').click(function () {
+
+            var url = '/api/extend/database/backup';
+            var data = {
+                filename:$('#backupName').val()
+            };
+            generalAjaxPro(url, 'POST', data);
+        });
+
+        $('#recovery').click(function () {
+            var url = '/api/extend/database/recovery';
+            var data = {
+                filename:$('.select2').val()
+            };
+
+            generalAjaxPro(url,'POST',data);
+        });
+
+        $('#delete').click(function () {
+            var url = '/api/extend/database/delete';
+            var data = {
+                filename:$('.select2').val()
+            };
+
+            generalAjaxPro(url,'POST',data);
+        });
+
+        $('#refresh').click(function () {
+            window.location.reload();
+        });
+    });
+</script>
+</@javascript>

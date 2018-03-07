@@ -1,6 +1,7 @@
 package com.shuwang.wbms.controller.api;
 
-import com.shuwang.wbms.common.util.SysCmdUtil;
+import com.shuwang.wbms.common.util.DBUtil;
+import com.shuwang.wbms.common.util.FileUtil;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -11,21 +12,30 @@ import org.springframework.web.bind.annotation.*;
  * 03-06-2018 13:16
  */
 @RestController
-@RequestMapping("/api/extend")
+@RequestMapping("/api/extend/database")
 public class ExtendController {
 
-    @PostMapping("/backup-database")
+    @PostMapping("/backup")
     public String backupDatabase(@RequestParam(defaultValue = "backup.sql") String filename) {
-        return SysCmdUtil.backupDatabase(filename);
+        return DBUtil.backupDatabase(filename);
     }
 
-    @GetMapping("/lookup-backup")
+    @GetMapping("/lookup")
     public String lookup() {
-        return SysCmdUtil.lookupDB();
+        return DBUtil.lookupDBFile();
     }
 
     @PostMapping("/recovery")
     public String recovery(@RequestParam(defaultValue = "backup.sql") String filename) {
-        return SysCmdUtil.recoverDatabase(filename);
+        return DBUtil.recoverDatabaseByAbsolute(filename);
+    }
+
+    @PostMapping("/delete")
+    public String delete(String filename){
+        if (filename.replace("\\", "/").startsWith(FileUtil.getBackPath())) {
+            return FileUtil.deleteFile(filename) + " delete";
+        } else {
+            return "Can not operate the path you selected!";
+        }
     }
 }
