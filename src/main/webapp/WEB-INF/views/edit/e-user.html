@@ -21,6 +21,14 @@
             <!-- /.row -->
         </section>
 </div>
+
+<div class="hidden">
+    <ul id="fuck">
+        <#list urList as ur>
+            <li>${ur.roleName}</li>
+        </#list>
+    </ul>
+</div>
 <!--</form>-->
 </@body>
 
@@ -49,13 +57,24 @@
 
         }
     }
+    
+    function evaluate() {
+        $('.select2').select2();
+
+        var a = $('#fuck')[0].getElementsByTagName("li");
+
+        var b = [];
+
+        for(var i = 0; i < a.length; i++) {
+            b.push(a[i].textContent);
+        }
+        $('.select2').val(b).trigger('change');
+    }
 
     $('document').ready(function () {
 //      Initialize Select2 Elements
-        $('.select2').select2();
-        <#list urList as ur>
-            $('.select2').val('${ur.roleName}').trigger('change');
-        </#list>
+        evaluate();
+
 //        case list
         getUserList(1);
 
