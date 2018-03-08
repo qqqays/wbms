@@ -9,11 +9,13 @@ import java.util.Map;
 import java.util.Properties;
 
 /**
+ * Customized Property Configurer Util abbr to cpc for getting configure from properties files.
+ *
  * Created by Q-ays.
  * whosqays@gmail.com
  * 03-06-2018 11:44
  */
-public class CustomizedPropertyConfigurer extends PropertyPlaceholderConfigurer {
+public class CPCUtil extends PropertyPlaceholderConfigurer {
 
 
     private static Map<String, String> ctxPropertiesMap;

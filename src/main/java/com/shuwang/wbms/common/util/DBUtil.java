@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Backups and recovery database, look through, use and delete files of database backup.
+ *
  * Created by Q-ays.
  * whosqays@gmail.com
  * 03-06-2018 17:35
@@ -30,9 +32,9 @@ public class DBUtil {
         if(!FileUtil.checkDir(path))
             return error_code;
 
-        return backupDatabase(CustomizedPropertyConfigurer.getContextProperty("jdbc.username"),
-                CustomizedPropertyConfigurer.getContextProperty("jdbc.password"),
-                CustomizedPropertyConfigurer.getContextProperty("database.name"), path, filename);
+        return backupDatabase(CPCUtil.getContextProperty("jdbc.username"),
+                CPCUtil.getContextProperty("jdbc.password"),
+                CPCUtil.getContextProperty("database.name"), path, filename);
     }
 
     public static String recoveryDatabase(String username, String password, String database, String path, String filename) {
@@ -48,24 +50,24 @@ public class DBUtil {
 
         String path = FileUtil.getBackPath();
 
-        return recoveryDatabase(CustomizedPropertyConfigurer.getContextProperty("jdbc.username"),
-                CustomizedPropertyConfigurer.getContextProperty("jdbc.password"),
-                CustomizedPropertyConfigurer.getContextProperty("database.name"),
+        return recoveryDatabase(CPCUtil.getContextProperty("jdbc.username"),
+                CPCUtil.getContextProperty("jdbc.password"),
+                CPCUtil.getContextProperty("database.name"),
                 path, filename);
     }
 
     public static String recoverDatabaseByAbsolute(String absolutePath){
-        return recoveryDatabase(CustomizedPropertyConfigurer.getContextProperty("jdbc.username"),
-                CustomizedPropertyConfigurer.getContextProperty("jdbc.password"),
-                CustomizedPropertyConfigurer.getContextProperty("database.name"),
+        return recoveryDatabase(CPCUtil.getContextProperty("jdbc.username"),
+                CPCUtil.getContextProperty("jdbc.password"),
+                CPCUtil.getContextProperty("database.name"),
                 absolutePath);
     }
 
     public static String lookupDBFile() {
         if (RunningSystem.isWin10())
-            return SysCmdUtil.exec("cd /d " + CustomizedPropertyConfigurer.getContextProperty("backup.path.win10") + " && dir");
+            return SysCmdUtil.exec("cd /d " + CPCUtil.getContextProperty("backup.path.win10") + " && dir");
         if (RunningSystem.isLinux())
-            return SysCmdUtil.exec("cd " + CustomizedPropertyConfigurer.getContextProperty("backup.path.linux") + " && ls -g");
+            return SysCmdUtil.exec("cd " + CPCUtil.getContextProperty("backup.path.linux") + " && ls -g");
 
         return error_code;
     }

@@ -2,7 +2,6 @@ package com.shuwang.wbms.controller.api;
 
 import com.baomidou.mybatisplus.plugins.Page;
 import com.shuwang.wbms.common.controller.ProController;
-import com.shuwang.wbms.common.util.CustomizedPropertyConfigurer;
 import com.shuwang.wbms.entity.*;
 import com.shuwang.wbms.service.*;
 import org.springframework.beans.factory.annotation.Autowired;

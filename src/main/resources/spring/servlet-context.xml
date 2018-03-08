@@ -30,7 +30,7 @@
     <task:annotation-driven scheduler="scheduler" executor="executor"/>
 
     <!--从properties获取value-->
-    <bean id="customizedPropertyConfigurer" class="com.shuwang.wbms.common.util.CustomizedPropertyConfigurer">
+    <bean id="customizedPropertyConfigurer" class="com.shuwang.wbms.common.util.CPCUtil">
         <property name="locations">
             <list>
                 <value>classpath:properties/jdbc.properties</value>
