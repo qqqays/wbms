@@ -2,6 +2,7 @@ package com.shuwang.wbms.controller.api;
 
 import com.shuwang.wbms.common.controller.ProController;
 import com.shuwang.wbms.common.enums.FilePathEnum;
+import com.shuwang.wbms.common.util.SKTUtil;
 import com.shuwang.wbms.entity.ImageEntity;
 import com.shuwang.wbms.service.ImageService;
 import org.json.JSONArray;
@@ -25,7 +26,7 @@ import java.util.Iterator;
  */
 @RestController
 @RequestMapping("/api/images")
-public class ImageController extends ProController {
+public class ImageController extends ProController implements SKTUtil{
 
     @Autowired
     private ImageService imageService;
@@ -100,7 +101,7 @@ public class ImageController extends ProController {
     }
 
     @PostMapping("/ckEditor")
-    public String ckEditor(HttpServletRequest request, HttpServletResponse response) {
+    public void ckEditor(HttpServletRequest request, HttpServletResponse response) {
 
         CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(request.getSession().getServletContext());
 
@@ -120,30 +121,18 @@ public class ImageController extends ProController {
                     MultipartFile file = multiRequest.getFile(it.next());
 
                     if (file != null) {
-
                         addImg(relationPath, absolutionPath, "", "", 0, 0, "ckEditor", file);
 
-                        response.setContentType("text/html;charset=UTF-8");
-                        PrintWriter out = response.getWriter();
-                        String CKEditorFuncNum = request.getParameter("CKEditorFuncNum");
-                        out.println("<script type=\"text/javascript\">");
-                        out.println("window.parent.CKEDITOR.tools.callFunction(" + CKEditorFuncNum + ",'"
-                                + relationPath + file.getOriginalFilename() + "','')");
-                        out.println("</script>");
-
-                        out.flush();
-                        out.close();
-
-//                        return rePath + name;
+                        imgUrl4CK(request, response, relationPath + file.getOriginalFilename(),false);
                     }
                 }
 
             } catch (Exception e) {
                 e.printStackTrace();
-                return "upload error";
+                return;
             }
         }
-        return "upload success";
+        return;
     }
 
     @GetMapping("/{content}")
@@ -192,5 +181,10 @@ public class ImageController extends ProController {
         }
 
         return "delete failed";
+    }
+
+    @GetMapping("/ckEditor/path4ck")
+    public void path4ck(HttpServletRequest request, HttpServletResponse response, @RequestParam("imgPath") String imgPath){
+        imgUrl4CK(request, response, imgPath, true);
     }
 }
