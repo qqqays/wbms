@@ -122,7 +122,6 @@ public class ImageController extends ProController implements SKTUtil{
 
                     if (file != null) {
                         addImg(relationPath, absolutionPath, "", "", 0, 0, "ckEditor", file);
-
                         imgUrl4CK(request, response, relationPath + file.getOriginalFilename(),false);
                     }
                 }
