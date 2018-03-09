@@ -864,7 +864,8 @@ div {
 }
 
 .skin-black-light .main-header .navbar .nav > li > a:hover, .skin-black-light .main-header .navbar .nav > li > a:active, .skin-black-light .main-header .navbar .nav > li > a:focus, .skin-black-light .main-header .navbar .nav .open > a, .skin-black-light .main-header .navbar .nav .open > a:hover, .skin-black-light .main-header .navbar .nav .open > a:focus, .skin-black-light .main-header .navbar .nav > .active > a {
-    background-color: #c52d2fc2;
+    /*background-color: #c52d2fc2;*/
+    background-color: #d35f61;
     color: snow;
     box-shadow: 0 0 10px rgba(25, 0, 0, 0.3);
     animation: swing .5s cubic-bezier(0.68, 0.15, 0.69, 0.11);
