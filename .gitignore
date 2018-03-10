@@ -1,6 +1,7 @@
 .idea
 target
 logs
+artifacts
 
 *.iml
 *.log
