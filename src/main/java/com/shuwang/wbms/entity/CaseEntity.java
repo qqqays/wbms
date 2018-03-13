@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 /**
  * Created by Q-ays.
@@ -30,6 +31,8 @@ public class CaseEntity extends Model<CaseEntity>{
     private String class1;
 
     private String class2;
+
+    private Date date;
 
     @Override
     protected Serializable pkVal() {
@@ -90,5 +93,13 @@ public class CaseEntity extends Model<CaseEntity>{
 
     public void setClass2(String class2) {
         this.class2 = class2;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

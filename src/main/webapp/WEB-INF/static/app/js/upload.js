@@ -312,7 +312,7 @@ function delete_img(id) {
 }
 
 //增加案例，  修改案例
-function operate_case(id, name, description, img, class1, class2, contents, type) {
+function operate_case(id, name, description, img, class1, class2, contents, date, type) {
     
     var url = '/api/upload/case';
     
@@ -323,7 +323,8 @@ function operate_case(id, name, description, img, class1, class2, contents, type
         img:img,
         class1:class1,
         class2:class2,
-        contents:contents
+        contents:contents,
+        date:date
     };
 
     generalAjaxPro(url, type, data);

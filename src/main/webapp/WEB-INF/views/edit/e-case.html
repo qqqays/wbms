@@ -1,5 +1,7 @@
 <#include "/edit/common/editLayout.html">
-    <@head>
+<@head>
+    <!--date picker-->
+    <link rel="stylesheet" href="/plugins/Forms/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
 </@head>
 
 <@body>
@@ -28,6 +30,9 @@
 </@body>
 
 <@javascript>
+<!--date picker-->
+<script src="/plugins/Forms/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
 <script>
 
     var dir = 'case-dir';
@@ -42,6 +47,9 @@
     }
 
     function push_data(type) {
+
+        var today = new Date().toLocaleDateString().replace(/\//g, '-');
+
         var id = $('#case-id').val();
         var name = $('#case-name').val();
         var description = $('#case-description').val();
@@ -50,9 +58,17 @@
         var class2 = $('#case-class2').val();
         var contents = CKEDITOR.instances.editor.getData();
 
-        operate_case(id, name, description, img, class1, class2, contents, type);
+        var date = $('#case-date').val() == '' ? today : $('#case-date').val();
+
+        operate_case(id, name, description, img, class1, class2, contents, date, type);
     }
 
+    //Date picker
+    $('#case-date').datepicker({
+        todayHighlight:true,
+        format: 'yyyy-mm-dd',
+        autoclose: true
+    });
 
     $('document').ready(function () {
 //        case list

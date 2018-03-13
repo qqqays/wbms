@@ -348,7 +348,7 @@ function assembleTable4case(json) {
         name:'name',
         description:'description',
         img:'img',
-        class1:'类1',
+        date:'日期',
         class2:'class2'
     }
 

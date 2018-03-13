@@ -41,6 +41,19 @@
                 </select>
             </div>
 
+            <!--date-->
+            <div class="form-group">
+                <label>竣工日期:</label>
+
+                <div class="input-group date">
+                    <div class="input-group-addon">
+                        <i class="fa fa-calendar"></i>
+                    </div>
+                    <input value="${case.date!}" type="text" placeholder="如果不填写，默认使用今天的日期，如果填写日期大于今天，相当于定时发布。" class="form-control pull-right" id="case-date">
+                </div>
+                <!-- /.input group -->
+            </div>
+
             <!--ck editor-->
             <#include "/edit/common/ckeditor.html">
 
