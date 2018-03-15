@@ -138,37 +138,36 @@ $('document').ready(function () {
     if (submenu.length > 0) {
         var offset = $(submenu[0].parentNode).width() - submenuWidth;
 
-        var mc1 = new Hammer(submenu[0]);
-        var left;
-        mc1.on('panstart', function (e) {
-            left = parseInt(submenu.css('left'));
-            submenu[0].style.transition = '';
-            console.log(left);
-            mc.stop();
-        });
+        if(offset < 0) {
 
-        mc1.on('panmove', function (e) {
-            submenu[0].style.left = left + e.deltaX + 'px';
-        });
+            var mc1 = new Hammer(submenu[0]);
+            var left;
+            mc1.on('panstart', function (e) {
+                left = parseInt(submenu.css('left'));
+                submenu[0].style.transition = '';
+                // console.log(left);
+                mc.stop();
+            });
 
-        mc1.on('panend', function (e) {
+            mc1.on('panmove', function (e) {
+                submenu[0].style.left = left + (1.2 * e.deltaX) + 'px';
+            });
 
-            var currentLeft = parseInt(submenu.css('left'));
+            mc1.on('panend', function (e) {
 
-            console.log(offset);
+                var currentLeft = parseInt(submenu.css('left'));
 
-            if (currentLeft > 0)
-                submenu[0].style.left = '0px';
-            else {
-                if (currentLeft < offset && offset < 0) {
-                    submenu[0].style.left = offset + 'px';
-                } else
+                // console.log(offset);
+
+                if (currentLeft >= 0) {
                     submenu[0].style.left = '0px';
-            }
+                }else if(currentLeft < offset) {
+                    submenu[0].style.left = offset + 'px';
+                }
 
-            submenu[0].style.transition = 'left .5s';
-        });
-
+                submenu[0].style.transition = 'left .5s';
+            });
+        }
     }
 
 });
