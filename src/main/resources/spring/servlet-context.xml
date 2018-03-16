@@ -4,6 +4,7 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:tx="http://www.springframework.org/schema/tx" xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:websocket="http://www.springframework.org/schema/websocket"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
 	http://www.springframework.org/schema/context
@@ -11,13 +12,14 @@
 	http://www.springframework.org/schema/aop
 	http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
 	http://www.springframework.org/schema/mvc
-	http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
+	http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd">
 
 
     <context:component-scan base-package="com.shuwang.wbms.controller" />
     <context:component-scan base-package="com.shuwang.wbms.common.aspect" />
     <context:component-scan base-package="com.shuwang.wbms.common.handle" />
     <context:component-scan base-package="com.shuwang.wbms.common.scheduler"/>
+    <context:component-scan base-package="com.shuwang.wbms.websocket"/>
     <!--<context:component-scan base-package="com.shuwang.wbms.common.configuration"/>-->
 
     <!-- 开启aop，对类代理 -->
