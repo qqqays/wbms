@@ -56,7 +56,7 @@ public class MailUtil {
     }
 
 
-    public static boolean mailSession(HttpServletRequest request, HttpSession session) {
+    public synchronized static boolean mailSession(HttpServletRequest request, HttpSession session) {
 
         long time = System.currentTimeMillis();
 
