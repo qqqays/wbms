@@ -3,6 +3,8 @@ target
 logs
 artifacts
 
+*.exe
+
 *.iml
 *.log
 jdbc.properties
