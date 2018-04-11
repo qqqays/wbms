@@ -17,38 +17,168 @@
     <!--================================content========================================-->
 
     <div>
-        <div class="container">
-            <section class="content">
-                <div class="display">
-                    <!--=----------------------------------------------------------------------------------=-->
+        <div id="cover">
 
-                    <div class="text-center">
-                        <img src="/images/contact/join-us.png">
-                    </div>
-
-                    <div class="row" style="padding-top: 5vw">
-                        <div class="col-sm-6 contact-p-div">
-                            <img src="/images/contact/WELCOMETOSHUWANG.png" style="padding-bottom: 3vw">
-                            <p>我们在涪城区南湖电子信息工业园，蜀旺新能源的团队积极的将太阳能</p>
-                            <p>智慧解决方案带到世界各地，同时也需要应对来自世界各的能源挑战。</p>
-                            <p>蜀旺新能源将提高全世界人民的生活水平视为一项神圣使命，</p>
-                            <p>蜀旺致力于自身员工的健康，安全和发展。</p>
-                            <p>现在你将有机会与富有创新精神的蜀旺团队共同合作，</p>
-                            <p>在太阳能行业的快速发展中得到职业的发展与自我的成长。</p>
-                            <p>我们有一群吃不胖的人！我们是充满激情和活力的团队！</p>
-                            <p>公司不大不小50个人，</p>
-                            <p>一群开放的领导满足你的一切愿望，</p>
-                            <p>虽然要求严格，</p>
-                            <p>但是会让你快速成长成一名拥有职业素养和专业素养的人！</p>
-                            <p>欢迎来这里！！！</p>
-                        </div>
-                        <div class="col-sm-6"><img src="/images/contact/contact3.png"></div>
-                    </div>
-
-                    <!--=-------------------------------------------------------------------------------------=-->
-                </div>
-            </section>
         </div>
+
+        <div class="loader1">
+
+            <span></span>
+
+            <span></span>
+
+            <span></span>
+
+            <span></span>
+
+            <span></span>
+
+            <h4 style="color: white;">邮件发送中</h4>
+        </div>
+
+        <div>
+            <div class="container">
+                <section class="content">
+                    <div class="display">
+                        <!--=----------------------------------------------------------------------------------=-->
+
+                        <div class="text-center" style="padding: 2vw">
+                            <img src="/images/contact/contact2.png">
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h3>四川蜀旺新能源股份有限公司</h3>
+                                <div class="contact-p">
+                                    <p><b>客服电话：400-682667</b></p>
+                                    <p>地址：绵阳市经济技术开发区南湖电子信息工业园</p>
+                                    <p>电话:0816-2302374</p>
+                                    <p>邮箱：sales@swpv.net</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <iframe style="min-height: 400px" class="custom-i" src="http://www.swkj.net.cn/baiduMap.html" frameborder="0" scrolling="no"></iframe>
+                            </div>
+                        </div>
+
+                        <div class="text-center" style="padding: 2vw">
+                            <img src="/images/contact/contact.png">
+                        </div>
+
+                        <form role="form" class="text-center">
+
+                            <div class="form-group col-sm-6">
+                                <div class="input-group input-group-lg">
+                                    <div class="input-group-addon">
+                                        <i class="glyphicon glyphicon-user"></i>
+                                    </div>
+                                    <input id="name" type="text" placeholder="姓名" class="form-control">
+                                    <div class="input-group-addon bg-blue hidden-xs">
+                                        <i class="glyphicon glyphicon-music"></i>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group col-sm-6 has-error">
+                                <div class="input-group input-group-lg">
+                                    <div class="input-group-addon">
+                                        <i class="glyphicon glyphicon-envelope"></i>
+                                    </div>
+                                    <input id="email" type="email" placeholder="邮箱" class="form-control">
+                                    <div class="input-group-addon bg-red hidden-xs">
+                                        <i class="glyphicon glyphicon-send"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-sm-6 has-success">
+                                <div class="input-group input-group-lg">
+                                    <div class="input-group-addon">
+                                        <i class="glyphicon glyphicon-phone-alt"></i>
+                                    </div>
+                                    <input id="phone" type="tel" placeholder="电话" class="form-control">
+                                    <div class="input-group-addon bg-green hidden-xs">
+                                        <i class="glyphicon glyphicon-comment"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-sm-6 has-warning">
+                                <div class="input-group input-group-lg">
+                                    <div class="input-group-addon">
+                                        <i class="glyphicon glyphicon-home"></i>
+                                    </div>
+                                    <input id="address" type="text" placeholder="住址" class="form-control">
+                                    <div class="input-group-addon bg-orange hidden-xs">
+                                        <i class="glyphicon glyphicon-tree-deciduous"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-sm-12">
+                                <textarea class="form-control" id="msg" rows="5" placeholder="留言信息"></textarea>
+                            </div>
+
+                            <button type="button" id="suggests-submit" class="btn btn-info btn-lg btn-flat">提交信息</button>
+                        </form>
+
+                        <!--=-------------------------------------------------------------------------------------=-->
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <script>
+            function suggests(name, phone, email, address, msg) {
+                $.ajax({
+                    url:'/api/sendMail',
+                    type:'GET',
+                    data:{name:name,phone:phone,email:email,address:address, msg:msg},
+                    success:function (d, s) {
+
+                        $('#cover').css("display", "none");
+                        $('.loader1').css('display', 'none');
+
+                        if(d == 'success')
+                            alert('发送成功');
+                        else if(d == 'frequent')
+                            alert('频繁请求');
+                        else
+                            alert('未知错误，你可以直接拨打电话：xxxx');
+                    },
+                    error:function (d, s) {
+
+                        $('#cover').css("display", "none");
+                        $('.loader1').css('display', 'none');
+
+                        alert('出现未知错误，你可以直接拨打电话：xxxx');
+                    }
+                });
+            }
+
+            $('document').ready(function () {
+                $('#suggests-submit').click(function () {
+                    if(eleIsNull('name'))
+                        alert('未填写姓名');
+                    else if(eleIsNull('phone'))
+                        alert('未填写电话')
+                    else{
+                        var name = $('#name').val();
+                        var phone = $('#phone').val();
+                        var email = $('#email').val();
+                        var address = $('#address').val();
+                        var msg = $('#msg').val();
+
+                        $('#cover').css("display", "block");
+                        $('.loader1').css('display', 'inline-block');
+
+                        suggests(name, phone, email, address, msg);
+                    }
+
+                });
+            });
+        </script>
     </div>
 
     <!--===========================================content=========================================-->

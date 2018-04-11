@@ -111,3 +111,71 @@
 .contact-p-div>p{
     font-size: 1.2em;
 }
+
+#cover{
+    position:absolute;left:0px;top:0px;
+    background:rgba(0, 0, 0, 0.4);
+    width:100%;  /*宽度设置为100%，这样才能使隐藏背景层覆盖原页面*/
+    height:100%;
+    filter:alpha(opacity=60);  /*设置透明度为60%*/
+    opacity:0.6;  /*非IE浏览器下设置透明度为60%*/
+    display:none;
+    z-Index:999;
+}
+
+
+.loader1 {
+    display:none;
+    font-size:0px;
+    padding:0px;
+    position: absolute;
+    left: 50%;
+    z-index: 9999;
+    top:50%;
+}
+.loader1 span {
+    vertical-align:middle;
+    border-radius:100%;
+
+    display:inline-block;
+    width:10px;
+    height:10px;
+    margin:3px 2px;
+    -webkit-animation:loader1 0.8s linear infinite alternate;
+    animation:loader1 0.8s linear infinite alternate;
+}
+.loader1 span:nth-child(1) {
+    -webkit-animation-delay:-1s;
+    animation-delay:-1s;
+    background:rgba(245, 103, 115,0.6);
+}
+.loader1 span:nth-child(2) {
+    -webkit-animation-delay:-0.8s;
+    animation-delay:-0.8s;
+    background:rgba(245, 103, 115,0.8);
+}
+.loader1 span:nth-child(3) {
+    -webkit-animation-delay:-0.26666s;
+    animation-delay:-0.26666s;
+    background:rgba(245, 103, 115,1);
+}
+.loader1 span:nth-child(4) {
+    -webkit-animation-delay:-0.8s;
+    animation-delay:-0.8s;
+    background:rgba(245, 103, 115,0.8);
+
+}
+.loader1 span:nth-child(5) {
+    -webkit-animation-delay:-1s;
+    animation-delay:-1s;
+    background:rgba(245, 103, 115,0.4);
+}
+
+@keyframes loader1 {
+    from {transform: scale(0, 0);}
+    to {transform: scale(1, 1);}
+}
+@-webkit-keyframes loader1 {
+    from {-webkit-transform: scale(0, 0);}
+    to {-webkit-transform: scale(1, 1);}
+}
